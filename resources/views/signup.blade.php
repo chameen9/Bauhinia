@@ -40,9 +40,9 @@
                             {{csrf_field()}}
                                 <div class="align-items-center mb-1 ">
                                 <a href="{{ url('/') }}">
-                                    <img src="{{URL::asset('/images/TextLogo.png')}}" alt="Logo" height="90" width="245">
+                                    <img src="{{URL::asset('/images/TextLogo.png')}}" alt="Logo" height="auto" width="235">
                                 </a>
-                                    
+                                <br>
                                     
                                 </div>
                                     @if(count($errors)>0)

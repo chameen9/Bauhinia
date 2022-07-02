@@ -40,8 +40,9 @@
                             {{csrf_field()}}
                                     @if(count($errors)>0)
                                         <a href="{{ url('/') }}">
-                                            <img src="{{URL::asset('/images/TextLogo.png')}}" alt="Logo" height="90" width="245">
+                                            <img src="{{URL::asset('/images/TextLogo.png')}}" alt="Logo" height="auto" width="235">
                                         </a>
+                                        <br>
                                         <h5 class="fw-body  " style="letter-spacing: 1px;">Follow these instructions & try again !</h5>
                                         <br>
                                         <div class="alert alert-warning alert-dismissible fade show">

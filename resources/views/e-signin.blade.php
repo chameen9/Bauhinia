@@ -39,10 +39,10 @@
                             {{csrf_field()}}
                                 <div class="align-items-center mb-1">
                                     <a href="{{ url('/') }}">
-                                        <img src="{{URL::asset('/images/TextLogo.png')}}" alt="Logo" height="90" width="245">
+                                        <img src="{{URL::asset('/images/TextLogo.png')}}" alt="Logo" height="auto" width="235">
                                     </a>
                                 </div>
-    
+                                <br>
                                 <h5 class="fw-body mb-3 pb-3" style="letter-spacing: 1px;">Sign into the system</h5>
     
                                 <div class="form-outline mb-4">
@@ -60,7 +60,7 @@
                                         <input type="submit" name="login" value="Sign in" class="btn btn-primary">
                                     </div>
                                 </div>
-                                <p class="body" style="color: #393f81;">Don't have an account? <a href="{{ url('/employee/signup') }}" class="link-primary">Sign up here</a></p>
+                                <p class="body" style="color: #393f81;">Don't have an account? <a href="{{ url('/employee/signupconfirm') }}" class="link-primary">Sign up here</a></p>
                                 @if(count($errors)>0 || $message = Session::get('error'))
                                     @if(count($errors)>0)
                                         <div class="alert alert-warning alert-dismissible fade show">

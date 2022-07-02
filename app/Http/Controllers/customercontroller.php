@@ -16,7 +16,7 @@ class customercontroller extends Controller
         
         $this->validate($request, [
             'email'=>['required','email','string','max:100','min:5'],
-            'password'=>['string', new PasswordChecker()], //pasword checker externel rule
+            //'password'=>['string', new PasswordChecker()], //pasword checker externel rule
         ]);
 
         $reqemail = $request->input('email');
@@ -24,11 +24,11 @@ class customercontroller extends Controller
         $gotemail = DB::Table('customers')->where('email',$reqemail)->value('email');
         $gotpassword = DB::Table('customers')->where('email',$reqemail)->value('password');
         $gotname = DB::Table('customers')->where('email',$reqemail)->value('name');
-
+    
         if($gotemail==$reqemail){
             if($gotpassword==$reqpassword){
                 return view('home',['name'=>$gotname]); //send name to the view     return customer view
-                
+                    
             }
             else{
                 return back()->with('error','Invalid Password. Try again !');
@@ -38,6 +38,8 @@ class customercontroller extends Controller
             return back()->with('error','Unkonown user !');
         }
     }
+
+       
 
     function signupascustomer(Request $request){
         $Customer = new Customer;

@@ -5,7 +5,9 @@
         <meta hhtp-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Bauhinia</title>
+        <!--<meta name="csrf-token" content="{{ csrf_token() }}">-->
+
+        <title>Bauhinia | Home</title>
 
         <!--Import bootstrap js-->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -15,9 +17,14 @@
         <!--X Icon-->
         <link rel = "icon" href = "{{URL::asset('/images/Xicon.ico')}}" type = "image/x-icon">
 
+        <!--Jquery
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        -->
+
         <!--Import bootstrap css-->
         <link href="/css/bootstrap.css" rel="stylesheet">
 
+        <!--Bootstrap icons-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
 
@@ -33,7 +40,8 @@
             <a class="navbar-brand me-2" href="{{ url('/') }}">
               <img
                 src="{{URL::asset('/images/TextLogo.png')}}"
-                height="45"
+                height="35"
+                width="auto"
                 alt="Bauhinia Logo"
                 loading="lazy"
                 style="margin-top: -1px;"
@@ -70,9 +78,8 @@
               <!-- Left links -->
 
               <div class="d-flex align-items-center">
-                <input type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#LoginModal" value="Sign In">&nbsp;
-                <!--<a href="{{ url('/customer/signin') }}" class="btn btn-outline-primary px-3 me-2" role="button">Sign In</a>-->
-                <a href="{{ url('/customer/signup') }}" class="btn btn-primary px-3 me-2" role="button">Sign Up for Free</a>
+                <a href="{{ url('/customer/signin') }}" class="btn btn-outline-primary btn-sm px-3 me-2" role="button">Sign In</a>
+                <a href="{{ url('/customer/signup') }}" class="btn btn-primary btn-sm px-3 me-2" role="button">Sign Up for Free</a>
               </div>
             </div>
             <!-- Collapsible wrapper -->
@@ -147,7 +154,7 @@
               <div class="text">
                 <span></span>
               </div>
-              <a class="btn btn-outline-info" href="#" role="button">Shop Now</a>
+              <a class="btn btn-outline-info" role="button" data-toggle="modal" data-target="#MsgModal">Shop Now</a>
               </div>
             </div>
           </div>
@@ -162,7 +169,7 @@
               <div class="text">
                 <span></span>
               </div>
-              <a class="btn btn-outline-purple" href="#" role="button">Shop Now</a>
+              <a class="btn btn-outline-purple"  role="button" data-toggle="modal" data-target="#MsgModal">Shop Now</a>
               </div>
             </div>
           </div>	
@@ -177,7 +184,7 @@
               <div class="text">
                 <span></span>
               </div>
-              <a class="btn btn-outline-dark" href="#" role="button">Shop Now</a>
+              <a class="btn btn-outline-dark"  role="button" data-toggle="modal" data-target="#MsgModal">Shop Now</a>
               </div>
             </div>
           </div>	
@@ -192,7 +199,7 @@
               <div class="text">
                 <span></span>
               </div>
-              <a class="btn btn-outline-pink" href="#" role="button">Shop Now</a>
+              <a class="btn btn-outline-pink"  role="button" data-toggle="modal" data-target="#MsgModal">Shop Now</a>
               </div>
             </div>
           </div>	
@@ -208,19 +215,19 @@
 
         <div class="row">
           <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <a href=""><img src="{{URL::asset('/images/8.JPG')}}" class="img-circle" width="300px" height="auto" alt=""></a>
+            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/images/8.JPG')}}" class="img-circle" width="300px" height="auto" alt=""></a>
           </div>
 
           <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <a href=""><img src="{{URL::asset('/images/8.JPG')}}" width="300px" height="auto" alt=""></a>
+            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/images/8.JPG')}}" width="300px" height="auto" alt=""></a>
           </div>
 
           <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <a href=""><img src="{{URL::asset('/images/8.JPG')}}" width="300px" height="auto" alt=""></a>
+            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/images/8.JPG')}}" width="300px" height="auto" alt=""></a>
           </div>
 
           <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <a href=""><img src="{{URL::asset('/images/8.JPG')}}" width="300px" height="auto" alt=""></a>
+            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/images/8.JPG')}}" width="300px" height="auto" alt=""></a>
           </div>
 
         </div>
@@ -233,19 +240,19 @@
 
         <div class="row">
           <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <a href=""><img src="{{URL::asset('/images/8.JPG')}} " width="300px" height="auto" alt=""></a>
+            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/images/8.JPG')}} " width="300px" height="auto" alt=""></a>
           </div>
 
           <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <a href=""><img src="{{URL::asset('/images/8.JPG')}} " width="300px" height="auto" alt=""></a>
+            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/images/8.JPG')}} " width="300px" height="auto" alt=""></a>
           </div>
 
           <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <a href=""><img src="{{URL::asset('/images/8.JPG')}} " width="300px" height="auto" alt=""></a>
+            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/images/8.JPG')}} " width="300px" height="auto" alt=""></a>
           </div>
 
           <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <a href=""><img src="{{URL::asset('/images/8.JPG')}} " width="300px" height="auto" alt=""></a>
+            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/images/8.JPG')}} " width="300px" height="auto" alt=""></a>
           </div>
 
         </div>
@@ -420,109 +427,32 @@
           </footer>
           <!-- Footer -->
 
-
-
-          <!--Modal login-->
-          <div class="modal fade" tabindex="-1" role="dialog" id="LoginModal">
-            <div class="modal-dialog" role="document">
+          <!-- Modal -->
+          <div class="modal fade" id="MsgModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
-
-                <!--<div class="modal-header text-center">
-                  <h5 class="modal-title w-100 font-weight-bold py-2">Login</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" class="white-text">&times;</span>
+                <div class="modal-header">
+                  <h5 class="modal-title">You need to Sign In first !</h5>
+                  <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">
+                    <i class="bi bi-x-lg"></i>
                   </button>
-                </div>-->
-
+                </div>
                 <div class="modal-body">
-
-                  <form action="{{ url('/customer/checksignin') }}" method="post" class="needs-validation" novalidate>
-                  {{csrf_field()}}
-
-                    <div class="row d-flex justify-content-center text-center">
-                      <div class="col-12 d-flex justify-content-center text-center">
-                        <img
-                          src="{{URL::asset('/images/TextLogo.png')}}"
-                          height="65"
-                          width="auto"
-                          alt="Bauhinia Logo"
-                          loading="lazy"
-                        >
-                      </div>
+                  <p>To view or browse more products, you should sign in with your email and password. if you don't have an account yet, you can create one using these links.</p>
+                  
+                  <div class="row d-flex justify-content-center">
+                    <div class="btn-group" role="group">
+                      <a href="{{ url('/customer/signin') }}" class="btn btn-outline-primary" role="button">Sign In</a>
+                      <a href="{{ url('/customer/signup') }}" class="btn btn-primary" role="button">Sign Up</a>
                     </div>
-
-                    <div class="row">
-                      <div class="col-12">
-                        <hr>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-12">
-                        <label class="form-label">Your Email</label>
-                        <input type="email" required name="email" class="form-control" placeholder="name@example.com" minlength="3">
-                        <!--<div class="valid-feedback">Looks good !</div>-->
-                        <div class="invalid-feedback">@error('email'){{$message}} @enderror</div>
-                      </div>
-                    </div>
-  
-                    <div class="row">
-                      <div class="col">
-                        <br>
-                      </div>
-                    </div>
-            
-                    <div class="row">
-                      <div class="col-12">
-                        <label class="form-label">Password</label>
-                        <input type="password" required name="password" class="form-control" minlength="8">
-                        <!--<div class="valid-feedback">Looks good !</div>-->
-                        <div class="invalid-feedback">@error('password'){{$message}} @enderror</div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col">
-                        <br>
-                      </div>
-                    </div>
-
-                    <div class="row d-flex justify-content-center">
-                      <div class="col-12 row d-flex justify-content-center">
-                        <input type="submit" class="btn btn-primary btn-block" value="Sign In" name="signin">
-                      </div>
-                    </div>
-
-                    <script>
-                      // Example starter JavaScript for disabling form submissions if there are invalid fields
-                        (function () {
-                          'use strict'
-
-                          // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                          var forms = document.querySelectorAll('.needs-validation')
-
-                          // Loop over them and prevent submission
-                          Array.prototype.slice.call(forms)
-                            .forEach(function (form) {
-                              form.addEventListener('submit', function (event) {
-                                if (!form.checkValidity()) {
-                                  event.preventDefault()
-                                  event.stopPropagation()
-                                }
-
-                                form.classList.add('was-validated')
-                              }, false)
-                            })
-                        })()
-                    </script>
-
-                  </form>
+                  </div>
 
                 </div>
-
+                
               </div>
             </div>
           </div>
-        
+          <!--end-modal-->
+
     </body>
 </html>
