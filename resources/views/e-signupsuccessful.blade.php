@@ -38,9 +38,9 @@
                             <form method="post" action="{{ url('/empsignupconfirm') }}">
                             {{csrf_field()}}
                                 <div class="align-items-center mb-1">
-                                    <img src="{{URL::asset('/images/TextLogo.png')}}" alt="Logo" height="90" width="245">
+                                    <img src="{{URL::asset('/images/TextLogo.png')}}" alt="Logo" height="auto" width="235">
                                 </div>
-    
+                                <br>
                                 <h5 class="fw-body mb-3 pb-3" style="letter-spacing: 1px;">Please confirm your details</h5>
     
                                 <div class="form-outline mb-4">

@@ -7,7 +7,7 @@
 
         <!--<meta name="csrf-token" content="{{ csrf_token() }}">-->
 
-        <title>Bauhinia | Home</title>
+        <title>Bauhinia</title>
 
         <!--Import bootstrap js-->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -54,16 +54,8 @@
             <div class="collapse navbar-collapse" id="navlist">
               <!-- right links -->
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <!-- Drop Down -->
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Employee
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="{{ url('/employee/signin') }}">Sign In</a>
-                    <a class="dropdown-item" href="{{ url('/employee/signupconfirm') }}">Sign Up</a>
-                  </div>
-                </li>
+                
+                
                 <!-- About Us -->
                 <li class="nav-item">
                   <a class="nav-link" href="{{ url('/aboutus') }}">About Us</a>
@@ -78,14 +70,37 @@
               <!-- Left links -->
 
               <div class="d-flex align-items-center">
-                <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="{{URL::asset('/images/3.JPG')}}" alt="Profile" class="img-circle" height="40px" width="40px">
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="{{ url('/employee/signin') }}">Profile</a>
-                    <a class="dropdown-item" href="{{ url('/employee/signupconfirm') }}">Sign Out</a>
+                <!-- Cart -->
+                @if($count = Session::get('count'))
+                  <div class="nav-item">
+                    <a role="button" data-toggle="modal" data-target="#MsgModal"  class="position-relative">
+                      <h4><i class="bi bi-cart-fill"></i></h4><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{$count}}</span>
+                    </a>
+                  </div>
+                @else
+                  <div class="nav-item">
+                    <a role="button" data-toggle="modal" data-target="#MsgModal"  class="position-relative">
+                      <h4><i class="bi bi-cart"></i></h4><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
+                    </a>
+                  </div>
+                @endif
+                <!-- Cart -->
+
+                &nbsp; &nbsp; &nbsp;
+
+                <!-- Avatar -->
+                <div class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <img src="{{URL::asset('/profile/avatar.png')}}" height="35px" class="rounded-circle" loading="lazy">
+                  </a>
+                  <div class="dropdown-menu" style="width: 150px;">
+                    <p class="text-muted" style="text-align: center;">Welcome,<br>
+                    {{$name}}</p>
+                    <a class="dropdown-item" href="{{ url('/customer/editprofile') }}">Profile</a>
+                    <a class="dropdown-item" href="{{ url('/customer/signout') }}">Sign Out</a>
+                  </div>
                 </div>
-                
+                <!-- Avatar -->
               </div>
             </div>
             <!-- Collapsible wrapper -->
@@ -100,11 +115,7 @@
       <!--carousel-->
       <div class="border-bottom">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          </ol>
+          
           <div class="carousel-inner">
             <div class="carousel-item active" data-mdb-interval="50">
               <img class="d-block w-100" src="{{URL::asset('/images/sc1.png')}}" alt="First slide">
@@ -120,13 +131,13 @@
                 <p></p>
               </div>
             </div>
-            <div class="carousel-item" data-mdb-interval="50">
+            <!--<div class="carousel-item" data-mdb-interval="50">
               <img class="d-block w-100" src="{{URL::asset('/images/sc3.png')}}" alt="Third slide">
               <div class="carousel-caption d-none d-md-block">
                 <h5></h5>
                 <p></p>
               </div>
-            </div>
+            </div>-->
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Rules\PasswordChecker;
+use Carbon\Carbon;
 use Validator;
 use Auth;
 use DB;
@@ -24,10 +25,13 @@ class customercontroller extends Controller
         $gotemail = DB::Table('customers')->where('email',$reqemail)->value('email');
         $gotpassword = DB::Table('customers')->where('email',$reqemail)->value('password');
         $gotname = DB::Table('customers')->where('email',$reqemail)->value('name');
+
+        
     
         if($gotemail==$reqemail){
             if($gotpassword==$reqpassword){
-                return view('home',['name'=>$gotname]); //send name to the view     return customer view
+
+                return view('home',['name'=>$gotname]); //send name to the view
                     
             }
             else{
@@ -49,6 +53,7 @@ class customercontroller extends Controller
             'name'=>['string','max:100','min:2'],
             'password'=>['string', new PasswordChecker()],
             'delivery_address'=>['string','max:250','min:5'],
+            'gender'=>['string','max:20','min:3'],
             'confirm_password'=>['string', 'same:password'],
             'primary_contact_number'=>['numeric','min:10'],
             'secondary_contact_number'=>['numeric','min:10','different:primary_contact_number'],
@@ -58,13 +63,15 @@ class customercontroller extends Controller
         $Customer->name=$request->name;
         $Customer->password=$request->password;
         $Customer->delivery_address=$request->delivery_address;
+        $Customer->gender=$request->gender;
         $Customer->primary_contact_number=$request->primary_contact_number;
         $Customer->secondary_contact_number=$request->secondary_contact_number;
+        $Customer->created_at= Carbon::now('Asia/Colombo');
         $Customer->save();
         return back()->with('message','Sign up successful.');
     }
 
-    function editprofile(Request $request){ //finish this
+    function editprofile(Request $request){ 
         $User = new User;
 
         $reqemail = $request->input('email');

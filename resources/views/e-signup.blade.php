@@ -56,8 +56,9 @@
 
                                     @elseif($message = Session::get('message'))
                                         <a href="{{ url('/') }}">
-                                            <img src="{{URL::asset('/images/TextLogo.png')}}" alt="Logo" height="90" width="245">
+                                            <img src="{{URL::asset('/images/TextLogo.png')}}" alt="Logo" height="auto" width="235">
                                         </a>
+                                        <br>
                                         <h5 class="fw-body  " style="letter-spacing: 1px;">Congratulations !</h5>
                                         <br>
                                         <div class="body">

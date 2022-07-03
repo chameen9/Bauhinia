@@ -7,7 +7,7 @@
 
         <!--<meta name="csrf-token" content="{{ csrf_token() }}">-->
 
-        <title>Bauhinia | Home</title>
+        <title>Bauhinia</title>
 
         <!--Import bootstrap js-->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -94,11 +94,7 @@
       <!--carousel-->
       <div class="border-bottom">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          </ol>
+          
           <div class="carousel-inner">
             <div class="carousel-item active" data-mdb-interval="50">
               <img class="d-block w-100" src="{{URL::asset('/images/sc1.png')}}" alt="First slide">
@@ -114,13 +110,13 @@
                 <p></p>
               </div>
             </div>
-            <div class="carousel-item" data-mdb-interval="50">
+            <!--<div class="carousel-item" data-mdb-interval="50">
               <img class="d-block w-100" src="{{URL::asset('/images/sc3.png')}}" alt="Third slide">
               <div class="carousel-caption d-none d-md-block">
                 <h5></h5>
                 <p></p>
               </div>
-            </div>
+            </div>-->
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -91,7 +91,16 @@
                                         <div class="col">
                                             <div class="form-outline mt-3">
                                                 <label class="body">Delivery Address</label>
-                                                <textarea class="form-control" required name="delivery_address" id="delivery_address" rows="2" data-mdb-showcounter="true" maxlength="250" placeholder="Street, City, District"></textarea>
+                                                <textarea class="form-control" required name="delivery_address" id="delivery_address" rows="1" data-mdb-showcounter="true" maxlength="250" placeholder="Street, City, District"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-outline mt-3">
+                                                <label class="body">Gender</label>
+                                                <select class="form-control" name="gender" required>
+                                                    <option>Male</option>
+                                                    <option>Female</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>

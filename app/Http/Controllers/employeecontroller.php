@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Rules\PasswordChecker;
+use Carbon\Carbon;
 use Validator;
 use Auth;
 use DB;
@@ -91,6 +92,7 @@ class employeecontroller extends Controller
         $contact_number = $request->input('contact_number');
         $gender = $request->input('gender');
         $date_of_birth = $request->input('date_of_birth');
+        $created_at= Carbon::now('Asia/Colombo');
 
         $Employee = DB::table('employees')
               ->where('id', $id)
@@ -102,6 +104,7 @@ class employeecontroller extends Controller
                 'contact_number' => $contact_number,
                 'gender' => $gender,
                 'date_of_birth' => $date_of_birth,
+                'created_at' => $created_at
             ]);
 
         //return view('e-signupsuccessful');//->with('name',$name);
