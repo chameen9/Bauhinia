@@ -111,93 +111,183 @@
       </div>
       <br>
 
-      <div class="row">
-        <div class="col-2">
-          <div class="shadow bg-white rounded">
-            <div class="card p-2" style="border: 0;">
-              
-              <div class="card-body">
-                Categories
-                <hr>
-                name
-                name
-                name
-                name
-                name
-                name
-                name
-                name
-                name
-                name
-                name
-                name
-                name
-                name
-                name
-                name
-                name
-                name
-                name
-                name
-                name
-                name
-                name
-                name
-                name
-                name
-
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-2 col-md-2 col-sm-3">
+            <div class="shadow bg-white rounded">
+              <div class="card p-1" style="border: 0;">
+                
+                <div class="card-body">
+                  Categories
+                  <hr>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">High end fashion boutiques</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">Fast fashion brands</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">Casual clothing brands</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">Sport clothing store</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">Travel clothing store</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">Kids clothing store</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">Wedding dresses</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">Swimming suits</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">Suit store</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">Jeans shop</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">Bags / Backpacks store</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">Saree store</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">T-Shirts store</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">Sarongs store</a><br>
+  
+                </div>
               </div>
             </div>
+            
           </div>
           
-        </div>
-
-        <div class="col-8">
-            <!--carousel-->
-            <div class="border-bottom">
-              <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                
-                <div class="carousel-inner">
-                  <div class="carousel-item active" data-mdb-interval="50">
-                    <img class="d-block w-100" src="{{URL::asset('/images/sc1.png')}}" alt="First slide">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5></h5>
-                      <p></p>
+          <div class="col-lg-8 col-md-8 col-sm-6">
+                <!--breadcrumb-->
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <!--<li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item active" aria-current="page">Library</li>-->
+                  </ol>
+                </nav>
+                <!--breadcrumb-->
+  
+                <!--carousel-->
+                <div class="border-bottom">
+                  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    
+                    <div class="carousel-inner">
+                      <div class="carousel-item active" data-mdb-interval="50">
+                        <img class="d-flex w-100" src="{{URL::asset('/images/sc1.png')}}" alt="First slide">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5></h5>
+                          <p></p>
+                        </div>
+                      </div>
+                      <div class="carousel-item" data-mdb-interval="50">
+                        <img class="d-block w-100" src="{{URL::asset('/images/sc2.png')}}" alt="Second slide">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5></h5>
+                          <p></p>
+                        </div>
+                      </div>
+                      <!--<div class="carousel-item" data-mdb-interval="50">
+                        <img class="d-block w-100" src="{{URL::asset('/images/sc3.png')}}" alt="Third slide">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5></h5>
+                          <p></p>
+                        </div>
+                      </div>-->
                     </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </a>
                   </div>
-                  <div class="carousel-item" data-mdb-interval="50">
-                    <img class="d-block w-100" src="{{URL::asset('/images/sc2.png')}}" alt="Second slide">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5></h5>
-                      <p></p>
-                    </div>
-                  </div>
-                  <!--<div class="carousel-item" data-mdb-interval="50">
-                    <img class="d-block w-100" src="{{URL::asset('/images/sc3.png')}}" alt="Third slide">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5></h5>
-                      <p></p>
-                    </div>
-                  </div>-->
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                </a>
-              </div>
+  
+                <br>
+                <h4 class="text-muted">New Arrivals</h4>
+  
+                <div class="row">
+  
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-3 mb-5 bg-body rounded">
+                      <div class="box-part text-center">
+                        <img src="{{URL::asset('/images/5.JPG')}}" width="300px" height="300px" class="img-fluid img-circle">
+                      <div class="title">
+                        <h5>Men's Collection</h5>
+                      </div>
+                      <div class="text">
+                        <span></span>
+                      </div>
+                      <a class="btn btn-outline-info" role="button" data-toggle="modal" data-target="#MsgModal">Shop Now</a>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-3 mb-5 bg-body rounded">
+                      <div class="box-part text-center">
+                        <img src="{{URL::asset('/images/5.JPG')}}" width="300px" height="300px" class="img-fluid img-circle">
+                      <div class="title">
+                        <h5>Men's Collection</h5>
+                      </div>
+                      <div class="text">
+                        <span></span>
+                      </div>
+                      <a class="btn btn-outline-info" role="button" data-toggle="modal" data-target="#MsgModal">Shop Now</a>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-3 mb-5 bg-body rounded">
+                      <div class="box-part text-center">
+                        <img src="{{URL::asset('/images/5.JPG')}}" width="300px" height="300px" class="img-fluid img-circle">
+                      <div class="title">
+                        <h5>Men's Collection</h5>
+                      </div>
+                      <div class="text">
+                        <span></span>
+                      </div>
+                      <a class="btn btn-outline-info" role="button" data-toggle="modal" data-target="#MsgModal">Shop Now</a>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-3 mb-5 bg-body rounded">
+                      <div class="box-part text-center">
+                        <img src="{{URL::asset('/images/5.JPG')}}" width="300px" height="300px" class="img-fluid img-circle">
+                      <div class="title">
+                        <h5>Men's Collection</h5>
+                      </div>
+                      <div class="text">
+                        <span></span>
+                      </div>
+                      <a class="btn btn-outline-info" role="button" data-toggle="modal" data-target="#MsgModal">Shop Now</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-3 mb-5 bg-body rounded">
+                      <div class="box-part text-center">
+                        <img src="{{URL::asset('/images/5.JPG')}}" width="300px" height="300px" class="img-fluid img-circle">
+                      <div class="title">
+                        <h5>Men's Collection</h5>
+                      </div>
+                      <div class="text">
+                        <span></span>
+                      </div>
+                      <a class="btn btn-outline-info" role="button" data-toggle="modal" data-target="#MsgModal">Shop Now</a>
+                      </div>
+                    </div>
+                  </div>
+  
+                </div>
+                
+  
+                
+  
             </div>
+
+            <div class="col-1">
+              <br>
+            </div>
+  
+              
+  
+              
+          </div>
         </div>
       </div>
-
-      <br>
-
-      
-      <br>
-
       
 
+      <br>
+      <br>
       <br>
 
       <!-- Footer -->
