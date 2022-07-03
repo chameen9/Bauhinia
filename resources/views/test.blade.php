@@ -197,7 +197,7 @@
                       <div class="box-part text-center">
                         <img src="{{URL::asset('/images/5.JPG')}}" width="300px" height="300px" class="img-fluid img-circle">
                       <div class="title">
-                        <h5>Men's Collection</h5>
+                        <h5>Men's</h5>
                       </div>
                       <div class="text">
                         <span></span>
@@ -212,7 +212,7 @@
                       <div class="box-part text-center">
                         <img src="{{URL::asset('/images/5.JPG')}}" width="300px" height="300px" class="img-fluid img-circle">
                       <div class="title">
-                        <h5>Men's Collection</h5>
+                        <h5>Men's</h5>
                       </div>
                       <div class="text">
                         <span></span>
