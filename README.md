@@ -65,9 +65,9 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Database Setup
 
-You need to create a database in MySQL and database name should 'bauhiniya'
+You need to create a database in MySQL and database name should be 'bauhiniya'.
 
-##SQL Quaries for tables
+## SQL Quaries for tables
 
 create TABLE customers(
     email VARCHAR(100) NOT NULL PRIMARY KEY,
