@@ -95,7 +95,8 @@
                   </a>
                   <div class="dropdown-menu" style="width: 150px;">
                     <p class="text-muted" style="text-align: center;">Welcome,<br>
-                    <label name="name">{{$name}}</label></p>     <!--name changeeeeee-->
+                    <label>{{$name}}</label></p>
+                    <hr>
                     <a class="dropdown-item" href="{{ url('/customer/editprofile') }}">Profile</a>
                     <a class="dropdown-item" href="{{ url('/customer/signout') }}">Sign Out</a>
                   </div>
@@ -130,7 +131,7 @@
                   <a href="" class="text-decoration-none" style="font-size: 15px;">Swimming suits</a><br>
                   <a href="" class="text-decoration-none" style="font-size: 15px;">Suit store</a><br>
                   <a href="" class="text-decoration-none" style="font-size: 15px;">Jeans shop</a><br>
-                  <a href="" class="text-decoration-none" style="font-size: 15px;">Bags / Backpacks store</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">Bags & Backpacks store</a><br>
                   <a href="" class="text-decoration-none" style="font-size: 15px;">Saree store</a><br>
                   <a href="" class="text-decoration-none" style="font-size: 15px;">T-Shirts store</a><br>
                   <a href="" class="text-decoration-none" style="font-size: 15px;">Sarongs store</a><br>
@@ -502,7 +503,7 @@
                 </div>
                 <div class="modal-body">
                   <form action="{{ url('/home/addtocart') }}" method="post">
-                  {{csrf_field()}}
+                  {{csrf_field()}} {{ method_field('POST') }}
                     <div class="row">
                       <div class="col-5">
                         <img src="{{URL::asset('/products/LV123456.WEBP')}}" width="600px" height="auto" class="img-fluid">
@@ -580,12 +581,21 @@
                         </div>
 
                         <br>
+                        <br>
+
+                        <div class="row">
+                          <div class="col-12">
+                            <input type="hidden" name="email" class="from-control" value="{{$email}}">
+                          </div>
+                        </div>
 
                         <div class="row d-flex justify-content-center">
                           <div class="btn-group" role="group">
                             <button type="submit" class="btn btn-primary"><i class="bi bi-cart-plus"></i> Add to cart</button>
                           </div>
                         </div>
+
+                        
   
                       </div>
                     </div>
