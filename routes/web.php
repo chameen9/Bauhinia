@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 // routes for views------------------------------------------------------------------------------------
 Route::get('/', function () {return view('welcome');});
+Route::get('/home', function () {return view('home');});
 Route::get('/customer/signin', function () {return view('signin');});
 Route::get('/customer/signup', function () {return view('signup');});
 Route::get('/employee/signin', function () {return view('e-signin');});
@@ -33,6 +34,6 @@ Route::post('/employee/checksignin','App\http\controllers\employeecontroller@che
 //----------------------------------------------------------------------------------------------------
 
 // addto cart  ---------------------------------------------------------------------------------------
-Route::post('/home/addtocart','App\http\controllers\customercontroller@addtocart');
+Route::post('/home/addtocart','App\http\controllers\cartcontroller@addtocart');
 
 //----------------------------------------------------------------------------------------------------

@@ -502,7 +502,7 @@
                 </div>
                 <div class="modal-body">
                   <form action="{{ url('/home/addtocart') }}" method="post">
-
+                  {{csrf_field()}}
                     <div class="row">
                       <div class="col-5">
                         <img src="{{URL::asset('/products/LV123456.WEBP')}}" width="600px" height="auto" class="img-fluid">

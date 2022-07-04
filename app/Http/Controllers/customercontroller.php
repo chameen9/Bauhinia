@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Customer;
-use App\Model\cart_product;
 use App\Rules\PasswordChecker;
 use Carbon\Carbon;
 use Validator;
@@ -32,7 +31,9 @@ class customercontroller extends Controller
         if($gotemail==$reqemail){
             if($gotpassword==$reqpassword){
 
-                return view('home',['name'=>$gotname]); //send name to the view
+                return view('home',['name'=>$gotname , 'email'=>$reqemail]); //send name and email to the view
+                //return redirect()->route('home',['name'=>$gotname]);
+                //return redirect()->route('/home', [$gotname]);
                     
             }
             else{
@@ -83,25 +84,5 @@ class customercontroller extends Controller
         $gotname = DB::Table('users')->where('email',$reqemail)->value('name');
     }
 
-    public function addtocart(Request $request){
-        $product_id = $request->input('product_id');
-        //$cusemail = $request->input('email');
-        $product_name = $request->input('name');
-        $brand = $request->input('brand');
-        $colour = $request->input('colour');
-        $size = $request->input('size');
-        $qty = $request->input('qty');
-
-        $cart_product = new cart_product;
-
-        $cart_product->product_id = $product_id;
-        $cart_product->cus_email = 'chameensandeepa9@gmail.com';
-        $cart_product->product_name = $product_name;
-        $cart_product->brand = $brand;
-        $cart_product->colour = $colour;
-        $cart_product->size = $size;
-        $cart_product->qty = $qty;
-        $cart_product->save();
-
-    }
+    
 }
