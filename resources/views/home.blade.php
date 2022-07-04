@@ -95,7 +95,7 @@
                   </a>
                   <div class="dropdown-menu" style="width: 150px;">
                     <p class="text-muted" style="text-align: center;">Welcome,<br>
-                    {{$name}}</p>
+                    <label name="name">{{$name}}</label></p>     <!--name changeeeeee-->
                     <a class="dropdown-item" href="{{ url('/customer/editprofile') }}">Profile</a>
                     <a class="dropdown-item" href="{{ url('/customer/signout') }}">Sign Out</a>
                   </div>
@@ -109,239 +109,257 @@
         </nav>
         <!-- Navbar -->
       </div>
-
       <br>
 
-      <!--carousel-->
-      <div class="border-bottom">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-          
-          <div class="carousel-inner">
-            <div class="carousel-item active" data-mdb-interval="50">
-              <img class="d-block w-100" src="{{URL::asset('/images/sc1.png')}}" alt="First slide">
-              <div class="carousel-caption d-none d-md-block">
-                <h5></h5>
-                <p></p>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-2 col-md-2 col-sm-3">
+            <div class="shadow bg-white rounded">
+              <div class="card p-1" style="border: 0;">
+                
+                <div class="card-body">
+                  Categories
+                  <hr>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">High end fashion boutiques</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">Fast fashion brands</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">Casual clothing brands</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">Sport clothing store</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">Travel clothing store</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">Kids clothing store</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">Wedding dresses</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">Swimming suits</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">Suit store</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">Jeans shop</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">Bags / Backpacks store</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">Saree store</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">T-Shirts store</a><br>
+                  <a href="" class="text-decoration-none" style="font-size: 15px;">Sarongs store</a><br>
+  
+                </div>
               </div>
             </div>
-            <div class="carousel-item" data-mdb-interval="50">
-              <img class="d-block w-100" src="{{URL::asset('/images/sc2.png')}}" alt="Second slide">
-              <div class="carousel-caption d-none d-md-block">
-                <h5></h5>
-                <p></p>
-              </div>
-            </div>
-            <!--<div class="carousel-item" data-mdb-interval="50">
-              <img class="d-block w-100" src="{{URL::asset('/images/sc3.png')}}" alt="Third slide">
-              <div class="carousel-caption d-none d-md-block">
-                <h5></h5>
-                <p></p>
-              </div>
-            </div>-->
+            
           </div>
-          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          </a>
+
+          <div class="col-lg-10 col-md-10 col-sm-8">
+                <!--breadcrumb-->
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <!--<li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item active" aria-current="page">Library</li>-->
+                  </ol>
+                </nav>
+                <!--breadcrumb-->
+  
+                <!--carousel-->
+                <div class="border-bottom">
+                  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    
+                    <div class="carousel-inner">
+                      <div class="carousel-item active" data-mdb-interval="50">
+                        <img class="d-flex w-100" src="{{URL::asset('/images/sc1.png')}}" alt="First slide">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5></h5>
+                          <p></p>
+                        </div>
+                      </div>
+                      <div class="carousel-item" data-mdb-interval="50">
+                        <img class="d-block w-100" src="{{URL::asset('/images/sc2.png')}}" alt="Second slide">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5></h5>
+                          <p></p>
+                        </div>
+                      </div>
+                      <!--<div class="carousel-item" data-mdb-interval="50">
+                        <img class="d-block w-100" src="{{URL::asset('/images/sc3.png')}}" alt="Third slide">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5></h5>
+                          <p></p>
+                        </div>
+                      </div>-->
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </a>
+                  </div>
+                </div>
+  
+                <br>
+                <h4 class="text-muted">New Arrivals</h4>
+  
+                <div class="row">
+  
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#LV123456" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/LV123456.WEBP')}}" width="300px" height="auto" class="img-fluid">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Levi's - Original fit Men's jeans</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 4999.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+  
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#MsgModal" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/LV123457.JPG')}}" width="300px" height="auto" class="img-fluid">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Levi's - Slim fit Men's jeans</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 4499.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+  
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#MsgModal" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/LV123458.WEBP')}}" width="300px" height="auto" class="img-fluid">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Levi's - Athletic Taper Men's jeans</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 4999.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+  
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#MsgModal" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/LV123459.WEBP')}}" width="300px" height="auto" class="img-fluid">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Levi's - Skinny Taper Men's jeans</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 5499.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+  
+                </div>
+                <!--end row 1-->
+
+                <!--row 2-->
+                <div class="row">
+
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#MsgModal" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/TH123456.JPG')}}" width="300px" height="auto" class="img-fluid">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Tommy Hilfiger - Regular Fit Logo Polo</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 3499.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#MsgModal" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/TH123457.JPG')}}" width="300px" height="auto" class="img-fluid">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Tommy Hilfiger - Regular Fit Polo</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 3499.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#MsgModal" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/BG123456.png')}}" width="300px" height="auto" class="img-fluid">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Aldo - Grydith Black Wallet</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 11499.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#MsgModal" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/BG123457.png')}}" width="300px" height="auto" class="img-fluid">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Aldo - Cityverse HandBag</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 12499.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+
+                  
+                </div>
+                <!--end row 2-->
+  
+                
+  
+            </div>
+  
+              
+  
+              
+          </div>
         </div>
       </div>
+      
+
       <br>
-
-      <!--categories container-->
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <h5 align="center"><i>When human contracts are so quik. Fashion is instant language.</i></h5>
-            <h6 align="center">- Miuccia Prada -</h6>
-            <br>
-          </div>
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="shadow p-3 mb-5 bg-white rounded">
-              <div class="box-part text-center">
-                <img src="{{URL::asset('/images/5.JPG')}}" width="300px" height="300px" class="img-fluid img-circle">
-              <div class="title">
-                <h5>Men's Collection</h5>
-              </div>
-              <div class="text">
-                <span></span>
-              </div>
-              <a class="btn btn-outline-info" role="button" data-toggle="modal" data-target="#MsgModal">Shop Now</a>
-              </div>
-            </div>
-          </div>
-          
-          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="shadow p-3 mb-5 bg-white rounded">
-              <div class="box-part text-center">
-                <img src="{{URL::asset('/images/4.JPG')}}" width="300px" height="300px" class="img-fluid">
-              <div class="title">
-                <h5>Women's Collection</h5>
-              </div>
-              <div class="text">
-                <span></span>
-              </div>
-              <a class="btn btn-outline-purple"  role="button" data-toggle="modal" data-target="#MsgModal">Shop Now</a>
-              </div>
-            </div>
-          </div>	
-
-          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="shadow p-3 mb-5 bg-white rounded">
-              <div class="box-part text-center">
-                <img src="{{URL::asset('/images/8.JPG')}}" width="300px" height="300px" class="img-fluid img-circle">
-              <div class="title">
-                <h5>Kid's Collection</h5>
-              </div>
-              <div class="text">
-                <span></span>
-              </div>
-              <a class="btn btn-outline-dark"  role="button" data-toggle="modal" data-target="#MsgModal">Shop Now</a>
-              </div>
-            </div>
-          </div>	
-
-          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="shadow p-3 mb-5 bg-white rounded">
-              <div class="box-part text-center">
-                <img src="{{URL::asset('/images/9.JPG')}}" width="300px" height="300px" class="img-fluid img-circle">
-              <div class="title">
-                <h5>Personal Care</h5>
-              </div>
-              <div class="text">
-                <span></span>
-              </div>
-              <a class="btn btn-outline-pink"  role="button" data-toggle="modal" data-target="#MsgModal">Shop Now</a>
-              </div>
-            </div>
-          </div>	
-
-        </div>
-
-        <div class="row">
-          <div class="col-12">
-            <h3 align="center" class="display-6">Categories To Shop</h3>
-            <br>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/images/8.JPG')}}" class="img-circle" width="300px" height="auto" alt=""></a>
-          </div>
-
-          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/images/8.JPG')}}" width="300px" height="auto" alt=""></a>
-          </div>
-
-          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/images/8.JPG')}}" width="300px" height="auto" alt=""></a>
-          </div>
-
-          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/images/8.JPG')}}" width="300px" height="auto" alt=""></a>
-          </div>
-
-        </div>
-
-        <div class="row">
-          <div class="col-12">
-            <br>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/images/8.JPG')}} " width="300px" height="auto" alt=""></a>
-          </div>
-
-          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/images/8.JPG')}} " width="300px" height="auto" alt=""></a>
-          </div>
-
-          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/images/8.JPG')}} " width="300px" height="auto" alt=""></a>
-          </div>
-
-          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/images/8.JPG')}} " width="300px" height="auto" alt=""></a>
-          </div>
-
-        </div>
-
-        <div class="row">
-
-          <div class="col-12">
-            <br>
-          </div>
-
-          <div class="col-12">
-            <hr>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="box-part text-center">
-              <img src="{{URL::asset('/images/gv.png')}}" alt="Great Value" width="200px" height="200px" class="img-fluid">
-              <div class="title">
-                <h4>Great Value</h4>
-              </div>
-              <hr>
-              <div class="text">
-                <p>We offer competitive price on over 100 000 items.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="box-part text-center">
-              <img src="{{URL::asset('/images/iwd.png')}}" alt="Islandwide Delevery" width="200px" height="200px" class="img-fluid">
-              <div class="title">
-                <h4>Islandwide Delivery</h4>
-              </div>
-              <hr>
-              <div class="text">
-                <p>We deliver to every province in Sri Lanka.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="box-part text-center">
-              <img src="{{URL::asset('/images/swc.png')}}" alt="Shop with Confidence" width="200px" height="200px" class="img-fluid">
-              <div class="title">
-                <h4>Shop with Confidence</h4>
-              </div>
-              <hr>
-              <div class="text">
-                <p>Our buyer protection policy covers your entire purchase journey.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="box-part text-center">
-              <img src="{{URL::asset('/images/cod.png')}}" alt="Cash on Delevery" width="200px" height="200px" class="img-fluid">
-              <div class="title">
-                <h4>Cash on Delivery</h4>
-              </div>
-              <hr>
-              <div class="text">
-                <p>You can pay for your product in your doorsteps.</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
+      <br>
       <br>
 
       <!-- Footer -->
@@ -420,12 +438,13 @@
                     <h6 class="text-uppercase fw-bold mb-4">
                       Contact
                     </h6>
-                    <p><i class="bi bi-geo-alt-fill"></i> Galle, Southern Province, Sri Lanka.</p>
+                    <p><i class="bi bi-geo-alt"></i> Galle, Southern Province, Sri Lanka.</p>
                     <p>
-                      <i class="bi bi-envelope-fill"></i>
+                      <i class="bi bi-envelope"></i>
                       info@bauhinia.lk
                     </p>
-                    <p><i class="bi bi-telephone-fill"></i> +94 76 078 5638</p>
+                    <p><i class="bi bi-telephone"></i> +94 76 078 5638</p>
+                    <p><i class="bi bi-whatsapp"></i> +94 71 401 7271</p>
                   </div>
                   <!-- Grid column -->
                 </div>
@@ -470,6 +489,115 @@
             </div>
           </div>
           <!--end-modal-->
+
+          <!-- LV123456 -->
+          <div class="modal fade" id="LV123456" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Levi's Original fit Men's Jeans</h5>
+                  <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">
+                    <i class="bi bi-x-lg"></i>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="{{ url('/home/addtocart') }}" method="post">
+
+                    <div class="row">
+                      <div class="col-5">
+                        <img src="{{URL::asset('/products/LV123456.WEBP')}}" width="600px" height="auto" class="img-fluid">
+                      </div>
+                      <div class="col-7">
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Id</label>
+                          </div>
+                          <div class="col-9">
+                            <input type="text" class="form-control" name="product_id" value="LV123456" style="border: opx;" readonly>
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Name</label>
+                          </div>
+                          <div class="col-9">
+                            <input type="text" class="form-control" name="name" value="Levi's Original fit Men's Jeans" style="border: opx;" readonly>
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Brand</label>
+                          </div>
+                          <div class="col-9">
+                            <input type="text" class="form-control" name="brand" value="Levi's" style="border: opx;" readonly>
+                          </div>
+                        </div>
+  
+                        <hr>
+                        <div class="row">
+                          <div class="col-12">
+                            <p class="text-muted"><b>Select your details</b></p>
+                          </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                          <div class="col-4">
+                            <label>Size :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Colour :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Quantity :</label>
+                          </div>
+                        </div>
+  
+                        <div class="row">
+                          <div class="col-4">
+                            <select class="form-control" name="size" required>
+                              <option>Small</option>
+                              <option>Medium</option>
+                              <option>Large</option>
+                              <option>XL</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <select class="form-control" name="colour" required>
+                              <option>Dark Blue</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                          </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row d-flex justify-content-center">
+                          <div class="btn-group" role="group">
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-cart-plus"></i> Add to cart</button>
+                          </div>
+                        </div>
+  
+                      </div>
+                    </div>
+
+                  </form>
+
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <!--end-LV123456-->
 
     </body>
 </html>

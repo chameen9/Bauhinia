@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use App\Model\cart_product;
 use App\Rules\PasswordChecker;
 use Carbon\Carbon;
 use Validator;
@@ -82,27 +83,25 @@ class customercontroller extends Controller
         $gotname = DB::Table('users')->where('email',$reqemail)->value('name');
     }
 
-    /*function checkLogin(Request $request){
-        
-        $this->validate($request, [
-            'email'=>['required','email','string','max:100'],
-            'password'=>['required','string', new PasswordChecker()],
-        ]);
+    public function addtocart(Request $request){
+        $product_id = $request->input('product_id');
+        //$cusemail = $request->input('email');
+        $product_name = $request->input('name');
+        $brand = $request->input('brand');
+        $colour = $request->input('colour');
+        $size = $request->input('size');
+        $qty = $request->input('qty');
 
-        $email = $request->input('email');
-        $results = DB::table('users')->where('email',$email)->get();
-        $username = DB::Table('users')->where('email',$email)->value('name');
+        $cart_product = new cart_product;
 
-        if($results[0]->email == $request->input('email') && $results[0]->password == $request->input('password')){
-            if($results[0]->auth_level == 0){
-                return view('home',['username'=>$username]); //send name to the view
-            }
-            else{
-                return back()->with('error','You have try to logged in as a Customer !');
-            }
-        }
-        else{
-            return back()->with('error','Invalid username or password');
-        }
-    }*/
+        $cart_product->product_id = $product_id;
+        $cart_product->cus_email = 'chameensandeepa9@gmail.com';
+        $cart_product->product_name = $product_name;
+        $cart_product->brand = $brand;
+        $cart_product->colour = $colour;
+        $cart_product->size = $size;
+        $cart_product->qty = $qty;
+        $cart_product->save();
+
+    }
 }

@@ -31,3 +31,8 @@ Route::post('/employee/signupasemployee','App\http\controllers\employeecontrolle
 Route::post('/employee/checksignin','App\http\controllers\employeecontroller@checksignin');
 
 //----------------------------------------------------------------------------------------------------
+
+// addto cart  ---------------------------------------------------------------------------------------
+Route::post('/home/addtocart','App\http\controllers\customercontroller@addtocart');
+
+//----------------------------------------------------------------------------------------------------

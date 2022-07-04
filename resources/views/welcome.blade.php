@@ -399,12 +399,13 @@
                     <h6 class="text-uppercase fw-bold mb-4">
                       Contact
                     </h6>
-                    <p><i class="bi bi-geo-alt-fill"></i> Galle, Southern Province, Sri Lanka.</p>
+                    <p><i class="bi bi-geo-alt"></i> Galle, Southern Province, Sri Lanka.</p>
                     <p>
-                      <i class="bi bi-envelope-fill"></i>
+                      <i class="bi bi-envelope"></i>
                       info@bauhinia.lk
                     </p>
-                    <p><i class="bi bi-telephone-fill"></i> +94 76 078 5638</p>
+                    <p><i class="bi bi-telephone"></i> +94 76 078 5638</p>
+                    <p><i class="bi bi-whatsapp"></i> +94 71 401 7271</p>
                   </div>
                   <!-- Grid column -->
                 </div>

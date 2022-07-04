@@ -140,8 +140,8 @@
             </div>
             
           </div>
-          
-          <div class="col-lg-8 col-md-8 col-sm-6">
+
+          <div class="col-lg-10 col-md-10 col-sm-8">
                 <!--breadcrumb-->
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                   <ol class="breadcrumb">
@@ -193,89 +193,161 @@
                 <div class="row">
   
                   <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="shadow-sm p-3 mb-5 bg-body rounded">
-                      <div class="box-part text-center">
-                        <img src="{{URL::asset('/images/5.JPG')}}" width="300px" height="300px" class="img-fluid img-circle">
-                      <div class="title">
-                        <h5>Men's</h5>
-                      </div>
-                      <div class="text">
-                        <span></span>
-                      </div>
-                      <a class="btn btn-outline-info" role="button" data-toggle="modal" data-target="#MsgModal">Shop Now</a>
-                      </div>
-                    </div>
-                  </div>
-  
-                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="shadow-sm p-3 mb-5 bg-body rounded">
-                      <div class="box-part text-center">
-                        <img src="{{URL::asset('/images/5.JPG')}}" width="300px" height="300px" class="img-fluid img-circle">
-                      <div class="title">
-                        <h5>Men's</h5>
-                      </div>
-                      <div class="text">
-                        <span></span>
-                      </div>
-                      <a class="btn btn-outline-info" role="button" data-toggle="modal" data-target="#MsgModal">Shop Now</a>
-                      </div>
-                    </div>
-                  </div>
-  
-                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="shadow-sm p-3 mb-5 bg-body rounded">
-                      <div class="box-part text-center">
-                        <img src="{{URL::asset('/images/5.JPG')}}" width="300px" height="300px" class="img-fluid img-circle">
-                      <div class="title">
-                        <h5>Men's</h5>
-                      </div>
-                      <div class="text">
-                        <span></span>
-                      </div>
-                      <a class="btn btn-outline-info" role="button" data-toggle="modal" data-target="#MsgModal">Shop Now</a>
-                      </div>
-                    </div>
-                  </div>
-  
-                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="shadow-sm p-3 mb-5 bg-body rounded">
-                      <div class="box-part text-center">
-                        <img src="{{URL::asset('/images/5.JPG')}}" width="300px" height="300px" class="img-fluid img-circle">
-                      <div class="title">
-                        <h5>Men's</h5>
-                      </div>
-                      <div class="text">
-                        <span></span>
-                      </div>
-                      <a class="btn btn-outline-info" role="button" data-toggle="modal" data-target="#MsgModal">Shop Now</a>
-                      </div>
-                    </div>
-                  </div>
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#MsgModal" role="button">
 
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/LV123456.WEBP')}}" width="300px" height="auto" class="img-fluid img-circle">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Levi's - Original fit Men's jeans</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 4999.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+  
                   <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="shadow-sm p-3 mb-5 bg-body rounded">
-                      <div class="box-part text-center">
-                        <img src="{{URL::asset('/images/5.JPG')}}" width="300px" height="300px" class="img-fluid img-circle">
-                      <div class="title">
-                        <h5>Men's</h5>
-                      </div>
-                      <div class="text">
-                        <span></span>
-                      </div>
-                      <a class="btn btn-outline-info" role="button" data-toggle="modal" data-target="#MsgModal">Shop Now</a>
-                      </div>
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#MsgModal" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/LV123457.JPG')}}" width="300px" height="auto" class="img-fluid img-circle">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Levi's - Slim fit Men's jeans</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 4499.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+  
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#MsgModal" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/LV123458.WEBP')}}" width="300px" height="auto" class="img-fluid img-circle">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Levi's - Athletic Taper Men's jeans</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 4999.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+  
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#MsgModal" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/LV123459.WEBP')}}" width="300px" height="auto" class="img-fluid img-circle">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Levi's - Skinny Taper Men's jeans</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 5499.99</b>
+                          </div>
+                        </div>
+
+                      </a>
                     </div>
                   </div>
   
                 </div>
-                
-  
-                
-  
-            </div>
+                <!--end row 1-->
 
-            <div class="col-1">
-              <br>
+                <!--row 2-->
+                <div class="row">
+
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#MsgModal" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/TH123456.JPG')}}" width="300px" height="auto" class="img-fluid img-circle">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Tommy Hilfiger - Regular Fit Logo Polo</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 3499.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#MsgModal" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/TH123457.JPG')}}" width="300px" height="auto" class="img-fluid img-circle">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Tommy Hilfiger - Regular Fit Polo</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 3499.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#MsgModal" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/BG123456.png')}}" width="300px" height="auto" class="img-fluid img-circle">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Aldo - Grydith Black Wallet</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 11499.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#MsgModal" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/BG123457.png')}}" width="300px" height="auto" class="img-fluid img-circle">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Aldo - Cityverse HandBag</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 12499.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+
+                  
+                </div>
+                <!--end row 2-->
+  
+                
+  
             </div>
   
               
