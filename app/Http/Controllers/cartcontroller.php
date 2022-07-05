@@ -12,23 +12,37 @@ use DB;
 
 class cartcontroller extends Controller
 {
-    public function addtocart(Request $request){
+    public function addtocart(Request $request){            //try again !!!!!!!!!!!!!!!!!!!!!!!!
 
+        $reqproduct_id = $request->input('product_id');
+        $reqcus_email = $request->input('cus_email');
+        $reqproduct_name = $request->input('product_name');
+        $reqbrand = $request->input('brand');
+        $reqcolour = $request->input('colour');
+        $reqsize = $request->input('size');
+        $reqqty = $request->input('qty');
+
+        $gotcus_email = DB::Table('carts')->where('cus_email',$reqcus_email)->value('cus_email');
+        $gotproduct_id = DB::Table('carts')->where('cus_email',$reqcus_email)->value('product_id');
+        $gotqty = DB::Table('carts')->where('cus_email',$reqcus_email)->value('qty');
         
+        if($gotcus_email == $reqcus_email){
+            if($gotproduct_id == $reqproduct_id){
+                $gotcp_id = DB::Table('carts')->where('cus_email',$reqcus_email)->value('cp_id');
 
-        $product_id = $request->input('product_id');
-        $cusemail = $request->email;
-        $product_name = $request->input('name');
-        $brand = $request->input('brand');
-        $colour = $request->input('colour');
-        $size = $request->input('size');
-        $qty = $request->input('qty');
+                dd($gotcp_id);
 
-        $checkedemail = DB::Table('carts')->where('cus_email',);
-        $gotname = DB::Table('customers')->where('email',$cusemail)->value('name');
+                
+            }
+            else{
+                dd($gotproduct_id);
+            }
+        }
+        else{
+            dd('need to add the product as a new one');
+        }
 
-
-        //$cartid = DB::Table('carts')->where('product_id', $product_id)->value('product_id');
+        /*//$cartid = DB::Table('carts')->where('product_id', $product_id)->value('product_id');
         $cartcusemail = DB::Table('carts')->where('product_id', $product_id)->value('cus_email');
 
         $cartid = DB::Table('carts')->where('cus_email', $cusemail)->value('product_id')->exists(); ///fix thissss
@@ -77,7 +91,7 @@ class cartcontroller extends Controller
             }
             
             
-        }
+        }*/
 
     }
 }
