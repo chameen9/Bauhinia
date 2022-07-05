@@ -31,30 +31,52 @@ class cartcontroller extends Controller
         //$cartid = DB::Table('carts')->where('product_id', $product_id)->value('product_id');
         $cartcusemail = DB::Table('carts')->where('product_id', $product_id)->value('cus_email');
 
-        $cartid = DB::Table('carts')->where('product_id', $product_id)->exists();
+        $cartid = DB::Table('carts')->where('cus_email', $cusemail)->value('product_id')->exists(); ///fix thissss
+
+        $count = DB::Table('carts')->where('cus_email', $cusemail)->count();
 
         if($cartid){
 
-            return view('home',['name'=>$gotname , 'email'=>$cusemail]);
+            //return view('home',['name'=>$gotname , 'email'=>$cusemail]);
+            dd($cartid);
 
         }
 
 
         else{
-            
-            $Cart = new Cart();
 
-            $Cart->product_id = $product_id;
-            $Cart->cus_email = $cusemail;
-            $Cart->product_name = $product_name;
-            $Cart->brand = $brand;
-            $Cart->colour = $colour;
-            $Cart->size = $size;
-            $Cart->qty = $qty;
-            $Cart->save();
+            if($count>0){
+                $Cart = new Cart();
+
+                $Cart->product_id = $product_id;
+                $Cart->cus_email = $cusemail;
+                $Cart->product_name = $product_name;
+                $Cart->brand = $brand;
+                $Cart->colour = $colour;
+                $Cart->size = $size;
+                $Cart->qty = $qty;
+                $Cart->save();
+        
+                return view('home',['name'=>$gotname , 'email'=>$cusemail, 'count'=>$count]);
     
-            return view('home',['name'=>$gotname , 'email'=>$cusemail]);
+            }
+            else{
+                $Cart = new Cart();
 
+                $Cart->product_id = $product_id;
+                $Cart->cus_email = $cusemail;
+                $Cart->product_name = $product_name;
+                $Cart->brand = $brand;
+                $Cart->colour = $colour;
+                $Cart->size = $size;
+                $Cart->qty = $qty;
+                $Cart->save();
+        
+                return view('home',['name'=>$gotname , 'email'=>$cusemail]);
+    
+            }
+            
+            
         }
 
     }

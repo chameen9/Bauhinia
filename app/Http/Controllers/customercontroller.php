@@ -26,14 +26,21 @@ class customercontroller extends Controller
         $gotpassword = DB::Table('customers')->where('email',$reqemail)->value('password');
         $gotname = DB::Table('customers')->where('email',$reqemail)->value('name');
 
-        
+        $count = DB::Table('carts')->where('cus_email', $reqemail)->count();
     
         if($gotemail==$reqemail){
             if($gotpassword==$reqpassword){
-
-                return view('home',['name'=>$gotname , 'email'=>$reqemail]); //send name and email to the view
+                
                 //return redirect()->route('home',['name'=>$gotname]);
                 //return redirect()->route('/home', [$gotname]);
+
+                if($count){
+                    return view('home',['name'=>$gotname , 'email'=>$reqemail, 'count'=>$count]); //send name and email to the view
+                    //dd($cartcount);
+                }
+                else{
+                    return view('home',['name'=>$gotname , 'email'=>$reqemail]); //send name and email to the view
+                }
                     
             }
             else{
