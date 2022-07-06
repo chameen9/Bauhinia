@@ -27,12 +27,12 @@ class cartcontroller extends Controller
 
         $carts = DB::Table('carts')->where('email',$reqcus_email);
 
-        $cart_row = DB::Table('carts')->where([                // find item exists in the cart
+        $cart_row = DB::Table('carts')->where([              // find item exists in the cart
             ['cus_email','=',$reqcus_email],
             ['product_id','=',$reqproduct_id]
         ])->count();
 
-        if($cart_row > 0){                                     // if it's exist update qty
+        if($cart_row > 0){                                   // if it's exist update qty
 
                 $old_qty = DB::Table('carts')->where([
                     ['cus_email','=',$reqcus_email],
