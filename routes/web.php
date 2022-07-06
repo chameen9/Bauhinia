@@ -38,3 +38,6 @@ Route::post('/employee/checksignin','App\http\controllers\employeecontroller@che
 Route::post('/home/addtocart','App\http\controllers\cartcontroller@addtocart');
 Route::get('/home/addtocart','App\http\controllers\cartcontroller@addtocart');
 //----------------------------------------------------------------------------------------------------
+
+Route::get('/customer/deletecartitem/{$email}/{$product_id}', 'App\http\controllers\cartcontroller@deletecartitem');
+//Route::post('/deletecartitem/{product_id}', 'App\http\controllers\cartcontroller@deletecartitem');

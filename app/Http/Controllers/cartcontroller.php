@@ -12,9 +12,7 @@ use DB;
 
 class cartcontroller extends Controller
 {
-    public function addtocart(Request $request){            
-
-        
+    public function addtocart(Request $request){    
 
         $reqproduct_id = $request->input('product_id');
         $reqcus_email = $request->input('cus_email');
@@ -26,13 +24,15 @@ class cartcontroller extends Controller
 
         $gotname = DB::Table('customers')->where('email',$reqcus_email)->value('name');
 
+        $carts = DB::Table('carts')->where('email',$reqcus_email);
+
         $cart_row = DB::Table('carts')->where([             // find item exists in the cart
             ['cus_email','=',$reqcus_email],
             ['product_id','=',$reqproduct_id]
         ])->count();
 
             if($cart_row){                                      // if it's exist update qty
-                //echo($cart_row);
+
                 $old_qty = DB::Table('carts')->where([
                     ['cus_email','=',$reqcus_email],
                     ['product_id','=',$reqproduct_id]
@@ -42,8 +42,21 @@ class cartcontroller extends Controller
 
                 $stock = DB::Table('products')->where('product_id', $reqproduct_id)->value('stock');
 
-                if($stock > $old_qty){
-                    
+                if($stock < $new_qty){
+                    $count = DB::Table('carts')->where('cus_email',$reqcus_email)->count();
+
+                    return view('home',[
+                        'name'=>$gotname,
+                        'email'=>$reqcus_email,
+                        'count'=>$count,
+                        'stock'=>$stock,
+                        'carts'=>$carts
+                    ]);
+
+                }
+
+                else{
+                   
                     $cart_item = DB::table('carts')
                     ->where([['cus_email','=',$reqcus_email],['product_id','=',$reqproduct_id]])
                     ->update([
@@ -52,11 +65,12 @@ class cartcontroller extends Controller
 
                     $count = DB::Table('carts')->where('cus_email',$reqcus_email)->count();
 
-                    return view('home',['name'=>$gotname , 'email'=>$reqcus_email, 'count'=>$count]);
-
-                }
-                else{
-                    echo('no stock');
+                    return view('home',[
+                        'name'=>$gotname,
+                        'email'=>$reqcus_email,
+                        'count'=>$count,
+                        'carts'=>$carts
+                    ]);
                 }
 
             }
@@ -67,7 +81,7 @@ class cartcontroller extends Controller
 
                 $Cart->product_id = $reqproduct_id;
                 $Cart->cus_email = $reqcus_email;
-                $Crat->product_name = $reqproduct_name;
+                $Crat->product_name = 'asvasv';
                 $Crat->brand = $reqbrand;
                 $Cart->colour = $reqcolour;
                 $Crat->size = $reqsize;
@@ -76,9 +90,26 @@ class cartcontroller extends Controller
 
                 $count = DB::Table('carts')->where('cus_email',$reqcus_email)->count();
 
-                return view('home',['name'=>$gotname , 'email'=>$reqcus_email, 'count'=>$count]);
+                return view('home',[
+                    'name'=>$gotname,
+                    'email'=>$reqcus_email,
+                    'count'=>$count,
+                    'carts'=>$carts
+            ]);
             }
 
+
+    }
+
+    public function deletecartitem($email, $product_id){
+        $cart_item = DB::Table('carts')
+            ->where([
+                ['cus_email','=',$email],
+                ['product_id','=',$product_id]
+            ])->get();
+
+        $cart_item->delete();
+        echo('deleted');
 
     }
 }
