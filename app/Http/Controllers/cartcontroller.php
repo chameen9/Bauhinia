@@ -17,6 +17,7 @@ class cartcontroller extends Controller
         $reqproduct_id = $request->input('product_id');
         $reqcus_email = $request->input('cus_email');
         $reqproduct_name = $request->input('product_name');
+        $reqprice = $request->input('price');
         $reqbrand = $request->input('brand');
         $reqcolour = $request->input('colour');
         $reqsize = $request->input('size');
@@ -31,7 +32,7 @@ class cartcontroller extends Controller
             ['product_id','=',$reqproduct_id]
         ])->count();
 
-            if($cart_row){                                      // if it's exist update qty
+        if($cart_row > 0){                                      // if it's exist update qty
 
                 $old_qty = DB::Table('carts')->where([
                     ['cus_email','=',$reqcus_email],
@@ -46,7 +47,6 @@ class cartcontroller extends Controller
                     $count = DB::Table('carts')->where('cus_email',$reqcus_email)->count();
 
                     return view('home',[
-                        'name'=>$gotname,
                         'email'=>$reqcus_email,
                         'count'=>$count,
                         'stock'=>$stock,
@@ -73,20 +73,21 @@ class cartcontroller extends Controller
                     ]);
                 }
 
-            }
+        }
 
-            else{
+        else{
 
                 $Cart = new Cart;                                   // if it's not in the cart add as a new item
 
                 $Cart->product_id = $reqproduct_id;
                 $Cart->cus_email = $reqcus_email;
-                $Crat->product_name = 'asvasv';
-                $Crat->brand = $reqbrand;
+                $Cart->product_name = $reqproduct_name;
+                $Cart->price = $reqprice;
+                $Cart->brand = $reqbrand;
                 $Cart->colour = $reqcolour;
-                $Crat->size = $reqsize;
+                $Cart->size = $reqsize;
                 $Cart->qty = $reqqty;
-                $Cart=save();
+                $Cart->save();
 
                 $count = DB::Table('carts')->where('cus_email',$reqcus_email)->count();
 
@@ -96,7 +97,7 @@ class cartcontroller extends Controller
                     'count'=>$count,
                     'carts'=>$carts
             ]);
-            }
+        }
 
 
     }

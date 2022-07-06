@@ -71,7 +71,7 @@
 
               <div class="d-flex align-items-center">
                 <!-- Cart -->
-                @if('count' == 'null')
+                @if($count == null)
                   <div class="nav-item">
                     <a role="button" data-toggle="modal" data-target="#cartmodal"  class="position-relative">
                       <h4><i class="bi bi-cart"></i></h4><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
@@ -80,7 +80,7 @@
                 @else
                   <div class="nav-item">
                     <a role="button" data-toggle="modal" data-target="#cartmodal"  class="position-relative">
-                      <h4><i class="bi bi-cart"></i></h4><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{$count}}</span>
+                      <h4><i class="bi bi-cart-fill"></i></h4><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{$count}}</span>
                     </a>
                   </div>
                 @endif
@@ -253,7 +253,7 @@
   
                   <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="shadow-sm p-1 mb-5 bg-body rounded">
-                      <a data-toggle="modal" data-target="#MsgModal" role="button">
+                      <a data-toggle="modal" data-target="#LV123459" role="button">
 
                         <div class="box-part text-center">
                           <img src="{{URL::asset('/products/LV123459.WEBP')}}" width="300px" height="auto" class="img-fluid">
@@ -594,6 +594,13 @@
                         </div>
 
                         <br>
+                        <div class="row">
+                          <div class="col-8">
+                          </div>
+                          <div class="col-4">
+                            <h5 class="text-muted">Rs. 4999.99</h5>
+                          </div>
+                        </div>
                         <br>
 
                         <!--hidden inputs-->
@@ -601,6 +608,7 @@
                           <div class="col-12">
                             <input type="hidden" class="from-control" name="cus_email" value="{{$email}}">
                             <input type="hidden" class="from-control" name="product_id" value="LV123456">
+                            <input type="hidden" class="from-control" name="price" value="4999.99">
                             <input type="hidden" class="from-control" name="product_name" value="Levi's Original fit Men's Jeans">
                             <input type="hidden" class="from-control" name="brand" value="Levi's">
                           </div>
@@ -728,6 +736,13 @@
                         </div>
 
                         <br>
+                        <div class="row">
+                          <div class="col-8">
+                          </div>
+                          <div class="col-4">
+                            <h5 class="text-muted">Rs. 4999.99</h5>
+                          </div>
+                        </div>
                         <br>
 
                         <!--hidden inputs-->
@@ -735,6 +750,7 @@
                           <div class="col-12">
                             <input type="hidden" class="from-control" name="cus_email" value="{{$email}}">
                             <input type="hidden" class="from-control" name="product_id" value="LV123457">
+                            <input type="hidden" class="from-control" name="price" value="4999.99">
                             <input type="hidden" class="from-control" name="product_name" value="Levi's Slim fit Men's Jeans">
                             <input type="hidden" class="from-control" name="brand" value="Levi's">
                           </div>
@@ -767,7 +783,7 @@
             <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Levi's Slim fit Men's Jeans</h5>
+                  <h5 class="modal-title">Levi's Athletic Taper Men's Jeans</h5>
                   <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">
                     <i class="bi bi-x-lg"></i>
                   </button>
@@ -862,6 +878,13 @@
                         </div>
 
                         <br>
+                        <div class="row">
+                          <div class="col-8">
+                          </div>
+                          <div class="col-4">
+                            <h5 class="text-muted">Rs. 4999.99</h5>
+                          </div>
+                        </div>
                         <br>
 
                         <!--hidden inputs-->
@@ -869,6 +892,7 @@
                           <div class="col-12">
                             <input type="hidden" class="from-control" name="cus_email" value="{{$email}}">
                             <input type="hidden" class="from-control" name="product_id" value="LV123458">
+                            <input type="hidden" class="from-control" name="price" value="4999.99">
                             <input type="hidden" class="from-control" name="product_name" value="Levi's Athletic Taper Men's Jeans">
                             <input type="hidden" class="from-control" name="brand" value="Levi's">
                           </div>
@@ -895,6 +919,147 @@
           </div>
           <!--end-LV123458-->
 
+          <!-- LV123459 -->
+          <div class="modal fade" id="LV123459" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Levi's Skinny Taper Men's jeans</h5>
+                  <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">
+                    <i class="bi bi-x-lg"></i>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="{{ url('/home/addtocart') }}" method="post">
+                  {{csrf_field()}} {{ method_field('POST') }}
+                    <div class="row">
+                      <div class="col-5">
+                        <img src="{{URL::asset('/products/LV123459.WEBP')}}" width="600px" height="auto" class="img-fluid">
+                      </div>
+                      <div class="col-7">
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Id</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>LV123459</label>  <!--id-->
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Name</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>Levi's Skinny Taper Men's jeans</label> <!--name-->
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Brand</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>Levi's</label> <!--Brand-->
+                          </div>
+                        </div>
+  
+                        <hr>
+                        <div class="row">
+                          <div class="col-12">
+                            <p class="text-muted"><b>Select your details</b></p>
+                          </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                          <div class="col-4">
+                            <label>Size :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Colour :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Quantity :</label>
+                          </div>
+                        </div>
+  
+                        <div class="row">
+                          <div class="col-4">
+                            <select class="form-control" name="size" required>
+                              <option>Small</option>
+                              <option>Medium</option>
+                              <option>Large</option>
+                              <option>XL</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <select class="form-control" name="colour" required>
+                              <option>Light Blue</option>
+                              <option>Dark Blue</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                          </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                          <div class="col-8">
+                          </div>
+                          <div class="col-4">
+                            <h5 class="text-muted">Rs. 5499.99</h5>
+                          </div>
+                        </div>
+                        <br>
+
+                        <!--hidden inputs-->
+                        <div class="row">
+                          <div class="col-12">
+                            <input type="hidden" class="from-control" name="cus_email" value="{{$email}}">
+                            <input type="hidden" class="from-control" name="product_id" value="LV123458">
+                            <input type="hidden" class="from-control" name="price" value="5499.99">
+                            <input type="hidden" class="from-control" name="product_name" value="Levi's Athletic Taper Men's Jeans">
+                            <input type="hidden" class="from-control" name="brand" value="Levi's">
+                          </div>
+                        </div>
+                        <!--hidden inputs-->
+
+                        <div class="row d-flex justify-content-center">
+                          <div class="btn-group" role="group">
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-cart-plus"></i> Add to cart</button>
+                          </div>
+                        </div>
+
+                        
+  
+                      </div>
+                    </div>
+
+                  </form>
+
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <!--end-LV123459-->
+
 
           <!-- cart modal -->
           <div class="modal fade" id="cartmodal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -915,16 +1080,16 @@
                         <th>Product Name</th>
                         <th>Quantity</th>
 
-                        @if('carts')
+                        @if($carts==null)
                           @foreach($carts as $cart)
-                            <tr>
-                              <td>{{$cart->product_id}}</td>
-                              <td>{{$cart->product_name}}</td>
-                              <td>{{$cart->qty}}</td>
-                              <td>
-                                <a href="/customer/deletecartitem/{{$email}}/{{$cart->product_id}}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
-                              </td>
-                            </tr>
+                          <tr>
+                            <td>{{$cart->product_id}}</td>
+                            <td>{{$cart->product_name}}</td>
+                            <td>{{$cart->qty}}</td>
+                            <td>
+                              <a href="/customer/deletecartitem/{{$email}}/{{$cart->product_id}}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                            </td>
+                          </tr>
                           @endforeach
                         @else
                             
@@ -935,7 +1100,7 @@
 
                     <div class="row">
                       <div class="col-12">
-                        <button type="submit">Pay</button>
+                        <button type="submit" class="btn btn-primary">Pay</button>
                       </div>
                     </div>
 
