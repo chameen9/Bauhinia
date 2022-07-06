@@ -32,7 +32,7 @@ class cartcontroller extends Controller
             ['product_id','=',$reqproduct_id]
         ])->count();
 
-        if($cart_row > 0){                                      // if it's exist update qty
+        if($cart_row > 0){                                 // if it's exist update qty
 
                 $old_qty = DB::Table('carts')->where([
                     ['cus_email','=',$reqcus_email],
