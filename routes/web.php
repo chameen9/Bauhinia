@@ -45,10 +45,20 @@ Route::post('/home/addtocart','App\http\controllers\cartcontroller@addtocart');
 Route::get('/home/addtocart','App\http\controllers\cartcontroller@addtocart');
 //----------------------------------------------------------------------------------------------------
 
-Route::get('/customer/deletecartitem/{email}/{product_id}', 'App\http\controllers\cartcontroller@deletecartitem');
-Route::post('/customer/deletecartitem/{email}/{product_id}', 'App\http\controllers\cartcontroller@deletecartitem');
-
-//Route::post('/deletecartitem/{product_id}', 'App\http\controllers\cartcontroller@deletecartitem');/customer/viewcart
-
 Route::get('/customer/cart/{email}', 'App\http\controllers\cartcontroller@viewcart');
 Route::post('/customer/cart/{email}','App\http\controllers\cartcontroller@viewcart');
+
+
+Route::get('/customer/cart/deleteitem/{email}/{product_id}', 'App\http\controllers\cartcontroller@deleteitem');
+Route::post('/customer/cart/deleteitem/{email}/{product_id}', 'App\http\controllers\cartcontroller@deleteitem');
+
+
+Route::post('/customer/cart/updateitem/{email}/{product_id}', 'App\http\controllers\cartcontroller@viewupdatecartitem');
+Route::get('/customer/cart/updateitem/{email}/{product_id}', 'App\http\controllers\cartcontroller@viewupdatecartitem');
+
+
+Route::get('/customer/cart/updateitem/updateqty', 'App\http\controllers\cartcontroller@updateqty');
+Route::post('/customer/cart/updateitem/updateqty', 'App\http\controllers\cartcontroller@updateqty');
+
+
+Route::get('/customer/home/{email}', 'App\http\controllers\customercontroller@viewhome');

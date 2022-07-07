@@ -13,12 +13,15 @@ use DB;
 class cartcontroller extends Controller
 {
     function viewcart($email){
+        $name = DB::Table('customers')->where('email', $email)->value('name');
         $carts = DB::Table('carts')->where('cus_email', $email)->get();
         $count = DB::Table('carts')->where('cus_email',$email)->count();
+
         return view('viewcart',[
             'count'=>$count,
             'carts'=>$carts,
-            'email'=>$email
+            'email'=>$email,
+            'name'=>$name
         ]);
     }
 
@@ -111,16 +114,43 @@ class cartcontroller extends Controller
 
 
     }
+    public function viewupdatecartitem($email, $product_id){
 
-    public function deletecartitem($email, $product_id){
-        /*$cart_item = DB::Table('carts')
+        $gotname = DB::Table('customers')->where('email', $email)->value('name');
+        $count = DB::Table('carts')->where('cus_email',$email)->count();
+
+        $products = DB::Table('carts')->where([
+            ['cus_email','=',$email],
+            ['product_id','=',$product_id]
+        ])->get();
+
+        return view('updatecartitem',[
+            'name'=>$gotname,
+            'email'=>$email,
+            'count'=>$count,
+            'products'=>$products
+        ]);
+    }
+
+    public function updateqty(Request $request){
+        $cart_item = DB::Table('carts')
+            ->where([
+                ['cus_email','=',$request->email],
+                ['product_id','=',$request->product_id]
+            ])->update([
+                'qty' => $request->new_qty
+            ]);
+            return back();
+    }
+
+    public function deleteitem($email, $product_id){
+        $cart_item = DB::Table('carts')
             ->where([
                 ['cus_email','=',$email],
                 ['product_id','=',$product_id]
-            ])->get();
+            ])->delete();
 
-        $cart_item->delete();*/
-        echo('deleted');
+        return back();
 
     }
 }

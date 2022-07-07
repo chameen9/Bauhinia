@@ -12,6 +12,26 @@ use DB;
 
 class customercontroller extends Controller
 {
+    public function viewhome($email){
+        $gotname = DB::Table('customers')->where('email',$email)->value('name');
+        $count = DB::Table('carts')->where('cus_email', $email)->count();
+
+        if($count > 0){
+            return view('home',[
+                'name'=>$gotname,
+                'email'=>$email,
+                'count'=>$count,
+
+            ]); 
+        }
+        else{
+            return view('home',[
+                'name'=>$gotname,
+                'email'=>$email,
+                'count'=>null,
+            ]);
+        }
+    }
 
     function checksignin(Request $request){
         
@@ -32,15 +52,17 @@ class customercontroller extends Controller
             if($gotpassword==$reqpassword){
 
                 if($count > 0){
-                    return view('home',['name'=>$gotname,
-                    'email'=>$reqemail,
-                    'count'=>$count,
+                    return view('home',[
+                        'name'=>$gotname,
+                        'email'=>$reqemail,
+                        'count'=>$count,
 
-                ]); //send name and email to the view
-                   
+                    ]); //send name and email to the view
+                    
                 }
                 else{
-                    return view('home',['name'=>$gotname,
+                    return view('home',[
+                        'name'=>$gotname,
                         'email'=>$reqemail,
                         'count'=>null,
 

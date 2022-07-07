@@ -110,53 +110,39 @@
             <!-- Navbar -->
           </div>
           <br>
+          <form action="{{url('/customer/cart/updateitem/updateqty')}}" method="post">
+            {{csrf_field()}}
+            <div class="row" style="justify-content: center;">
+                <div class="col-8">
+                    <div class="shadow p-0 mb-0 bg-white rounded">
+                        <table class="table table-primary">
+                            <th>Product Id</th>
+                            <th>Product Name</th>
+                            <th>Product Price</th>
+                            <th>Quantity</th>
 
-          
-            <div class="container">
-                
-                    <div class="row" style="justify-content: center;">
-                        <div class="col-10">
-                            <div class="shadow p-0 mb-0 bg-white rounded">
-                                <table class="table table-primary table-hover">
-                                    <th>Product Id</th>
-                                    <th>Product Name</th>
-                                    <th>Product Price</th>
-                                    <th>Total Price</th>
-                                    <th>Quantity</th>
-                                    <th></th>
-                
-                                @foreach($carts as $cart)
-                                <div class="shadow p-0 mb-0 bg-white rounded">
-                                    <tr>
-                                        <td>{{$cart->product_id}}</td>
-                                        <td>{{$cart->product_name}}</td>
-                                        <td>Rs. {{$cart->price}}</td>
-                                        <td>Rs. {{$cart->price*$cart->qty}}</td>
-                                        <td>{{$cart->qty}}</td>
-                                        <td>
-
-                                          <div class="row">
-                                            <div class="col-12">
-                                              <div class="input-group">
-                                                <a href="{{url('/customer/cart/updateitem/'.$email.'/'.$cart->product_id.' ')}}" role="button" class="btn btn-outline-success"><i class="bi bi-arrow-repeat"></i></a>
-                                                <a href="{{url('/customer/cart/deleteitem/'.$email.'/'.$cart->product_id.' ')}}" role="button" class="btn btn-outline-danger"><i class="bi bi-trash"></i></a>
-                                              </div>
-                                            </div>
-                                          </div>
-                                          
-                                      </td>
-                                    </tr>
-                                </div>
-                                @endforeach
-                
-                                </table>
-                            </div>
-                            
-                            
-                        </div>
+                            @foreach($products as $product)
+                            <tr>
+                                <td>{{$product->product_id}}</td>
+                                <td>{{$product->product_name}}</td>
+                                <td>Rs. {{$product->price}}</td>
+                                <td>
+                                    <input type="number" name="newqty" value="{{$product->qty}}" class="form-control" style="width: 70px;" min="1" max="100">
+                                </td>
+                            </tr>
+                            @endforeach
+                        </table>
                     </div>
-                
+                </div>
             </div>
-          
+            <div class="row" style="justify-content: center;">
+                <div class="col-1" style="justify-content: center;">
+                    <input type="hidden" name="email" class="form-control" value="{{$email}}">
+                    <input type="hidden" name="product_id" class="form-control" value="{{$product->product_id}}">
+
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </form>
     </body>
 </html>

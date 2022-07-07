@@ -276,7 +276,7 @@
 
                   <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="shadow-sm p-1 mb-5 bg-body rounded">
-                      <a data-toggle="modal" data-target="#MsgModal" role="button">
+                      <a data-toggle="modal" data-target="#TH123456" role="button">
 
                         <div class="box-part text-center">
                           <img src="{{URL::asset('/products/TH123456.JPG')}}" width="300px" height="auto" class="img-fluid">
@@ -294,7 +294,7 @@
 
                   <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="shadow-sm p-1 mb-5 bg-body rounded">
-                      <a data-toggle="modal" data-target="#MsgModal" role="button">
+                      <a data-toggle="modal" data-target="#TH123457" role="button">
 
                         <div class="box-part text-center">
                           <img src="{{URL::asset('/products/TH123457.JPG')}}" width="300px" height="auto" class="img-fluid">
@@ -312,7 +312,7 @@
 
                   <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="shadow-sm p-1 mb-5 bg-body rounded">
-                      <a data-toggle="modal" data-target="#MsgModal" role="button">
+                      <a data-toggle="modal" data-target="#BG123456" role="button">
 
                         <div class="box-part text-center">
                           <img src="{{URL::asset('/products/BG123456.png')}}" width="300px" height="auto" class="img-fluid">
@@ -330,7 +330,7 @@
 
                   <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="shadow-sm p-1 mb-5 bg-body rounded">
-                      <a data-toggle="modal" data-target="#MsgModal" role="button">
+                      <a data-toggle="modal" data-target="#BG123457" role="button">
 
                         <div class="box-part text-center">
                           <img src="{{URL::asset('/products/BG123457.png')}}" width="300px" height="auto" class="img-fluid">
@@ -1031,7 +1031,7 @@
                         <div class="row">
                           <div class="col-12">
                             <input type="hidden" class="from-control" name="cus_email" value="{{$email}}">
-                            <input type="hidden" class="from-control" name="product_id" value="LV123458">
+                            <input type="hidden" class="from-control" name="product_id" value="LV123459">
                             <input type="hidden" class="from-control" name="price" value="5499.99">
                             <input type="hidden" class="from-control" name="product_name" value="Levi's Athletic Taper Men's Jeans">
                             <input type="hidden" class="from-control" name="brand" value="Levi's">
@@ -1059,6 +1059,564 @@
           </div>
           <!--end-LV123459-->
 
+          <!-- TH123456 -->
+          <div class="modal fade" id="TH123456" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Tommy Hilfiger - Regular fit Logo Polo</h5>
+                  <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">
+                    <i class="bi bi-x-lg"></i>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="{{ url('/home/addtocart') }}" method="post">
+                  {{csrf_field()}} {{ method_field('POST') }}
+                    <div class="row">
+                      <div class="col-5">
+                        <img src="{{URL::asset('/products/TH123456.JPG')}}" width="600px" height="auto" class="img-fluid">
+                      </div>
+                      <div class="col-7">
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Id</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>TH123456</label>  <!--id-->
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Name</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>Tommy Hilfiger - Regular fit Logo Polo</label> <!--name-->
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Brand</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>Tommy Hilfiger</label> <!--Brand-->
+                          </div>
+                        </div>
+  
+                        <hr>
+                        <div class="row">
+                          <div class="col-12">
+                            <p class="text-muted"><b>Select your details</b></p>
+                          </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                          <div class="col-4">
+                            <label>Size :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Colour :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Quantity :</label>
+                          </div>
+                        </div>
+  
+                        <div class="row">
+                          <div class="col-4">
+                            <select class="form-control" name="size" required>
+                              <option>Small</option>
+                              <option>Medium</option>
+                              <option>Large</option>
+                              <option>XL</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <select class="form-control" name="colour" required>
+                              <option>Black</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                          </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                          <div class="col-8">
+                          </div>
+                          <div class="col-4">
+                            <h5 class="text-muted">Rs. 3499.99</h5>
+                          </div>
+                        </div>
+                        <br>
+
+                        <!--hidden inputs-->
+                        <div class="row">
+                          <div class="col-12">
+                            <input type="hidden" class="from-control" name="cus_email" value="{{$email}}">
+                            <input type="hidden" class="from-control" name="product_id" value="TH123456">
+                            <input type="hidden" class="from-control" name="price" value="3499.99">
+                            <input type="hidden" class="from-control" name="product_name" value="Tommy Hilfiger - Regular fit Logo Polo">
+                            <input type="hidden" class="from-control" name="brand" value="Tommy Hilfiger">
+                          </div>
+                        </div>
+                        <!--hidden inputs-->
+
+                        <div class="row d-flex justify-content-center">
+                          <div class="btn-group" role="group">
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-cart-plus"></i> Add to cart</button>
+                          </div>
+                        </div>
+
+                        
+  
+                      </div>
+                    </div>
+
+                  </form>
+
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <!--end-TH123456-->
+
+          <!-- TH123457 -->
+          <div class="modal fade" id="TH123457" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Tommy Hilfiger - Regular fit Polo</h5>
+                  <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">
+                    <i class="bi bi-x-lg"></i>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="{{ url('/home/addtocart') }}" method="post">
+                  {{csrf_field()}} {{ method_field('POST') }}
+                    <div class="row">
+                      <div class="col-5">
+                        <img src="{{URL::asset('/products/TH123457.JPG')}}" width="600px" height="auto" class="img-fluid">
+                      </div>
+                      <div class="col-7">
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Id</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>TH123457</label>  <!--id-->
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Name</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>Tommy Hilfiger - Regular fit Polo</label> <!--name-->
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Brand</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>Tommy Hilfiger</label> <!--Brand-->
+                          </div>
+                        </div>
+  
+                        <hr>
+                        <div class="row">
+                          <div class="col-12">
+                            <p class="text-muted"><b>Select your details</b></p>
+                          </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                          <div class="col-4">
+                            <label>Size :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Colour :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Quantity :</label>
+                          </div>
+                        </div>
+  
+                        <div class="row">
+                          <div class="col-4">
+                            <select class="form-control" name="size" required>
+                              <option>Small</option>
+                              <option>Medium</option>
+                              <option>Large</option>
+                              <option>XL</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <select class="form-control" name="colour" required>
+                              <option>Red</option>
+                              <option>Navy Blue</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                          </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                          <div class="col-8">
+                          </div>
+                          <div class="col-4">
+                            <h5 class="text-muted">Rs. 3499.99</h5>
+                          </div>
+                        </div>
+                        <br>
+
+                        <!--hidden inputs-->
+                        <div class="row">
+                          <div class="col-12">
+                            <input type="hidden" class="from-control" name="cus_email" value="{{$email}}">
+                            <input type="hidden" class="from-control" name="product_id" value="TH123457">
+                            <input type="hidden" class="from-control" name="price" value="3499.99">
+                            <input type="hidden" class="from-control" name="product_name" value="Tommy Hilfiger - Regular fit Polo">
+                            <input type="hidden" class="from-control" name="brand" value="Tommy Hilfiger">
+                          </div>
+                        </div>
+                        <!--hidden inputs-->
+
+                        <div class="row d-flex justify-content-center">
+                          <div class="btn-group" role="group">
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-cart-plus"></i> Add to cart</button>
+                          </div>
+                        </div>
+
+                        
+  
+                      </div>
+                    </div>
+
+                  </form>
+
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <!--end-TH123457-->
+
+          <!-- BG123456 -->
+          <div class="modal fade" id="BG123456" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Aldo - Grydith Black Wallet</h5>
+                  <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">
+                    <i class="bi bi-x-lg"></i>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="{{ url('/home/addtocart') }}" method="post">
+                  {{csrf_field()}} {{ method_field('POST') }}
+                    <div class="row">
+                      <div class="col-5">
+                        <img src="{{URL::asset('/products/BG123456.png')}}" width="600px" height="auto" class="img-fluid">
+                      </div>
+                      <div class="col-7">
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Id</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>BG123456</label>  <!--id-->
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Name</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>Aldo - Grydith Black Wallet</label> <!--name-->
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Brand</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>Aldo</label> <!--Brand-->
+                          </div>
+                        </div>
+  
+                        <hr>
+                        <div class="row">
+                          <div class="col-12">
+                            <p class="text-muted"><b>Select your details</b></p>
+                          </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                          <div class="col-4">
+                            <label>Size :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Colour :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Quantity :</label>
+                          </div>
+                        </div>
+  
+                        <div class="row">
+                          <div class="col-4">
+                            <select class="form-control" name="size" required>
+                              <option>Small</option>
+                              <option>Medium</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <select class="form-control" name="colour" required>
+                              <option>Black</option>
+                              <option>Dark Gray</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                          </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                          <div class="col-8">
+                          </div>
+                          <div class="col-4">
+                            <h5 class="text-muted">Rs. 11499.99</h5>
+                          </div>
+                        </div>
+                        <br>
+
+                        <!--hidden inputs-->
+                        <div class="row">
+                          <div class="col-12">
+                            <input type="hidden" class="from-control" name="cus_email" value="{{$email}}">
+                            <input type="hidden" class="from-control" name="product_id" value="BG123456">
+                            <input type="hidden" class="from-control" name="price" value="11499.99">
+                            <input type="hidden" class="from-control" name="product_name" value="Aldo - Grydith Black Wallet">
+                            <input type="hidden" class="from-control" name="brand" value="Aldo">
+                          </div>
+                        </div>
+                        <!--hidden inputs-->
+
+                        <div class="row d-flex justify-content-center">
+                          <div class="btn-group" role="group">
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-cart-plus"></i> Add to cart</button>
+                          </div>
+                        </div>
+
+                        
+  
+                      </div>
+                    </div>
+
+                  </form>
+
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <!--end-BG123456-->
+
+          <!-- BG123457 -->
+          <div class="modal fade" id="BG123457" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Aldo - Cityver Handbag</h5>
+                  <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">
+                    <i class="bi bi-x-lg"></i>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="{{ url('/home/addtocart') }}" method="post">
+                  {{csrf_field()}} {{ method_field('POST') }}
+                    <div class="row">
+                      <div class="col-5">
+                        <img src="{{URL::asset('/products/BG123457.png')}}" width="600px" height="auto" class="img-fluid">
+                      </div>
+                      <div class="col-7">
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Id</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>BG123457</label>  <!--id-->
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Name</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>Aldo - Cityver Handbag</label> <!--name-->
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Brand</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>Aldo</label> <!--Brand-->
+                          </div>
+                        </div>
+  
+                        <hr>
+                        <div class="row">
+                          <div class="col-12">
+                            <p class="text-muted"><b>Select your details</b></p>
+                          </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                          <div class="col-4">
+                            <label>Size :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Colour :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Quantity :</label>
+                          </div>
+                        </div>
+  
+                        <div class="row">
+                          <div class="col-4">
+                            <select class="form-control" name="size" required>
+                              <option>Small</option>
+                              <option>Medium</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <select class="form-control" name="colour" required>
+                              <option>Black & White</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                          </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                          <div class="col-8">
+                          </div>
+                          <div class="col-4">
+                            <h5 class="text-muted">Rs. 12499.99</h5>
+                          </div>
+                        </div>
+                        <br>
+
+                        <!--hidden inputs-->
+                        <div class="row">
+                          <div class="col-12">
+                            <input type="hidden" class="from-control" name="cus_email" value="{{$email}}">
+                            <input type="hidden" class="from-control" name="product_id" value="BG123457">
+                            <input type="hidden" class="from-control" name="price" value="12499.99">
+                            <input type="hidden" class="from-control" name="product_name" value="Aldo - Cityver Handbag">
+                            <input type="hidden" class="from-control" name="brand" value="Aldo">
+                          </div>
+                        </div>
+                        <!--hidden inputs-->
+
+                        <div class="row d-flex justify-content-center">
+                          <div class="btn-group" role="group">
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-cart-plus"></i> Add to cart</button>
+                          </div>
+                        </div>
+
+                        
+  
+                      </div>
+                    </div>
+
+                  </form>
+
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <!--end-BG123457-->
+
 
           <!-- cart modal -->
           <div class="modal fade" id="cartmodal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -1081,7 +1639,7 @@
               </div>
             </div>
           </div>
-          <!--end-LV123458-->
+          <!--end cart-->
 
     </body>
 </html>
