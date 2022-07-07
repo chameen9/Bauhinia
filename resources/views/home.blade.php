@@ -79,7 +79,7 @@
                   </div>
                 @else
                   <div class="nav-item">
-                    <a role="button" data-toggle="modal" data-target="#cartmodal"  class="position-relative">
+                    <a href="{{ url('/customer/cart/'.$email.'') }}" role="button" class="position-relative">
                       <h4><i class="bi bi-cart-fill"></i></h4><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{$count}}</span>
                     </a>
                   </div>
@@ -121,6 +121,7 @@
                 <div class="card-body">
                   Categories
                   <hr>
+
                   <a href="" class="text-decoration-none" style="font-size: 15px;">High end fashion boutiques</a><br>
                   <a href="" class="text-decoration-none" style="font-size: 15px;">Fast fashion brands</a><br>
                   <a href="" class="text-decoration-none" style="font-size: 15px;">Casual clothing brands</a><br>
@@ -135,8 +136,6 @@
                   <a href="" class="text-decoration-none" style="font-size: 15px;">Saree store</a><br>
                   <a href="" class="text-decoration-none" style="font-size: 15px;">T-Shirts store</a><br>
                   <a href="" class="text-decoration-none" style="font-size: 15px;">Sarongs store</a><br>
-                 
-                  
                   
                 </div>
               </div>
@@ -1066,46 +1065,17 @@
             <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Your Cart</h5>
+                  <h5 class="modal-title">Your Cart is Empty !</h5>
                   <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">
                     <i class="bi bi-x-lg"></i>
                   </button>
                 </div>
                 <div class="modal-body">
-                  <form action="{{ url('/home/addtocart') }}" method="post">
-                  {{csrf_field()}} {{ method_field('POST') }}
-                    <div class="row">
-                      <table>
-                        <th>Product Id</th>
-                        <th>Product Name</th>
-                        <th>Quantity</th>
-
-                        @if($carts==null)
-                          @foreach($carts as $cart)
-                          <tr>
-                            <td>{{$cart->product_id}}</td>
-                            <td>{{$cart->product_name}}</td>
-                            <td>{{$cart->qty}}</td>
-                            <td>
-                              <a href="/customer/deletecartitem/{{$email}}/{{$cart->product_id}}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
-                            </td>
-                          </tr>
-                          @endforeach
-                        @else
-                            
-                        
-                        @endif
-                      </table>
+                  <div class="row">
+                    <div class="col-12">
+                      <p class="text-muted">Please add items to your cart to show here.</p>
                     </div>
-
-                    <div class="row">
-                      <div class="col-12">
-                        <button type="submit" class="btn btn-primary">Pay</button>
-                      </div>
-                    </div>
-
-                  </form>
-
+                  </div>
                 </div>
                 
               </div>

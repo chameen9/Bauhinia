@@ -12,6 +12,16 @@ use DB;
 
 class cartcontroller extends Controller
 {
+    function viewcart($email){
+        $carts = DB::Table('carts')->where('cus_email', $email)->get();
+        $count = DB::Table('carts')->where('cus_email',$email)->count();
+        return view('viewcart',[
+            'count'=>$count,
+            'carts'=>$carts,
+            'email'=>$email
+        ]);
+    }
+
     public function addtocart(Request $request){    
 
         $reqproduct_id = $request->input('product_id');
@@ -103,13 +113,13 @@ class cartcontroller extends Controller
     }
 
     public function deletecartitem($email, $product_id){
-        $cart_item = DB::Table('carts')
+        /*$cart_item = DB::Table('carts')
             ->where([
                 ['cus_email','=',$email],
                 ['product_id','=',$product_id]
             ])->get();
 
-        $cart_item->delete();
+        $cart_item->delete();*/
         echo('deleted');
 
     }

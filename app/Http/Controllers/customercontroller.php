@@ -27,8 +27,6 @@ class customercontroller extends Controller
         $gotname = DB::Table('customers')->where('email',$reqemail)->value('name');
 
         $count = DB::Table('carts')->where('cus_email', $reqemail)->count();
-
-        $carts = DB::Table('carts')->where('cus_email', $reqemail)->get();
     
         if($gotemail==$reqemail){
             if($gotpassword==$reqpassword){
@@ -37,7 +35,6 @@ class customercontroller extends Controller
                     return view('home',['name'=>$gotname,
                     'email'=>$reqemail,
                     'count'=>$count,
-                    'carts'=>$carts
 
                 ]); //send name and email to the view
                    
@@ -46,7 +43,6 @@ class customercontroller extends Controller
                     return view('home',['name'=>$gotname,
                         'email'=>$reqemail,
                         'count'=>null,
-                        'carts'=>$carts
 
                     ]); //send name and email to the view
                 }
@@ -89,7 +85,7 @@ class customercontroller extends Controller
         return back()->with('message','Sign up successful.');
     }
 
-    function editprofile(Request $request){ 
+    /*function editprofile(Request $request){ 
         $User = new User;
 
         $reqemail = $request->input('email');
@@ -98,7 +94,7 @@ class customercontroller extends Controller
         $gotpassword = DB::Table('users')->where('email',$reqemail)->value('password');
         $gotauth = DB::Table('users')->where('email',$reqemail)->value('auth_level');
         $gotname = DB::Table('users')->where('email',$reqemail)->value('name');
-    }
+    }*/
 
     
 }
