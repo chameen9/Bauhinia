@@ -220,13 +220,13 @@
                               <li
                                 class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                                 <div>
-                                  <strong>Total amount</strong>
+                                  <strong class="text-muted">Total amount</strong>
                                 </div>
                                 <span><strong>Rs. {{$totalprice+300.00}}</strong></span>
                               </li>
                             </ul>
                 
-                            <button type="button" class="btn btn-primary btn-lg btn-block">
+                            <button type="button" class="btn btn-primary btn-block">
                               Go to checkout
                             </button>
                           </div>
