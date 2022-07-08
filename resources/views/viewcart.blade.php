@@ -7,7 +7,7 @@
 
         <!--<meta name="csrf-token" content="{{ csrf_token() }}">-->
 
-        <title>Bauhinia</title>
+        <title>Bauhinia | Your Cart</title>
 
         <!--Import bootstrap js-->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -115,11 +115,13 @@
             <div class="container">
                 
                     <div class="row" style="justify-content: center;">
-                        <div class="col-10">
+                        <div class="col-12">
                             <div class="shadow p-0 mb-0 bg-white rounded">
                                 <table class="table table-primary table-hover">
                                     <th>Product Id</th>
                                     <th>Product Name</th>
+                                    <th>Colour</th>
+                                    <th>Size</th>
                                     <th>Product Price</th>
                                     <th>Total Price</th>
                                     <th>Quantity</th>
@@ -130,15 +132,17 @@
                                     <tr>
                                         <td>{{$cart->product_id}}</td>
                                         <td>{{$cart->product_name}}</td>
+                                        <td>{{$cart->colour}}</td>
+                                        <td>{{$cart->size}}</td>
                                         <td>Rs. {{$cart->price}}</td>
                                         <td>Rs. {{$cart->price*$cart->qty}}</td>
-                                        <td>{{$cart->qty}}</td>
+                                        <td align="center">{{$cart->qty}}</td>
                                         <td>
 
                                           <div class="row">
                                             <div class="col-12">
                                               <div class="input-group">
-                                                <a href="{{url('/customer/cart/updateitem/'.$email.'/'.$cart->product_id.' ')}}" role="button" class="btn btn-outline-success"><i class="bi bi-arrow-repeat"></i></a>
+                                                <a href="{{url('/customer/cart/updateitem/'.$email.'/'.$cart->product_id.'/'.$cart->colour.'/'.$cart->size.' ')}}" role="button" class="btn btn-outline-primary"><i class="bi bi-arrow-repeat"></i></a>
                                                 <a href="{{url('/customer/cart/deleteitem/'.$email.'/'.$cart->product_id.' ')}}" role="button" class="btn btn-outline-danger"><i class="bi bi-trash"></i></a>
                                               </div>
                                             </div>

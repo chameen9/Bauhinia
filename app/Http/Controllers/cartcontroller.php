@@ -42,6 +42,8 @@ class cartcontroller extends Controller
 
         $cart_row = DB::Table('carts')->where([                 // find item exists in the cart
             ['cus_email','=',$reqcus_email],
+            ['colour','=',$reqcolour],
+            ['size','=',$reqsize],
             ['product_id','=',$reqproduct_id]
         ])->count();
 
@@ -49,6 +51,8 @@ class cartcontroller extends Controller
 
                 $old_qty = DB::Table('carts')->where([
                     ['cus_email','=',$reqcus_email],
+                    ['colour','=',$reqcolour],
+                    ['size','=',$reqsize],
                     ['product_id','=',$reqproduct_id]
                 ])->value('qty');
 
@@ -114,21 +118,36 @@ class cartcontroller extends Controller
 
 
     }
-    public function viewupdatecartitem($email, $product_id){
+    public function viewupdatecartitem($email, $product_id, $colour, $size){
 
         $gotname = DB::Table('customers')->where('email', $email)->value('name');
         $count = DB::Table('carts')->where('cus_email',$email)->count();
 
-        $products = DB::Table('carts')->where([
+        $product_id = DB::Table('carts')->where([['cus_email','=',$email],['product_id','=',$product_id]])->value('product_id');
+        $product_name = DB::Table('carts')->where([['cus_email','=',$email],['product_id','=',$product_id]])->value('product_name');
+        $price = DB::Table('carts')->where([['cus_email','=',$email],['product_id','=',$product_id]])->value('price');
+        $colour = DB::Table('carts')->where([['cus_email','=',$email],['product_id','=',$product_id]])->value('colour');
+        $size = DB::Table('carts')->where([['cus_email','=',$email],['product_id','=',$product_id]])->value('size');
+        $qty = DB::Table('carts')->where([['cus_email','=',$email],['product_id','=',$product_id]])->value('qty');
+
+
+        /*$products = DB::Table('carts')->where([
             ['cus_email','=',$email],
             ['product_id','=',$product_id]
-        ])->get();
+        ])->get();*/
 
         return view('updatecartitem',[
             'name'=>$gotname,
             'email'=>$email,
             'count'=>$count,
-            'products'=>$products
+            'product_id'=>$product_id,
+            'product_name'=>$product_name,
+            'colour'=>$colour,
+            'size'=>$size,
+            'price'=>$price,
+            'qty'=>$qty
+            //'products'=>$products,
+
         ]);
     }
 
@@ -136,9 +155,11 @@ class cartcontroller extends Controller
         $cart_item = DB::Table('carts')
             ->where([
                 ['cus_email','=',$request->email],
+                ['colour','=',$request->colour],
+                ['size','=',$request->size],
                 ['product_id','=',$request->product_id]
             ])->update([
-                'qty' => $request->new_qty
+                'qty' => $request->newqty
             ]);
             return back();
     }
@@ -147,7 +168,9 @@ class cartcontroller extends Controller
         $cart_item = DB::Table('carts')
             ->where([
                 ['cus_email','=',$email],
-                ['product_id','=',$product_id]
+                ['product_id','=',$product_id],
+                ['colour','=',$request->colour],
+                ['size','=',$request->size],
             ])->delete();
 
         return back();

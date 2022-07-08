@@ -7,7 +7,7 @@
 
         <!--<meta name="csrf-token" content="{{ csrf_token() }}">-->
 
-        <title>Bauhinia</title>
+        <title>Bauhinia | Your Cart</title>
 
         <!--Import bootstrap js-->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -36,7 +36,7 @@
               <!-- Container wrapper -->
               <div class="container">
                 <!-- Navbar brand -->
-                <a class="navbar-brand me-2" href="{{ url('/customer/home/'.$email.'') }}">
+                <a class="navbar-brand me-2" href="{{ url('/customer/cart/'.$email.'') }}">
                   <img
                     src="{{URL::asset('/images/TextLogo.png')}}"
                     height="35"
@@ -118,29 +118,37 @@
                         <table class="table table-primary">
                             <th>Product Id</th>
                             <th>Product Name</th>
+                            <th>Colour</th>
+                            <th>Size</th>
                             <th>Product Price</th>
                             <th>Quantity</th>
 
-                            @foreach($products as $product)
                             <tr>
-                                <td>{{$product->product_id}}</td>
-                                <td>{{$product->product_name}}</td>
-                                <td>Rs. {{$product->price}}</td>
+                                <td>{{$product_id}}</td>
+                                <td>{{$product_name}}</td>
+                                <td>{{$colour}}</td>
+                                <td>{{$size}}</td>
+                                <td>Rs. {{$price}}</td>
                                 <td>
-                                    <input type="number" name="newqty" value="{{$product->qty}}" class="form-control" style="width: 70px;" min="1" max="100">
+                                    <input type="number" name="newqty" value="{{$qty}}" class="form-control" style="width: 70px;" min="1" max="100">
                                 </td>
                             </tr>
-                            @endforeach
                         </table>
                     </div>
                 </div>
             </div>
             <div class="row" style="justify-content: center;">
-                <div class="col-1" style="justify-content: center;">
+                <div class="col-2" style="justify-content: center;">
                     <input type="hidden" name="email" class="form-control" value="{{$email}}">
-                    <input type="hidden" name="product_id" class="form-control" value="{{$product->product_id}}">
+                    <input type="hidden" name="product_id" class="form-control" value="{{$product_id}}">
+                    <input type="hidden" name="colour" class="form-control" value="{{$colour}}">
+                    <input type="hidden" name="size" class="form-control" value="{{$size}}">
 
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <div class="input-group">
+                      <button type="submit" class="btn btn-primary"><i class="bi bi-check-circle"></i> Save</button>
+                      <a class="btn btn-warning" role="button" href="{{ url('/customer/cart/'.$email.'') }}"><i class="bi bi-arrow-left-circle"></i> Back</a>
+                    </div>
+                    
                 </div>
             </div>
         </form>
