@@ -16,12 +16,16 @@ class cartcontroller extends Controller
         $name = DB::Table('customers')->where('email', $email)->value('name');
         $carts = DB::Table('carts')->where('cus_email', $email)->get();
         $count = DB::Table('carts')->where('cus_email',$email)->count();
+        $totalprice = 0;
+        $totalitems = DB::Table('carts')->where('cus_email', $email)->sum('qty');
 
         return view('viewcart',[
             'count'=>$count,
             'carts'=>$carts,
             'email'=>$email,
-            'name'=>$name
+            'name'=>$name,
+            'totalprice'=>$totalprice,
+            'totalitems'=>$totalitems,
         ]);
     }
 
@@ -123,18 +127,47 @@ class cartcontroller extends Controller
         $gotname = DB::Table('customers')->where('email', $email)->value('name');
         $count = DB::Table('carts')->where('cus_email',$email)->count();
 
-        $product_id = DB::Table('carts')->where([['cus_email','=',$email],['product_id','=',$product_id]])->value('product_id');
-        $product_name = DB::Table('carts')->where([['cus_email','=',$email],['product_id','=',$product_id]])->value('product_name');
-        $price = DB::Table('carts')->where([['cus_email','=',$email],['product_id','=',$product_id]])->value('price');
-        $colour = DB::Table('carts')->where([['cus_email','=',$email],['product_id','=',$product_id]])->value('colour');
-        $size = DB::Table('carts')->where([['cus_email','=',$email],['product_id','=',$product_id]])->value('size');
-        $qty = DB::Table('carts')->where([['cus_email','=',$email],['product_id','=',$product_id]])->value('qty');
-
-
-        /*$products = DB::Table('carts')->where([
+        $product_id = DB::Table('carts')->where([
             ['cus_email','=',$email],
-            ['product_id','=',$product_id]
-        ])->get();*/
+            ['product_id','=',$product_id],
+            ['colour','=',$colour],
+            ['size','=',$size],
+        ])->value('product_id');
+
+        $product_name = DB::Table('carts')->where([
+            ['cus_email','=',$email],
+            ['product_id','=',$product_id],
+            ['colour','=',$colour],
+            ['size','=',$size],
+        ])->value('product_name');
+
+        $price = DB::Table('carts')->where([
+            ['cus_email','=',$email],
+            ['product_id','=',$product_id],
+            ['colour','=',$colour],
+            ['size','=',$size],
+        ])->value('price');
+
+        $colour = DB::Table('carts')->where([
+            ['cus_email','=',$email],
+            ['product_id','=',$product_id],
+            ['colour','=',$colour],
+            ['size','=',$size],
+        ])->value('colour');
+
+        $size = DB::Table('carts')->where([
+            ['cus_email','=',$email],
+            ['product_id','=',$product_id],
+            ['colour','=',$colour],
+            ['size','=',$size],
+        ])->value('size');
+
+        $qty = DB::Table('carts')->where([
+            ['cus_email','=',$email],
+            ['product_id','=',$product_id],
+            ['colour','=',$colour],
+            ['size','=',$size],
+        ])->value('qty');
 
         return view('updatecartitem',[
             'name'=>$gotname,
@@ -161,16 +194,31 @@ class cartcontroller extends Controller
             ])->update([
                 'qty' => $request->newqty
             ]);
-            return back();
+            //return back();
+
+        $name = DB::Table('customers')->where('email', $request->email)->value('name');
+        $carts = DB::Table('carts')->where('cus_email', $request->email)->get();
+        $count = DB::Table('carts')->where('cus_email',$request->email)->count();
+        $totalprice = 0;
+        $totalitems = DB::Table('carts')->where('cus_email', $request->email)->sum('qty');
+
+        return view('viewcart',[
+            'count'=>$count,
+            'carts'=>$carts,
+            'email'=>$request->email,
+            'name'=>$name,
+            'totalprice'=>$totalprice,
+            'totalitems'=>$totalitems,
+        ]);
     }
 
-    public function deleteitem($email, $product_id){
+    public function deleteitem($email, $product_id, $colour, $size){
         $cart_item = DB::Table('carts')
             ->where([
                 ['cus_email','=',$email],
                 ['product_id','=',$product_id],
-                ['colour','=',$request->colour],
-                ['size','=',$request->size],
+                ['colour','=',$colour],
+                ['size','=',$size],
             ])->delete();
 
         return back();

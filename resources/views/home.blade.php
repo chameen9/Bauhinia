@@ -201,7 +201,7 @@
                       <a data-toggle="modal" data-target="#LV123456" role="button">
 
                         <div class="box-part text-center">
-                          <img src="{{URL::asset('/products/LV123456.WEBP')}}" width="300px" height="auto" class="img-fluid">
+                          <img src="{{URL::asset('/products/LV123456.png')}}" width="300px" height="auto" class="img-fluid">
                           <div class="title">
                             <h6 style="text-align: start;" class="text-muted">Levi's - Original fit Men's jeans</h6>
                           </div>
@@ -219,7 +219,7 @@
                       <a data-toggle="modal" data-target="#LV123457" role="button">
 
                         <div class="box-part text-center">
-                          <img src="{{URL::asset('/products/LV123457.JPG')}}" width="300px" height="auto" class="img-fluid">
+                          <img src="{{URL::asset('/products/LV123457.png')}}" width="300px" height="auto" class="img-fluid">
                           <div class="title">
                             <h6 style="text-align: start;" class="text-muted">Levi's - Slim fit Men's jeans</h6>
                           </div>
@@ -237,7 +237,7 @@
                       <a data-toggle="modal" data-target="#LV123458" role="button">
 
                         <div class="box-part text-center">
-                          <img src="{{URL::asset('/products/LV123458.WEBP')}}" width="300px" height="auto" class="img-fluid">
+                          <img src="{{URL::asset('/products/LV123458.png')}}" width="300px" height="auto" class="img-fluid">
                           <div class="title">
                             <h6 style="text-align: start;" class="text-muted">Levi's - Athletic Taper Men's jeans</h6>
                           </div>
@@ -255,7 +255,7 @@
                       <a data-toggle="modal" data-target="#LV123459" role="button">
 
                         <div class="box-part text-center">
-                          <img src="{{URL::asset('/products/LV123459.WEBP')}}" width="300px" height="auto" class="img-fluid">
+                          <img src="{{URL::asset('/products/LV123459.png')}}" width="300px" height="auto" class="img-fluid">
                           <div class="title">
                             <h6 style="text-align: start;" class="text-muted">Levi's - Skinny Taper Men's jeans</h6>
                           </div>
@@ -279,7 +279,7 @@
                       <a data-toggle="modal" data-target="#TH123456" role="button">
 
                         <div class="box-part text-center">
-                          <img src="{{URL::asset('/products/TH123456.JPG')}}" width="300px" height="auto" class="img-fluid">
+                          <img src="{{URL::asset('/products/TH123456.png')}}" width="300px" height="auto" class="img-fluid">
                           <div class="title">
                             <h6 style="text-align: start;" class="text-muted">Tommy Hilfiger - Regular Fit Logo Polo</h6>
                           </div>
@@ -297,7 +297,7 @@
                       <a data-toggle="modal" data-target="#TH123457" role="button">
 
                         <div class="box-part text-center">
-                          <img src="{{URL::asset('/products/TH123457.JPG')}}" width="300px" height="auto" class="img-fluid">
+                          <img src="{{URL::asset('/products/TH123457.png')}}" width="300px" height="auto" class="img-fluid">
                           <div class="title">
                             <h6 style="text-align: start;" class="text-muted">Tommy Hilfiger - Regular Fit Polo</h6>
                           </div>
@@ -509,7 +509,7 @@
                   {{csrf_field()}} {{ method_field('POST') }}
                     <div class="row">
                       <div class="col-5">
-                        <img src="{{URL::asset('/products/LV123456.WEBP')}}" width="600px" height="auto" class="img-fluid">
+                        <img src="{{URL::asset('/products/LV123456.png')}}" width="600px" height="auto" class="img-fluid">
                       </div>
                       <div class="col-7">
                         <div class="row">
@@ -650,7 +650,7 @@
                   {{csrf_field()}} {{ method_field('POST') }}
                     <div class="row">
                       <div class="col-5">
-                        <img src="{{URL::asset('/products/LV123457.JPG')}}" width="600px" height="auto" class="img-fluid">
+                        <img src="{{URL::asset('/products/LV123457.png')}}" width="600px" height="auto" class="img-fluid">
                       </div>
                       <div class="col-7">
                         <div class="row">
@@ -792,7 +792,7 @@
                   {{csrf_field()}} {{ method_field('POST') }}
                     <div class="row">
                       <div class="col-5">
-                        <img src="{{URL::asset('/products/LV123458.WEBP')}}" width="600px" height="auto" class="img-fluid">
+                        <img src="{{URL::asset('/products/LV123458.png')}}" width="600px" height="auto" class="img-fluid">
                       </div>
                       <div class="col-7">
                         <div class="row">
@@ -933,7 +933,7 @@
                   {{csrf_field()}} {{ method_field('POST') }}
                     <div class="row">
                       <div class="col-5">
-                        <img src="{{URL::asset('/products/LV123459.WEBP')}}" width="600px" height="auto" class="img-fluid">
+                        <img src="{{URL::asset('/products/LV123459.png')}}" width="600px" height="auto" class="img-fluid">
                       </div>
                       <div class="col-7">
                         <div class="row">
@@ -1074,7 +1074,7 @@
                   {{csrf_field()}} {{ method_field('POST') }}
                     <div class="row">
                       <div class="col-5">
-                        <img src="{{URL::asset('/products/TH123456.JPG')}}" width="600px" height="auto" class="img-fluid">
+                        <img src="{{URL::asset('/products/TH123456.png')}}" width="600px" height="auto" class="img-fluid">
                       </div>
                       <div class="col-7">
                         <div class="row">
@@ -1214,7 +1214,7 @@
                   {{csrf_field()}} {{ method_field('POST') }}
                     <div class="row">
                       <div class="col-5">
-                        <img src="{{URL::asset('/products/TH123457.JPG')}}" width="600px" height="auto" class="img-fluid">
+                        <img src="{{URL::asset('/products/TH123457.png')}}" width="600px" height="auto" class="img-fluid">
                       </div>
                       <div class="col-7">
                         <div class="row">

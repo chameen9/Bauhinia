@@ -53,8 +53,8 @@ Route::get('/customer/cart/deleteitem/{email}/{product_id}/{colour}/{size}', 'Ap
 Route::post('/customer/cart/deleteitem/{email}/{product_id}/{colour}/{size}', 'App\http\controllers\cartcontroller@deleteitem');
 
 
-Route::post('/customer/cart/updateitem/{email}/{product_id}', 'App\http\controllers\cartcontroller@viewupdatecartitem');
-Route::get('/customer/cart/updateitem/{email}/{product_id}', 'App\http\controllers\cartcontroller@viewupdatecartitem');
+Route::post('/customer/cart/updateitem/{email}/{product_id}/{colour}/{size}', 'App\http\controllers\cartcontroller@viewupdatecartitem');
+Route::get('/customer/cart/updateitem/{email}/{product_id}/{colour}/{size}', 'App\http\controllers\cartcontroller@viewupdatecartitem');
 
 
 Route::get('/customer/cart/updateitem/updateqty', 'App\http\controllers\cartcontroller@updateqty');

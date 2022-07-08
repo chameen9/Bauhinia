@@ -109,58 +109,135 @@
             </nav>
             <!-- Navbar -->
           </div>
-          <br>
 
-          
-            <div class="container">
-                
-                    <div class="row" style="justify-content: center;">
-                        <div class="col-12">
-                            <div class="shadow p-0 mb-0 bg-white rounded">
-                                <table class="table table-primary table-hover">
-                                    <th>Product Id</th>
-                                    <th>Product Name</th>
-                                    <th>Colour</th>
-                                    <th>Size</th>
-                                    <th>Product Price</th>
-                                    <th>Total Price</th>
-                                    <th>Quantity</th>
-                                    <th></th>
-                
-                                @foreach($carts as $cart)
-                                <div class="shadow p-0 mb-0 bg-white rounded">
-                                    <tr>
-                                        <td>{{$cart->product_id}}</td>
-                                        <td>{{$cart->product_name}}</td>
-                                        <td>{{$cart->colour}}</td>
-                                        <td>{{$cart->size}}</td>
-                                        <td>Rs. {{$cart->price}}</td>
-                                        <td>Rs. {{$cart->price*$cart->qty}}</td>
-                                        <td align="center">{{$cart->qty}}</td>
-                                        <td>
-
-                                          <div class="row">
-                                            <div class="col-12">
-                                              <div class="input-group">
-                                                <a href="{{url('/customer/cart/updateitem/'.$email.'/'.$cart->product_id.'/'.$cart->colour.'/'.$cart->size.' ')}}" role="button" class="btn btn-outline-primary"><i class="bi bi-arrow-repeat"></i></a>
-                                                <a href="{{url('/customer/cart/deleteitem/'.$email.'/'.$cart->product_id.' ')}}" role="button" class="btn btn-outline-danger"><i class="bi bi-trash"></i></a>
-                                              </div>
-                                            </div>
-                                          </div>
-                                          
-                                      </td>
-                                    </tr>
+            <section class="h-100 gradient-custom">
+                <div class="container py-5">
+                  <div class="row d-flex justify-content-center my-4">
+                    <div class="col-md-8">
+                      <div class="shadow p-0 mb-1 bg-white rounded">
+                        <div class="card mb-4">
+                          <div class="card-header py-3">
+                            <h5 class="mb-0">Your Cart - {{$count}} items</h5>
+                          </div>
+                          <div class="card-body">
+  
+                            @foreach($carts as $cart)
+                            <!-- Single item -->
+                            <div class="row">
+                              <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                                <!-- Image -->
+                                <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
+                                  <img src="{{URL::asset('/products/'.$cart->product_id.'.png')}}"
+                                    class="w-100 height: 100px; img-fluid"/>
+                                  <a href="">
+                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+                                  </a>
                                 </div>
-                                @endforeach
+                                <!-- Image -->
+                              </div>
                 
-                                </table>
+                              <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                                <!-- Data -->
+                                <p><strong>{{$cart->product_name}}</strong></p>
+                                <p>Color: {{$cart->colour}}</p>
+                                <p>Size: {{$cart->size}}</p>
+                                <a href="{{url('/customer/cart/updateitem/'.$email.'/'.$cart->product_id.'/'.$cart->colour.'/'.$cart->size.' ')}}" 
+                                  role="button" class="btn btn-primary btn-sm mb-2" data-mdb-toggle="tooltip" title="Update Quantity">
+                                  <i class="bi bi-arrow-repeat"></i>
+                                </a>
+                                
+                                <a href="{{url('/customer/cart/deleteitem/'.$email.'/'.$cart->product_id.'/'.$cart->colour.'/'.$cart->size.' ')}}" 
+                                  role="button" class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip" title="Remove Item">
+                                  <i class="bi bi-trash"></i>
+                                </a>
+  
+                                <!-- Data -->
+                              </div>
+                
+                              <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                                <div class="row">
+                                    <!-- Quantity -->
+                                    <div class="d-flex mb-4" style="max-width: 300px">
+                                                                
+                                      <div class="form-outline">
+                                        <label class="form-label">Quantity :</label>
+                                        <label class="form-label">{{$cart->qty}}</label>
+                                      </div>
+                                      
+  
+                                    </div>
+                                    <!-- Quantity -->
+                                </div>
+                                <div class="row">
+                                  <div class="col-12">
+                                      <!-- Price -->
+                                      <p class="text-start text-muted">
+                                        Item Price : Rs. {{$cart->price}}
+                                      </p>
+                                      <!-- Price -->
+                                  </div>
+                                </div>
+                                
+                                <input type="hidden" value="{{$totalprice = $totalprice+$cart->price*$cart->qty}}"></input>
+                                
+                                
+                              </div>
                             </div>
-                            
-                            
+  
+                            <hr class="my-4" />
+                            <!-- Single item -->
+                            @endforeach
+  
+                          </div>
+  
                         </div>
+                      </div>
+                      
+                      
                     </div>
+                    <div class="col-md-4">
+                      <div class="shadow p-0 mb-1 bg-white rounded">
+                        <div class="card mb-4">
+                          <div class="card-header py-3">
+                            <h5 class="mb-0">Summary</h5>
+                          </div>
+                          <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                              <li
+                                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                No. of Products
+                                <span>{{$totalitems}}</span>
+                              </li>
+                              <li
+                                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                Total Price
+                                <span>Rs. {{$totalprice}}</span>
+                              </li>
+                              <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                Shipping
+                                <span>Rs. 300.00</span>
+                              </li>
+                              <li
+                                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                <div>
+                                  <strong>Total amount</strong>
+                                </div>
+                                <span><strong>Rs. {{$totalprice+300.00}}</strong></span>
+                              </li>
+                            </ul>
                 
-            </div>
+                            <button type="button" class="btn btn-primary btn-lg btn-block">
+                              Go to checkout
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      
+
+                    </div>
+                  </div>
+                </div>
+            </section>
           
     </body>
 </html>

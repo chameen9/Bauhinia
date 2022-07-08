@@ -137,19 +137,25 @@
                     </div>
                 </div>
             </div>
-            <div class="row" style="justify-content: center;">
-                <div class="col-2" style="justify-content: center;">
+            <div class="row justify-content-center">
+                <div class="col-5">
+                  &nbsp;
+                </div>
+                <div class="col-2 justify-content-center">
                     <input type="hidden" name="email" class="form-control" value="{{$email}}">
                     <input type="hidden" name="product_id" class="form-control" value="{{$product_id}}">
                     <input type="hidden" name="colour" class="form-control" value="{{$colour}}">
                     <input type="hidden" name="size" class="form-control" value="{{$size}}">
 
-                    <div class="input-group">
-                      <button type="submit" class="btn btn-primary"><i class="bi bi-check-circle"></i> Save</button>
-                      <a class="btn btn-warning" role="button" href="{{ url('/customer/cart/'.$email.'') }}"><i class="bi bi-arrow-left-circle"></i> Back</a>
-                    </div>
-                    
+                   
+                    <button type="submit" class="btn btn-primary"><i class="bi bi-arrow-repeat"></i> Update</button>
+
                 </div>
+                <div class="col-5">
+                  &nbsp;
+                </div>
+                    
+              </div>
             </div>
         </form>
     </body>
