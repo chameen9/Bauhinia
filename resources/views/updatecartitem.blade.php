@@ -113,50 +113,55 @@
           <form action="{{url('/customer/cart/updateitem/updateqty')}}" method="post">
             {{csrf_field()}}
             <div class="row" style="justify-content: center;">
-                <div class="col-8">
-                    <div class="shadow p-0 mb-0 bg-white rounded">
-                        <table class="table table-primary">
-                            <th>Product Id</th>
-                            <th>Product Name</th>
-                            <th>Colour</th>
-                            <th>Size</th>
-                            <th>Product Price</th>
-                            <th>Quantity</th>
+              <div class="col-8">
+                <div class="shadow p-0 mb-0 bg-white rounded">
+                  <div class="card mb-4">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                            <img src="{{URL::asset('/products/'.$product_id.'.png')}}" class="img-fluid"/>
+                        </div>
+                        <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                          <p><strong>{{$product_name}}</strong></p>
+                          <p>Color: {{$colour}}</p>
+                          <p>Size: {{$size}}</p>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <input type="hidden" name="email" class="form-control" value="{{$email}}">
+                          <input type="hidden" name="product_id" class="form-control" value="{{$product_id}}">
+                          <input type="hidden" name="colour" class="form-control" value="{{$colour}}">
+                          <input type="hidden" name="size" class="form-control" value="{{$size}}">
 
-                            <tr>
-                                <td>{{$product_id}}</td>
-                                <td>{{$product_name}}</td>
-                                <td>{{$colour}}</td>
-                                <td>{{$size}}</td>
-                                <td>Rs. {{$price}}</td>
-                                <td>
-                                    <input type="number" name="newqty" value="{{$qty}}" class="form-control" style="width: 70px;" min="1" max="100">
-                                </td>
-                            </tr>
-                        </table>
+                          <button type="submit" class="btn btn-primary"><i class="bi bi-arrow-repeat"></i> Update</button>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                          <div class="row">
+                            <div class="d-flex mb-4" style="max-width: 300px">
+                              <div class="form-outline">
+                                <label class="form-label">Quantity :</label>
+                                <input type="number" name="newqty" value="{{$qty}}" class="form-control" style="width: 70px;" min="1" max="100">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-12">
+                              <p class="text-start text-muted">
+                                Item Price : Rs. {{$price}}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-5">
-                  &nbsp;
-                </div>
-                <div class="col-2 justify-content-center">
-                    <input type="hidden" name="email" class="form-control" value="{{$email}}">
-                    <input type="hidden" name="product_id" class="form-control" value="{{$product_id}}">
-                    <input type="hidden" name="colour" class="form-control" value="{{$colour}}">
-                    <input type="hidden" name="size" class="form-control" value="{{$size}}">
-
-                   
-                    <button type="submit" class="btn btn-primary"><i class="bi bi-arrow-repeat"></i> Update</button>
-
-                </div>
-                <div class="col-5">
-                  &nbsp;
-                </div>
-                    
               </div>
             </div>
+               
         </form>
     </body>
 </html>

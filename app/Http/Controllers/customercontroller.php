@@ -15,22 +15,29 @@ class customercontroller extends Controller
     public function viewhome($email){
         $gotname = DB::Table('customers')->where('email',$email)->value('name');
         $count = DB::Table('carts')->where('cus_email', $email)->count();
+        $ordercount = DB::Table('orders')->where('email', $email)->count();
 
         if($count > 0){
-            return view('home',[
-                'name'=>$gotname,
-                'email'=>$email,
-                'count'=>$count,
-
-            ]); 
+            $cartcount = $count;
         }
         else{
-            return view('home',[
-                'name'=>$gotname,
-                'email'=>$email,
-                'count'=>null,
-            ]);
+            $cartcount = null;
         }
+
+        if($ordercount > 0){
+            $ordercount = $ordercount;
+        }
+        else{
+            $ordercount = null;
+        }
+
+        return view('home',[
+            'name'=>$gotname,
+            'email'=>$email,
+            'count'=>$cartcount,
+            'ordercount'=>$ordercount,
+        ]); 
+
     }
 
     function checksignin(Request $request){
@@ -47,28 +54,32 @@ class customercontroller extends Controller
         $gotname = DB::Table('customers')->where('email',$reqemail)->value('name');
 
         $count = DB::Table('carts')->where('cus_email', $reqemail)->count();
+        $ordercount = DB::Table('orders')->where('email', $reqemail)->count();
     
         if($gotemail==$reqemail){
             if($gotpassword==$reqpassword){
 
                 if($count > 0){
-                    return view('home',[
-                        'name'=>$gotname,
-                        'email'=>$reqemail,
-                        'count'=>$count,
-
-                    ]); //send name and email to the view
-                    
+                    $cartcount = $count;
                 }
                 else{
-                    return view('home',[
-                        'name'=>$gotname,
-                        'email'=>$reqemail,
-                        'count'=>null,
-
-                    ]); //send name and email to the view
+                    $cartcount = null;
                 }
-                    
+
+                if($ordercount > 0){
+                    $ordercount = $ordercount;
+                }
+                else{
+                    $ordercount = null;
+                }
+                
+                return view('home',[
+                    'name'=>$gotname,
+                    'email'=>$reqemail,
+                    'count'=>$cartcount,
+                    'ordercount'=>$ordercount,
+                ]); 
+                   
             }
             else{
                 return back()->with('error','Invalid Password. Try again !');

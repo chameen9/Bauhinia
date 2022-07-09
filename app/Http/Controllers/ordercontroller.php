@@ -40,10 +40,44 @@ class ordercontroller extends Controller
             $order->delivery_address = $request->up_delivery_address;
             $order->ordered_at = Carbon::now('Asia/Colombo');
             $order->save();
+
+            $cart_item = DB::Table('carts')
+            ->where([
+                ['cus_email','=',$request->email],
+                ['product_id','=',$request->product_id[$key]],
+                ['colour','=',$request->colour[$key]],
+                ['size','=',$request->size[$key]],
+                ['qty','=',$request->qty[$key]],
+            ])->delete();
             
         }
 
-        echo'ordered';
+        $gotname = DB::Table('customers')->where('email',$request->email)->value('name');
+        $count = DB::Table('carts')->where('cus_email', $request->email)->count();
+        $ordercount = DB::Table('orders')->where('email', $request->email)->count();
+
+        if($count > 0){
+            $cartcount = $count;
+        }
+        else{
+            $cartcount = null;
+        }
+
+        if($ordercount > 0){
+            $ordercount = $ordercount;
+        }
+        else{
+            $ordercount = null;
+        }
+
+        return view('home',[
+            'name'=>$gotname,
+            'email'=>$request->email,
+            'count'=>$cartcount,
+            'ordercount'=>$ordercount,
+        ]); 
+
+        
 
     }
 

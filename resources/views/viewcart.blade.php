@@ -132,9 +132,6 @@
                                 <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
                                   <img src="{{URL::asset('/products/'.$cart->product_id.'.png')}}"
                                     class="w-100 height: 100px; img-fluid"/>
-                                  <a href="">
-                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
-                                  </a>
                                 </div>
                                 <!-- Image -->
                               </div>
