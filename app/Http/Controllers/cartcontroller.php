@@ -13,11 +13,16 @@ use DB;
 class cartcontroller extends Controller
 {
     function viewcart($email){
-        $name = DB::Table('customers')->where('email', $email)->value('name');
+        
         $carts = DB::Table('carts')->where('cus_email', $email)->get();
         $count = DB::Table('carts')->where('cus_email',$email)->count();
-        $totalprice = 0;
         $totalitems = DB::Table('carts')->where('cus_email', $email)->sum('qty');
+        $totalprice = 0;
+
+        $name = DB::Table('customers')->where('email', $email)->value('name');
+        $primary_contact = DB::Table('customers')->where('email', $email)->value('primary_contact_number');
+        $secondary_contact = DB::Table('customers')->where('email', $email)->value('secondary_contact_number');
+        $delivery_address = DB::Table('customers')->where('email', $email)->value('delivery_address');
 
         return view('viewcart',[
             'count'=>$count,
@@ -26,6 +31,10 @@ class cartcontroller extends Controller
             'name'=>$name,
             'totalprice'=>$totalprice,
             'totalitems'=>$totalitems,
+            'delivery_address'=>$delivery_address,
+            'primary_contact'=>$primary_contact,
+            'secondary_contact'=>$secondary_contact,
+
         ]);
     }
 
@@ -122,6 +131,7 @@ class cartcontroller extends Controller
 
 
     }
+
     public function viewupdatecartitem($email, $product_id, $colour, $size){
 
         $gotname = DB::Table('customers')->where('email', $email)->value('name');
@@ -202,6 +212,10 @@ class cartcontroller extends Controller
         $totalprice = 0;
         $totalitems = DB::Table('carts')->where('cus_email', $request->email)->sum('qty');
 
+        $primary_contact = DB::Table('customers')->where('email', $request->email)->value('primary_contact_number');
+        $secondary_contact = DB::Table('customers')->where('email', $request->email)->value('secondary_contact_number');
+        $delivery_address = DB::Table('customers')->where('email', $request->email)->value('delivery_address');
+
         return view('viewcart',[
             'count'=>$count,
             'carts'=>$carts,
@@ -209,6 +223,9 @@ class cartcontroller extends Controller
             'name'=>$name,
             'totalprice'=>$totalprice,
             'totalitems'=>$totalitems,
+            'delivery_address'=>$delivery_address,
+            'primary_contact'=>$primary_contact,
+            'secondary_contact'=>$secondary_contact,
         ]);
     }
 

@@ -17,7 +17,7 @@ Route::get('/employee/signin', function () {return view('e-signin');});
 Route::get('/employee/signupconfirm', function () {return view('e-signupconfirm');});
 
 //Route::get('/employee/signup', function () {return view('e-signup');});
-Route::get('/test', function () {return view('test');});
+Route::get('/test', function () {return view('placeorder');});
 //----------------------------------------------------------------------------------------------------
 
 // customer sign in and sign up-----------------------------------------------------------------------
@@ -62,3 +62,7 @@ Route::post('/customer/cart/updateitem/updateqty', 'App\http\controllers\cartcon
 
 
 Route::get('/customer/home/{email}', 'App\http\controllers\customercontroller@viewhome');
+
+Route::post('/customer/order/confirmorder', 'App\http\controllers\ordercontroller@confirmorder');
+
+Route::post('/customer/order/checkout/confirm', 'App\http\controllers\ordercontroller@checkoutconfirm');
