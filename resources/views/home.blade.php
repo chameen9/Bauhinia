@@ -31,7 +31,7 @@
     </head>
     <body>
 
-      <div class="shadow p-0 mb-1 bg-white rounded">
+      <div class="shadow p-0 mb-1 bg-white rounded" id="top">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-md navbar-light bg-light">
           <!-- Container wrapper -->
@@ -96,13 +96,14 @@
                   <div class="dropdown-menu" style="width: 150px;">
                     <p class="text-muted" style="text-align: center;">Welcome,<br>
                     <label>{{$name}}</label></p>
-                    <hr>
+                    <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ url('/customer/editprofile') }}">Profile</a>
                     @if($activeordercount == null)
                       <a class="dropdown-item disabled" href="{{ url('/customer/orders/'.$email.' ') }}">Orders</a>
                     @else
                       <a class="dropdown-item" href="{{ url('/customer/orders/'.$email.' ') }}">Orders <span class="badge rounded-pill badge-notification bg-primary">{{$activeordercount}}</span></a>
                     @endif
+                    <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ url('/customer/signout') }}">Sign Out</a>
                   </div>
                 </div>
@@ -126,8 +127,8 @@
                 <div class="card-body">
                   Categories
                   <hr>
-
-                  <a href="" class="text-decoration-none" style="font-size: 15px;">High end fashion boutiques</a><br>
+                  <a href="#newarrivals" class="text-decoration-none" style="font-size: 15px;">New Arrivals</a><br>
+                  <a href="#highend" class="text-decoration-none" style="font-size: 15px;">High end fashion store</a><br>
                   <a href="" class="text-decoration-none" style="font-size: 15px;">Fast fashion brands</a><br>
                   <a href="" class="text-decoration-none" style="font-size: 15px;">Casual clothing brands</a><br>
                   <a href="" class="text-decoration-none" style="font-size: 15px;">Sport clothing store</a><br>
@@ -161,7 +162,7 @@
                
   
                 <!--carousel-->
-                <div class="border-bottom">
+                <div class="border-bottom" id="carousel">
                   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     
                     <div class="carousel-inner">
@@ -197,16 +198,23 @@
                 </div>
   
                 <br>
-                <h4 class="text-muted">New Arrivals</h4>
-  
+
+              
+                <!--newarrivals-->
+                <section id="newarrivals">
+                  <h4 class="text-muted">New Arrivals</h4> 
+                  <span><a href="#top" class="link link-dark"><i class="bi bi-arrow-up-circle"></i></a></span>
+                  <span><a href="#highend" class="link link-dark"><i class="bi bi-arrow-down-circle"></i></a></span>
+                  <span>&nbsp;</span>
+                  <span><a href="#top" class="link link-dark"><i class="bi bi-arrow-up-square-fill"></i></a></span>
                 <div class="row">
-  
+
                   <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="shadow-sm p-1 mb-5 bg-body rounded">
                       <a data-toggle="modal" data-target="#LV123456" role="button">
 
                         <div class="box-part text-center">
-                          <img src="{{URL::asset('/products/LV123456.png')}}" width="300px" height="auto" class="img-fluid">
+                          <img src="{{URL::asset('/products/LV123456.png')}}" width="280px" height="380px" class="centerd-image">
                           <div class="title">
                             <h6 style="text-align: start;" class="text-muted">Levi's - Original fit Men's jeans</h6>
                           </div>
@@ -218,13 +226,13 @@
                       </a>
                     </div>
                   </div>
-  
+
                   <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="shadow-sm p-1 mb-5 bg-body rounded">
                       <a data-toggle="modal" data-target="#LV123457" role="button">
 
                         <div class="box-part text-center">
-                          <img src="{{URL::asset('/products/LV123457.png')}}" width="300px" height="auto" class="img-fluid">
+                          <img src="{{URL::asset('/products/LV123457.png')}}" width="280px" height="380px" class="centerd-image">
                           <div class="title">
                             <h6 style="text-align: start;" class="text-muted">Levi's - Slim fit Men's jeans</h6>
                           </div>
@@ -236,13 +244,13 @@
                       </a>
                     </div>
                   </div>
-  
+
                   <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="shadow-sm p-1 mb-5 bg-body rounded">
                       <a data-toggle="modal" data-target="#LV123458" role="button">
 
                         <div class="box-part text-center">
-                          <img src="{{URL::asset('/products/LV123458.png')}}" width="300px" height="auto" class="img-fluid">
+                          <img src="{{URL::asset('/products/LV123458.png')}}" width="280px" height="380px" class="centerd-image">
                           <div class="title">
                             <h6 style="text-align: start;" class="text-muted">Levi's - Athletic Taper Men's jeans</h6>
                           </div>
@@ -254,13 +262,13 @@
                       </a>
                     </div>
                   </div>
-  
+
                   <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="shadow-sm p-1 mb-5 bg-body rounded">
                       <a data-toggle="modal" data-target="#LV123459" role="button">
 
                         <div class="box-part text-center">
-                          <img src="{{URL::asset('/products/LV123459.png')}}" width="300px" height="auto" class="img-fluid">
+                          <img src="{{URL::asset('/products/LV123459.png')}}" width="280px" height="380px" class="centerd-image">
                           <div class="title">
                             <h6 style="text-align: start;" class="text-muted">Levi's - Skinny Taper Men's jeans</h6>
                           </div>
@@ -272,7 +280,7 @@
                       </a>
                     </div>
                   </div>
-  
+
                 </div>
                 <!--end row 1-->
 
@@ -284,7 +292,7 @@
                       <a data-toggle="modal" data-target="#TH123456" role="button">
 
                         <div class="box-part text-center">
-                          <img src="{{URL::asset('/products/TH123456.png')}}" width="300px" height="auto" class="img-fluid">
+                          <img src="{{URL::asset('/products/TH123456.png')}}" width="280px" height="380px" class="centerd-image">
                           <div class="title">
                             <h6 style="text-align: start;" class="text-muted">Tommy Hilfiger - Regular Fit Logo Polo</h6>
                           </div>
@@ -302,7 +310,7 @@
                       <a data-toggle="modal" data-target="#TH123457" role="button">
 
                         <div class="box-part text-center">
-                          <img src="{{URL::asset('/products/TH123457.png')}}" width="300px" height="auto" class="img-fluid">
+                          <img src="{{URL::asset('/products/TH123457.png')}}" width="280px" height="380px" class="centerd-image">
                           <div class="title">
                             <h6 style="text-align: start;" class="text-muted">Tommy Hilfiger - Regular Fit Polo</h6>
                           </div>
@@ -320,7 +328,7 @@
                       <a data-toggle="modal" data-target="#BG123456" role="button">
 
                         <div class="box-part text-center">
-                          <img src="{{URL::asset('/products/BG123456.png')}}" width="300px" height="auto" class="img-fluid">
+                          <img src="{{URL::asset('/products/BG123456.png')}}" width="280px" height="380px" class="centerd-image">
                           <div class="title">
                             <h6 style="text-align: start;" class="text-muted">Aldo - Grydith Black Wallet</h6>
                           </div>
@@ -338,7 +346,7 @@
                       <a data-toggle="modal" data-target="#BG123457" role="button">
 
                         <div class="box-part text-center">
-                          <img src="{{URL::asset('/products/BG123457.png')}}" width="300px" height="auto" class="img-fluid">
+                          <img src="{{URL::asset('/products/BG123457.png')}}" width="280px" height="380px" class="centerd-image">
                           <div class="title">
                             <h6 style="text-align: start;" class="text-muted">Aldo - Cityverse HandBag</h6>
                           </div>
@@ -354,6 +362,341 @@
                   
                 </div>
                 <!--end row 2-->
+                </section>
+                <!--end newarrivals-->
+
+                <!--highend-->
+                <section id="highend">
+                  <h4 class="text-muted">High end Fashion Store</h4>
+                  <span><a href="#newarrivals" class="link link-dark"><i class="bi bi-arrow-up-circle"></i></a></span>
+                  <span><a href="#fastfasion" class="link link-dark"><i class="bi bi-arrow-down-circle"></i></a></span>
+                  <span>&nbsp;</span>
+                  <span><a href="#top" class="link link-dark"><i class="bi bi-arrow-up-square-fill"></i></a></span>
+
+                <div class="row">
+
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#HE123456" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/HE123456.png')}}" width="280px" height="380px" class="centerd-image">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">DIOR- Two Button Suit</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 74999.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#HE123457" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/HE123457.png')}}" width="280px" height="380px" class="centerd-image">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">DIOR- Classic Suit</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 87499.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#HE123458" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/HE123458.png')}}" width="280px" height="380px" class="centerd-image">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">DIOR - Macrocannage Bar Jacket</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 24999.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#HE123459" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/HE123459.png')}}" width="280px" height="380px" class="centerd-image">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">DIOR- Short Sleeved Jacket</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 54999.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+
+                </div>
+                <!--end row 1-->
+
+                <!--row 2-->
+                <div class="row">
+
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#HE123460" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/HE123460.png')}}" width="280px" height="380px" class="centerd-image">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Prada - Short-sleeved Linen Shirt</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 29999.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#HE123461" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/HE123461.png')}}" width="280px" height="380px" class="centerd-image">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Prada - Single-breasted Jacket</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 44499.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#HE123462" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/HE123462.png')}}" width="280px" height="380px" class="centerd-image">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Prada - Single-breasted Wool Jacket</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 44499.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#HE123463" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/HE123463.png')}}" width="280px" height="380px" class="centerd-image">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Prada - Single-breasted Cotton Jacket</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 44499.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+
+                  
+                </div>
+                <!--end row 2-->
+                </section>
+                <!--end highend-->
+              
+                
+                <!--fastfasion-->
+                <section id="fastfasion">
+                  <h4 class="text-muted">High end Fashion Store</h4>
+                  <span><a href="#highend" class="link link-dark"><i class="bi bi-arrow-up-circle"></i></a></span>
+                  <span><a href="#fastfasion" class="link link-dark"><i class="bi bi-arrow-down-circle"></i></a></span>
+                  <span>&nbsp;</span>
+                  <span><a href="#top" class="link link-dark"><i class="bi bi-arrow-up-square-fill"></i></a></span>
+
+                <div class="row">
+
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#LV123456" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/LV123456.png')}}" width="280px" height="380px" class="centerd-image">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Levi's - Original fit Men's jeans</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 4999.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#LV123457" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/LV123457.png')}}" width="280px" height="380px" class="centerd-image">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Levi's - Slim fit Men's jeans</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 4499.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#LV123458" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/LV123458.png')}}" width="280px" height="380px" class="centerd-image">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Levi's - Athletic Taper Men's jeans</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 4999.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#LV123459" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/LV123459.png')}}" width="280px" height="380px" class="centerd-image">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Levi's - Skinny Taper Men's jeans</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 5499.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+
+                </div>
+                <!--end row 1-->
+
+                <!--row 2-->
+                <div class="row">
+
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#TH123456" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/TH123456.png')}}" width="280px" height="380px" class="centerd-image">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Tommy Hilfiger - Regular Fit Logo Polo</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 3499.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#TH123457" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/TH123457.png')}}" width="280px" height="380px" class="centerd-image">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Tommy Hilfiger - Regular Fit Polo</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 3499.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#BG123456" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/BG123456.png')}}" width="280px" height="380px" class="centerd-image">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Aldo - Grydith Black Wallet</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 11499.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="shadow-sm p-1 mb-5 bg-body rounded">
+                      <a data-toggle="modal" data-target="#BG123457" role="button">
+
+                        <div class="box-part text-center">
+                          <img src="{{URL::asset('/products/BG123457.png')}}" width="280px" height="380px" class="centerd-image">
+                          <div class="title">
+                            <h6 style="text-align: start;" class="text-muted">Aldo - Cityverse HandBag</h6>
+                          </div>
+                          <div class="text" style="text-align: start;">
+                            <b>Rs. 12499.99</b>
+                          </div>
+                        </div>
+
+                      </a>
+                    </div>
+                  </div>
+
+                  
+                </div>
+                <!--end row 2-->
+                </section>
+                <!--end fastfasion-->
   
                 
   
@@ -1360,7 +1703,7 @@
                   {{csrf_field()}} {{ method_field('POST') }}
                     <div class="row">
                       <div class="col-5">
-                        <img src="{{URL::asset('/products/BG123456.png')}}" width="600px" height="auto" class="img-fluid">
+                        <img src="{{URL::asset('/products/BG123456.png')}}" width="600px" height="auto" class="centerd-image">
                       </div>
                       <div class="col-7">
                         <div class="row">
@@ -1489,7 +1832,7 @@
             <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Aldo - Cityver Handbag</h5>
+                  <h5 class="modal-title">Aldo - Cityverse Handbag</h5>
                   <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">
                     <i class="bi bi-x-lg"></i>
                   </button>
@@ -1499,7 +1842,7 @@
                   {{csrf_field()}} {{ method_field('POST') }}
                     <div class="row">
                       <div class="col-5">
-                        <img src="{{URL::asset('/products/BG123457.png')}}" width="600px" height="auto" class="img-fluid">
+                        <img src="{{URL::asset('/products/BG123457.png')}}" width="600px" height="auto" class="centerd-image">
                       </div>
                       <div class="col-7">
                         <div class="row">
@@ -1524,7 +1867,7 @@
                             <label>:</label>
                           </div>
                           <div class="col-8">
-                            <label>Aldo - Cityver Handbag</label> <!--name-->
+                            <label>Aldo - Cityverse Handbag</label> <!--name-->
                           </div>
                         </div>
   
@@ -1596,7 +1939,7 @@
                             <input type="hidden" class="from-control" name="cus_email" value="{{$email}}">
                             <input type="hidden" class="from-control" name="product_id" value="BG123457">
                             <input type="hidden" class="from-control" name="price" value="12499.99">
-                            <input type="hidden" class="from-control" name="product_name" value="Aldo - Cityver Handbag">
+                            <input type="hidden" class="from-control" name="product_name" value="Aldo - Cityverse Handbag">
                             <input type="hidden" class="from-control" name="brand" value="Aldo">
                           </div>
                         </div>
@@ -1621,6 +1964,1134 @@
             </div>
           </div>
           <!--end-BG123457-->
+
+
+          <!-- HE123456 -->
+          <div class="modal fade" id="HE123456" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">DIOR- Two Button Suit</h5>
+                  <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">
+                    <i class="bi bi-x-lg"></i>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="{{ url('/home/addtocart') }}" method="post">
+                  {{csrf_field()}} {{ method_field('POST') }}
+                    <div class="row">
+                      <div class="col-5">
+                        <img src="{{URL::asset('/products/HE123456.png')}}" width="600px" height="auto" class="centerd-image">
+                      </div>
+                      <div class="col-7">
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Id</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>HE123456</label>  <!--id-->
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Name</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>DIOR- Two Button Suit</label> <!--name-->
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Brand</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>DIOR</label> <!--Brand-->
+                          </div>
+                        </div>
+  
+                        <hr>
+                        <div class="row">
+                          <div class="col-12">
+                            <p class="text-muted"><b>Select your details</b></p>
+                          </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                          <div class="col-4">
+                            <label>Size :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Colour :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Quantity :</label>
+                          </div>
+                        </div>
+  
+                        <div class="row">
+                          <div class="col-4">
+                            <select class="form-control" name="size" required>
+                              <option>Small</option>
+                              <option>Medium</option>
+                              <option>Large</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <select class="form-control" name="colour" required>
+                              <option>Black</option>
+                              <option>Dark Blue</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                          </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                          <div class="col-8">
+                          </div>
+                          <div class="col-4">
+                            <h5 class="text-muted">Rs. 74999.99</h5>
+                          </div>
+                        </div>
+                        <br>
+
+                        <!--hidden inputs-->
+                        <div class="row">
+                          <div class="col-12">
+                            <input type="hidden" class="from-control" name="cus_email" value="{{$email}}">
+                            <input type="hidden" class="from-control" name="product_id" value="HE123456">
+                            <input type="hidden" class="from-control" name="price" value="74999.99">
+                            <input type="hidden" class="from-control" name="product_name" value="DIOR- Two Button Suit">
+                            <input type="hidden" class="from-control" name="brand" value="DIOR">
+                          </div>
+                        </div>
+                        <!--hidden inputs-->
+
+                        <div class="row d-flex justify-content-center">
+                          <div class="btn-group" role="group">
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-cart-plus"></i> Add to cart</button>
+                          </div>
+                        </div>
+
+                        
+  
+                      </div>
+                    </div>
+
+                  </form>
+
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <!--end-HE123456-->
+
+
+          <!-- HE123457 -->
+          <div class="modal fade" id="HE123457" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">DIOR- Classic Suit</h5>
+                  <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">
+                    <i class="bi bi-x-lg"></i>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="{{ url('/home/addtocart') }}" method="post">
+                  {{csrf_field()}} {{ method_field('POST') }}
+                    <div class="row">
+                      <div class="col-5">
+                        <img src="{{URL::asset('/products/HE123457.png')}}" width="600px" height="auto" class="centerd-image">
+                      </div>
+                      <div class="col-7">
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Id</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>HE123457</label>  <!--id-->
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Name</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>DIOR- Classic Suit</label> <!--name-->
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Brand</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>DIOR</label> <!--Brand-->
+                          </div>
+                        </div>
+  
+                        <hr>
+                        <div class="row">
+                          <div class="col-12">
+                            <p class="text-muted"><b>Select your details</b></p>
+                          </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                          <div class="col-4">
+                            <label>Size :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Colour :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Quantity :</label>
+                          </div>
+                        </div>
+  
+                        <div class="row">
+                          <div class="col-4">
+                            <select class="form-control" name="size" required>
+                              <option>Small</option>
+                              <option>Medium</option>
+                              <option>Large</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <select class="form-control" name="colour" required>
+                              <option>Black</option>
+                              <option>Dark Blue</option>
+                              <option>Light Blue</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                          </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                          <div class="col-8">
+                          </div>
+                          <div class="col-4">
+                            <h5 class="text-muted">Rs. 87499.99</h5>
+                          </div>
+                        </div>
+                        <br>
+
+                        <!--hidden inputs-->
+                        <div class="row">
+                          <div class="col-12">
+                            <input type="hidden" class="from-control" name="cus_email" value="{{$email}}">
+                            <input type="hidden" class="from-control" name="product_id" value="HE123457">
+                            <input type="hidden" class="from-control" name="price" value="87499.99">
+                            <input type="hidden" class="from-control" name="product_name" value="DIOR- Classic Suit">
+                            <input type="hidden" class="from-control" name="brand" value="DIOR">
+                          </div>
+                        </div>
+                        <!--hidden inputs-->
+
+                        <div class="row d-flex justify-content-center">
+                          <div class="btn-group" role="group">
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-cart-plus"></i> Add to cart</button>
+                          </div>
+                        </div>
+
+                        
+  
+                      </div>
+                    </div>
+
+                  </form>
+
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <!--end-HE123457-->
+
+
+          <!-- HE123458 -->
+          <div class="modal fade" id="HE123458" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">DIOR - Macrocannage Bar Jacket</h5>
+                  <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">
+                    <i class="bi bi-x-lg"></i>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="{{ url('/home/addtocart') }}" method="post">
+                  {{csrf_field()}} {{ method_field('POST') }}
+                    <div class="row">
+                      <div class="col-5">
+                        <img src="{{URL::asset('/products/HE123458.png')}}" width="600px" height="auto" class="centerd-image">
+                      </div>
+                      <div class="col-7">
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Id</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>HE123458</label>  <!--id-->
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Name</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>DIOR - Macrocannage Bar Jacket</label> <!--name-->
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Brand</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>DIOR</label> <!--Brand-->
+                          </div>
+                        </div>
+  
+                        <hr>
+                        <div class="row">
+                          <div class="col-12">
+                            <p class="text-muted"><b>Select your details</b></p>
+                          </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                          <div class="col-4">
+                            <label>Size :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Colour :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Quantity :</label>
+                          </div>
+                        </div>
+  
+                        <div class="row">
+                          <div class="col-4">
+                            <select class="form-control" name="size" required>
+                              <option>Small</option>
+                              <option>Medium</option>
+                              <option>Large</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <select class="form-control" name="colour" required>
+                              <option>Black</option>
+                              <option>Dark Gray</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                          </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                          <div class="col-8">
+                          </div>
+                          <div class="col-4">
+                            <h5 class="text-muted">Rs. 24999.99</h5>
+                          </div>
+                        </div>
+                        <br>
+
+                        <!--hidden inputs-->
+                        <div class="row">
+                          <div class="col-12">
+                            <input type="hidden" class="from-control" name="cus_email" value="{{$email}}">
+                            <input type="hidden" class="from-control" name="product_id" value="HE123458">
+                            <input type="hidden" class="from-control" name="price" value="24999.99">
+                            <input type="hidden" class="from-control" name="product_name" value="DIOR - Macrocannage Bar Jacket">
+                            <input type="hidden" class="from-control" name="brand" value="DIOR">
+                          </div>
+                        </div>
+                        <!--hidden inputs-->
+
+                        <div class="row d-flex justify-content-center">
+                          <div class="btn-group" role="group">
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-cart-plus"></i> Add to cart</button>
+                          </div>
+                        </div>
+
+                        
+  
+                      </div>
+                    </div>
+
+                  </form>
+
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <!--end-HE123458-->
+
+
+          <!-- HE123459 -->
+          <div class="modal fade" id="HE123459" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">DIOR- Short Sleeved Jacket</h5>
+                  <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">
+                    <i class="bi bi-x-lg"></i>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="{{ url('/home/addtocart') }}" method="post">
+                  {{csrf_field()}} {{ method_field('POST') }}
+                    <div class="row">
+                      <div class="col-5">
+                        <img src="{{URL::asset('/products/HE123459.png')}}" width="600px" height="auto" class="centerd-image">
+                      </div>
+                      <div class="col-7">
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Id</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>HE123459</label>  <!--id-->
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Name</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>DIOR- Short Sleeved Jacket</label> <!--name-->
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Brand</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>DIOR</label> <!--Brand-->
+                          </div>
+                        </div>
+  
+                        <hr>
+                        <div class="row">
+                          <div class="col-12">
+                            <p class="text-muted"><b>Select your details</b></p>
+                          </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                          <div class="col-4">
+                            <label>Size :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Colour :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Quantity :</label>
+                          </div>
+                        </div>
+  
+                        <div class="row">
+                          <div class="col-4">
+                            <select class="form-control" name="size" required>
+                              <option>Small</option>
+                              <option>Medium</option>
+                              <option>Large</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <select class="form-control" name="colour" required>
+                              <option>Black</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                          </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                          <div class="col-8">
+                          </div>
+                          <div class="col-4">
+                            <h5 class="text-muted">Rs. 54999.99</h5>
+                          </div>
+                        </div>
+                        <br>
+
+                        <!--hidden inputs-->
+                        <div class="row">
+                          <div class="col-12">
+                            <input type="hidden" class="from-control" name="cus_email" value="{{$email}}">
+                            <input type="hidden" class="from-control" name="product_id" value="HE123459">
+                            <input type="hidden" class="from-control" name="price" value="54999.99">
+                            <input type="hidden" class="from-control" name="product_name" value="DIOR- Short Sleeved Jacket">
+                            <input type="hidden" class="from-control" name="brand" value="DIOR">
+                          </div>
+                        </div>
+                        <!--hidden inputs-->
+
+                        <div class="row d-flex justify-content-center">
+                          <div class="btn-group" role="group">
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-cart-plus"></i> Add to cart</button>
+                          </div>
+                        </div>
+
+                        
+  
+                      </div>
+                    </div>
+
+                  </form>
+
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <!--end-HE123459-->
+
+
+          <!-- HE123460 -->
+          <div class="modal fade" id="HE123460" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Prada - Short-sleeved Linen Shirt</h5>
+                  <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">
+                    <i class="bi bi-x-lg"></i>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="{{ url('/home/addtocart') }}" method="post">
+                  {{csrf_field()}} {{ method_field('POST') }}
+                    <div class="row">
+                      <div class="col-5">
+                        <img src="{{URL::asset('/products/HE123460.png')}}" width="600px" height="auto" class="centerd-image">
+                      </div>
+                      <div class="col-7">
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Id</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>HE123460</label>  <!--id-->
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Name</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>Prada - Short-sleeved Linen Shirt</label> <!--name-->
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Brand</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>Prada</label> <!--Brand-->
+                          </div>
+                        </div>
+  
+                        <hr>
+                        <div class="row">
+                          <div class="col-12">
+                            <p class="text-muted"><b>Select your details</b></p>
+                          </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                          <div class="col-4">
+                            <label>Size :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Colour :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Quantity :</label>
+                          </div>
+                        </div>
+  
+                        <div class="row">
+                          <div class="col-4">
+                            <select class="form-control" name="size" required>
+                              <option>Small</option>
+                              <option>Medium</option>
+                              <option>Large</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <select class="form-control" name="colour" required>
+                              <option>White</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                          </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                          <div class="col-8">
+                          </div>
+                          <div class="col-4">
+                            <h5 class="text-muted">Rs. 29999.99</h5>
+                          </div>
+                        </div>
+                        <br>
+
+                        <!--hidden inputs-->
+                        <div class="row">
+                          <div class="col-12">
+                            <input type="hidden" class="from-control" name="cus_email" value="{{$email}}">
+                            <input type="hidden" class="from-control" name="product_id" value="HE123460">
+                            <input type="hidden" class="from-control" name="price" value="29999.99">
+                            <input type="hidden" class="from-control" name="product_name" value="Prada - Short-sleeved Linen Shirt">
+                            <input type="hidden" class="from-control" name="brand" value="Prada">
+                          </div>
+                        </div>
+                        <!--hidden inputs-->
+
+                        <div class="row d-flex justify-content-center">
+                          <div class="btn-group" role="group">
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-cart-plus"></i> Add to cart</button>
+                          </div>
+                        </div>
+
+                        
+  
+                      </div>
+                    </div>
+
+                  </form>
+
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <!--end-HE123460-->
+
+          <!-- HE123461 -->
+          <div class="modal fade" id="HE123461" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Prada - Single-breasted Jacket</h5>
+                  <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">
+                    <i class="bi bi-x-lg"></i>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="{{ url('/home/addtocart') }}" method="post">
+                  {{csrf_field()}} {{ method_field('POST') }}
+                    <div class="row">
+                      <div class="col-5">
+                        <img src="{{URL::asset('/products/HE123461.png')}}" width="600px" height="auto" class="centerd-image">
+                      </div>
+                      <div class="col-7">
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Id</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>HE123461</label>  <!--id-->
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Name</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>Prada - Single-breasted Jacket</label> <!--name-->
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Brand</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>Prada</label> <!--Brand-->
+                          </div>
+                        </div>
+  
+                        <hr>
+                        <div class="row">
+                          <div class="col-12">
+                            <p class="text-muted"><b>Select your details</b></p>
+                          </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                          <div class="col-4">
+                            <label>Size :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Colour :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Quantity :</label>
+                          </div>
+                        </div>
+  
+                        <div class="row">
+                          <div class="col-4">
+                            <select class="form-control" name="size" required>
+                              <option>Small</option>
+                              <option>Medium</option>
+                              <option>Large</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <select class="form-control" name="colour" required>
+                              <option>Navy Blue</option>
+                              <option>Dark Blue</option>
+                              <option>Black</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                          </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                          <div class="col-8">
+                          </div>
+                          <div class="col-4">
+                            <h5 class="text-muted">Rs. 44499.99</h5>
+                          </div>
+                        </div>
+                        <br>
+
+                        <!--hidden inputs-->
+                        <div class="row">
+                          <div class="col-12">
+                            <input type="hidden" class="from-control" name="cus_email" value="{{$email}}">
+                            <input type="hidden" class="from-control" name="product_id" value="HE123461">
+                            <input type="hidden" class="from-control" name="price" value="44499.99">
+                            <input type="hidden" class="from-control" name="product_name" value="Prada - Single-breasted Jacket">
+                            <input type="hidden" class="from-control" name="brand" value="Prada">
+                          </div>
+                        </div>
+                        <!--hidden inputs-->
+
+                        <div class="row d-flex justify-content-center">
+                          <div class="btn-group" role="group">
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-cart-plus"></i> Add to cart</button>
+                          </div>
+                        </div>
+
+                        
+  
+                      </div>
+                    </div>
+
+                  </form>
+
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <!--end-HE123461-->
+
+
+          <!-- HE123462 -->
+          <div class="modal fade" id="HE123462" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Prada - Single-breasted Wool Jacket</h5>
+                  <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">
+                    <i class="bi bi-x-lg"></i>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="{{ url('/home/addtocart') }}" method="post">
+                  {{csrf_field()}} {{ method_field('POST') }}
+                    <div class="row">
+                      <div class="col-5">
+                        <img src="{{URL::asset('/products/HE123462.png')}}" width="600px" height="auto" class="centerd-image">
+                      </div>
+                      <div class="col-7">
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Id</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>HE123462</label>  <!--id-->
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Name</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>Prada - Single-breasted Wool Jacket</label> <!--name-->
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Brand</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>Prada</label> <!--Brand-->
+                          </div>
+                        </div>
+  
+                        <hr>
+                        <div class="row">
+                          <div class="col-12">
+                            <p class="text-muted"><b>Select your details</b></p>
+                          </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                          <div class="col-4">
+                            <label>Size :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Colour :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Quantity :</label>
+                          </div>
+                        </div>
+  
+                        <div class="row">
+                          <div class="col-4">
+                            <select class="form-control" name="size" required>
+                              <option>Small</option>
+                              <option>Medium</option>
+                              <option>Large</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <select class="form-control" name="colour" required>
+                              <option>Dark Blue</option>
+                              <option>Black</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                          </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                          <div class="col-8">
+                          </div>
+                          <div class="col-4">
+                            <h5 class="text-muted">Rs. 44499.99</h5>
+                          </div>
+                        </div>
+                        <br>
+
+                        <!--hidden inputs-->
+                        <div class="row">
+                          <div class="col-12">
+                            <input type="hidden" class="from-control" name="cus_email" value="{{$email}}">
+                            <input type="hidden" class="from-control" name="product_id" value="HE123462">
+                            <input type="hidden" class="from-control" name="price" value="44499.99">
+                            <input type="hidden" class="from-control" name="product_name" value="Prada - Single-breasted Wool Jacket">
+                            <input type="hidden" class="from-control" name="brand" value="Prada">
+                          </div>
+                        </div>
+                        <!--hidden inputs-->
+
+                        <div class="row d-flex justify-content-center">
+                          <div class="btn-group" role="group">
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-cart-plus"></i> Add to cart</button>
+                          </div>
+                        </div>
+
+                        
+  
+                      </div>
+                    </div>
+
+                  </form>
+
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <!--end-HE123462-->
+
+
+          <!-- HE123463 -->
+          <div class="modal fade" id="HE123463" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Prada - Single-breasted Cotton Jacket</h5>
+                  <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">
+                    <i class="bi bi-x-lg"></i>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="{{ url('/home/addtocart') }}" method="post">
+                  {{csrf_field()}} {{ method_field('POST') }}
+                    <div class="row">
+                      <div class="col-5">
+                        <img src="{{URL::asset('/products/HE123463.png')}}" width="600px" height="auto" class="centerd-image">
+                      </div>
+                      <div class="col-7">
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Id</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>HE123463</label>  <!--id-->
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Item Name</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>Prada - Single-breasted Cotton Jacket</label> <!--name-->
+                          </div>
+                        </div>
+  
+                        <br>
+  
+                        <div class="row">
+                          <div class="col-3">
+                            <label>Brand</label>
+                          </div>
+                          <div class="col-1">
+                            <label>:</label>
+                          </div>
+                          <div class="col-8">
+                            <label>Prada</label> <!--Brand-->
+                          </div>
+                        </div>
+  
+                        <hr>
+                        <div class="row">
+                          <div class="col-12">
+                            <p class="text-muted"><b>Select your details</b></p>
+                          </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                          <div class="col-4">
+                            <label>Size :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Colour :</label>
+                          </div>
+                          <div class="col-4">
+                            <label>Quantity :</label>
+                          </div>
+                        </div>
+  
+                        <div class="row">
+                          <div class="col-4">
+                            <select class="form-control" name="size" required>
+                              <option>Small</option>
+                              <option>Medium</option>
+                              <option>Large</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <select class="form-control" name="colour" required>
+                              <option>Cream</option>
+                              <option>Light Gray</option>
+                              <option>Dark Gray</option>
+                            </select>
+                          </div>
+                          <div class="col-4">
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                          </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                          <div class="col-8">
+                          </div>
+                          <div class="col-4">
+                            <h5 class="text-muted">Rs. 44499.99</h5>
+                          </div>
+                        </div>
+                        <br>
+
+                        <!--hidden inputs-->
+                        <div class="row">
+                          <div class="col-12">
+                            <input type="hidden" class="from-control" name="cus_email" value="{{$email}}">
+                            <input type="hidden" class="from-control" name="product_id" value="HE123463">
+                            <input type="hidden" class="from-control" name="price" value="44499.99">
+                            <input type="hidden" class="from-control" name="product_name" value="Prada - Single-breasted Cotton Jacket">
+                            <input type="hidden" class="from-control" name="brand" value="Prada">
+                          </div>
+                        </div>
+                        <!--hidden inputs-->
+
+                        <div class="row d-flex justify-content-center">
+                          <div class="btn-group" role="group">
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-cart-plus"></i> Add to cart</button>
+                          </div>
+                        </div>
+
+                        
+  
+                      </div>
+                    </div>
+
+                  </form>
+
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <!--end-HE123463-->
 
 
           <!-- cart modal -->

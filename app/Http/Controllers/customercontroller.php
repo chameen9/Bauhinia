@@ -54,7 +54,7 @@ class customercontroller extends Controller
         $gotname = DB::Table('customers')->where('email',$reqemail)->value('name');
 
         $count = DB::Table('carts')->where('cus_email', $reqemail)->count();
-        $activeordercount = DB::Table('orders')->where([['email','=', $email],['status','!=','Completed']])->count();
+        $activeordercount = DB::Table('orders')->where([['email','=', $reqemail],['status','!=','Completed']])->count();
     
         if($gotemail==$reqemail){
             if($gotpassword==$reqpassword){

@@ -129,7 +129,7 @@
                                 <input type="hidden" name="primary_contact" value="{{$primary_contact}}">
                                 <input type="hidden" name="secondary_contact" value="{{$secondary_contact}}">
                                 <input type="hidden" name="delivery_address" value="{{$delivery_address}}">
-                                <p class="lead"><b><i>{{$order->product_name}}</i></b></p>
+                                <p class=""><b>{{$order->product_name}}</b></p>
                                 <input type="hidden" name="product_name[]" value="{{$order->product_name}}">
                                 <p>Color: {{$order->colour}} <img src="{{URL::asset('/colours/'.$order->colour.'.png')}}" width="15px" height="15px" class="rounded-circle"></p>
                                 <input type="hidden" name="colour[]" value="{{$order->colour}}">
@@ -137,32 +137,45 @@
                                 <input type="hidden" name="size[]" value="{{$order->size}}">
                                 
                                 <div class="row">
-                                    <div class="col-6">
-                                       <p><i>Ordered Date:</i></p>
-                                    </div>
-                                    <div class="col-6"><i>Estimated Delivery Date:</i></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6"><strong>{{$order->ordered_date}}</strong></div>
-                                    <div class="col-6"><strong>{{$order->est_del_date}}</strong></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12"><br></div>
-                                </div>
-                                <div class="row">
                                     <div class="col-4">
+                                       <p><i>Ordered Date: {{$order->ordered_date}}</i></p>
+                                    </div>
+                                    <div class="col-2"><br></div>
+                                    <div class="col-6"><i>Estimated Delivery Date: {{$order->est_del_date}}</i></div>
+                                </div>
+                               <br>
+                                
+                                
+                                <div class="row">
+                                    <div class="col-12">
                                         Order Status: 
                                     </div>
-                                    <div class="col-8">
-                                        @if($order->status == 'Pending')
-                                        <p class="text-muted"><i class="bi bi-hourglass-split"></i> {{$order->status}}</p>
-                                        @elseif($order->status == 'Shipped')
-                                        <p class="text-primary"><i class="bi bi-truck"></i> {{$order->status}}</p>
-                                        @else
-                                        <p class="text-success"><i class="bi bi-check2-circle"></i> {{$order->status}}</p>
-                                        @endif
-                                    </div>
                                 </div>
+
+                                <div class="row">
+                                  <div class="col-12">
+                                    @if($order->status == 'Pending')
+                                    <div class="progress">
+                                      <div class="progress-bar bg-primary " role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100">
+                                       <span><i class="bi bi-hourglass-split"></i> {{$order->status}}</span> 
+                                      </div>
+                                    </div>
+                                    @elseif($order->status == 'Shipped')
+                                    <div class="progress">
+                                      <div class="progress-bar bg-primary " role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100">
+                                        <span><i class="bi bi-truck"></i> {{$order->status}}</span> 
+                                      </div>
+                                    </div>
+                                    @else
+                                    <div class="progress">
+                                      <div class="progress-bar bg-success " role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                        <span><i class="bi bi-check2-circle"></i> {{$order->status}}</span>
+                                      </div>
+                                    </div>
+                                    @endif
+                                  </div>
+                                </div>
+                                
                                 
                                 <!-- Data -->
                               </div>
@@ -238,6 +251,7 @@
                                         @endif
                                     </div>
                                 </div>
+                                  
                                 
                                 <input type="hidden" value="{{$totalprice = $totalprice + $order->price*$order->qty}}"></input>
                                 
@@ -284,7 +298,7 @@
                                 <input type="hidden" name="primary_contact" value="{{$primary_contact}}">
                                 <input type="hidden" name="secondary_contact" value="{{$secondary_contact}}">
                                 <input type="hidden" name="delivery_address" value="{{$delivery_address}}">
-                                <p class="lead"><b><i>{{$oldorder->product_name}}</i></b></p>
+                                <p class=""><b>{{$oldorder->product_name}}</b></p>
                                 <input type="hidden" name="product_name[]" value="{{$oldorder->product_name}}">
                                 <p>Color: {{$oldorder->colour}} <img src="{{URL::asset('/colours/'.$oldorder->colour.'.png')}}" width="15px" height="15px" class="rounded-circle"></p>
                                 <input type="hidden" name="colour[]" value="{{$oldorder->colour}}">
@@ -292,31 +306,38 @@
                                 <input type="hidden" name="size[]" value="{{$oldorder->size}}">
                                 
                                 <div class="row">
-                                    <div class="col-6">
-                                       <p><i>Ordered Date:</i></p>
+                                    <div class="col-12">
+                                       <p><i>Ordered Date: {{$oldorder->ordered_date}}</i></p>
                                     </div>
-                                    <div class="col-6"><i>Estimated Delivery Date:</i></div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-6"><strong>{{$oldorder->ordered_date}}</strong></div>
-                                    <div class="col-6"><strong>{{$oldorder->est_del_date}}</strong></div>
-                                </div>
+                                
                                 <div class="row">
                                     <div class="col-12"><br></div>
                                 </div>
+                                <br>
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-12">
                                         Order Status: 
                                     </div>
-                                    <div class="col-8">
-                                        @if($oldorder->status == 'Pending')
-                                        <p class="text-muted"><i class="bi bi-hourglass-split"></i> {{$oldorder->status}}</p>
-                                        @elseif($oldorder->status == 'Shipped')
-                                        <p class="text-primary"><i class="bi bi-truck"></i> {{$oldorder->status}}</p>
-                                        @else
-                                        <p class="text-success"><i class="bi bi-check2-circle"></i> {{$oldorder->status}}</p>
-                                        @endif
+                                    
+                                </div>
+                                <div class="row">
+                                  <div class="col-12">
+                                    
+                                    @if($oldorder->status == 'Completed')
+                                    <div class="progress">
+                                      <div class="progress-bar bg-success " role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                        <span><i class="bi bi-check2-circle"></i> {{$oldorder->status}}</span> 
+                                      </div>
                                     </div>
+                                    @else
+                                    <div class="progress">
+                                      <div class="progress-bar bg-primary " role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                       
+                                      </div>
+                                    </div>
+                                    @endif
+                                  </div>
                                 </div>
                                 
                                 <!-- Data -->
@@ -397,6 +418,7 @@
                                 
                                 
                                 
+                                
                               </div>
                             </div>
   
@@ -450,6 +472,49 @@
                                     &bull; You have to pay this amount when reciving your order.
                                   </li>
                                 </ul>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="shadow p-0 mb-1 bg-white rounded">
+                            <div class="card mb-4">
+                              
+                              <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                  <div class="row">
+                                    <div class="col-12">
+                                      <h6>We Accept:</h6>
+                                      <hr>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-4">
+                                      <img src="{{URL::asset('/images/cash.png')}}" class="img-fluid">
+                                    </div>
+                                    <div class="col-4">
+                                      <img src="{{URL::asset('/images/visa.png')}}" class="img-fluid">
+                                    </div>
+                                    <div class="col-4">
+                                      <img src="{{URL::asset('/images/masterCard.png')}}" class="img-fluid">
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-12">
+                                      <br>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-12">
+                                      <p class="text-muted" style="font-size: 13px;">
+                                        &bull; You can pay with these optitions at your doorstep.
+                                      </p>
+                                    </div>
+                                  </div>
 
                               </div>
                             </div>
