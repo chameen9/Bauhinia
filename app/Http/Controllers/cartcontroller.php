@@ -24,6 +24,7 @@ class cartcontroller extends Controller
         $secondary_contact = DB::Table('customers')->where('email', $email)->value('secondary_contact_number');
         $delivery_address = DB::Table('customers')->where('email', $email)->value('delivery_address');
 
+
         return view('viewcart',[
             'count'=>$count,
             'carts'=>$carts,
@@ -60,6 +61,10 @@ class cartcontroller extends Controller
             ['product_id','=',$reqproduct_id]
         ])->count();
 
+        $count = DB::Table('carts')->where('cus_email',$reqcus_email)->count();
+        $ordercount = DB::Table('orders')->where('email', $reqcus_email)->count();
+
+
         if($cart_row > 0){                                      // if it's exist update qty
 
                 $old_qty = DB::Table('carts')->where([
@@ -75,12 +80,13 @@ class cartcontroller extends Controller
 
                 if($stock < $new_qty){
                     $count = DB::Table('carts')->where('cus_email',$reqcus_email)->count();
-
+                    $ordercount = DB::Table('orders')->where('email', $reqcus_email)->count();
                     return view('home',[
                         'email'=>$reqcus_email,
                         'count'=>$count,
                         'stock'=>$stock,
-                        'carts'=>$carts
+                        'carts'=>$carts,
+                        'ordercount'=>$ordercount
                     ]);
 
                 }
@@ -94,12 +100,15 @@ class cartcontroller extends Controller
                     ]);
 
                     $count = DB::Table('carts')->where('cus_email',$reqcus_email)->count();
-
+                    $count = DB::Table('carts')->where('cus_email',$reqcus_email)->count();
+                    $ordercount = DB::Table('orders')->where('email', $reqcus_email)->count();
                     return view('home',[
                         'name'=>$gotname,
                         'email'=>$reqcus_email,
                         'count'=>$count,
-                        'carts'=>$carts
+                        'carts'=>$carts,
+                        'ordercount'=>$ordercount
+
                     ]);
                 }
 
@@ -120,12 +129,14 @@ class cartcontroller extends Controller
                 $Cart->save();
 
                 $count = DB::Table('carts')->where('cus_email',$reqcus_email)->count();
-
+                $ordercount = DB::Table('orders')->where('email', $reqcus_email)->count();
+                
                 return view('home',[
                     'name'=>$gotname,
                     'email'=>$reqcus_email,
                     'count'=>$count,
-                    'carts'=>$carts
+                    'carts'=>$carts,
+                    'ordercount'=>$ordercount
             ]);
         }
 

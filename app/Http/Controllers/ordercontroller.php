@@ -9,8 +9,29 @@ use DB;
 
 class ordercontroller extends Controller
 {
-    public function confirmorder(){
+    function vieworders($email){
+        
+        $orders = DB::Table('orders')->where('email', $email)->get();
+        $count = DB::Table('orders')->where('email',$email)->count();
+        $totalitems = DB::Table('orders')->where('email', $email)->sum('qty');
+        $totalprice = 0;
 
+        $name = DB::Table('orders')->where('email', $email)->value('cus_name');
+        $primary_contact = DB::Table('orders')->where('email', $email)->value('primary_contact');
+        $secondary_contact = DB::Table('orders')->where('email', $email)->value('secondary_contact');
+        $delivery_address = DB::Table('orders')->where('email', $email)->value('delivery_address');
+
+        return view('vieworders',[
+            'count'=>$count,
+            'orders'=>$orders,
+            'email'=>$email,
+            'name'=>$name,
+            'totalprice'=>$totalprice,
+            'totalitems'=>$totalitems,
+            'delivery_address'=>$delivery_address,
+            'primary_contact'=>$primary_contact,
+            'secondary_contact'=>$secondary_contact,
+        ]);
     }
 
     public function checkoutconfirm(Request $request){
@@ -33,12 +54,16 @@ class ordercontroller extends Controller
             $order->colour = $request->colour[$key];
             $order->size = $request->size[$key];
             $order->qty = $request->qty[$key];
+            $order->price = $request->price[$key];
             $order->email = $request->email;
+            $order->status = 'Not Recieved';
             $order->cus_name = $request->up_name;
             $order->primary_contact = $request->up_primary_contact;
             $order->secondary_contact = $request->up_secondary_contact;
             $order->delivery_address = $request->up_delivery_address;
-            $order->ordered_at = Carbon::now('Asia/Colombo');
+            $order->ordered_date = Carbon::today('Asia/Colombo')->toDateString();
+            $order->ordered_time = Carbon::now('Asia/Colombo')->toTimeString();
+            $order->est_del_date = Carbon::today('Asia/Colombo')->addDays(3)->toDateString();
             $order->save();
 
             $cart_item = DB::Table('carts')
@@ -48,6 +73,7 @@ class ordercontroller extends Controller
                 ['colour','=',$request->colour[$key]],
                 ['size','=',$request->size[$key]],
                 ['qty','=',$request->qty[$key]],
+                
             ])->delete();
             
         }

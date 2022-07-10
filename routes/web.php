@@ -66,3 +66,6 @@ Route::get('/customer/home/{email}', 'App\http\controllers\customercontroller@vi
 Route::post('/customer/order/confirmorder', 'App\http\controllers\ordercontroller@confirmorder');
 
 Route::post('/customer/order/checkout/confirm', 'App\http\controllers\ordercontroller@checkoutconfirm');
+
+Route::get('/customer/orders/{email}', 'App\http\controllers\ordercontroller@vieworders');
+Route::post('/customer/orders/{email}', 'App\http\controllers\ordercontroller@vieworders');
