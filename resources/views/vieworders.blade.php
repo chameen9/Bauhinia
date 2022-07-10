@@ -457,84 +457,12 @@
                         </div>
                       </div>
 
-                      <div class="collapse" id="info">
-                        <div class="row">
-                          <div class="col-12">
-                            <div class="shadow p-0 mb-1 bg-white rounded">
-                              <div class="card mb-4">
-                                <div class="card-header py-3">
-                                  <h5 class="mb-0">Confirm Your Info</h5>
-                                </div>
-                                <div class="card-body">
-                                  <div class="row">
-                                    <div class="col-5">
-                                      <label>Name</label>
-                                    </div>
-                                    <div class="col-7">
-                                      <input type="text" required name="up_name" value="{{$name}}" class="form-control" data-mdb-showcounter="true" maxlength="100" minlength="3">
-                                    </div>
-                                  </div>
-
-                                  <div class="row">&nbsp;</div>
-
-                                  <div class="row">
-                                    <div class="col-5">
-                                      <label>Delivery Address</label>
-                                    </div>
-                                    <div class="col-7">
-                                      <input type="text" required name="up_delivery_address" value="{{$delivery_address}}" class="form-control" data-mdb-showcounter="true" maxlength="250" minlength="5">
-                                    </div>
-                                  </div>
-
-                                  <div class="row">&nbsp;</div>
-                                  
-                                  <div class="row">
-                                    <div class="col-5">
-                                      <label>Primary Contact</label>
-                                    </div>
-                                    <div class="col-7">
-                                      <input type="tel" value="{{$primary_contact}}" name="up_primary_contact" required class="form-control" data-mdb-showcounter="true" maxlength="15">
-                                    </div>
-                                  </div>
-
-                                  <div class="row">&nbsp;</div>
-                                  
-                                  <div class="row">
-                                    <div class="col-5">
-                                      <label>Secondary Contact</label>
-                                    </div>
-                                    <div class="col-7">
-                                      <input type="tel" value="{{$secondary_contact}}" name="up_secondary_contact" required class="form-control" data-mdb-showcounter="true" maxlength="15">
-                                    </div>
-                                  </div>
-
-                                  <div class="row">&nbsp;</div>
-
-                                  <div class="row">
-                                    <button type="submit" class="btn btn-primary btn-block">
-                                      <i class="bi bi-check-circle"></i> Place Your Order
-                                    </button>
-                                  </div>
-
-                                  
-  
-                                </div>
-
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      
-
-
                     </div>
-
-                    
 
                   </div>
                 </div>
               </form>
+              
             </section>
           
     </body>
