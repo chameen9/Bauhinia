@@ -15,7 +15,7 @@ class customercontroller extends Controller
     public function viewhome($email){
         $gotname = DB::Table('customers')->where('email',$email)->value('name');
         $count = DB::Table('carts')->where('cus_email', $email)->count();
-        $ordercount = DB::Table('orders')->where('email', $email)->count();
+        $activeordercount = DB::Table('orders')->where([['email','=', $email],['status','!=','Completed']])->count();
 
         if($count > 0){
             $cartcount = $count;
@@ -24,18 +24,18 @@ class customercontroller extends Controller
             $cartcount = null;
         }
 
-        if($ordercount > 0){
-            $ordercount = $ordercount;
+        if($activeordercount > 0){
+            $activeordercount = $activeordercount;
         }
         else{
-            $ordercount = null;
+            $activeordercount = null;
         }
 
         return view('home',[
             'name'=>$gotname,
             'email'=>$email,
             'count'=>$cartcount,
-            'ordercount'=>$ordercount,
+            'activeordercount'=>$activeordercount,
         ]); 
 
     }
@@ -54,7 +54,7 @@ class customercontroller extends Controller
         $gotname = DB::Table('customers')->where('email',$reqemail)->value('name');
 
         $count = DB::Table('carts')->where('cus_email', $reqemail)->count();
-        $ordercount = DB::Table('orders')->where('email', $reqemail)->count();
+        $activeordercount = DB::Table('orders')->where([['email','=', $email],['status','!=','Completed']])->count();
     
         if($gotemail==$reqemail){
             if($gotpassword==$reqpassword){
@@ -66,18 +66,18 @@ class customercontroller extends Controller
                     $cartcount = null;
                 }
 
-                if($ordercount > 0){
-                    $ordercount = $ordercount;
+                if($activeordercount > 0){
+                    $activeordercount = $activeordercount;
                 }
                 else{
-                    $ordercount = null;
+                    $activeordercount = null;
                 }
                 
                 return view('home',[
                     'name'=>$gotname,
                     'email'=>$reqemail,
                     'count'=>$cartcount,
-                    'ordercount'=>$ordercount,
+                    'activeordercount'=>$activeordercount,
                 ]); 
                    
             }

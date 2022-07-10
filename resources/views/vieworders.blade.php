@@ -69,21 +69,6 @@
                   <!-- Left links -->
     
                   <div class="d-flex align-items-center">
-                    <!-- Cart 
-                    @if($count == null)
-                      <div class="nav-item">
-                        <a role="button" data-toggle="modal" data-target="#cartmodal"  class="position-relative">
-                          <h4><i class="bi bi-cart"></i></h4><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
-                        </a>
-                      </div>
-                    @else
-                      <div class="nav-item">
-                        <a href="{{ url('/customer/viewcart') }}" role="button" class="position-relative">
-                          <h4><i class="bi bi-cart-fill"></i></h4><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{$count}}</span>
-                        </a>
-                      </div>
-                    @endif
-                     Cart -->
     
                     &nbsp; &nbsp; &nbsp;
     
@@ -119,7 +104,7 @@
                       <div class="shadow p-0 mb-1 bg-white rounded">
                         <div class="card mb-4">
                           <div class="card-header py-3">
-                            <h5 class="mb-0">Orders - {{$count}} items</h5>
+                            <h5 class="mb-0">Active Orders - {{$activeordercount}} items</h5>
                           </div>
                           <div class="card-body">
                           
@@ -160,6 +145,23 @@
                                 <div class="row">
                                     <div class="col-6"><strong>{{$order->ordered_date}}</strong></div>
                                     <div class="col-6"><strong>{{$order->est_del_date}}</strong></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12"><br></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        Order Status: 
+                                    </div>
+                                    <div class="col-8">
+                                        @if($order->status == 'Pending')
+                                        <p class="text-muted"><i class="bi bi-hourglass-split"></i> {{$order->status}}</p>
+                                        @elseif($order->status == 'Shipped')
+                                        <p class="text-primary"><i class="bi bi-truck"></i> {{$order->status}}</p>
+                                        @else
+                                        <p class="text-success"><i class="bi bi-check2-circle"></i> {{$order->status}}</p>
+                                        @endif
+                                    </div>
                                 </div>
                                 
                                 <!-- Data -->
@@ -222,10 +224,18 @@
 
                                 <div class="row">
                                     <div class="col-12">
-                                        <a href="{{url('/customer/order/markasrecieved/'.$email.'/'.$order->product_id.'/'.$order->colour.'/'.$order->size.'/'.$order->qty.'/'.$order->ordered_date.'/'.$order->ordered_time.' ')}}" 
-                                            role="button" class="btn btn-primary btn-sm mb-2" data-mdb-toggle="tooltip" title="Mark as Recieved When You Recieved The Item">
-                                            <i class="bi bi-check"></i> Mark as Recieved
-                                        </a>
+                                        @if($order->status == 'Shipped')
+                                            <a href="{{url('/customer/order/markasrecieved/'.$email.'/'.$order->product_id.'/'.$order->colour.'/'.$order->size.'/'.$order->qty.'/'.$order->ordered_date.'/'.$order->ordered_time.' ')}}" 
+                                                role="button" class="btn btn-primary btn-sm mb-2" data-mdb-toggle="tooltip" title="Mark as Recieved When You Recieved The Item">
+                                                <i class="bi bi-check"></i> Mark as Recieved
+                                            </a>
+                                        @elseif($order->status == 'Completed')
+                                            <a href="{{url('/customer/order/delete/'.$email.'/'.$order->product_id.'/'.$order->colour.'/'.$order->size.'/'.$order->qty.'/'.$order->ordered_date.'/'.$order->ordered_time.' ')}}" 
+                                                role="button" class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip" title="Remove this Order">
+                                                <i class="bi bi-trash"></i> Remove
+                                            </a>
+                                        @else
+                                        @endif
                                     </div>
                                 </div>
                                 
@@ -244,6 +254,164 @@
   
                         </div>
                       </div>
+
+                      <!--Old Orders-->
+                      <div class="shadow p-0 mb-1 bg-white rounded">
+                        <div class="card mb-4">
+                          <div class="card-header py-3">
+                            <h5 class="mb-0">Completed Orders - {{$oldordercount}} items</h5>
+                          </div>
+                          <div class="card-body">
+                          
+
+                            @foreach($oldorders as $oldorder)
+                            <!-- Single item -->
+                            <div class="row">
+                              <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                                <!-- Image -->
+                                <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
+                                  <img src="{{URL::asset('/products/'.$oldorder->product_id.'.png')}}"
+                                    class="w-100 height: 100px; img-fluid"/>
+                                </div>
+                                <!-- Image -->
+                              </div>
+                
+                              <div class="col-lg-6 col-md-6 mb-4 mb-lg-0">
+                                <!-- Data -->
+                                <input type="hidden" name="key[]" value="{{$oldorder->order_id}}">
+                                <input type="hidden" name="product_id[]" value="{{$oldorder->product_id}}">
+                                <input type="hidden" name="email" value="{{$email}}">
+                                <input type="hidden" name="primary_contact" value="{{$primary_contact}}">
+                                <input type="hidden" name="secondary_contact" value="{{$secondary_contact}}">
+                                <input type="hidden" name="delivery_address" value="{{$delivery_address}}">
+                                <p class="lead"><b><i>{{$oldorder->product_name}}</i></b></p>
+                                <input type="hidden" name="product_name[]" value="{{$oldorder->product_name}}">
+                                <p>Color: {{$oldorder->colour}} <img src="{{URL::asset('/colours/'.$oldorder->colour.'.png')}}" width="15px" height="15px" class="rounded-circle"></p>
+                                <input type="hidden" name="colour[]" value="{{$oldorder->colour}}">
+                                <p>Size: {{$oldorder->size}}</p>
+                                <input type="hidden" name="size[]" value="{{$oldorder->size}}">
+                                
+                                <div class="row">
+                                    <div class="col-6">
+                                       <p><i>Ordered Date:</i></p>
+                                    </div>
+                                    <div class="col-6"><i>Estimated Delivery Date:</i></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6"><strong>{{$oldorder->ordered_date}}</strong></div>
+                                    <div class="col-6"><strong>{{$oldorder->est_del_date}}</strong></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12"><br></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        Order Status: 
+                                    </div>
+                                    <div class="col-8">
+                                        @if($oldorder->status == 'Pending')
+                                        <p class="text-muted"><i class="bi bi-hourglass-split"></i> {{$oldorder->status}}</p>
+                                        @elseif($oldorder->status == 'Shipped')
+                                        <p class="text-primary"><i class="bi bi-truck"></i> {{$oldorder->status}}</p>
+                                        @else
+                                        <p class="text-success"><i class="bi bi-check2-circle"></i> {{$oldorder->status}}</p>
+                                        @endif
+                                    </div>
+                                </div>
+                                
+                                <!-- Data -->
+                              </div>
+                
+                              <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                                <div class="row">
+                                    <!-- Quantity -->
+                                    <div class="d-flex mb-4" style="max-width: 300px">
+                                                                
+                                      <div class="form-outline">
+                                        <label class="form-label">Quantity :</label>
+                                        <input type="hidden" name="qty[]" value="{{$oldorder->qty}}">
+                                        <label class="form-label">{{$oldorder->qty}}</label>
+                                      </div>
+                                      
+  
+                                    </div>
+                                    <!-- Quantity -->
+                                </div>
+                                <div class="row">
+                                  <div class="col-12">
+                                      <!-- Price -->
+                                      <p class="text-start text-muted">
+                                        Item Price : Rs. {{$oldorder->price}}
+                                      </p>
+                                      <!-- Price -->
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <br>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <br>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <br>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <br>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <br>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        @if($oldorder->status == 'Shipped')
+                                            <a href="{{url('/customer/order/markasrecieved/'.$email.'/'.$oldorder->product_id.'/'.$oldorder->colour.'/'.$oldorder->size.'/'.$oldorder->qty.'/'.$oldorder->ordered_date.'/'.$oldorder->ordered_time.' ')}}" 
+                                                role="button" class="btn btn-primary btn-sm mb-2" data-mdb-toggle="tooltip" title="Mark as Recieved When You Recieved The Item">
+                                                <i class="bi bi-check"></i> Mark as Recieved
+                                            </a>
+                                        @elseif($oldorder->status == 'Completed')
+                                            <a href="{{url('/customer/order/removeorder/'.$email.'/'.$oldorder->product_id.'/'.$oldorder->colour.'/'.$oldorder->size.'/'.$oldorder->qty.'/'.$oldorder->ordered_date.'/'.$oldorder->ordered_time.' ')}}" 
+                                                role="button" class="btn btn-outline-danger btn-sm mb-2" data-mdb-toggle="tooltip" title="Remove this Order">
+                                                <i class="bi bi-trash"></i> Remove from Orders
+                                            </a>
+                                        @else
+                                        @endif
+                                    </div>
+                                </div>
+                                
+                                
+                                
+                                
+                              </div>
+                            </div>
+  
+                            <hr class="my-4" />
+                            <!-- Single item -->
+                            @endforeach
+
+                          
+                          </div>
+  
+                        </div>
+                      </div>
+                      <!--Old Orders-->
+
+                      
                       
                       
                     </div>
@@ -253,7 +421,7 @@
                           <div class="shadow p-0 mb-1 bg-white rounded">
                             <div class="card mb-4">
                               <div class="card-header py-3">
-                                <h5 class="mb-0">Order Summary</h5>
+                                <h5 class="mb-0">Actice Orders - Summary</h5>
                               </div>
                               <div class="card-body">
                                 <ul class="list-group list-group-flush">

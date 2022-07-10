@@ -6,14 +6,17 @@ use Illuminate\Http\Request;
 use App\Models\order;
 use Carbon\Carbon;
 use DB;
+use Redirect;
 
 class ordercontroller extends Controller
 {
     function vieworders($email){
         
-        $orders = DB::Table('orders')->where('email', $email)->get();
-        $count = DB::Table('orders')->where('email',$email)->count();
-        $totalitems = DB::Table('orders')->where('email', $email)->sum('qty');
+        $orders = DB::Table('orders')->where([['email','=', $email],['status','!=','Completed']])->get();
+        $oldorders = DB::Table('orders')->where([['email','=', $email],['status','=','Completed']])->get();
+        $activeordercount = DB::Table('orders')->where([['email','=', $email],['status','!=','Completed']])->count();
+        $oldordercount = DB::Table('orders')->where([['email','=', $email],['status','=','Completed']])->count();
+        $totalitems = DB::Table('orders')->where([['email','=', $email],['status','!=','Completed']])->sum('qty');
         $totalprice = 0;
 
         $name = DB::Table('orders')->where('email', $email)->value('cus_name');
@@ -22,8 +25,10 @@ class ordercontroller extends Controller
         $delivery_address = DB::Table('orders')->where('email', $email)->value('delivery_address');
 
         return view('vieworders',[
-            'count'=>$count,
+            'activeordercount'=>$activeordercount,
+            'oldordercount'=>$oldordercount,
             'orders'=>$orders,
+            'oldorders'=>$oldorders,
             'email'=>$email,
             'name'=>$name,
             'totalprice'=>$totalprice,
@@ -56,7 +61,7 @@ class ordercontroller extends Controller
             $order->qty = $request->qty[$key];
             $order->price = $request->price[$key];
             $order->email = $request->email;
-            $order->status = 'Not Recieved';
+            $order->status = 'Pending';
             $order->cus_name = $request->up_name;
             $order->primary_contact = $request->up_primary_contact;
             $order->secondary_contact = $request->up_secondary_contact;
@@ -104,6 +109,44 @@ class ordercontroller extends Controller
         ]); 
 
         
+
+    }
+
+    public function markasrecieved($email, $product_id, $colour, $size, $qty, $ordered_date, $ordered_time){
+        $recived_order = DB::Table('orders')
+            ->where([
+                ['email','=',$email],
+                ['product_id','=',$product_id],
+                ['colour','=',$colour],
+                ['size','=',$size],
+                ['qty','=',$qty],
+                ['ordered_date','=',$ordered_date],
+                ['ordered_time','=',$ordered_time],
+
+            ])->update([
+                'status' => 'Completed'
+            ]);
+
+            return back();
+
+    }
+
+    public function removeorder($email, $product_id, $colour, $size, $qty, $ordered_date, $ordered_time){
+        $recived_order = DB::Table('orders')
+            ->where([
+                ['email','=',$email],
+                ['product_id','=',$product_id],
+                ['colour','=',$colour],
+                ['size','=',$size],
+                ['qty','=',$qty],
+                ['ordered_date','=',$ordered_date],
+                ['ordered_time','=',$ordered_time],
+
+            ])->update([
+                'status' => 'Deleted'
+            ]);
+
+            return back();
 
     }
 

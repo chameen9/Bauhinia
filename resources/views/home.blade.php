@@ -98,10 +98,10 @@
                     <label>{{$name}}</label></p>
                     <hr>
                     <a class="dropdown-item" href="{{ url('/customer/editprofile') }}">Profile</a>
-                    @if($ordercount == null)
+                    @if($activeordercount == null)
                       <a class="dropdown-item disabled" href="{{ url('/customer/orders/'.$email.' ') }}">Orders</a>
                     @else
-                      <a class="dropdown-item" href="{{ url('/customer/orders/'.$email.' ') }}">Orders <span class="badge rounded-pill badge-notification bg-primary">{{$ordercount}}</span></a>
+                      <a class="dropdown-item" href="{{ url('/customer/orders/'.$email.' ') }}">Orders <span class="badge rounded-pill badge-notification bg-primary">{{$activeordercount}}</span></a>
                     @endif
                     <a class="dropdown-item" href="{{ url('/customer/signout') }}">Sign Out</a>
                   </div>
