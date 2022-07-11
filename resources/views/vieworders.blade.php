@@ -252,7 +252,6 @@
                                     </div>
                                 </div>
                                   
-                                
                                 <input type="hidden" value="{{$totalprice = $totalprice + $order->price*$order->qty}}"></input>
                                 
                                 

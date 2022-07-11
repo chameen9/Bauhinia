@@ -60,6 +60,7 @@ class ordercontroller extends Controller
             $order->size = $request->size[$key];
             $order->qty = $request->qty[$key];
             $order->price = $request->price[$key];
+            $order->order_value = null;
             $order->email = $request->email;
             $order->status = 'Pending';
             $order->cus_name = $request->up_name;

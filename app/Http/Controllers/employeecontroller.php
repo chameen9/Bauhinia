@@ -24,10 +24,15 @@ class employeecontroller extends Controller
         $gotemail = DB::Table('employees')->where('email',$reqemail)->value('email');
         $gotpassword = DB::Table('employees')->where('email',$reqemail)->value('password');
         $gotname = DB::Table('employees')->where('email',$reqemail)->value('name');
+       
 
         if($gotemail==$reqemail){
             if($gotpassword==$reqpassword){
-                return view('dashboard',['name'=>$gotname]); //send name to the view     return customer view 
+                return view('dashboard',[
+                    'name'=>$gotname,
+                    'orders'=>null,
+                    'email'=>$gotemail
+                ]); //send name to the view     return customer view 
                 
             }
             else{
@@ -109,5 +114,28 @@ class employeecontroller extends Controller
 
         //return view('e-signupsuccessful');//->with('name',$name);
         return back()->with('message',$name);
+    }
+
+    function findorders(Request $request){ 
+        $gotname = DB::Table('employees')->where('email',$request->email)->value('name');
+
+        $reqdate = $request->date;
+        $reqstatus = $request->status;
+
+        if($reqstatus == 'All'){
+            $orders = DB::Table('orders')->get();
+        }
+        else{
+            $orders = DB::Table('orders')->where([
+                ['status','=', $reqstatus],
+            ])->get();
+        }
+
+        //dd($reqstatus);
+        return view('dashboard',[
+            'name'=>$gotname,
+            'orders'=>$orders,
+            'email'=>$request->email
+        ]);
     }
 }

@@ -70,8 +70,6 @@ Route::post('/customer/order/checkout/confirm', 'App\http\controllers\ordercontr
 Route::get('/customer/orders/{email}', 'App\http\controllers\ordercontroller@vieworders');
 Route::post('/customer/orders/{email}', 'App\http\controllers\ordercontroller@vieworders');
 
-
-
 Route::get('/customer/order/markasrecieved/{email}/{product_id}/{colour}/{size}/{qty}/{ordered_date}/{ordered_time}', 'App\http\controllers\ordercontroller@markasrecieved');
 Route::get('/customer/order/markasrecieved/{email}/{product_id}/{colour}/{size}/{qty}/{ordered_date}/{ordered_time}', 'App\http\controllers\ordercontroller@markasrecieved');
 
@@ -80,3 +78,6 @@ Route::post('/customer/order/removeorder/{email}/{product_id}/{colour}/{size}/{q
 
 Route::post('/customer/signout', 'App\http\controllers\customercontroller@signout');
 Route::get('/customer/signout', 'App\http\controllers\customercontroller@signout');
+
+//Route::get('/employee/find/orders', 'App\http\controllers\employeecontroller@findorders');
+Route::post('/employee/find/orders', 'App\http\controllers\employeecontroller@findorders');
