@@ -80,12 +80,23 @@ class ordercontroller extends Controller
                 ['qty','=',$request->qty[$key]],
                 
             ])->delete();
+
+            $stockqty = DB::Table('products')->where('product_id', $request->product_id[$key])->value('stock');
+            $newstock = $stockqty - $request->qty[$key];
+
+            $upstock = DB::table('products')
+              ->where('product_id', $request->product_id[$key])
+              ->update([
+                'stock' => $newstock
+            ]);
             
         }
 
         $gotname = DB::Table('customers')->where('email',$request->email)->value('name');
         $count = DB::Table('carts')->where('cus_email', $request->email)->count();
         $ordercount = DB::Table('orders')->where('email', $request->email)->count();
+
+        $activeordercount = DB::Table('orders')->where([['email','=', $request->email],['status','!=','Completed']])->count();
 
         if($count > 0){
             $cartcount = $count;
@@ -102,6 +113,7 @@ class ordercontroller extends Controller
         }
 
         return view('home',[
+            'activeordercount'=>$activeordercount,
             'name'=>$gotname,
             'email'=>$request->email,
             'count'=>$cartcount,

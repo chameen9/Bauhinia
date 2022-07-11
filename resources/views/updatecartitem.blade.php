@@ -143,7 +143,12 @@
                             <div class="d-flex mb-4" style="max-width: 300px">
                               <div class="form-outline">
                                 <label class="form-label">Quantity :</label>
-                                <input type="number" name="newqty" value="{{$qty}}" class="form-control" style="width: 70px;" min="1" max="100">
+                                <input type="number" name="newqty" value="{{$qty}}" class="form-control" style="width: 70px;" min="1" max="{{$stock}}">
+                                @if($stock > 0)
+                                  <p class="text-muted" style="font-size: 12px;">{{$stock}} items Available</p>
+                                @else
+                                  <p class="text-muted" style="font-size: 12px;">No Stock Available</p>
+                                @endif
                               </div>
                             </div>
                           </div>

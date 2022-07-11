@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Rules\PasswordChecker;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Validator;
-use Auth;
 use DB;
 
 class customercontroller extends Controller
@@ -90,8 +91,6 @@ class customercontroller extends Controller
         }
     }
 
-       
-
     function signupascustomer(Request $request){
         $Customer = new Customer;
 
@@ -129,5 +128,9 @@ class customercontroller extends Controller
         $gotname = DB::Table('users')->where('email',$reqemail)->value('name');
     }*/
 
-    
+    public function signout(Request $request){
+        $request->session()->flush();
+        Auth::logout();
+        return redirect('/');
+    }
 }

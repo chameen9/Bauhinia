@@ -175,7 +175,7 @@
                                         <input type="hidden" name="qty[]" value="{{$cart->qty}}">
                                         <label class="form-label">{{$cart->qty}}</label>
                                       </div>
-                                      
+                                    
   
                                     </div>
                                     <!-- Quantity -->

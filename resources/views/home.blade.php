@@ -936,7 +936,7 @@
                             </select>
                           </div>
                           <div class="col-4">
-                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required max="10">
                           </div>
                         </div>
 
@@ -1078,7 +1078,7 @@
                             </select>
                           </div>
                           <div class="col-4">
-                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required max="10">
                           </div>
                         </div>
 
@@ -1220,7 +1220,7 @@
                             </select>
                           </div>
                           <div class="col-4">
-                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required max="10">
                           </div>
                         </div>
 
@@ -1361,7 +1361,7 @@
                             </select>
                           </div>
                           <div class="col-4">
-                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required max="10">
                           </div>
                         </div>
 
@@ -1501,7 +1501,7 @@
                             </select>
                           </div>
                           <div class="col-4">
-                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required max="10">
                           </div>
                         </div>
 
@@ -1642,7 +1642,7 @@
                             </select>
                           </div>
                           <div class="col-4">
-                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required max="10">
                           </div>
                         </div>
 
@@ -1781,7 +1781,7 @@
                             </select>
                           </div>
                           <div class="col-4">
-                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required max="10">
                           </div>
                         </div>
 
@@ -1919,7 +1919,7 @@
                             </select>
                           </div>
                           <div class="col-4">
-                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required max="10">
                           </div>
                         </div>
 
@@ -2060,7 +2060,7 @@
                             </select>
                           </div>
                           <div class="col-4">
-                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required max="10">
                           </div>
                         </div>
 
@@ -2202,7 +2202,7 @@
                             </select>
                           </div>
                           <div class="col-4">
-                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required max="10">
                           </div>
                         </div>
 
@@ -2343,7 +2343,7 @@
                             </select>
                           </div>
                           <div class="col-4">
-                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required max="10">
                           </div>
                         </div>
 
@@ -2483,7 +2483,7 @@
                             </select>
                           </div>
                           <div class="col-4">
-                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required max="10">
                           </div>
                         </div>
 
@@ -2623,7 +2623,7 @@
                             </select>
                           </div>
                           <div class="col-4">
-                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required max="10">
                           </div>
                         </div>
 
@@ -2764,7 +2764,7 @@
                             </select>
                           </div>
                           <div class="col-4">
-                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required max="10">
                           </div>
                         </div>
 
@@ -2905,7 +2905,7 @@
                             </select>
                           </div>
                           <div class="col-4">
-                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required max="10">
                           </div>
                         </div>
 
@@ -3047,7 +3047,7 @@
                             </select>
                           </div>
                           <div class="col-4">
-                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required>
+                            <input type="number" class="form-control" name="qty" min="1" step="1" value="1" required max="10">
                           </div>
                         </div>
 

@@ -24,6 +24,7 @@ class cartcontroller extends Controller
         $secondary_contact = DB::Table('customers')->where('email', $email)->value('secondary_contact_number');
         $delivery_address = DB::Table('customers')->where('email', $email)->value('delivery_address');
 
+        
 
         return view('viewcart',[
             'count'=>$count,
@@ -82,6 +83,8 @@ class cartcontroller extends Controller
                     $count = DB::Table('carts')->where('cus_email',$reqcus_email)->count();
                     $activeordercount = DB::Table('orders')->where([['email','=', $reqcus_email],['status','!=','Completed']])->count();
                     return view('home',[
+                        'stock'=>$stock,
+                        'name'=>$gotname,
                         'email'=>$reqcus_email,
                         'count'=>$count,
                         'stock'=>$stock,
@@ -103,6 +106,7 @@ class cartcontroller extends Controller
                     $count = DB::Table('carts')->where('cus_email',$reqcus_email)->count();
                     $activeordercount = DB::Table('orders')->where([['email','=', $reqcus_email],['status','!=','Completed']])->count();
                     return view('home',[
+                        'stock'=>$stock,
                         'name'=>$gotname,
                         'email'=>$reqcus_email,
                         'count'=>$count,
@@ -147,6 +151,7 @@ class cartcontroller extends Controller
 
         $gotname = DB::Table('customers')->where('email', $email)->value('name');
         $count = DB::Table('carts')->where('cus_email',$email)->count();
+        
 
         $product_id = DB::Table('carts')->where([
             ['cus_email','=',$email],
@@ -154,6 +159,8 @@ class cartcontroller extends Controller
             ['colour','=',$colour],
             ['size','=',$size],
         ])->value('product_id');
+
+        $stock = DB::Table('products')->where('product_id', $product_id)->value('stock');
 
         $product_name = DB::Table('carts')->where([
             ['cus_email','=',$email],
@@ -191,6 +198,7 @@ class cartcontroller extends Controller
         ])->value('qty');
 
         return view('updatecartitem',[
+            'stock'=>$stock,
             'name'=>$gotname,
             'email'=>$email,
             'count'=>$count,
@@ -200,7 +208,6 @@ class cartcontroller extends Controller
             'size'=>$size,
             'price'=>$price,
             'qty'=>$qty
-            //'products'=>$products,
 
         ]);
     }

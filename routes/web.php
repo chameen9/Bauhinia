@@ -77,3 +77,6 @@ Route::get('/customer/order/markasrecieved/{email}/{product_id}/{colour}/{size}/
 
 Route::get('/customer/order/removeorder/{email}/{product_id}/{colour}/{size}/{qty}/{ordered_date}/{ordered_time}', 'App\http\controllers\ordercontroller@removeorder');
 Route::post('/customer/order/removeorder/{email}/{product_id}/{colour}/{size}/{qty}/{ordered_date}/{ordered_time}', 'App\http\controllers\ordercontroller@removeorder');
+
+Route::post('/customer/signout', 'App\http\controllers\customercontroller@signout');
+Route::get('/customer/signout', 'App\http\controllers\customercontroller@signout');
