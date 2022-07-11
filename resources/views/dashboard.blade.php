@@ -111,7 +111,7 @@
                         <br>
                         <a href="#money" class="btn btn-outline-primary">Money</a>
                         <br>
-                        <br>
+                        <a href="#money" class="btn btn-outline-primary">Products</a>
                         <br>
                         <br>
                         <br>
@@ -133,27 +133,40 @@
                             {{csrf_field()}}
                             <div class="row">
                                     <div class="col-1">
-                                        <label>Date :</label>
+                                        <label><br></label>
                                     </div>
                                 
                                     <div class="col-3">
-                                        <select name="date" class="form-control">
-                                            <option value="Today">Today</option>
-                                            <option value="Yesterday">Yesterday</option>
-                                        </select>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Date :</span>
+                                            </div>
+                                            
+                                            <select name="date" class="form-control">
+                                                <option value="All">All</option>
+                                                <option value="Today">Today</option>
+                                                <option value="Yesterday">Yesterday</option>
+                                            </select>
+                                        </div>
                                     </div>
 
                                     <div class="col-1">
-                                        <label>Status :</label>
+                                        <label><br></label>
                                     </div>
 
                                     <div class="col-3">
-                                        <select name="status" class="form-control">
-                                            <option value="All">All</option>
-                                            <option value="Pending">Pending</option>
-                                            <option value="Shipped">Shipped</option>
-                                            <option value="Completed">Completed</option>
-                                        </select>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Status :</span>
+                                            </div>
+                                            
+                                            <select name="status" class="form-control">
+                                                <option value="All">All</option>
+                                                <option value="Pending">Pending</option>
+                                                <option value="Shipped">Shipped</option>
+                                                <option value="Completed">Completed</option>
+                                            </select>
+                                        </div>
                                     </div>
 
                                     <div class="col-1">
@@ -164,7 +177,7 @@
                                         <label><br></label>
                                         <input type="hidden" name="name" value="{{$name}}">
                                         <input type="hidden" name="email" value="{{$email}}">
-                                        <button type="submit" class="btn btn-primary btn-block">Find</button>
+                                        <button type="submit" class="btn btn-primary btn-block"><i class="bi bi-search"></i> Find</button>
                                     </div>
                                 
                             </div>
@@ -182,6 +195,7 @@
                                         <th>Quantity</th>
                                         <th>Order value</th>
                                         <th>Status</th>
+                                        <th>Control</th>
         
                                         
                                             @foreach($orders as $order)
@@ -200,7 +214,7 @@
                                                     <a href="aca" class="btn btn-success">Mark as shipped</a>
                                                 </td>
                                                 @else
-                                                <td></td>
+                                                <td><a class="btn btn-warning">Completed</a></td>
                                                 @endif
                                             </tr>
                                             @endforeach
