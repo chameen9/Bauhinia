@@ -141,6 +141,18 @@ class employeecontroller extends Controller
         ]);
     }
 
+    public function viewinventory($name, $email,){
+
+        $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
+
+        return view('inventory',[
+            'name'=>$name,
+            'orders'=>null,
+            'email'=>$email,
+            'auth_level'=>$auth_level
+        ]);
+    }
+
     function findorders(Request $request){ 
 
         $gotname = DB::Table('employees')->where('email',$request->email)->value('name');
@@ -181,7 +193,9 @@ class employeecontroller extends Controller
             'name'=>$gotname,
             'orders'=>$orders,
             'email'=>$request->email,
-            'auth_level'=>$auth_level
+            'auth_level'=>$auth_level,
+            'date'=>$reqdate,
+            'stat'=>$reqstatus
         ]);
     }
 
@@ -200,7 +214,9 @@ class employeecontroller extends Controller
             'name'=>$name,
             'orders'=>$orders,
             'email'=>$email,
-            'auth_level'=>$auth_level
+            'auth_level'=>$auth_level,
+            'date'=>null,
+            'stat'=>null
         ]);
 
         //return redirect()->action('App\http\controllers\employeecontroller@findorders');

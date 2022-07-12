@@ -100,24 +100,19 @@
                 <div class="shadow bg-white rounded">
                     <div class="card p-1" style="border: 0;">
                         <br>
+                        <a href="{{url('/employee/home/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary"><i class="bi bi-house"></i><br> Home</a>
                         <br>
                         <br>
-                        <a href="{{url('/employee/home/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary">Home</a>
-                        <br>
-                        <a href="{{url('/employee/orders/'.$name.'/'.$email.'')}}" class="btn btn-primary">Orders</a>
-                        <br>
-                        <a href="#inventory" class="btn btn-outline-primary">Inventory</a>
-                        <br>
-                        <a href="#money" class="btn btn-outline-primary">Money</a>
-                        <br>
-                        <a href="#money" class="btn btn-outline-primary">Products</a>
+                        <a href="{{url('/employee/orders/'.$name.'/'.$email.'')}}" class="btn btn-primary"><i class="bi bi-shop"></i><br> Orders</a>
                         <br>
                         <br>
+                        <a href="{{url('/employee/inventory/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary"><i class="bi bi-card-checklist"></i><br> Inventory</a>
                         <br>
                         <br>
+                        <a href="#money" class="btn btn-outline-primary"><i class="bi bi-coin"></i><br> Money</a>
                         <br>
                         <br>
-                        <br>
+                        <a href="#money" class="btn btn-outline-primary"><i class="bi bi-box"></i><br> Products</a>
                         <br>
                         <br>
                         <br>
@@ -179,24 +174,38 @@
                                         <input type="hidden" name="name" value="{{$name}}">
                                         <input type="hidden" name="email" value="{{$email}}">
                                         <button type="submit" class="btn btn-primary btn-block"><i class="bi bi-search"></i> Find</button>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        @if($auth_level == 1)
+                                            <button type="button" class="btn btn-outline-primary btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</button>
+                                        @elseif($auth_level == 2)
+                                            <button type="button" class="btn btn-outline-primary btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</button>
+                                        @elseif($auth_level == 3)
+                                            <button type="button" class="btn btn-outline-primary btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</button>
+                                        @else
+                                            <button type="button" class="btn btn-outline-primary btn-block" disabled><i class="bi bi-filetype-pdf"></i> Create Report</button>
+                                        @endif
                                     </div>
                                 
                             </div>
                             <br>
                             <div class="row">
                                 <section id="orders">
-                                    @if($orders)
-                                    <table class="table table-primary">
-                                        <th>Order ID</th>
-                                        <th>Product ID</th>
-                                        <th>Customer Name</th>
-                                        <th>Pr: Contact</th>
-                                        <th>Se: Contact</th>
-                                        <th>Del: Address</th>
-                                        <th>Quantity</th>
-                                        <th>Order value</th>
-                                        <th>Status</th>
-                                        <th>Control</th>
+                                    @if($orders != null)
+                                    <p class="text-muted">Filtered By : {{$date}} | {{$stat}}</p>
+                                    <table class="table">
+                                        <tr class="table-primary">
+                                            <th>Order ID</th>
+                                            <th>Product ID</th>
+                                            <th>Customer Name</th>
+                                            <th>Pr: Contact</th>
+                                            <th>Se: Contact</th>
+                                            <th>Delivery Address</th>
+                                            <th>Quantity</th>
+                                            <th>Order value</th>
+                                            <th>Status</th>
+                                            <th>Control</th>
+                                        </tr>
+                                        
         
                                         
                                             @foreach($orders as $order)
@@ -211,16 +220,30 @@
                                                 <td>Rs. {{$order->qty*$order->price}}</td>
                                                 <td>{{$order->status}}</td>
                                                 @if($order->status == 'Pending')
-                                                <td align="center">
-                                                    <a href="{{url('/employee/order/markasshipped/'.$order->order_id.'/'.$name.'/'.$email.'')}}" class="btn btn-primary">Mark as shipped</a>
-                                                </td>
+                                                    @if($auth_level == 1)
+                                                        <td align="center">
+                                                            <a href="{{url('/employee/order/markasshipped/'.$order->order_id.'/'.$name.'/'.$email.'')}}" class="btn btn-primary btn-sm">Mark as shipped</a>
+                                                        </td>
+                                                    @elseif($auth_level == 2)
+                                                        <td align="center">
+                                                            <a href="{{url('/employee/order/markasshipped/'.$order->order_id.'/'.$name.'/'.$email.'')}}" class="btn btn-primary btn-sm">Mark as shipped</a>
+                                                        </td>
+                                                    @elseif($auth_level == 3)
+                                                        <td align="center">
+                                                            <a href="{{url('/employee/order/markasshipped/'.$order->order_id.'/'.$name.'/'.$email.'')}}" class="btn btn-primary btn-sm">Mark as shipped</a>
+                                                        </td>
+                                                    @else
+                                                        <td align="center">
+                                                            <a href="{{url('/employee/order/markasshipped/'.$order->order_id.'/'.$name.'/'.$email.'')}}" class="btn btn-primary btn-sm disabled" data-mdb-toggle="tooltip" title="You can't do this action" >Mark as shipped</a>
+                                                        </td>
+                                                    @endif
                                                 @elseif($order->status == 'Shipped')
                                                 <td align="center">
-                                                    <a class="btn btn-info">Shipped</a>
+                                                    <a class="btn btn-info btn-sm btn-block"><i class="bi bi-truck"></i></a>
                                                 </td>
                                                 @else
                                                 <td align="center">
-                                                    <a class="btn btn-success">Completed</a>
+                                                    <a class="btn btn-success btn-sm btn-block"><i class="bi bi-check2"></i></a>
                                                 </td>
                                                 @endif
                                             </tr>
@@ -228,11 +251,12 @@
                                         
                                        
                                     </table>
+                                    @else
+                                        <p align="center" class="text-muted">Find orders using this window.</p>
                                     @endif
                                 </section>
                             </div>
                         </form>
-                            <br>
                             
                         
                         
