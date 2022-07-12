@@ -97,7 +97,7 @@
 
       <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-2 col-md-2 col-sm-3">
+            <div class="col-lg-1 col-md-1 col-sm-2">
                 <div class="shadow bg-white rounded">
                     <div class="card p-1" style="border: 0;">
                         <br>
@@ -105,7 +105,7 @@
                         <br>
                         <a href="#home" class="btn btn-outline-primary">Home</a>
                         <br>
-                        <a href="#orders" class="btn btn-outline-primary">Orders</a>
+                        <a href="#orders" class="btn btn-primary">Orders</a>
                         <br>
                         <a href="#inventory" class="btn btn-outline-primary">Inventory</a>
                         <br>
@@ -126,7 +126,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-10 col-md-10 col-sm-9">
+            <div class="col-lg-11 col-md-11 col-sm-10">
                 <div class="shadow bg-white rounded">
                     <div class="card p-1" style="border: 0;">
                         <form action="{{url('/employee/find/orders')}}" method="post">
@@ -210,11 +210,17 @@
                                                 <td>Rs. {{$order->qty*$order->price}}</td>
                                                 <td>{{$order->status}}</td>
                                                 @if($order->status == 'Pending')
-                                                <td>
-                                                    <a href="aca" class="btn btn-success">Mark as shipped</a>
+                                                <td align="center">
+                                                    <a href="{{url('/employee/order/markasshipped/'.$order->order_id.'/'.$name.'/'.$email.'')}}" class="btn btn-primary">Mark as shipped</a>
+                                                </td>
+                                                @elseif($order->status == 'Shipped')
+                                                <td align="center">
+                                                    <a class="btn btn-info">Shipped</a>
                                                 </td>
                                                 @else
-                                                <td><a class="btn btn-warning">Completed</a></td>
+                                                <td align="center">
+                                                    <a class="btn btn-success">Completed</a>
+                                                </td>
                                                 @endif
                                             </tr>
                                             @endforeach

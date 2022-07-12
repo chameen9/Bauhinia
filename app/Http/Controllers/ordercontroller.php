@@ -138,7 +138,7 @@ class ordercontroller extends Controller
 
             ])->update([
                 'status' => 'Completed'
-            ]);
+        ]);
 
             return back();
 

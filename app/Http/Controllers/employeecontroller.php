@@ -117,25 +117,64 @@ class employeecontroller extends Controller
     }
 
     function findorders(Request $request){ 
+
         $gotname = DB::Table('employees')->where('email',$request->email)->value('name');
 
         $reqdate = $request->date;
         $reqstatus = $request->status;
 
+        $date = null;
+        $status = null;
+
         if($reqstatus == 'All'){
-            $orders = DB::Table('orders')->get();
+            if($reqdate == 'All'){
+                $orders = DB::Table('orders')->get();
+            }
+            else if($reqdate == 'Today'){
+                $date = Carbon::today('Asia/Colombo')->toDateString();
+                $orders = DB::Table('orders')->where('ordered_date',$date)->get();
+            }
+            else{
+                $date = Carbon::yesterday('Asia/Colombo')->toDateString();
+                $orders = DB::Table('orders')->where('ordered_date',$date)->get();
+            }
         }
         else{
-            $orders = DB::Table('orders')->where([
-                ['status','=', $reqstatus],
-            ])->get();
+
+            if($reqdate == 'Today'){
+                $date = Carbon::today('Asia/Colombo')->toDateString();
+                $orders = DB::Table('orders')->where([['ordered_date','=',$date],['status','=',$reqstatus]])->get();
+            }
+            else{
+                $date = Carbon::yesterday('Asia/Colombo')->toDateString();
+                $orders = DB::Table('orders')->where([['ordered_date','=',$date],['status','=',$reqstatus]])->get();
+            }
         }
 
-        //dd($reqstatus);
         return view('dashboard',[
             'name'=>$gotname,
             'orders'=>$orders,
             'email'=>$request->email
         ]);
+    }
+
+    public function markasshipped($order_id, $name, $email){
+
+        $shipped_order = DB::Table('orders')
+            ->where([
+                ['order_id','=',$order_id],
+            ])->update([
+                'status' => 'Shipped'
+        ]);
+        $orders = DB::Table('orders')->get();
+
+        return view('dashboard',[
+            'name'=>$name,
+            'orders'=>$orders,
+            'email'=>$email
+        ]);
+
+        //return redirect()->action('App\http\controllers\employeecontroller@findorders');
+        //return redirect()->back();
     }
 }
