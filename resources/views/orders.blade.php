@@ -135,7 +135,7 @@
                                     <div class="col-3">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon1">Date :</span>
+                                                <span class="input-group-text">Date :</span>
                                             </div>
                                             
                                             <select name="date" class="form-control">
@@ -153,7 +153,7 @@
                                     <div class="col-3">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon1">Status :</span>
+                                                <span class="input-group-text">Status :</span>
                                             </div>
                                             
                                             <select name="status" class="form-control">
@@ -174,15 +174,15 @@
                                         <input type="hidden" name="name" value="{{$name}}">
                                         <input type="hidden" name="email" value="{{$email}}">
                                         <button type="submit" class="btn btn-primary btn-block"><i class="bi bi-search"></i> Find</button>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         @if($auth_level == 1)
-                                            <button type="button" class="btn btn-outline-primary btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</button>
+                                            <button type="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</button>
                                         @elseif($auth_level == 2)
-                                            <button type="button" class="btn btn-outline-primary btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</button>
+                                            <button type="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</button>
                                         @elseif($auth_level == 3)
-                                            <button type="button" class="btn btn-outline-primary btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</button>
+                                            <button type="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</button>
                                         @else
-                                            <button type="button" class="btn btn-outline-primary btn-block" disabled><i class="bi bi-filetype-pdf"></i> Create Report</button>
+                                            <button type="button" class="btn btn-info btn-block" disabled><i class="bi bi-filetype-pdf"></i> Create Report</button>
                                         @endif
                                     </div>
                                 
@@ -239,11 +239,11 @@
                                                     @endif
                                                 @elseif($order->status == 'Shipped')
                                                 <td align="center">
-                                                    <a class="btn btn-info btn-sm btn-block"><i class="bi bi-truck"></i></a>
+                                                    <a class="btn-info btn-sm btn-block"><i class="bi bi-truck"></i></a>
                                                 </td>
                                                 @else
                                                 <td align="center">
-                                                    <a class="btn btn-success btn-sm btn-block"><i class="bi bi-check2"></i></a>
+                                                    <a class="btn-success btn-sm btn-block"><i class="bi bi-check2"></i></a>
                                                 </td>
                                                 @endif
                                             </tr>

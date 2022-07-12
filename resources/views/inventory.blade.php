@@ -120,21 +120,156 @@
                 </div>
             </div>
 
-            <div class="col-lg-11 col-md-11 col-sm-10">
+            <div class="col-lg-8 col-md-8 col-sm-9">
                 <div class="shadow bg-white rounded">
                     <div class="card p-1" style="border: 0;">
-                        
+                        <form action="{{url('/employee/find/inventory')}}" method="post">
+                        {{csrf_field()}}
                         <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                            
-                        
+                          <div class="row">
+
+                            <div class="col-1">
+                              <br>
+                            </div>
+
+                            <div class="col-3">
+                              <div class="input-group">
+                                  <div class="input-group-prepend">
+                                      <span class="input-group-text">Status :</span>
+                                  </div>
+                                  
+                                  <select name="status" class="form-control">
+                                      <option value="All">All</option>
+                                      <option value="Empty">Empty</option>
+                                      <option value="Less than 20">Less than 20</option>
+                                      <option value="Less than 50">Less than 50</option>
+                                  </select>
+                              </div>
+                            </div>
+
+                            <div class="col-1">
+                              <br>
+                            </div>
+
+                            <div class="col-3">
+                              <label><br></label>
+                              <input type="hidden" name="name" value="{{$name}}">
+                              <input type="hidden" name="email" value="{{$email}}">
+                              <button type="submit" class="btn btn-primary btn-block"><i class="bi bi-search"></i> Find</button>
+                            </div>
+
+                            <div class="col-1">
+                              <br>
+                            </div>
+
+                            <div class="col-3">
+                                @if($auth_level == 1)
+                                    <button type="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</button>
+                                @elseif($auth_level == 2)
+                                    <button type="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</button>
+                                @elseif($auth_level == 3)
+                                    <button type="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</button>
+                                @else
+                                    <button type="button" class="btn btn-info btn-block" disabled><i class="bi bi-filetype-pdf"></i> Create Report</button>
+                                @endif
+                            </div>
+
+                          </div>
+                          <br>
+                          <div class="row">
+                            <section id="inventory">
+                              @if($stocks != null)
+                              <p class="text-muted">Filtered : {{$stat}} stocks</p>
+                              <table class="table">
+                                  <tr class="table-primary">
+                                      <th>Product ID</th>
+                                      <th>Product Name</th>
+                                      <th>Brand</th>
+                                      <th>Price</th>
+                                      <th>Available Stock</th>
+                                      <th>Add Stock</th>
+                                  </tr>
+
+                                      @foreach($stocks as $stock)
+                                      <tr>
+                                          <td>{{$stock->product_id}}</td>
+                                          <td>{{$stock->product_name}}</td>
+                                          <td>{{$stock->brand}}</td>
+                                          <td>Rs. {{$stock->price}}</td>
+                                          <td align="center">
+                                            @if($stock->stock >= 51)
+
+                                              <p class="bg-success text-light">{{$stock->stock}}</p>
+
+                                            @elseif(50 >= $stock->stock && $stock->stock >= 21)
+
+                                              <p class="bg-info text-dark">{{$stock->stock}}</p>
+
+                                            @elseif(20 >= $stock->stock && $stock->stock >= 1)
+
+                                              <p class="bg-warning text-dark">{{$stock->stock}}</p>
+
+                                            @elseif(0 >= $stock->stock)
+
+                                              <p class="bg-danger text-light">{{$stock->stock}}</p>
+
+                                            @else
+
+                                              <p></p>
+
+                                            @endif
+                                          </td>
+                                          
+
+
+                                          <td align="center">
+                                            @if($auth_level == 1)
+                                              <a href="{{url('/employee/inventory/updateitem/'.$stock->product_id.'/'.$name.'/'.$email.'')}}" class="btn-outline-primary btn-sm"><i class="bi bi-plus-circle-fill"></i></i></a>
+                                              
+                                            @elseif($auth_level == 2)
+                                              <a href="{{url('/employee/inventory/updateitem/'.$stock->product_id.'/'.$name.'/'.$email.'')}}" class="btn-primary btn-sm"><i class="bi bi-plus-circle"></i></a>
+                                              
+                                            @elseif($auth_level == 3)
+                                              <a href="{{url('/employee/inventory/updateitem/'.$stock->product_id.'/'.$name.'/'.$email.'')}}" class="btn-primary btn-sm"><i class="bi bi-plus-circle"></i></a>
+                                              
+                                            @else
+                                              <a href="{{url('/employee/inventory/updateitem/'.$stock->product_id.'/'.$name.'/'.$email.'')}}" class="btn-primary btn-sm disabled" data-mdb-toggle="tooltip" title="You can't do this action" ><i class="bi bi-plus-circle"></i></a>
+                                              
+                                            @endif
+                                          </td>
+                                            
+                                      </tr>
+                                      @endforeach
+                                  
+                                 
+                              </table>
+                              @else
+                                  <p align="center" class="text-muted">Find stock using this window.</p>
+                              @endif
+                          </section>
+                          </div>
+
+                        </form>
                         
                     </div>
                 </div>
             </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-2">
+              <div class="shadow bg-white rounded">
+                  <div class="card p-1" style="border: 0;">
+                      
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                          
+                      
+                      
+                  </div>
+              </div>
+          </div>
 
         </div>
       </div>

@@ -91,8 +91,14 @@ Route::get('/employee/inventory/{name}/{email}', 'App\http\controllers\employeec
 Route::get('/employee/find/orders', 'App\http\controllers\employeecontroller@findorders');
 Route::post('/employee/find/orders', 'App\http\controllers\employeecontroller@findorders');
 
+Route::get('/employee/find/inventory', 'App\http\controllers\employeecontroller@findinventory');
+Route::post('/employee/find/inventory', 'App\http\controllers\employeecontroller@findinventory');
+
 Route::get('/employee/order/markasshipped/{order_id}/{name}/{email}', 'App\http\controllers\employeecontroller@markasshipped');
 Route::post('/employee/order/markasshipped/{order_id}/{name}/{email}Email', 'App\http\controllers\employeecontroller@markasshipped');
+
+Route::get('/employee/inventory/updateitem/{product_id}/{name}/{email}', 'App\http\controllers\employeecontroller@updatestock');
+Route::post('/employee/inventory/updateitem/{product_id}/{name}/{email}Email', 'App\http\controllers\employeecontroller@updatestock');
 
 Route::get('/employee/signout', 'App\http\controllers\employeecontroller@signout');
 Route::post('/employee/signout', 'App\http\controllers\employeecontroller@signout');
