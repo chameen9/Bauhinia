@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use App\Models\Product;
 use App\Rules\PasswordChecker;
 use Carbon\Carbon;
 use Validator;
@@ -256,8 +257,57 @@ class employeecontroller extends Controller
         ]);
     }
 
-    public function updatestock(){
-        
+    public function viewupdatestock($product_id, $name, $email){
+        $stocks = DB::Table('products')->where('product_id',$product_id)->get();
+        $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
+
+        return view('inventory-updateitem',[
+            'name'=>$name,
+            'stocks'=>$stocks,
+            'email'=>$email,
+            'product_id'=>$product_id
+        ]);
+    }
+
+    public function updatestock(Request $request){
+        $oldstock = DB::Table('products')->where('product_id', $request->product_id)->value('stock');
+        $auth_level = DB::Table('employees')->where('email',$request->email)->value('auth_level');
+
+        $reqstock = $request->new_stock;
+
+        $newstock = $oldstock + $reqstock;
+
+        $upstock = DB::Table('products')
+            ->where('product_id',$request->product_id)
+            ->update([
+                'stock' => $newstock
+        ]);
+        return view('inventory',[
+            'name'=>$request->name,
+            'stocks'=>null,
+            'email'=>$request->email,
+            'auth_level'=>$auth_level,
+            'stat'=>null
+        ]);
+    }
+
+    public function addnewproduct(Request $req){
+        $this->validate($req,[
+            'product_id'=>['string','max:100','min:8','unique:products'],
+            'product_name'=>['string','max:300','min:10'],
+            'brand'=>['string','max:100',],
+            'price'=>['max:100','min:4',],
+            'stock'=>['numeric'],
+        ]);
+        $Product = new Product;
+        $Product->product_id = $req->product_id;
+        $Product->product_name = $req->product_name;
+        $Product->brand = $req->brand;
+        $Product->price = $req->price;
+        $Product->stock = $req->stock;
+        $Product->save();
+
+        return back()->with('message','Product Added !');
     }
 
     public function signout(Request $request){

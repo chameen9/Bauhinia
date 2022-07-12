@@ -112,7 +112,7 @@
                         <a href="#money" class="btn btn-outline-primary"><i class="bi bi-coin"></i><br> Money</a>
                         <br>
                         <br>
-                        <a href="#money" class="btn btn-outline-primary"><i class="bi bi-box"></i><br> Products</a>
+                        <a href="#users" class="btn btn-outline-primary"><i class="bi bi-person-plus"></i><br> Users</a>
                         <br>
                         <br>
                         <br>
@@ -233,7 +233,7 @@
                                               <a href="{{url('/employee/inventory/updateitem/'.$stock->product_id.'/'.$name.'/'.$email.'')}}" class="btn-primary btn-sm"><i class="bi bi-plus-circle"></i></a>
                                               
                                             @else
-                                              <a href="{{url('/employee/inventory/updateitem/'.$stock->product_id.'/'.$name.'/'.$email.'')}}" class="btn-primary btn-sm disabled" data-mdb-toggle="tooltip" title="You can't do this action" ><i class="bi bi-plus-circle"></i></a>
+                                              <a href="{{url('/employee/inventory/updateitem/'.$stock->product_id.'/'.$name.'/'.$email.'')}}" class="btn btn-primary btn-sm disabled" data-mdb-toggle="tooltip" title="You can't do this action" ><i class="bi bi-plus-circle"></i></a>
                                               
                                             @endif
                                           </td>
@@ -258,14 +258,101 @@
             <div class="col-lg-3 col-md-3 col-sm-2">
               <div class="shadow bg-white rounded">
                   <div class="card p-1" style="border: 0;">
-                      
-                      <br>
-                      <br>
-                      <br>
-                      <br>
-                      <br>
-                          
-                      
+                    <div class="card-header">
+                      <h6 class="card-title">Add a new product</h6>
+                    </div>
+                    <div class="card-body">
+                      <form action="{{url('employee/inventory/addnewproduct')}}" method="post">
+                      {{csrf_field()}}
+                        <div class="row">
+                          <div class="col-12">
+                            <div class="input-group mb-3">
+                              <span class="input-group-text">Product Id</span>
+                              <input type="text" name="product_id" required class="form-control" placeholder="XX000000" minlength="8">
+                            </div>
+                          </div>
+                        </div>
+  
+                        <div class="row">
+                          <div class="col-12">
+                            <label for="">Product Name</label>
+                            <input type="text" name="product_name" required class="form-control">
+                          </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                          <div class="col-12">
+                            <div class="input-group mb-3">
+                              <span class="input-group-text">Brand</span>
+                              <input type="text" name="brand" required class="form-control">
+                            </div>
+                          </div>
+                        </div>
+  
+                        <div class="row">
+                          <div class="col-12">
+                            <div class="input-group mb-3">
+                              <span class="input-group-text">Price</span>
+                              <span class="input-group-text">Rs.</span>
+                              <input type="text" name="price" required class="form-control" placeholder="0000.00">
+                            </div>
+                          </div>
+                        </div>
+  
+                        <div class="row">
+                          <div class="col-12">
+                            <div class="input-group mb-3">
+                              <span class="input-group-text">Stock</span>
+                              <input type="number" name="stock" required class="form-control" min="10" max="1000" step="1">
+                            </div>
+                          </div>
+                        </div>
+  
+                        <div class="row">
+                          <div class="col-12">
+                            <div class="d-grid gap-2">
+                              @if($auth_level == 1)
+                                <button type="submit" class="btn btn-primary btn-block"><i class="bi bi-file-earmark-plus"></i> Add Product</button>
+                              @elseif($auth_level == 2)
+                                <button type="submit" class="btn btn-primary btn-block"><i class="bi bi-file-earmark-plus"></i> Add Product</button>
+                              @elseif($auth_level == 3)
+                                <button type="submit" class="btn btn-primary btn-block"><i class="bi bi-file-earmark-plus"></i> Add Product</button>  
+                              @else
+                                <button type="submit" disabled class="btn btn-primary btn-block"><i class="bi bi-file-earmark-plus"></i> Add Product</button>
+                              @endif
+  
+                            </div>
+                          </div>
+                        </div>
+
+                        @if(count($errors)>0 || $message = Session::get('message'))
+                        
+                          <div class="row">
+                            @if(count($errors)>0)
+                              <div class="card-body">
+                                <div class="alert alert-danger">
+                                  <ul>
+                                    @foreach($errors->all() as $error)
+                                      <li>{{ $error }}</li>
+                                    @endforeach
+                                  </ul>
+                                </div>
+                              </div>
+                            @endif
+
+                            @if($message = Session::get('message'))
+                              <div class="card-body">
+                                <div class="alert alert-success">
+                                  {{$message}}
+                                </div>
+                              </div>
+                            @endif
+                          </div>
+                        @endif
+
+                      </form>
+
+                    </div>
                       
                   </div>
               </div>

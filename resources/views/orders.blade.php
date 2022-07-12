@@ -112,7 +112,7 @@
                         <a href="#money" class="btn btn-outline-primary"><i class="bi bi-coin"></i><br> Money</a>
                         <br>
                         <br>
-                        <a href="#money" class="btn btn-outline-primary"><i class="bi bi-box"></i><br> Products</a>
+                        <a href="#users" class="btn btn-outline-primary"><i class="bi bi-person-plus"></i><br> Users</a>
                         <br>
                         <br>
                         <br>
