@@ -79,9 +79,17 @@ Route::post('/customer/order/removeorder/{email}/{product_id}/{colour}/{size}/{q
 Route::post('/customer/signout', 'App\http\controllers\customercontroller@signout');
 Route::get('/customer/signout', 'App\http\controllers\customercontroller@signout');
 
+Route::post('/employee/orders/{name}/{email}', 'App\http\controllers\employeecontroller@vieworders');
+Route::get('/employee/orders/{name}/{email}', 'App\http\controllers\employeecontroller@vieworders');
+
+Route::post('/employee/home/{name}/{email}', 'App\http\controllers\employeecontroller@viewhome');
+Route::get('/employee/home/{name}/{email}', 'App\http\controllers\employeecontroller@viewhome');
+
 Route::get('/employee/find/orders', 'App\http\controllers\employeecontroller@findorders');
 Route::post('/employee/find/orders', 'App\http\controllers\employeecontroller@findorders');
 
 Route::get('/employee/order/markasshipped/{order_id}/{name}/{email}', 'App\http\controllers\employeecontroller@markasshipped');
 Route::post('/employee/order/markasshipped/{order_id}/{name}/{email}Email', 'App\http\controllers\employeecontroller@markasshipped');
 
+Route::get('/employee/signout', 'App\http\controllers\employeecontroller@signout');
+Route::post('/employee/signout', 'App\http\controllers\employeecontroller@signout');

@@ -24,14 +24,15 @@ class employeecontroller extends Controller
         $gotemail = DB::Table('employees')->where('email',$reqemail)->value('email');
         $gotpassword = DB::Table('employees')->where('email',$reqemail)->value('password');
         $gotname = DB::Table('employees')->where('email',$reqemail)->value('name');
-       
+        $auth_level = DB::Table('employees')->where('email',$reqemail)->value('auth_level');
 
         if($gotemail==$reqemail){
             if($gotpassword==$reqpassword){
                 return view('dashboard',[
                     'name'=>$gotname,
                     'orders'=>null,
-                    'email'=>$gotemail
+                    'email'=>$gotemail,
+                    'auth_level'=>$auth_level
                 ]); //send name to the view     return customer view 
                 
             }
@@ -116,6 +117,30 @@ class employeecontroller extends Controller
         return back()->with('message',$name);
     }
 
+    public function vieworders($name, $email,){
+
+        $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
+
+        return view('orders',[
+            'name'=>$name,
+            'orders'=>null,
+            'email'=>$email,
+            'auth_level'=>$auth_level
+        ]);
+    }
+
+    public function viewhome($name, $email,){
+
+        $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
+
+        return view('dashboard',[
+            'name'=>$name,
+            'orders'=>null,
+            'email'=>$email,
+            'auth_level'=>$auth_level
+        ]);
+    }
+
     function findorders(Request $request){ 
 
         $gotname = DB::Table('employees')->where('email',$request->email)->value('name');
@@ -150,11 +175,13 @@ class employeecontroller extends Controller
                 $orders = DB::Table('orders')->where([['ordered_date','=',$date],['status','=',$reqstatus]])->get();
             }
         }
+        $auth_level = DB::Table('employees')->where('email',$request->email)->value('auth_level');
 
-        return view('dashboard',[
+        return view('orders',[
             'name'=>$gotname,
             'orders'=>$orders,
-            'email'=>$request->email
+            'email'=>$request->email,
+            'auth_level'=>$auth_level
         ]);
     }
 
@@ -167,14 +194,22 @@ class employeecontroller extends Controller
                 'status' => 'Shipped'
         ]);
         $orders = DB::Table('orders')->get();
+        $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
 
-        return view('dashboard',[
+        return view('orders',[
             'name'=>$name,
             'orders'=>$orders,
-            'email'=>$email
+            'email'=>$email,
+            'auth_level'=>$auth_level
         ]);
 
         //return redirect()->action('App\http\controllers\employeecontroller@findorders');
         //return redirect()->back();
+    }
+
+    public function signout(Request $request){
+        $request->session()->flush();
+        Auth::logout();
+        return redirect('/');
     }
 }

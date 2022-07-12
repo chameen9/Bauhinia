@@ -78,10 +78,9 @@
                     <p class="text-muted" style="text-align: center;">Welcome,<br>
                     <label>{{$name}}</label></p>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ url('/customer/editprofile') }}">Profile</a>
+                    <a class="dropdown-item" href="{{ url('/employee/editprofile') }}">Profile</a>
                    
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ url('/customer/signout') }}">Sign Out</a>
+                    <a class="dropdown-item" href="{{ url('/employee/signout') }}">Sign Out</a>
                   </div>
                 </div>
                 <!-- Avatar -->
@@ -103,9 +102,9 @@
                         <br>
                         <br>
                         <br>
-                        <a href="#home" class="btn btn-outline-primary">Home</a>
+                        <a href="" class="btn btn-primary">Home</a>
                         <br>
-                        <a href="#orders" class="btn btn-primary">Orders</a>
+                        <a href="{{url('/employee/orders/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary">Orders</a>
                         <br>
                         <a href="#inventory" class="btn btn-outline-primary">Inventory</a>
                         <br>
@@ -129,109 +128,12 @@
             <div class="col-lg-11 col-md-11 col-sm-10">
                 <div class="shadow bg-white rounded">
                     <div class="card p-1" style="border: 0;">
-                        <form action="{{url('/employee/find/orders')}}" method="post">
-                            {{csrf_field()}}
-                            <div class="row">
-                                    <div class="col-1">
-                                        <label><br></label>
-                                    </div>
-                                
-                                    <div class="col-3">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon1">Date :</span>
-                                            </div>
-                                            
-                                            <select name="date" class="form-control">
-                                                <option value="All">All</option>
-                                                <option value="Today">Today</option>
-                                                <option value="Yesterday">Yesterday</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-1">
-                                        <label><br></label>
-                                    </div>
-
-                                    <div class="col-3">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon1">Status :</span>
-                                            </div>
-                                            
-                                            <select name="status" class="form-control">
-                                                <option value="All">All</option>
-                                                <option value="Pending">Pending</option>
-                                                <option value="Shipped">Shipped</option>
-                                                <option value="Completed">Completed</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-1">
-                                        <label><br></label>
-                                    </div>
-
-                                    <div class="col-3">
-                                        <label><br></label>
-                                        <input type="hidden" name="name" value="{{$name}}">
-                                        <input type="hidden" name="email" value="{{$email}}">
-                                        <button type="submit" class="btn btn-primary btn-block"><i class="bi bi-search"></i> Find</button>
-                                    </div>
-                                
-                            </div>
-                            <br>
-                            <div class="row">
-                                <section id="orders">
-                                    @if($orders)
-                                    <table class="table table-primary">
-                                        <th>Order ID</th>
-                                        <th>Product ID</th>
-                                        <th>Customer Name</th>
-                                        <th>Pr: Contact</th>
-                                        <th>Se: Contact</th>
-                                        <th>Del: Address</th>
-                                        <th>Quantity</th>
-                                        <th>Order value</th>
-                                        <th>Status</th>
-                                        <th>Control</th>
-        
-                                        
-                                            @foreach($orders as $order)
-                                            <tr>
-                                                <td>{{$order->order_id}}</td>
-                                                <td>{{$order->product_id}}</td>
-                                                <td>{{$order->cus_name}}</td>
-                                                <td>{{$order->primary_contact}}</td>
-                                                <td>{{$order->secondary_contact}}</td>
-                                                <td>{{$order->delivery_address}}</td>
-                                                <td>{{$order->qty}}</td>
-                                                <td>Rs. {{$order->qty*$order->price}}</td>
-                                                <td>{{$order->status}}</td>
-                                                @if($order->status == 'Pending')
-                                                <td align="center">
-                                                    <a href="{{url('/employee/order/markasshipped/'.$order->order_id.'/'.$name.'/'.$email.'')}}" class="btn btn-primary">Mark as shipped</a>
-                                                </td>
-                                                @elseif($order->status == 'Shipped')
-                                                <td align="center">
-                                                    <a class="btn btn-info">Shipped</a>
-                                                </td>
-                                                @else
-                                                <td align="center">
-                                                    <a class="btn btn-success">Completed</a>
-                                                </td>
-                                                @endif
-                                            </tr>
-                                            @endforeach
-                                        
-                                       
-                                    </table>
-                                    @endif
-                                </section>
-                            </div>
-                        </form>
-                            <br>
+                        
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
                             
                         
                         
