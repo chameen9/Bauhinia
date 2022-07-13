@@ -110,7 +110,7 @@
                         <br>
                         <br>
                         <a href="#money" class="btn btn-outline-primary"><i class="bi bi-coin"></i><br> Money</a>
-                        <a href="#stock" class="btn btn-outline-primary"><i class="bi bi-coin"></i><br> Stock</a>
+                        <br>
                         <br>
                         @if($auth_level == 1)
                           <a href="{{url('/employee/users/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary"><i class="bi bi-person-plus"></i><br> Users</a>
