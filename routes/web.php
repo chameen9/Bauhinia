@@ -88,11 +88,17 @@ Route::get('/employee/home/{name}/{email}', 'App\http\controllers\employeecontro
 Route::post('/employee/inventory/{name}/{email}', 'App\http\controllers\employeecontroller@viewinventory');
 Route::get('/employee/inventory/{name}/{email}', 'App\http\controllers\employeecontroller@viewinventory');
 
+Route::post('/employee/stocks/{name}/{email}', 'App\http\controllers\employeecontroller@viewstocks');
+Route::get('/employee/stocks/{name}/{email}', 'App\http\controllers\employeecontroller@viewstocks');
+
 Route::get('/employee/find/orders', 'App\http\controllers\employeecontroller@findorders');
 Route::post('/employee/find/orders', 'App\http\controllers\employeecontroller@findorders');
 
 Route::get('/employee/find/inventory', 'App\http\controllers\employeecontroller@findinventory');
 Route::post('/employee/find/inventory', 'App\http\controllers\employeecontroller@findinventory');
+
+Route::get('/employee/find/stocks', 'App\http\controllers\employeecontroller@findstocks');
+Route::post('/employee/find/stocks', 'App\http\controllers\employeecontroller@findstocks');
 
 Route::get('/employee/order/markasshipped/{order_id}/{name}/{email}', 'App\http\controllers\employeecontroller@markasshipped');
 Route::post('/employee/order/markasshipped/{order_id}/{name}/{email}Email', 'App\http\controllers\employeecontroller@markasshipped');

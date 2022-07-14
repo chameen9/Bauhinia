@@ -47,17 +47,17 @@
     
                                 <div class="form-outline mb-4">
                                     <label class="body">Email</label>
-                                    <input type="email" required name="email" class="form-control" placeholder="name@example.com">
+                                    <input type="email" id="email" required name="email" class="form-control" placeholder="name@example.com">
                                 </div>
     
                                 <div class="form-outline mb-3">
                                     <label class="body">Password</label>
-                                    <input type="password" required name="password" class="form-control">
+                                    <input type="password" id="password" required name="password" class="form-control">
                                 </div>
                                 <br>
                                 <div class="body">
                                     <div class="d-grid gap-2">
-                                        <input type="submit" name="signin" value="Sign in" class="btn btn-primary">
+                                        <input type="submit" id="submit" name="signin" value="Sign in" class="btn btn-primary">
                                     </div>
                                 </div>
                                 <p class="body" style="color: #393f81;">Don't have an account? <a href="{{ url('/customer/signup') }}" class="link-primary">Sign up here</a></p>

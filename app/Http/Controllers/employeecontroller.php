@@ -152,6 +152,17 @@ class employeecontroller extends Controller
             'auth_level'=>$auth_level
         ]);
     }
+    public function viewstocks($name, $email,){
+
+        $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
+
+        return view('stocks',[
+            'name'=>$name,
+            'stocks'=>null,
+            'email'=>$email,
+            'auth_level'=>$auth_level
+        ]);
+    }
 
     function findorders(Request $request){ 
 
@@ -222,7 +233,7 @@ class employeecontroller extends Controller
         //return redirect()->action('App\http\controllers\employeecontroller@findorders');
         //return redirect()->back();
     }
-
+    
     function findinventory(Request $request){ 
 
         $gotname = DB::Table('employees')->where('email',$request->email)->value('name');
@@ -249,6 +260,40 @@ class employeecontroller extends Controller
         $auth_level = DB::Table('employees')->where('email',$request->email)->value('auth_level');
 
         return view('inventory',[
+            'name'=>$gotname,
+            'stocks'=>$stocks,
+            'email'=>$request->email,
+            'auth_level'=>$auth_level,
+            'stat'=>$reqstatus
+        ]);
+    }
+
+    function findstocks(Request $request){ 
+
+        $gotname = DB::Table('employees')->where('email',$request->email)->value('name');
+
+        $reqstatus = $request->status;
+
+        
+        if($reqstatus == 'Empty'){
+
+            $stocks = DB::Table('products')->where([['stock','<=',0]])->get();
+        }
+        else if($reqstatus == 'Less than 20'){
+
+            $stocks = DB::Table('products')->where([['stock','<=',20],['stock','>=',1]])->get();
+        }
+        else if($reqstatus == 'Less than 50'){
+
+            $stocks = DB::Table('products')->where([['stock','<=',50],['stock','>=',21]])->get();
+        }
+        else{
+            $stocks = DB::Table('products')->get();
+        }
+        
+        $auth_level = DB::Table('employees')->where('email',$request->email)->value('auth_level');
+
+        return view('stocks',[
             'name'=>$gotname,
             'stocks'=>$stocks,
             'email'=>$request->email,
