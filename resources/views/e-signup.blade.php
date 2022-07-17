@@ -118,7 +118,7 @@
                                                 <input type="date" name="date_of_birth" required class="form-control">
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> 
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-outline mt-3">

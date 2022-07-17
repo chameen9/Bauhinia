@@ -152,6 +152,7 @@ class employeecontroller extends Controller
             'auth_level'=>$auth_level
         ]);
     }
+
     public function viewstocks($name, $email,){
 
         $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
@@ -173,31 +174,65 @@ class employeecontroller extends Controller
 
         $date = null;
         $status = null;
+        $resultcount = null;
 
-        if($reqstatus == 'All'){
-            if($reqdate == 'All'){
-                $orders = DB::Table('orders')->get();
-            }
-            else if($reqdate == 'Today'){
-                $date = Carbon::today('Asia/Colombo')->toDateString();
-                $orders = DB::Table('orders')->where('ordered_date',$date)->get();
-            }
-            else{
-                $date = Carbon::yesterday('Asia/Colombo')->toDateString();
-                $orders = DB::Table('orders')->where('ordered_date',$date)->get();
-            }
+        if($reqstatus == 'All' && $reqdate == 'All'){
+            $orders = DB::Table('orders')->get();
+            $resultcount = DB::Table('orders')->count();
         }
-        else{
+        else if($reqstatus == 'All' && $reqdate == 'Today'){
+            $date = Carbon::today('Asia/Colombo')->toDateString();
+            $orders = DB::Table('orders')->where([['ordered_date','=',$date]])->get();
+            $resultcount = DB::Table('orders')->where([['ordered_date','=',$date]])->count();
+        }
+        else if($reqstatus == 'All' && $reqdate == 'Yesterday'){
+            $date = Carbon::yesterday('Asia/Colombo')->toDateString();
+            $orders = DB::Table('orders')->where('ordered_date',$date)->get();
+            $resultcount = DB::Table('orders')->where('ordered_date',$date)->count();
+        }
+        else if($reqstatus == 'Pending' && $reqdate == 'Today'){
+            $date = Carbon::today('Asia/Colombo')->toDateString();
+            $orders = DB::Table('orders')->where([['ordered_date','=',$date],['status','=','Pending']])->get();
+            $resultcount = DB::Table('orders')->where([['ordered_date','=',$date],['status','=','Pending']])->count();
+        }
+        else if($reqstatus == 'Pending' && $reqdate == 'Yesterday'){
+            $date = Carbon::yesterday('Asia/Colombo')->toDateString();
+            $orders = DB::Table('orders')->where([['ordered_date','=',$date],['status','=','Pending']])->get();
+            $resultcount = DB::Table('orders')->where([['ordered_date','=',$date],['status','=','Pending']])->count();
+        }
+        else if($reqstatus == 'Pending' && $reqdate == 'All'){
+            $orders = DB::Table('orders')->where([['status','=','Pending']])->get();
+            $resultcount = DB::Table('orders')->where([['status','=','Pending']])->count();
+        }
+        else if($reqstatus == 'Shipped' && $reqdate == 'Today'){
+            $date = Carbon::today('Asia/Colombo')->toDateString();
+            $orders = DB::Table('orders')->where([['ordered_date','=',$date],['status','=','Shipped']])->get();
+            $resultcount = DB::Table('orders')->where([['ordered_date','=',$date],['status','=','Shipped']])->count();
+        }
+        else if($reqstatus == 'Shipped' && $reqdate == 'Yesterday'){
+            $date = Carbon::yesterday('Asia/Colombo')->toDateString();
+            $orders = DB::Table('orders')->where([['ordered_date','=',$date],['status','=','Shipped']])->get();
+            $resultcount = DB::Table('orders')->where([['ordered_date','=',$date],['status','=','Shipped']])->count();
+        }
+        else if($reqstatus == 'Shipped' && $reqdate == 'All'){
+            $orders = DB::Table('orders')->where([['status','=','Shipped']])->get();
+            $resultcount = DB::Table('orders')->where([['status','=','Shipped']])->count();
+        }
+        else if($reqstatus == 'Completed' && $reqdate == 'Today'){
+            $date = Carbon::today('Asia/Colombo')->toDateString();
+            $orders = DB::Table('orders')->where([['ordered_date','=',$date],['status','=','Completed']])->get();
+            $resultcount = DB::Table('orders')->where([['ordered_date','=',$date],['status','=','Completed']])->count();
+        }
+        else if($reqstatus == 'Completed' && $reqdate == 'Yesterday'){
+            $date = Carbon::yesterday('Asia/Colombo')->toDateString();
+            $orders = DB::Table('orders')->where([['ordered_date','=',$date],['status','=','Completed']])->get();
+            $resultcount = DB::Table('orders')->where([['ordered_date','=',$date],['status','=','Completed']])->count();
+        }
+        else if($reqstatus == 'Completed' && $reqdate == 'All'){
+            $orders = DB::Table('orders')->where([['status','=','Completed']])->get();
+            $resultcount = DB::Table('orders')->where([['status','=','Completed']])->count();
+        }
 
-            if($reqdate == 'Today'){
-                $date = Carbon::today('Asia/Colombo')->toDateString();
-                $orders = DB::Table('orders')->where([['ordered_date','=',$date],['status','=',$reqstatus]])->get();
-            }
-            else{
-                $date = Carbon::yesterday('Asia/Colombo')->toDateString();
-                $orders = DB::Table('orders')->where([['ordered_date','=',$date],['status','=',$reqstatus]])->get();
-            }
-        }
         $auth_level = DB::Table('employees')->where('email',$request->email)->value('auth_level');
 
         return view('orders',[
@@ -206,7 +241,8 @@ class employeecontroller extends Controller
             'email'=>$request->email,
             'auth_level'=>$auth_level,
             'date'=>$reqdate,
-            'stat'=>$reqstatus
+            'stat'=>$reqstatus,
+            'resultcount'=>$resultcount
         ]);
     }
 
@@ -219,6 +255,7 @@ class employeecontroller extends Controller
                 'status' => 'Shipped'
         ]);
         $orders = DB::Table('orders')->get();
+        $resultcount = DB::Table('orders')->count();
         $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
 
         return view('orders',[
@@ -226,8 +263,9 @@ class employeecontroller extends Controller
             'orders'=>$orders,
             'email'=>$email,
             'auth_level'=>$auth_level,
-            'date'=>null,
-            'stat'=>null
+            'date'=>'All',
+            'stat'=>'All',
+            'resultcount'=>$resultcount
         ]);
 
         //return redirect()->action('App\http\controllers\employeecontroller@findorders');

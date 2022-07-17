@@ -144,9 +144,9 @@
                                             </div>
                                             
                                             <select name="date" class="form-control">
-                                                <option value="All">All</option>
                                                 <option value="Today">Today</option>
                                                 <option value="Yesterday">Yesterday</option>
+                                                <option value="All">All</option>
                                             </select>
                                         </div>
                                     </div>
@@ -162,10 +162,10 @@
                                             </div>
                                             
                                             <select name="status" class="form-control">
-                                                <option value="All">All</option>
                                                 <option value="Pending">Pending</option>
                                                 <option value="Shipped">Shipped</option>
                                                 <option value="Completed">Completed</option>
+                                                <option value="All">All</option>
                                             </select>
                                         </div>
                                     </div>
@@ -196,7 +196,15 @@
                             <div class="row">
                                 <section id="orders">
                                     @if($orders != null)
-                                    <p class="text-muted">Filtered By : {{$date}} | {{$stat}}</p>
+                                    <p class="text-muted">
+                                        Filtered By : {{$date}} &raquo; {{$stat}} 
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        @if($resultcount==1)
+                                            {{$resultcount}} Result
+                                        @else
+                                            {{$resultcount}} Results
+                                        @endif
+                                    </p>
                                     <table class="table">
                                         <tr class="table-primary">
                                             <th>Order ID</th>

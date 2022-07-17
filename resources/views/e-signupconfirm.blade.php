@@ -70,7 +70,7 @@
                                             <a href="{{ url('/employee/signupconfirm') }}"><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></a></button>
                                         @endforeach
                                         </ul>
-                                        </div>
+                                        </div> 
                                     @endif
                                 
                                     @if($message = Session::get('error'))

@@ -59,7 +59,7 @@
                                     <div class="d-grid gap-2">
                                         <input type="submit" name="login" value="Sign in" class="btn btn-primary">
                                     </div>
-                                </div>
+                                </div> 
                                 <p class="body" style="color: #393f81;">Don't have an account? <a href="{{ url('/employee/signupconfirm') }}" class="link-primary">Sign up here</a></p>
                                 @if(count($errors)>0 || $message = Session::get('error'))
                                     @if(count($errors)>0)
