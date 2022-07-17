@@ -345,6 +345,7 @@ class employeecontroller extends Controller
         $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
 
         return view('inventory-updateitem',[
+            'auth_level'=>$auth_level,
             'name'=>$name,
             'stocks'=>$stocks,
             'email'=>$email,

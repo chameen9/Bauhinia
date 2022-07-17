@@ -140,7 +140,7 @@
                             <div class="col-3">
                               <div class="input-group">
                                   <div class="input-group-prepend">
-                                      <span class="input-group-text">Status :</span>
+                                      <span class="input-group-text">Status :</span><!--use category-->
                                   </div>
                                   
                                   <select name="status" class="form-control">
@@ -191,7 +191,6 @@
                                       <th>Product Name</th>
                                       <th>Brand</th>
                                       <th>Price</th>
-                                      <th>Available Stock</th>
                                       <th>Update</th>
                                   </tr>
 
@@ -201,21 +200,18 @@
                                           <td>{{$stock->product_name}}</td>
                                           <td>{{$stock->brand}}</td>
                                           <td>Rs. {{$stock->price}}</td>
-                                          <td align="center">
-                                            {{$stock->stock}}
-                                          </td>
                                           
 
 
                                           <td align="center">
                                             @if($auth_level == 1)
-                                              <a href="{{url('/employee/inventory/updateitem/'.$stock->product_id.'/'.$name.'/'.$email.'')}}" class="btn-outline-primary btn-sm"><i class="bi bi-arrow-repeat"></i></a>
+                                              <a href="{{url('/employee/inventory/updateitem/'.$stock->product_id.'/'.$name.'/'.$email.'')}}" class="btn-outline-primary btn-sm" data-mdb-toggle="tooltip" title="Update {{$stock->product_id}}'s Details" ><i class="bi bi-arrow-repeat"></i></a>
                                               
                                             @elseif($auth_level == 2)
-                                              <a href="{{url('/employee/inventory/updateitem/'.$stock->product_id.'/'.$name.'/'.$email.'')}}" class="btn-primary btn-sm"><i class="bi bi-arrow-repeat"></i></i></a>
+                                              <a href="{{url('/employee/inventory/updateitem/'.$stock->product_id.'/'.$name.'/'.$email.'')}}" class="btn-primary btn-sm" data-mdb-toggle="tooltip" title="Update This Product's Details" ><i class="bi bi-arrow-repeat"></i></i></a>
                                               
                                             @elseif($auth_level == 3)
-                                              <a href="{{url('/employee/inventory/updateitem/'.$stock->product_id.'/'.$name.'/'.$email.'')}}" class="btn-primary btn-sm"><i class="bi bi-arrow-repeat"></i></i></a>
+                                              <a href="{{url('/employee/inventory/updateitem/'.$stock->product_id.'/'.$name.'/'.$email.'')}}" class="btn-primary btn-sm" data-mdb-toggle="tooltip" title="Update This Product's Details" ><i class="bi bi-arrow-repeat"></i></i></a>
                                               
                                             @else
                                               <a href="{{url('/employee/inventory/updateitem/'.$stock->product_id.'/'.$name.'/'.$email.'')}}" class="btn btn-primary btn-sm disabled" data-mdb-toggle="tooltip" title="You can't do this action" ><i class="bi bi-plus-circle"></i></a>
