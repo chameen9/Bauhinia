@@ -167,17 +167,25 @@
                               <br>
                             </div>
 
-                            <div class="col-3">
+                            @if($resultcount > 0)
+                              <div class="col-3">
+                                <input type="hidden" name="name" value="{{$name}}">
+                                <input type="hidden" name="email" value="{{$email}}">
                                 @if($auth_level == 1)
-                                    <button type="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</button>
+                                  <a href="{{url('/employee/'.$name.'/'.$email.'/'.$stat.'/create/stockreport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</a>
                                 @elseif($auth_level == 2)
-                                    <button type="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</button>
+                                  <a href="{{url('/employee/'.$name.'/'.$email.'/'.$stat.'/create/stockreport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</a>
                                 @elseif($auth_level == 3)
-                                    <button type="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</button>
+                                  <a href="{{url('/employee/'.$name.'/'.$email.'/'.$stat.'/create/stockreport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</a>
                                 @else
-                                    <button type="button" class="btn btn-info btn-block" disabled><i class="bi bi-filetype-pdf"></i> Create Report</button>
+                                  <a href="{{url('/employee/'.$name.'/'.$email.'/'.$stat.'/create/stockreport')}}" role="button" class="btn btn-info btn-block" disabled><i class="bi bi-filetype-pdf"></i> Create Report</a>
                                 @endif
-                            </div>
+                              </div>
+                            @else
+                              <div class="col-3">
+                                <br>
+                              </div>
+                            @endif
 
                           </div>
                           <br>

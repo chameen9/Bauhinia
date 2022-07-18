@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\Product;
+use App\Models\Report;
 use App\Rules\PasswordChecker;
 use Carbon\Carbon;
 use Validator;
@@ -373,7 +374,14 @@ class employeecontroller extends Controller
         $format = '.pdf';
         $pdfname = $first.' '.$date.' ['.$time.']'.$format;
 
-        $pdf = Pdf::loadView('test',[
+        $Report = new Report;
+        $Report->created_by=$name;
+        $Report->created_date=$date;
+        $Report->created_time=$time;
+        $Report->report_type='Inventory Report';
+        $Report->save();
+
+        $pdf = Pdf::loadView('PDF.inventoryreport',[
             'stocks'=>$stocks,
             'date'=>$date,
             'name'=>$name,
@@ -384,7 +392,6 @@ class employeecontroller extends Controller
         ]);
         return $pdf->download($pdfname);
     }
-
     // inventory  //
 
 
@@ -397,7 +404,8 @@ class employeecontroller extends Controller
             'name'=>$name,
             'stocks'=>null,
             'email'=>$email,
-            'auth_level'=>$auth_level
+            'auth_level'=>$auth_level,
+            'resultcount'=>null
         ]);
     }
 
@@ -406,22 +414,27 @@ class employeecontroller extends Controller
         $gotname = DB::Table('employees')->where('email',$request->email)->value('name');
 
         $reqstatus = $request->status;
+        $resultcount = null;
 
         
         if($reqstatus == 'Empty'){
 
             $stocks = DB::Table('products')->where([['stock','<=',0]])->get();
+            $resultcount = DB::Table('products')->where([['stock','<=',0]])->count();
         }
         else if($reqstatus == 'Less than 20'){
 
             $stocks = DB::Table('products')->where([['stock','<=',20],['stock','>=',1]])->get();
+            $resultcount = DB::Table('products')->where([['stock','<=',20],['stock','>=',1]])->count();
         }
         else if($reqstatus == 'Less than 50'){
 
             $stocks = DB::Table('products')->where([['stock','<=',50],['stock','>=',21]])->get();
+            $resultcount = DB::Table('products')->where([['stock','<=',50],['stock','>=',21]])->count();
         }
         else{
             $stocks = DB::Table('products')->get();
+            $resultcount = DB::Table('products')->count();
         }
         
         $auth_level = DB::Table('employees')->where('email',$request->email)->value('auth_level');
@@ -431,7 +444,8 @@ class employeecontroller extends Controller
             'stocks'=>$stocks,
             'email'=>$request->email,
             'auth_level'=>$auth_level,
-            'stat'=>$reqstatus
+            'stat'=>$reqstatus,
+            'resultcount'=>$resultcount
         ]);
     }
 
@@ -444,7 +458,8 @@ class employeecontroller extends Controller
             'name'=>$name,
             'stocks'=>$stocks,
             'email'=>$email,
-            'product_id'=>$product_id
+            'product_id'=>$product_id,
+            'resultcount'=>null
         ]);
     }
 
@@ -467,8 +482,64 @@ class employeecontroller extends Controller
             'email'=>$request->email,
             'auth_level'=>$auth_level,
             'stat'=>null,
+            'resultcount'=>null,
             'resultcount'=>null
         ]);
+    }
+
+    public function createstockreport($name, $email, $stat){
+
+        if($reqstatus == 'Empty'){
+
+            $stocks = DB::Table('products')->where([['stock','<=',0]])->get();
+            $resultcount = DB::Table('products')->where([['stock','<=',0]])->count();
+        }
+        else if($reqstatus == 'Less than 20'){
+
+            $stocks = DB::Table('products')->where([['stock','<=',20],['stock','>=',1]])->get();
+            $resultcount = DB::Table('products')->where([['stock','<=',20],['stock','>=',1]])->count();
+        }
+        else if($reqstatus == 'Less than 50'){
+
+            $stocks = DB::Table('products')->where([['stock','<=',50],['stock','>=',21]])->get();
+            $resultcount = DB::Table('products')->where([['stock','<=',50],['stock','>=',21]])->count();
+        }
+        else{
+            $stocks = DB::Table('products')->get();
+            $resultcount = DB::Table('products')->count();
+        }
+
+        
+        if ($stat == 'All'){
+            $stocks = DB::Table('products')->get();
+        }
+        else{
+            $stocks = DB::Table('products')->where('category',$stat)->get();
+        }
+        $date = Carbon::today('Asia/Colombo')->toDateString();
+        $time = Carbon::now('Asia/Colombo')->toTimeString();
+        $role = DB::Table('employees')->where('email',$email)->value('role');
+        $first = 'Stock Report of';
+        $format = '.pdf';
+        $pdfname = $first.' '.$date.' ['.$time.']'.$format;
+
+        $Report = new Report;
+        $Report->created_by=$name;
+        $Report->created_date=$date;
+        $Report->created_time=$time;
+        $Report->report_type='Stock Report';
+        $Report->save();
+
+        $pdf = Pdf::loadView('PDF.stockreport',[
+            'stocks'=>$stocks,
+            'date'=>$date,
+            'name'=>$name,
+            'role'=>$role,
+            'stat'=>$stat,
+            'resultcount'=>null,
+            'time'=>$time
+        ]);
+        return $pdf->download($pdfname);
     }
     //  stocks  //
 

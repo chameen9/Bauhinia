@@ -121,5 +121,8 @@ Route::post('employee/inventory/addnewproduct', 'App\http\controllers\employeeco
 Route::get('/employee/{name}/{email}/{stat}/create/inventoryreport', 'App\http\controllers\employeecontroller@createinventoryreport');
 Route::post('/employee/{name}/{email}/{stat}/create/create/inventoryreport', 'App\http\controllers\employeecontroller@createinventoryreport');
 
+Route::get('/employee/{name}/{email}/{stat}/create/stockreport', 'App\http\controllers\employeecontroller@createstockreport');
+Route::post('/employee/{name}/{email}/{stat}/create/create/stockreport', 'App\http\controllers\employeecontroller@createstockreport');
+
 Route::get('/employee/signout', 'App\http\controllers\employeecontroller@signout');
 Route::post('/employee/signout', 'App\http\controllers\employeecontroller@signout');
