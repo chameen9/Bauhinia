@@ -58,7 +58,7 @@
       Reprot Created By : {{$name}} ({{$role}})
     </p>
     
-    <p>Category : {{$stat}}</p>
+    <p>Stock Status : {{$stat}}</p>
 
   <table cellspacing=0>
     <tr>

@@ -245,6 +245,7 @@ class employeecontroller extends Controller
             'resultcount'=>$resultcount
         ]);
     }
+    // create order report
     // orders  //
 
 
@@ -489,17 +490,17 @@ class employeecontroller extends Controller
 
     public function createstockreport($name, $email, $stat){
 
-        if($reqstatus == 'Empty'){
+        if($stat == 'Empty'){
 
             $stocks = DB::Table('products')->where([['stock','<=',0]])->get();
             $resultcount = DB::Table('products')->where([['stock','<=',0]])->count();
         }
-        else if($reqstatus == 'Less than 20'){
+        else if($stat == 'Less than 20'){
 
             $stocks = DB::Table('products')->where([['stock','<=',20],['stock','>=',1]])->get();
             $resultcount = DB::Table('products')->where([['stock','<=',20],['stock','>=',1]])->count();
         }
-        else if($reqstatus == 'Less than 50'){
+        else if($stat == 'Less than 50'){
 
             $stocks = DB::Table('products')->where([['stock','<=',50],['stock','>=',21]])->get();
             $resultcount = DB::Table('products')->where([['stock','<=',50],['stock','>=',21]])->count();
@@ -509,13 +510,7 @@ class employeecontroller extends Controller
             $resultcount = DB::Table('products')->count();
         }
 
-        
-        if ($stat == 'All'){
-            $stocks = DB::Table('products')->get();
-        }
-        else{
-            $stocks = DB::Table('products')->where('category',$stat)->get();
-        }
+
         $date = Carbon::today('Asia/Colombo')->toDateString();
         $time = Carbon::now('Asia/Colombo')->toTimeString();
         $role = DB::Table('employees')->where('email',$email)->value('role');
@@ -536,7 +531,7 @@ class employeecontroller extends Controller
             'name'=>$name,
             'role'=>$role,
             'stat'=>$stat,
-            'resultcount'=>null,
+            'resultcount'=>$resultcount,
             'time'=>$time
         ]);
         return $pdf->download($pdfname);
