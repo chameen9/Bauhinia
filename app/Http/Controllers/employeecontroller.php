@@ -13,6 +13,7 @@ use DB;
 
 class employeecontroller extends Controller
 {
+    // sign in sign up  //
     function checksignin(Request $request){
         
         $this->validate($request, [
@@ -118,6 +119,15 @@ class employeecontroller extends Controller
         return back()->with('message',$name);
     }
 
+    public function signout(Request $request){
+        $request->session()->flush();
+        Auth::logout();
+        return redirect('/');
+    }
+    // sign in sign up  //
+
+
+    // orders  //
     public function vieworders($name, $email,){
 
         $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
@@ -125,41 +135,6 @@ class employeecontroller extends Controller
         return view('orders',[
             'name'=>$name,
             'orders'=>null,
-            'email'=>$email,
-            'auth_level'=>$auth_level
-        ]);
-    }
-
-    public function viewhome($name, $email,){
-
-        $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
-
-        return view('dashboard',[
-            'name'=>$name,
-            'email'=>$email,
-            'auth_level'=>$auth_level
-        ]);
-    }
-
-    public function viewinventory($name, $email,){
-
-        $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
-
-        return view('inventory',[
-            'name'=>$name,
-            'stocks'=>null,
-            'email'=>$email,
-            'auth_level'=>$auth_level
-        ]);
-    }
-
-    public function viewstocks($name, $email,){
-
-        $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
-
-        return view('stocks',[
-            'name'=>$name,
-            'stocks'=>null,
             'email'=>$email,
             'auth_level'=>$auth_level
         ]);
@@ -267,11 +242,23 @@ class employeecontroller extends Controller
             'stat'=>'All',
             'resultcount'=>$resultcount
         ]);
-
-        //return redirect()->action('App\http\controllers\employeecontroller@findorders');
-        //return redirect()->back();
     }
-    
+    // orders  //
+
+
+    // inventory  //
+    public function viewinventory($name, $email,){
+
+        $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
+
+        return view('inventory',[
+            'name'=>$name,
+            'stocks'=>null,
+            'email'=>$email,
+            'auth_level'=>$auth_level
+        ]);
+    }
+
     function findinventory(Request $request){ 
 
         $gotname = DB::Table('employees')->where('email',$request->email)->value('name');
@@ -311,6 +298,75 @@ class employeecontroller extends Controller
             'auth_level'=>$auth_level,
             'stat'=>$reqcategory,
             'resultcount'=>$resultcount
+        ]);
+    }
+
+    public function viewupdateinventoryitem($product_id, $name, $email){
+        $stocks = DB::Table('products')->where('product_id',$product_id)->get();
+        $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
+
+        return view('inventory-updateitem',[
+            'auth_level'=>$auth_level,
+            'name'=>$name,
+            'stocks'=>$stocks,
+            'email'=>$email,
+            'product_id'=>$product_id
+        ]);
+    }
+
+    public function updateinventoryitem(Request $request){
+
+        $auth_level = DB::Table('employees')->where('email',$request->email)->value('auth_level');
+
+        
+        $updetails = DB::Table('products')
+            ->where('product_id',$request->product_id)
+            ->update([
+                'product_name'=>$request->product_name,
+                'brand'=>$request->brand,
+                'price'=>$request->price
+        ]);
+        return view('inventory',[
+            'name'=>$request->name,
+            'stocks'=>null,
+            'email'=>$request->email,
+            'auth_level'=>$auth_level,
+            'stat'=>null,
+            'resultcount'=>null
+        ]);
+    }
+
+    public function addnewproduct(Request $req){
+        $this->validate($req,[
+            'product_id'=>['string','max:100','min:8','unique:products'],
+            'product_name'=>['string','max:300','min:10'],
+            'brand'=>['string','max:100',],
+            'price'=>['max:100','min:4',],
+            'stock'=>['numeric'],
+        ]);
+        $Product = new Product;
+        $Product->product_id = $req->product_id;
+        $Product->product_name = $req->product_name;
+        $Product->brand = $req->brand;
+        $Product->price = $req->price;
+        $Product->stock = $req->stock;
+        $Product->save();
+
+        return back()->with('message','Product Added !');
+    }
+    // inventory  //
+
+
+    //  stocks  //
+    public function viewstocks($name, $email,){
+
+        $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
+
+        return view('stocks',[
+            'name'=>$name,
+            'stocks'=>null,
+            'email'=>$email,
+            'auth_level'=>$auth_level
         ]);
     }
 
@@ -361,42 +417,6 @@ class employeecontroller extends Controller
         ]);
     }
 
-    public function viewupdateinventoryitem($product_id, $name, $email){
-        $stocks = DB::Table('products')->where('product_id',$product_id)->get();
-        $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
-
-        return view('inventory-updateitem',[
-            'auth_level'=>$auth_level,
-            'name'=>$name,
-            'stocks'=>$stocks,
-            'email'=>$email,
-            'product_id'=>$product_id
-        ]);
-    }
-    
-    public function updateinventoryitem(Request $request){
-        $oldstock = DB::Table('products')->where('product_id', $request->product_id)->value('stock');
-        $auth_level = DB::Table('employees')->where('email',$request->email)->value('auth_level');
-
-        $reqstock = $request->new_stock;
-
-        $newstock = $oldstock + $reqstock;
-
-        $upstock = DB::Table('products')
-            ->where('product_id',$request->product_id)
-            ->update([
-                'stock' => $newstock
-        ]);
-        return view('inventory',[
-            'name'=>$request->name,
-            'stocks'=>null,
-            'email'=>$request->email,
-            'auth_level'=>$auth_level,
-            'stat'=>null,
-            'resultcount'=>null
-        ]);
-    }
-
     public function updatestock(Request $request){
         $oldstock = DB::Table('products')->where('product_id', $request->product_id)->value('stock');
         $auth_level = DB::Table('employees')->where('email',$request->email)->value('auth_level');
@@ -419,29 +439,20 @@ class employeecontroller extends Controller
             'resultcount'=>null
         ]);
     }
+    //  stocks  //
 
-    public function addnewproduct(Request $req){
-        $this->validate($req,[
-            'product_id'=>['string','max:100','min:8','unique:products'],
-            'product_name'=>['string','max:300','min:10'],
-            'brand'=>['string','max:100',],
-            'price'=>['max:100','min:4',],
-            'stock'=>['numeric'],
+
+    //  home    //
+    public function viewhome($name, $email,){
+
+        $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
+
+        return view('dashboard',[
+            'name'=>$name,
+            'email'=>$email,
+            'auth_level'=>$auth_level
         ]);
-        $Product = new Product;
-        $Product->product_id = $req->product_id;
-        $Product->product_name = $req->product_name;
-        $Product->brand = $req->brand;
-        $Product->price = $req->price;
-        $Product->stock = $req->stock;
-        $Product->save();
-
-        return back()->with('message','Product Added !');
     }
-
-    public function signout(Request $request){
-        $request->session()->flush();
-        Auth::logout();
-        return redirect('/');
-    }
+    //  home    //
+    
 }

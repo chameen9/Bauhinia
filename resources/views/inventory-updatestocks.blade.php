@@ -108,7 +108,7 @@
                       <a href="{{url('/employee/inventory/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary disabled"><i class="bi bi-card-checklist"></i><br> Inventory</a>
                       <br>
                       <br>
-                      <a href="{{url('/employee/stocks/'.$name.'/'.$email.'')}}" class="btn btn-primary "><i class="bi bi-boxes"></i></i><br> Stocks</a>
+                      <a href="{{url('/employee/stocks/'.$name.'/'.$email.'')}}" class="btn btn-primary "><i class="bi bi-arrow-left"></i><br> Stocks</a>
                       <br>
                       <br>
                       <a href="#money" class="btn btn-outline-primary disabled"><i class="bi bi-coin"></i><br> Money</a>
@@ -128,7 +128,7 @@
             <div class="col-lg-11 col-md-11 col-sm-9">
                 <div class="shadow bg-white rounded">
                     <div class="card p-1" style="border: 0;">
-                        <form action="{{url('/employee/inventoryupdateinventoryitem/update')}}" method="post">
+                        <form action="{{url('/employee/inventoryupdatestocks/update')}}" method="post">
                         {{csrf_field()}}
                         <br>
                           

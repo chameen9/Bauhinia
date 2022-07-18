@@ -105,7 +105,7 @@
                       <a href="{{url('/employee/orders/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary disabled"><i class="bi bi-shop"></i><br> Orders</a>
                       <br>
                       <br>
-                      <a href="{{url('/employee/inventory/'.$name.'/'.$email.'')}}" class="btn btn-primary"><i class="bi bi-card-checklist"></i><br> Inventory</a>
+                      <a href="{{url('/employee/inventory/'.$name.'/'.$email.'')}}" class="btn btn-primary"><i class="bi bi-arrow-left"></i><br> Inventory</a>
                       <br>
                       <br>
                       <a href="{{url('/employee/stocks/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary disabled"><i class="bi bi-boxes"></i></i><br> Stocks</a>
@@ -124,61 +124,75 @@
                     </div>
                 </div>
             </div>
+            <div class="col-1">
+              <br>
+            </div>
 
-            <div class="col-lg-11 col-md-11 col-sm-9">
+            <div class="col-lg-9 col-md-9 col-sm-8">
                 <div class="shadow bg-white rounded">
                     <div class="card p-1" style="border: 0;">
                         <form action="{{url('/employee/inventoryupdateinventoryitem/update')}}" method="post">
                         {{csrf_field()}}
-                        <br>
                           
-                          
+                          @foreach($stocks as $stock)
                           <div class="row">
-                            <section id="inventory">
-                              
-                              <table class="table">
-                                  <tr class="table-primary">
-                                      <th>Product ID</th>
-                                      <th>Product Name</th>
-                                      <th>Brand</th>
-                                      <th>Price</th>
-                                      <th>Available Stock</th>
-                                      <th>New Stock</th>
-                                      <th>Add Stock</th>
-                                  </tr>
-
-                                      @foreach($stocks as $stock)
-                                      <tr>
-                                          <td>{{$stock->product_id}}</td>
-                                          <td>{{$stock->product_name}}</td>
-                                          <td>{{$stock->brand}}</td>
-                                          <td>Rs. {{$stock->price}}</td>
-                                          <td>{{$stock->stock}}</td>
-                                          <td width="100px"><input type="number" value="1" name="new_stock" class="form-control" min="1" max="1000" step="1"></td>
-                                          
-
-
-                                          <td align="center">
-                                            <input type="hidden" name="product_id" value="{{$product_id}}">
-                                            <input type="hidden" name="old_stock" value="{{$stock->stock}}">
-                                            <input type="hidden" name="email" value="{{$email}}">
-                                            <input type="hidden" name="name" value="{{$name}}">
-                                           <button type="submit" class="btn btn-primary">Save</button>
-                                          </td>
-                                            
-                                      </tr>
-                                      @endforeach
-                                  
-                                 
-                              </table>
-                             
-                          </section>
+                           
+                              <div class="col-4">
+                                <label>Product Id</label>
+                                <input type="text" name="product_id" readonly value="{{$stock->product_id}}" class="form-control">
+                              </div>
+                              <div class="col-4">
+                                <label>Category</label>
+                                <input type="text" name="category" readonly value="{{$stock->category}}" class="form-control">
+                              </div>
+                              <div class="col-4">
+                                <label>Available Stock</label>
+                                <input type="text" name="brand" readonly value="{{$stock->stock}}" class="form-control">
+                              </div>
+                           
                           </div>
+                          <br>
+                          <div class="row">
+                           
+                            <div class="col-4">
+                              <label>Product Name</label>
+                              <input type="text" name="product_name" required value="{{$stock->product_name}}" class="form-control">
+                            </div>
+                            <div class="col-4">
+                              <label>Brand</label>
+                              <input type="text" name="brand" required value="{{$stock->brand}}" class="form-control">
+                            </div>
+                            <div class="col-4">
+                              <label>Price</label>
+                              <div class="input-group mb-3">
+                                <span class="input-group-text">Rs.</span>
+                                <input type="text" name="price" required value="{{$stock->price}}" class="form-control">
+                              </div>
+                            </div>
+                         
+                          </div>
+                          <br>
+                          <div class="row">
+                            <div class="col-4">
+                              <br>
+                              <input type="hidden" name="email" value="{{$email}}">
+                              <input type="hidden" name="name" value="{{$name}}">
+                            </div>
+                            <div class="col-4 text-center">
+                              <button type="submit" class="btn btn-primary btn-block"><i class="bi bi-save"></i> Save</button>
+                            </div>
+                            <div class="col-4"><br></div>
+                          </div>
+                          @endforeach
 
                         </form>
                         
                     </div>
                 </div>
+            </div>
+
+            <div class="col-1">
+              <br>
             </div>
 
         </div>
