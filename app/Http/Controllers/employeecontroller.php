@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Validator;
 use Auth;
 use DB;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class employeecontroller extends Controller
 {
@@ -354,6 +355,14 @@ class employeecontroller extends Controller
 
         return back()->with('message','Product Added !');
     }
+    public function createinventoryreport(){
+        $stocks = DB::Table('products')->get();
+        $pdf = Pdf::loadView('test',[
+            'stocks'=>$stocks
+        ]);
+        return $pdf->download('inventory.pdf');
+    }
+
     // inventory  //
 
 

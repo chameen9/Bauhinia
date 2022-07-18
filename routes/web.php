@@ -118,5 +118,8 @@ Route::post('/employee/inventoryupdatestocks/update', 'App\http\controllers\empl
 Route::get('employee/inventory/addnewproduct', 'App\http\controllers\employeecontroller@addnewproduct');
 Route::post('employee/inventory/addnewproduct', 'App\http\controllers\employeecontroller@addnewproduct');
 
+Route::get('/employee/create/inventoryreport', 'App\http\controllers\employeecontroller@createinventoryreport');
+Route::post('/employee/create/inventoryreport', 'App\http\controllers\employeecontroller@createinventoryreport');
+
 Route::get('/employee/signout', 'App\http\controllers\employeecontroller@signout');
 Route::post('/employee/signout', 'App\http\controllers\employeecontroller@signout');

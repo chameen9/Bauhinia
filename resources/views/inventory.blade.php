@@ -169,13 +169,13 @@
 
                             <div class="col-3">
                                 @if($auth_level == 1)
-                                    <button type="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</button>
+                                    <a href="{{url('/employee/create/inventoryreport')}}" type="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</a>
                                 @elseif($auth_level == 2)
-                                    <button type="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</button>
+                                    <a href="{{url('/employee/create/inventoryreport')}}" type="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</a>
                                 @elseif($auth_level == 3)
-                                    <button type="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</button>
+                                    <a href="{{url('/employee/create/inventoryreport')}}" type="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</a>
                                 @else
-                                    <button type="button" class="btn btn-info btn-block" disabled><i class="bi bi-filetype-pdf"></i> Create Report</button>
+                                    <a href="{{url('/employee/create/inventoryreport')}}" type="button" class="btn btn-info btn-block" disabled><i class="bi bi-filetype-pdf"></i> Create Report</a>
                                 @endif
                             </div>
 
