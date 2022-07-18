@@ -99,16 +99,16 @@
             <div class="col-lg-1 col-md-1 col-sm-2">
                 <div class="shadow bg-white rounded">
                     <div class="card p-1" style="border: 0;">
-                      <a href="{{url('/employee/home/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary disabled"><i class="bi bi-house"></i><br> Home</a>
+                    <a href="{{url('/employee/home/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary disabled"><i class="bi bi-house"></i><br> Home</a>
                       <br>
                       <br>
                       <a href="{{url('/employee/orders/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary disabled"><i class="bi bi-shop"></i><br> Orders</a>
                       <br>
                       <br>
-                      <a href="{{url('/employee/inventory/'.$name.'/'.$email.'')}}" class="btn btn-primary"><i class="bi bi-card-checklist"></i><br> Inventory</a>
+                      <a href="{{url('/employee/inventory/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary disabled"><i class="bi bi-card-checklist"></i><br> Inventory</a>
                       <br>
                       <br>
-                      <a href="{{url('/employee/stocks/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary disabled"><i class="bi bi-boxes"></i></i><br> Stocks</a>
+                      <a href="{{url('/employee/stocks/'.$name.'/'.$email.'')}}" class="btn btn-primary "><i class="bi bi-boxes"></i></i><br> Stocks</a>
                       <br>
                       <br>
                       <a href="#money" class="btn btn-outline-primary disabled"><i class="bi bi-coin"></i><br> Money</a>

@@ -103,8 +103,14 @@ Route::post('/employee/find/stocks', 'App\http\controllers\employeecontroller@fi
 Route::get('/employee/order/markasshipped/{order_id}/{name}/{email}', 'App\http\controllers\employeecontroller@markasshipped');
 Route::post('/employee/order/markasshipped/{order_id}/{name}/{email}Email', 'App\http\controllers\employeecontroller@markasshipped');
 
-Route::get('/employee/inventory/updateitem/{product_id}/{name}/{email}', 'App\http\controllers\employeecontroller@viewupdatestock');
-Route::post('/employee/inventory/updateitem/{product_id}/{name}/{email}', 'App\http\controllers\employeecontroller@viewupdatestock');
+Route::get('/employee/inventory/updateitem/{product_id}/{name}/{email}', 'App\http\controllers\employeecontroller@viewupdateinventoryitem');
+Route::post('/employee/inventory/updateitem/{product_id}/{name}/{email}', 'App\http\controllers\employeecontroller@viewupdateinventoryitem');
+
+Route::get('/employee/stocks/updateitem/{product_id}/{name}/{email}', 'App\http\controllers\employeecontroller@viewupdatestock');
+Route::post('/employee/stocks/updateitem/{product_id}/{name}/{email}', 'App\http\controllers\employeecontroller@viewupdatestock');
+
+Route::get('/employee/inventoryupdateinventoryitem/update', 'App\http\controllers\employeecontroller@updateinventoryitem');
+Route::post('/employee/inventoryupdateinventoryitem/update', 'App\http\controllers\employeecontroller@updateinventoryitem');
 
 Route::get('/employee/inventoryupdatestock/update', 'App\http\controllers\employeecontroller@updatestock');
 Route::post('/employee/inventoryupdatestock/update', 'App\http\controllers\employeecontroller@updatestock');

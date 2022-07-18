@@ -229,16 +229,16 @@
 
                                           <td align="center">
                                             @if($auth_level == 1)
-                                              <a href="{{url('/employee/inventory/updateitem/'.$stock->product_id.'/'.$name.'/'.$email.'')}}" class="btn-outline-primary btn-sm"><i class="bi bi-plus-circle-fill"></i></i></a>
+                                              <a href="{{url('/employee/stocks/updateitem/'.$stock->product_id.'/'.$name.'/'.$email.'')}}" class="btn-outline-primary btn-sm"><i class="bi bi-plus-circle-fill"></i></i></a>
                                               
                                             @elseif($auth_level == 2)
-                                              <a href="{{url('/employee/inventory/updateitem/'.$stock->product_id.'/'.$name.'/'.$email.'')}}" class="btn-primary btn-sm"><i class="bi bi-plus-circle"></i></a>
+                                              <a href="{{url('/employee/stocks/updateitem/'.$stock->product_id.'/'.$name.'/'.$email.'')}}" class="btn-primary btn-sm"><i class="bi bi-plus-circle"></i></a>
                                               
                                             @elseif($auth_level == 3)
-                                              <a href="{{url('/employee/inventory/updateitem/'.$stock->product_id.'/'.$name.'/'.$email.'')}}" class="btn-primary btn-sm"><i class="bi bi-plus-circle"></i></a>
+                                              <a href="{{url('/employee/stocks/updateitem/'.$stock->product_id.'/'.$name.'/'.$email.'')}}" class="btn-primary btn-sm"><i class="bi bi-plus-circle"></i></a>
                                               
                                             @else
-                                              <a href="{{url('/employee/inventory/updateitem/'.$stock->product_id.'/'.$name.'/'.$email.'')}}" class="btn btn-primary btn-sm disabled" data-mdb-toggle="tooltip" title="You can't do this action" ><i class="bi bi-plus-circle"></i></a>
+                                              <a href="{{url('/employee/stocks/updateitem/'.$stock->product_id.'/'.$name.'/'.$email.'')}}" class="btn btn-primary btn-sm disabled" data-mdb-toggle="tooltip" title="You can't do this action" ><i class="bi bi-plus-circle"></i></a>
                                               
                                             @endif
                                           </td>

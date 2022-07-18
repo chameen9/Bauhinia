@@ -277,23 +277,30 @@ class employeecontroller extends Controller
         $gotname = DB::Table('employees')->where('email',$request->email)->value('name');
 
         $reqstatus = $request->status;
+        $reqcategory = $request->category;
 
-        
-        if($reqstatus == 'Empty'){
+        $resultcount = null;
 
-            $stocks = DB::Table('products')->where([['stock','<=',0]])->get();
+        if($reqcategory == 'T-Shirt Store'){
+
+            $stocks = DB::Table('products')->where([['category','=','T-Shirt Store']])->get();
+            $resultcount = DB::Table('products')->where([['category','=','T-Shirt Store']])->count();
         }
-        else if($reqstatus == 'Less than 20'){
+        else if($reqcategory == 'New Arrivals'){
 
-            $stocks = DB::Table('products')->where([['stock','<=',20],['stock','>=',1]])->get();
+            $stocks = DB::Table('products')->where([['category','=','New Arrivals']])->get();
+            $resultcount = DB::Table('products')->where([['category','=','New Arrivals']])->count();
         }
-        else if($reqstatus == 'Less than 50'){
+        else if($reqcategory == 'High End Fashion Store'){
 
-            $stocks = DB::Table('products')->where([['stock','<=',50],['stock','>=',21]])->get();
+            $stocks = DB::Table('products')->where([['category','=','High End Fashion Store']])->get();
+            $resultcount = DB::Table('products')->where([['category','=','High End Fashion Store']])->count();
         }
         else{
             $stocks = DB::Table('products')->get();
+            $resultcount = DB::Table('products')->count();
         }
+
         
         $auth_level = DB::Table('employees')->where('email',$request->email)->value('auth_level');
 
@@ -302,7 +309,8 @@ class employeecontroller extends Controller
             'stocks'=>$stocks,
             'email'=>$request->email,
             'auth_level'=>$auth_level,
-            'stat'=>$reqstatus
+            'stat'=>$reqcategory,
+            'resultcount'=>$resultcount
         ]);
     }
 
@@ -344,7 +352,7 @@ class employeecontroller extends Controller
         $stocks = DB::Table('products')->where('product_id',$product_id)->get();
         $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
 
-        return view('inventory-updateitem',[
+        return view('inventory-updatestocks',[
             'auth_level'=>$auth_level,
             'name'=>$name,
             'stocks'=>$stocks,
@@ -353,7 +361,20 @@ class employeecontroller extends Controller
         ]);
     }
 
-    public function updatestock(Request $request){
+    public function viewupdateinventoryitem($product_id, $name, $email){
+        $stocks = DB::Table('products')->where('product_id',$product_id)->get();
+        $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
+
+        return view('inventory-updateitem',[
+            'auth_level'=>$auth_level,
+            'name'=>$name,
+            'stocks'=>$stocks,
+            'email'=>$email,
+            'product_id'=>$product_id
+        ]);
+    }
+    
+    public function updateinventoryitem(Request $request){
         $oldstock = DB::Table('products')->where('product_id', $request->product_id)->value('stock');
         $auth_level = DB::Table('employees')->where('email',$request->email)->value('auth_level');
 
@@ -371,7 +392,31 @@ class employeecontroller extends Controller
             'stocks'=>null,
             'email'=>$request->email,
             'auth_level'=>$auth_level,
-            'stat'=>null
+            'stat'=>null,
+            'resultcount'=>null
+        ]);
+    }
+
+    public function updatestock(Request $request){
+        $oldstock = DB::Table('products')->where('product_id', $request->product_id)->value('stock');
+        $auth_level = DB::Table('employees')->where('email',$request->email)->value('auth_level');
+
+        $reqstock = $request->new_stock;
+
+        $newstock = $oldstock + $reqstock;
+
+        $upstock = DB::Table('products')
+            ->where('product_id',$request->product_id)
+            ->update([
+                'stock' => $newstock
+        ]);
+        return view('stocks',[
+            'name'=>$request->name,
+            'stocks'=>null,
+            'email'=>$request->email,
+            'auth_level'=>$auth_level,
+            'stat'=>null,
+            'resultcount'=>null
         ]);
     }
 

@@ -140,14 +140,14 @@
                             <div class="col-3">
                               <div class="input-group">
                                   <div class="input-group-prepend">
-                                      <span class="input-group-text">Status :</span><!--use category-->
+                                      <span class="input-group-text">Category :</span><!--use category-->
                                   </div>
                                   
-                                  <select name="status" class="form-control">
+                                  <select name="category" class="form-control">
                                       <option value="All">All</option>
-                                      <option value="Empty">Empty</option>
-                                      <option value="Less than 20">Less than 20</option>
-                                      <option value="Less than 50">Less than 50</option>
+                                      <option value="T-Shirt Store">T-Shirt Store</option>
+                                      <option value="New Arrivals">New Arrivals</option>
+                                      <option value="High End Fashion Store">High End Fashion Store</option>
                                   </select>
                               </div>
                             </div>
@@ -184,12 +184,19 @@
                           <div class="row">
                             <section id="inventory">
                               @if($stocks != null)
-                              <p class="text-muted">Filtered : {{$stat}} stocks</p>
+                              <p class="text-muted">
+                                @if($stat == 'All')
+                                  Showing {{$resultcount}} of {{$stat}} Results
+                                @else
+                                  Showing {{$resultcount}} Results in {{$stat}}
+                                @endif
+                              </p>
                               <table class="table">
                                   <tr class="table-primary">
                                       <th>Product ID</th>
                                       <th>Product Name</th>
                                       <th>Brand</th>
+                                      <th>Category</th>
                                       <th>Price</th>
                                       <th>Update</th>
                                   </tr>
@@ -199,6 +206,7 @@
                                           <td>{{$stock->product_id}}</td>
                                           <td>{{$stock->product_name}}</td>
                                           <td>{{$stock->brand}}</td>
+                                          <td>{{$stock->category}}</td>
                                           <td>Rs. {{$stock->price}}</td>
                                           
 
@@ -266,6 +274,20 @@
                             <div class="input-group mb-3">
                               <span class="input-group-text">Brand</span>
                               <input type="text" name="brand" required class="form-control">
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-12">
+                            <div class="input-group mb-3">
+                              <span class="input-group-text">Category</span>
+                              <select name="category" class="form-control">
+                                <option value="All" class="text-muted">All</option>
+                                <option value="T-Shirt Store">T-Shirt Store</option>
+                                <option value="New Arrivals">New Arrivals</option>
+                                <option value="High End Fashion Store">High End Fashion Store</option>
+                              </select>
                             </div>
                           </div>
                         </div>
