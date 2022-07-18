@@ -256,7 +256,9 @@ class employeecontroller extends Controller
             'name'=>$name,
             'stocks'=>null,
             'email'=>$email,
-            'auth_level'=>$auth_level
+            'auth_level'=>$auth_level,
+            'stat'=>null,
+            'resultcount'=>null
         ]);
     }
 
@@ -311,7 +313,8 @@ class employeecontroller extends Controller
             'name'=>$name,
             'stocks'=>$stocks,
             'email'=>$email,
-            'product_id'=>$product_id
+            'product_id'=>$product_id,
+            'resultcount'=>null
         ]);
     }
 
@@ -355,12 +358,29 @@ class employeecontroller extends Controller
 
         return back()->with('message','Product Added !');
     }
-    public function createinventoryreport(){
-        $stocks = DB::Table('products')->get();
+
+    public function createinventoryreport($name, $email, $stat){
+        if ($stat == 'All'){
+            $stocks = DB::Table('products')->get();
+        }
+        else{
+            $stocks = DB::Table('products')->where('category',$stat)->get();
+        }
+        $date = Carbon::today('Asia/Colombo')->toDateString();
+        $role = DB::Table('employees')->where('email',$email)->value('role');
+        $first = 'InventoryReport';
+        $format = '.pdf';
+        $pdfname = $first.''.$date.''.$name.''.$format;
+
         $pdf = Pdf::loadView('test',[
-            'stocks'=>$stocks
+            'stocks'=>$stocks,
+            'date'=>$date,
+            'name'=>$name,
+            'role'=>$role,
+            'stat'=>$stat,
+            'resultcount'=>null
         ]);
-        return $pdf->download('inventory.pdf');
+        return $pdf->download($pdfname);
     }
 
     // inventory  //

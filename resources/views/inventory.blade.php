@@ -7,7 +7,7 @@
 
         <!--<meta name="csrf-token" content="{{ csrf_token() }}">-->
 
-        <title>Bauhinia</title>
+        <title>Bauhinia | Inventory</title>
 
         <!--Import bootstrap js-->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -167,20 +167,29 @@
                               <br>
                             </div>
 
-                            <div class="col-3">
+                            @if($resultcount > 0)
+                              <div class="col-3">
+                                <input type="hidden" name="name" value="{{$name}}">
+                                <input type="hidden" name="email" value="{{$email}}">
                                 @if($auth_level == 1)
-                                    <a href="{{url('/employee/create/inventoryreport')}}" type="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</a>
+                                  <a href="{{url('/employee/'.$name.'/'.$email.'/'.$stat.'/create/inventoryreport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</a>
                                 @elseif($auth_level == 2)
-                                    <a href="{{url('/employee/create/inventoryreport')}}" type="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</a>
+                                  <a href="{{url('/employee/'.$name.'/'.$email.'/'.$stat.'/create/inventoryreport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</a>
                                 @elseif($auth_level == 3)
-                                    <a href="{{url('/employee/create/inventoryreport')}}" type="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</a>
+                                  <a href="{{url('/employee/'.$name.'/'.$email.'/'.$stat.'/create/inventoryreport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</a>
                                 @else
-                                    <a href="{{url('/employee/create/inventoryreport')}}" type="button" class="btn btn-info btn-block" disabled><i class="bi bi-filetype-pdf"></i> Create Report</a>
+                                  <a href="{{url('/employee/'.$name.'/'.$email.'/'.$stat.'/create/inventoryreport')}}" role="button" class="btn btn-info btn-block" disabled><i class="bi bi-filetype-pdf"></i> Create Report</a>
                                 @endif
-                            </div>
-
+                              </div>
+                            @else
+                              <div class="col-3">
+                                <br>
+                              </div>
+                            @endif
                           </div>
+
                           <br>
+
                           <div class="row">
                             <section id="inventory">
                               @if($stocks != null)

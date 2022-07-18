@@ -29,7 +29,12 @@
 </head>
 <body>
   <p align="center"><h3 align="center">Inventory Report</h3></p>
-  <table class="table table-bordered">
+  <p>
+    Report Created At : {{$date}} <br>
+    Reprot Created By : {{$name}} ({{$role}}) <br>
+    Category : {{$stat}}
+  </p>
+  <table class="table table-primary">
     <tr>
         <th>Product ID</th>
         <th>Product Name</th>
