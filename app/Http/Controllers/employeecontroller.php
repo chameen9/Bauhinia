@@ -367,10 +367,11 @@ class employeecontroller extends Controller
             $stocks = DB::Table('products')->where('category',$stat)->get();
         }
         $date = Carbon::today('Asia/Colombo')->toDateString();
+        $time = Carbon::now('Asia/Colombo')->toTimeString();
         $role = DB::Table('employees')->where('email',$email)->value('role');
-        $first = 'InventoryReport';
+        $first = 'Inventory Report of';
         $format = '.pdf';
-        $pdfname = $first.''.$date.''.$name.''.$format;
+        $pdfname = $first.' '.$date.' ['.$time.']'.$format;
 
         $pdf = Pdf::loadView('test',[
             'stocks'=>$stocks,
@@ -378,7 +379,8 @@ class employeecontroller extends Controller
             'name'=>$name,
             'role'=>$role,
             'stat'=>$stat,
-            'resultcount'=>null
+            'resultcount'=>null,
+            'time'=>$time
         ]);
         return $pdf->download($pdfname);
     }

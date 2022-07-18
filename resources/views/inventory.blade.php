@@ -137,7 +137,7 @@
                               <br>
                             </div>
 
-                            <div class="col-3">
+                            <div class="col-4">
                               <div class="input-group">
                                   <div class="input-group-prepend">
                                       <span class="input-group-text">Category :</span><!--use category-->
@@ -150,10 +150,6 @@
                                       <option value="High End Fashion Store">High End Fashion Store</option>
                                   </select>
                               </div>
-                            </div>
-
-                            <div class="col-1">
-                              <br>
                             </div>
 
                             <div class="col-3">

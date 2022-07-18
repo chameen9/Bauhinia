@@ -26,15 +26,43 @@
 
         <!--Bootstrap icons-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+
+        <style>
+          table{
+            border: 1px solid black;
+            width: 100%;
+            
+          }
+          th{
+            background: #0d6efd;
+            color: white;
+            border: 1px solid black;
+          }
+          tr{
+            background: white;
+            color: black;
+            border: 1px solid black;
+          }
+          td{
+            background: white;
+            color: black;
+            border: 1px solid black;
+          }
+        </style>
 </head>
 <body>
-  <p align="center"><h3 align="center">Inventory Report</h3></p>
-  <p>
-    Report Created At : {{$date}} <br>
-    Reprot Created By : {{$name}} ({{$role}}) <br>
-    Category : {{$stat}}
-  </p>
-  <table class="table table-primary">
+  
+  <h3 align="center">Inventory Report</h3>
+  <div class="row">
+    <div class="col-3">
+      Report Created At : {{$date}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$time}}
+    </div>
+    <div class="col-9">
+      Reprot Created By : {{$name}} ({{$role}})
+    </div>
+  </div>
+  <p>Category : {{$stat}}</p>
+  <table cellspacing=0>
     <tr>
         <th>Product ID</th>
         <th>Product Name</th>
@@ -45,9 +73,9 @@
 
         @foreach($stocks as $stock)
         <tr>
-            <td>{{$stock->product_id}}</td>
+            <td align="center">{{$stock->product_id}}</td>
             <td>{{$stock->product_name}}</td>
-            <td>{{$stock->brand}}</td>
+            <td align="center">{{$stock->brand}}</td>
             <td>{{$stock->category}}</td>
             <td align="right">{{$stock->price}}</td>
         </tr>
