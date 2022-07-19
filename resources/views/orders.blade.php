@@ -181,13 +181,13 @@
                                         <button type="submit" class="btn btn-primary btn-block"><i class="bi bi-search"></i> Find</button>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         @if($auth_level == 1)
-                                            <button type="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</button>
+                                            <button type="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Create Report</button>
                                         @elseif($auth_level == 2)
-                                            <button type="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</button>
+                                            <button type="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Create Report</button>
                                         @elseif($auth_level == 3)
-                                            <button type="button" class="btn btn-info btn-block"><i class="bi bi-filetype-pdf"></i> Create Report</button>
+                                            <button type="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Create Report</button>
                                         @else
-                                            <button type="button" class="btn btn-info btn-block" disabled><i class="bi bi-filetype-pdf"></i> Create Report</button>
+                                            <button type="button" class="btn btn-info btn-block" disabled><i class="bi bi-file-earmark-arrow-down"></i> Create Report</button>
                                         @endif
                                     </div>
                                 

@@ -373,7 +373,7 @@ class employeecontroller extends Controller
         $role = DB::Table('employees')->where('email',$email)->value('role');
         $first = 'Inventory Report of';
         $format = '.pdf';
-        $pdfname = $first.' '.$date.' ['.$time.']'.$format;
+        $pdfname = $stat.' '.$first.' '.$date.' ['.$time.']'.$format;
 
         $Report = new Report;
         $Report->created_by=$name;
@@ -516,7 +516,7 @@ class employeecontroller extends Controller
         $role = DB::Table('employees')->where('email',$email)->value('role');
         $first = 'Stock Report of';
         $format = '.pdf';
-        $pdfname = $first.' '.$date.' ['.$time.']'.$format;
+        $pdfname = $stat.' '.$first.' '.$date.' ['.$time.']'.$format;
 
         $Report = new Report;
         $Report->created_by=$name;

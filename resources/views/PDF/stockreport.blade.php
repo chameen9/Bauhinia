@@ -62,29 +62,29 @@
 
   <table cellspacing=0>
     <tr>
-        <th>Product ID</th>
-        <th>Product Name</th>
-        <th>Price (Rs.)</th>
-        <th>Category</th>
-        <th>Available Stock</th>
+        <th style="padding: 5px;">Product ID</th>
+        <th style="padding: 5px;">Product Name</th>
+        <th style="padding: 5px;">Price (Rs.)</th>
+        <th style="padding: 5px;">Category</th>
+        <th style="padding: 5px;">Available Stock</th>
     </tr>
 
         @foreach($stocks as $stock)
         <tr>
-            <td align="center">{{$stock->product_id}}</td>
-            <td>{{$stock->product_name}}</td>
-            <td align="right">{{$stock->price}}</td>
-            <td>{{$stock->category}}</td>
+            <td align="center" style="padding: 5px;">{{$stock->product_id}}</td>
+            <td style="padding: 5px;">{{$stock->product_name}}</td>
+            <td align="right" style="padding: 5px;">{{$stock->price}}</td>
+            <td style="padding: 5px;">{{$stock->category}}</td>
             
             
             @if($stock->stock >= 51)
-                <td align="center" class="success">{{$stock->stock}}</td>
+                <td align="center" class="success" style="padding: 5px;">{{$stock->stock}}</td>
             @elseif(50 >= $stock->stock && $stock->stock >= 21)
-                <td align="center" class="info">{{$stock->stock}}</td>
+                <td align="center" class="info" style="padding: 5px;">{{$stock->stock}}</td>
             @elseif(20 >= $stock->stock && $stock->stock >= 1)
-                <td align="center" class="warning">{{$stock->stock}}</td>
+                <td align="center" class="warning" style="padding: 5px;">{{$stock->stock}}</td>
             @elseif(0 >= $stock->stock)
-                <td align="center" class="danger">{{$stock->stock}}</td>
+                <td align="center" class="danger" style="padding: 5px;">{{$stock->stock}}</td>
 
             @else
 

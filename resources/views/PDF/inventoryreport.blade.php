@@ -46,20 +46,20 @@
 
   <table cellspacing=0>
     <tr>
-        <th>Product ID</th>
-        <th>Product Name</th>
-        <th>Brand</th>
-        <th>Category</th>
-        <th>Price(Rs.)</th>
+        <th style="padding: 5px;">Product ID</th>
+        <th style="padding: 5px;">Product Name</th>
+        <th style="padding: 5px;">Brand</th>
+        <th style="padding: 5px;">Category</th>
+        <th style="padding: 5px;">Price(Rs.)</th>
     </tr>
 
         @foreach($stocks as $stock)
         <tr>
-            <td align="center">{{$stock->product_id}}</td>
-            <td>{{$stock->product_name}}</td>
-            <td align="center">{{$stock->brand}}</td>
-            <td>{{$stock->category}}</td>
-            <td align="right">{{$stock->price}}</td>
+            <td align="center" style="padding: 5px;">{{$stock->product_id}}</td>
+            <td style="padding: 5px;">{{$stock->product_name}}</td>
+            <td align="center" style="padding: 5px;">{{$stock->brand}}</td>
+            <td style="padding: 5px;">{{$stock->category}}</td>
+            <td align="right" style="padding: 5px;">{{$stock->price}}</td>
         </tr>
         @endforeach
     
