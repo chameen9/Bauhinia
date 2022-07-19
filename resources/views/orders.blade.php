@@ -175,7 +175,7 @@
                                     @if($resultcount > 0)
                                     <div class="col-2">
                                         @if($auth_level == 1)
-                                        <a href="{{url('/employee/'.$name.'/'.$email.'/'.$date.'/'.$stat.'/create/orderreport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Downlaod Report</a>
+                                        <a href="{{url('/employee/'.$name.'/'.$email.'/'.$date.'/'.$stat.'/create/orderreport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> d Report</a>
                                         @elseif($auth_level == 2)
                                         <a href="{{url('/employee/'.$name.'/'.$email.'/'.$date.'/'.$stat.'/create/orderreport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Downlaod Report</a>
                                         @elseif($auth_level == 3)
