@@ -42,7 +42,7 @@
       Reprot Created By : {{$name}} ({{$role}})
     </p>
     
-    <p>Category : {{$stat}}</p>
+    <p>Category : {{$stat}} ({{$resultcount}} Results)</p>
 
   <table cellspacing=0>
     <tr>

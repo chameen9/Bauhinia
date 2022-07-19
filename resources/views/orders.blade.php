@@ -151,10 +151,6 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-1">
-                                        <label><br></label>
-                                    </div>
-
                                     <div class="col-3">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
@@ -170,26 +166,29 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-1">
-                                        <label><br></label>
-                                    </div>
-
-                                    <div class="col-3">
-                                        <label><br></label>
+                                    <div class="col-2">
                                         <input type="hidden" name="name" value="{{$name}}">
                                         <input type="hidden" name="email" value="{{$email}}">
                                         <button type="submit" class="btn btn-primary btn-block"><i class="bi bi-search"></i> Find</button>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </div>
+
+                                    @if($resultcount > 0)
+                                    <div class="col-2">
                                         @if($auth_level == 1)
-                                            <button type="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Create Report</button>
+                                        <a href="{{url('/employee/'.$name.'/'.$email.'/'.$date.'/'.$stat.'/create/orderreport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Downlaod Report</a>
                                         @elseif($auth_level == 2)
-                                            <button type="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Create Report</button>
+                                        <a href="{{url('/employee/'.$name.'/'.$email.'/'.$date.'/'.$stat.'/create/orderreport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Downlaod Report</a>
                                         @elseif($auth_level == 3)
-                                            <button type="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Create Report</button>
+                                        <a href="{{url('/employee/'.$name.'/'.$email.'/'.$date.'/'.$stat.'/create/orderreport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Downlaod Report</a>
                                         @else
-                                            <button type="button" class="btn btn-info btn-block" disabled><i class="bi bi-file-earmark-arrow-down"></i> Create Report</button>
+                                        <a href="{{url('/employee/'.$name.'/'.$email.'/'.$date.'/'.$stat.'/create/orderreport')}}" role="button" class="btn btn-info btn-block" disabled><i class="bi bi-file-earmark-arrow-down"></i> Downlaod Report</a>
                                         @endif
                                     </div>
+                                    @else
+                                    <div class="col-3">
+                                        <br>
+                                    </div>
+                                    @endif
                                 
                             </div>
                             <br>
@@ -197,12 +196,10 @@
                                 <section id="orders">
                                     @if($orders != null)
                                     <p class="text-muted">
-                                        Filtered By : {{$date}} &raquo; {{$stat}} 
-                                        &nbsp;&nbsp;&nbsp;&nbsp;
-                                        @if($resultcount==1)
-                                            {{$resultcount}} Result
+                                        @if($stat == 'All' && $date == 'All')
+                                            Showing {{$resultcount}} of {{$stat}} Results
                                         @else
-                                            {{$resultcount}} Results
+                                            Showing {{$resultcount}} Results in {{$date}} {{$stat}} Orders
                                         @endif
                                     </p>
                                     <table class="table">

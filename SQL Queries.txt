@@ -1,0 +1,76 @@
+create TABLE customers(
+    email VARCHAR(100) NOT NULL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    password VARCHAR(50) NOT NULL,
+    delivery_address VARCHAR(250) NOT NULL,
+    gender VARCHAR(20),
+    primary_contact_number VARCHAR(15) NOT NULL,
+    secondary_contact_number VARCHAR(15) NOT NULL,
+    created_at VARCHAR(50)
+);
+
+create TABLE employees(
+    id VARCHAR(50) NOT NULL PRIMARY KEY,
+    email VARCHAR(100) NOT NULL,
+    name VARCHAR(100),
+    role VARCHAR(100),
+    auth_level INT,
+    password VARCHAR(50),
+    address VARCHAR(250),
+    contact_number VARCHAR(15),
+    gender VARCHAR(10),
+    date_of_birth VARCHAR(12),
+    created_at VARCHAR(50)
+);
+
+create TABLE carts(
+    cp_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	product_id VARCHAR(50) NOT NULL,
+    cus_email VARCHAR(100) NOT NULL,
+    product_name VARCHAR(200),
+    price double,
+    brand VARCHAR(100),
+    colour VARCHAR(100),
+    size VARCHAR(50),
+    qty INT,
+    FOREIGN KEY (cus_email) REFERENCES customers(email),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
+CREATE TABLE reports(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    created_by varchar(200),
+    created_date varchar(20),
+    created_time varchar(20),
+    report_type varchar(30),
+    report_status varchar(100)
+);
+
+CREATE TABLE products(
+    product_id varchar(50) NOT NULL PRIMARY KEY,
+    product_name varchar(200),
+    category varchar(100),
+    brand varchar(100),
+    price double,
+    stock int
+);
+
+CREATE TABLE orders(
+    order_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    status varchar(50),
+    product_id varchar(50),
+    product_name varchar(200),
+    colour varchar(20),
+    size varchar(20),
+    qty int,
+    price double,
+    email varchar(100),
+    cus_name varchar(100),
+    primary_contact varchar(15),
+    secondary_contact varchar(15),
+    delivery_address varchar(250),
+    ordered_date varchar(20),
+    ordered_time varchar(15),
+    est_del_date varchar(20),
+    order_value double
+);

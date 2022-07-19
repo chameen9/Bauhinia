@@ -165,16 +165,14 @@
 
                             @if($resultcount > 0)
                               <div class="col-3">
-                                <input type="hidden" name="name" value="{{$name}}">
-                                <input type="hidden" name="email" value="{{$email}}">
                                 @if($auth_level == 1)
-                                  <a href="{{url('/employee/'.$name.'/'.$email.'/'.$stat.'/create/inventoryreport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Create Report</a>
+                                  <a href="{{url('/employee/'.$name.'/'.$email.'/'.$stat.'/create/inventoryreport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Downlaod Report</a>
                                 @elseif($auth_level == 2)
-                                  <a href="{{url('/employee/'.$name.'/'.$email.'/'.$stat.'/create/inventoryreport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Create Report</a>
+                                  <a href="{{url('/employee/'.$name.'/'.$email.'/'.$stat.'/create/inventoryreport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Downlaod Report</a>
                                 @elseif($auth_level == 3)
-                                  <a href="{{url('/employee/'.$name.'/'.$email.'/'.$stat.'/create/inventoryreport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Create Report</a>
+                                  <a href="{{url('/employee/'.$name.'/'.$email.'/'.$stat.'/create/inventoryreport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Downlaod Report</a>
                                 @else
-                                  <a href="{{url('/employee/'.$name.'/'.$email.'/'.$stat.'/create/inventoryreport')}}" role="button" class="btn btn-info btn-block" disabled><i class="bi bi-file-earmark-arrow-down"></i> Create Report</a>
+                                  <a href="{{url('/employee/'.$name.'/'.$email.'/'.$stat.'/create/inventoryreport')}}" role="button" class="btn btn-info btn-block" disabled><i class="bi bi-file-earmark-arrow-down"></i> Downlaod Report</a>
                                 @endif
                               </div>
                             @else

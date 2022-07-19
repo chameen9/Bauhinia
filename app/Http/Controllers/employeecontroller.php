@@ -138,7 +138,10 @@ class employeecontroller extends Controller
             'name'=>$name,
             'orders'=>null,
             'email'=>$email,
-            'auth_level'=>$auth_level
+            'auth_level'=>$auth_level,
+            'date'=>null,
+            'stat'=>null,
+            'resultcount'=>null
         ]);
     }
 
@@ -245,7 +248,102 @@ class employeecontroller extends Controller
             'resultcount'=>$resultcount
         ]);
     }
-    // create order report
+    
+    public function createorderreport($name, $email, $date, $stat){
+        if($stat == 'All' && $date == 'All'){
+            $orders = DB::Table('orders')->get();
+            $resultcount = DB::Table('orders')->count();
+        }
+        else if($stat == 'All' && $date == 'Today'){
+            $finddate = Carbon::today('Asia/Colombo')->toDateString();
+            $orders = DB::Table('orders')->where([['ordered_date','=',$finddate]])->get();
+            $resultcount = DB::Table('orders')->where([['ordered_date','=',$finddate]])->count();
+        }
+        else if($stat == 'All' && $date == 'Yesterday'){
+            $finddate = Carbon::yesterday('Asia/Colombo')->toDateString();
+            $orders = DB::Table('orders')->where('ordered_date',$finddate)->get();
+            $resultcount = DB::Table('orders')->where('ordered_date',$finddate)->count();
+        }
+        else if($stat == 'Pending' && $date == 'Today'){
+            $finddate = Carbon::today('Asia/Colombo')->toDateString();
+            $orders = DB::Table('orders')->where([['ordered_date','=',$finddate],['status','=','Pending']])->get();
+            $resultcount = DB::Table('orders')->where([['ordered_date','=',$finddate],['status','=','Pending']])->count();
+        }
+        else if($stat == 'Pending' && $date == 'Yesterday'){
+            $finddate = Carbon::yesterday('Asia/Colombo')->toDateString();
+            $orders = DB::Table('orders')->where([['ordered_date','=',$finddate],['status','=','Pending']])->get();
+            $resultcount = DB::Table('orders')->where([['ordered_date','=',$finddate],['status','=','Pending']])->count();
+        }
+        else if($stat == 'Pending' && $date == 'All'){
+            $orders = DB::Table('orders')->where([['status','=','Pending']])->get();
+            $resultcount = DB::Table('orders')->where([['status','=','Pending']])->count();
+        }
+        else if($stat == 'Shipped' && $date == 'Today'){
+            $finddate = Carbon::today('Asia/Colombo')->toDateString();
+            $orders = DB::Table('orders')->where([['ordered_date','=',$finddate],['status','=','Shipped']])->get();
+            $resultcount = DB::Table('orders')->where([['ordered_date','=',$finddate],['status','=','Shipped']])->count();
+        }
+        else if($stat == 'Shipped' && $date == 'Yesterday'){
+            $finddate = Carbon::yesterday('Asia/Colombo')->toDateString();
+            $orders = DB::Table('orders')->where([['ordered_date','=',$finddate],['status','=','Shipped']])->get();
+            $resultcount = DB::Table('orders')->where([['ordered_date','=',$finddate],['status','=','Shipped']])->count();
+        }
+        else if($stat == 'Shipped' && $date == 'All'){
+            $orders = DB::Table('orders')->where([['status','=','Shipped']])->get();
+            $resultcount = DB::Table('orders')->where([['status','=','Shipped']])->count();
+        }
+        else if($stat == 'Completed' && $date == 'Today'){
+            $finddate = Carbon::today('Asia/Colombo')->toDateString();
+            $orders = DB::Table('orders')->where([['ordered_date','=',$finddate],['status','=','Completed']])->get();
+            $resultcount = DB::Table('orders')->where([['ordered_date','=',$finddate],['status','=','Completed']])->count();
+        }
+        else if($stat == 'Completed' && $date == 'Yesterday'){
+            $finddate = Carbon::yesterday('Asia/Colombo')->toDateString();
+            $orders = DB::Table('orders')->where([['ordered_date','=',$finddate],['status','=','Completed']])->get();
+            $resultcount = DB::Table('orders')->where([['ordered_date','=',$finddate],['status','=','Completed']])->count();
+        }
+        else if($stat == 'Completed' && $date == 'All'){
+            $orders = DB::Table('orders')->where([['status','=','Completed']])->get();
+            $resultcount = DB::Table('orders')->where([['status','=','Completed']])->count();
+        }
+
+
+        $createddate = Carbon::today('Asia/Colombo')->toDateString();
+        $createdtime = Carbon::now('Asia/Colombo')->toTimeString();
+        $role = DB::Table('employees')->where('email',$email)->value('role');
+        $first = 'Order Report of';
+        $format = '.pdf';
+        $reportstat = null;
+
+        if($stat == 'All' && $date == 'All'){
+            $reportstat = 'All';
+        }
+        else{
+            $reportstat = $date.' '.$stat;
+        }
+
+        $pdfname =  $reportstat.' '.$first.' '.$createddate.' ['.$createdtime.']'.$format;
+
+        $Report = new Report;
+        $Report->created_by=$name;
+        $Report->created_date=$createddate;
+        $Report->created_time=$createdtime;
+        $Report->report_type='Order Report';
+        $Report->report_status=$date.'-'.$stat;
+        $Report->save();
+
+        $pdf = Pdf::loadView('PDF.orderreport',[
+            'orders'=>$orders,
+            'createddate'=>$createddate,
+            'name'=>$name,
+            'role'=>$role,
+            'stat'=>$stat,
+            'date'=>$date,
+            'resultcount'=>$resultcount,
+            'createdtime'=>$createdtime
+        ]);
+        return $pdf->download($pdfname);
+    }
     // orders  //
 
 
@@ -364,9 +462,11 @@ class employeecontroller extends Controller
     public function createinventoryreport($name, $email, $stat){
         if ($stat == 'All'){
             $stocks = DB::Table('products')->get();
+            $resultcount = DB::Table('products')->count();
         }
         else{
             $stocks = DB::Table('products')->where('category',$stat)->get();
+            $resultcount = DB::Table('products')->where('category',$stat)->count();
         }
         $date = Carbon::today('Asia/Colombo')->toDateString();
         $time = Carbon::now('Asia/Colombo')->toTimeString();
@@ -380,6 +480,7 @@ class employeecontroller extends Controller
         $Report->created_date=$date;
         $Report->created_time=$time;
         $Report->report_type='Inventory Report';
+        $Report->report_status=$stat;
         $Report->save();
 
         $pdf = Pdf::loadView('PDF.inventoryreport',[
@@ -388,7 +489,7 @@ class employeecontroller extends Controller
             'name'=>$name,
             'role'=>$role,
             'stat'=>$stat,
-            'resultcount'=>null,
+            'resultcount'=>$resultcount,
             'time'=>$time
         ]);
         return $pdf->download($pdfname);
@@ -523,6 +624,7 @@ class employeecontroller extends Controller
         $Report->created_date=$date;
         $Report->created_time=$time;
         $Report->report_type='Stock Report';
+        $Report->report_status=$stat;
         $Report->save();
 
         $pdf = Pdf::loadView('PDF.stockreport',[
