@@ -651,7 +651,8 @@ class employeecontroller extends Controller
             'email'=>$email,
             'auth_level'=>$auth_level,
             'month'=>null,
-            'resultcount'=>null
+            'resultcount'=>null,
+            'pendingtot'=>null
         ]);
     }
 
@@ -685,7 +686,8 @@ class employeecontroller extends Controller
             'email'=>$request->email,
             'auth_level'=>$auth_level,
             'month'=>$reqmonth,
-            'resultcount'=>$resultcount
+            'resultcount'=>$resultcount,
+            'pendingtot'=>null
         ]);
     }
     //money //

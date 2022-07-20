@@ -126,112 +126,182 @@
             </div>
 
             <div class="col-lg-11 col-md-11 col-sm-10">
-                <div class="shadow bg-white rounded">
-                    <div class="card p-1" style="border: 0;">
-                        <form action="{{url('/employee/find/money')}}" method="post">
-                            {{csrf_field()}}
-                            
-                            <br>
-                            <div class="row">
-                                    <div class="col-1">
-                                        <label><br></label>
-                                    </div>
-                                
-                                    <div class="col-3">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Month :</span>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="shadow bg-white rounded">
+                            <div class="card p-1" style="border: 0;">
+                                <form action="{{url('/employee/find/money')}}" method="post">
+                                    {{csrf_field()}}
+                                    <br>
+                                    <div class="row">
+                                            <div class="col-1">
+                                                <label><br></label>
                                             </div>
-                                            
-                                            <select name="month" class="form-control">
-                                                <option value="This Month">This Month</option>
-                                                <option value="Last Month">Last Month</option>
-                                                <option value="All">All</option>
-                                            </select>
-                                        </div>
+                                        
+                                            <div class="col-3">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Month :</span>
+                                                    </div>
+                                                    
+                                                    <select name="month" class="form-control">
+                                                        <option value="This Month">This Month</option>
+                                                        <option value="Last Month">Last Month</option>
+                                                        <option value="All">All</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+        
+                                            <div class="col-2">
+                                                <input type="hidden" name="name" value="{{$name}}">
+                                                <input type="hidden" name="email" value="{{$email}}">
+                                                <button type="submit" class="btn btn-primary btn-block"><i class="bi bi-search"></i> Find</button>
+                                            </div>
+                                            <div class="col-3">
+                                                <br>
+                                            </div>
+        
+                                            @if($resultcount > 0)
+                                            <div class="col-2">
+                                                @if($auth_level == 1)
+                                                <a href="{{url('/employee/'.$name.'/'.$email.'/'.$month.'/create/incomereport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Downlaod Report</a>
+                                                @elseif($auth_level == 2)
+                                                <a href="{{url('/employee/'.$name.'/'.$email.'/'.$month.'/create/incomereport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Download Report</a>
+                                                @elseif($auth_level == 3)
+                                                <a href="{{url('/employee/'.$name.'/'.$email.'/'.$month.'/create/incomereport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Downlaod Report</a>
+                                                @else
+                                                <a href="{{url('/employee/'.$name.'/'.$email.'/'.$month.'/create/incomereport')}}" role="button" class="btn btn-info btn-block" disabled><i class="bi bi-file-earmark-arrow-down"></i> Downlaod Report</a>
+                                                @endif
+                                            </div>
+                                            @else
+                                            <div class="col-3">
+                                                <br>
+                                            </div>
+                                            @endif
+                                        
                                     </div>
-
-                                    <div class="col-2">
-                                        <input type="hidden" name="name" value="{{$name}}">
-                                        <input type="hidden" name="email" value="{{$email}}">
-                                        <button type="submit" class="btn btn-primary btn-block"><i class="bi bi-search"></i> Find</button>
-                                    </div>
-                                    <div class="col-3">
-                                        <br>
-                                    </div>
-
-                                    @if($resultcount > 0)
-                                    <div class="col-2">
-                                        @if($auth_level == 1)
-                                        <a href="{{url('/employee/'.$name.'/'.$email.'/'.$month.'/create/incomereport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Downlaod Report</a>
-                                        @elseif($auth_level == 2)
-                                        <a href="{{url('/employee/'.$name.'/'.$email.'/'.$month.'/create/incomereport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Download Report</a>
-                                        @elseif($auth_level == 3)
-                                        <a href="{{url('/employee/'.$name.'/'.$email.'/'.$month.'/create/incomereport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Downlaod Report</a>
-                                        @else
-                                        <a href="{{url('/employee/'.$name.'/'.$email.'/'.$month.'/create/incomereport')}}" role="button" class="btn btn-info btn-block" disabled><i class="bi bi-file-earmark-arrow-down"></i> Downlaod Report</a>
-                                        @endif
-                                    </div>
-                                    @else
-                                    <div class="col-3">
-                                        <br>
-                                    </div>
-                                    @endif
+                                    <br>
+                                    <div class="row">
+                                            @if($products != null)
+                                            <p class="text-muted">
+                                                @if($month == 'All')
+                                                    Showing {{$resultcount}} of {{$month}} Results
+                                                @else
+                                                    Showing {{$resultcount}} Orders in {{$month}}
+                                                @endif
+                                            </p>
+                                            @else
+                                            <p align="center" class="text-muted">Find income report using this window.</p>
+                                            @endif
                                 
+                                    </div>
+                                            
+                                </form>
+
                             </div>
-                            <br>
-                            <div class="row">
-                                <section>
-                                    @if($products != null)
-                                    <p class="text-muted">
-                                        @if($month == 'All')
-                                            Showing {{$resultcount}} of {{$month}} Results
-                                        @else
-                                            Showing {{$resultcount}} Orders in {{$month}}
-                                        @endif
-                                    </p>
-                                    <table class="table">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="shadow bg-white rounded">
+                            <div class="card p-1" style="border: 0;">
+                                <h6 class="card-header">Pending Orders </h6>
+                                <br>
+                                
+                                <table class="table">
+
+                                    @if($resultcount != null)
                                         <tr class="table-primary">
                                             <th>Order ID</th>
                                             <th>Product ID</th>
-                                            <th>Customer Name</th>
-                                            <th>Pr: Contact</th>
-                                            <th>Se: Contact</th>
-                                            <th>Delivery Address</th>
-                                            <th>Quantity</th>
-                                            <th>Order value</th>
                                             <th>Status</th>
+                                            <th align="right">Order value (Rs.)</th>
                                         </tr>
-                                        
-        
-                                        
-                                            @foreach($products as $product)
+                                        @foreach($products as $product)
+                                            @if($product->status == 'Pending')
+                                            
                                             <tr>
                                                 <td>{{$product->order_id}}</td>
                                                 <td>{{$product->product_id}}</td>
-                                                <td>{{$product->cus_name}}</td>
-                                                <td>{{$product->primary_contact}}</td>
-                                                <td>{{$product->secondary_contact}}</td>
-                                                <td>{{$product->delivery_address}}</td>
-                                                <td>{{$product->qty}}</td>
+                                                <td>{{$product->status}}</td>
+                                                <td align="right">{{$product->qty*$product->price}}</td>
+                                                <input type="hidden" name="tot" value="{{$pendingtot = $pendingtot+$product->qty*$product->price}}">
+                                            </tr>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                   
+                                </table>
+                                {{$pendingtot}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="shadow bg-white rounded">
+                            <div class="card p-1" style="border: 0;">
+                                <h6 class="card-header">Shipped Orders</h6>
+                                <br>
+                                <table class="table">
+                                    <tr class="table-primary">
+                                        <th>Order ID</th>
+                                        <th>Product ID</th>
+                                        <th>Order value</th>
+                                        <th>Status</th>
+                                    </tr>
+                                    
+    
+                                    @if($resultcount != null)
+                                        @foreach($products as $product)
+                                            @if($product->status == 'Shipped')
+                                            <tr>
+                                                <td>{{$product->order_id}}</td>
+                                                <td>{{$product->product_id}}</td>
                                                 <td>Rs. {{$product->qty*$product->price}}</td>
                                                 <td>{{$product->status}}</td>
                                             </tr>
-                                            @endforeach
-                                        
-                                       
-                                    </table>
-                                    @else
-                                        <p align="center" class="text-muted">Find income report using this window.</p>
+                                            @endif
+                                        @endforeach
                                     @endif
-                                </section>
+                                   
+                                </table>
                             </div>
-                        </form>
-                            
-                        
-                        
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="shadow bg-white rounded">
+                            <div class="card p-1" style="border: 0;">
+                                <h6 class="card-header">Completed Orders</h6>
+                                <br>
+                                <table class="table">
+                                    <tr class="table-primary">
+                                        <th>Order ID</th>
+                                        <th>Product ID</th>
+                                        <th>Order value</th>
+                                        <th>Status</th>
+                                    </tr>
+                                    
+    
+                                    @if($resultcount != null)
+                                        @foreach($products as $product)
+                                            @if($product->status == 'Completed')
+                                            <tr>
+                                                <td>{{$product->order_id}}</td>
+                                                <td>{{$product->product_id}}</td>
+                                                <td>Rs. {{$product->qty*$product->price}}</td>
+                                                <td>{{$product->status}}</td>
+                                            </tr>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                   
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                
             </div>
 
         </div>
