@@ -639,7 +639,21 @@ class employeecontroller extends Controller
         return $pdf->download($pdfname);
     }
     //  stocks  //
+    
+    //  money   //
+    public function viewmoney($name, $email,){
 
+        $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
+
+        return view('money',[
+            'name'=>$name,
+            'orders'=>null,
+            'email'=>$email,
+            'auth_level'=>$auth_level,
+            'resultcount'=>null
+        ]);
+    }
+    //money //
 
     //  home    //
     public function viewhome($name, $email,){

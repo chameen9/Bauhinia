@@ -111,7 +111,7 @@
                         <a href="{{url('/employee/stocks/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary"><i class="bi bi-boxes"></i></i><br> Stocks</a>
                         <br>
                         <br>
-                        <a href="#money" class="btn btn-outline-primary"><i class="bi bi-coin"></i><br> Money</a>
+                        <a href="{{url('/employee/money/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary"><i class="bi bi-coin"></i><br> Money</a>
                         <br>
                         <br> 
                         @if($auth_level == 1)

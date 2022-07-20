@@ -91,6 +91,9 @@ Route::get('/employee/inventory/{name}/{email}', 'App\http\controllers\employeec
 Route::post('/employee/stocks/{name}/{email}', 'App\http\controllers\employeecontroller@viewstocks');
 Route::get('/employee/stocks/{name}/{email}', 'App\http\controllers\employeecontroller@viewstocks');
 
+Route::post('/employee/money/{name}/{email}', 'App\http\controllers\employeecontroller@viewmoney');
+Route::get('/employee/money/{name}/{email}', 'App\http\controllers\employeecontroller@viewmoney');
+
 Route::get('/employee/find/orders', 'App\http\controllers\employeecontroller@findorders');
 Route::post('/employee/find/orders', 'App\http\controllers\employeecontroller@findorders');
 

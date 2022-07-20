@@ -7,7 +7,7 @@
 
         <!--<meta name="csrf-token" content="{{ csrf_token() }}">-->
 
-        <title>Bauhinia | Orders</title>
+        <title>Bauhinia | Money</title>
 
         <!--Import bootstrap js-->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -102,7 +102,7 @@
                         <a href="{{url('/employee/home/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary"><i class="bi bi-house"></i><br> Home</a>
                         <br>
                         <br>
-                        <a href="{{url('/employee/orders/'.$name.'/'.$email.'')}}" class="btn btn-primary"><i class="bi bi-shop"></i><br> Orders</a>
+                        <a href="{{url('/employee/orders/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary"><i class="bi bi-shop"></i><br> Orders</a>
                         <br>
                         <br>
                         <a href="{{url('/employee/inventory/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary"><i class="bi bi-card-checklist"></i><br> Inventory</a>
@@ -111,7 +111,7 @@
                         <a href="{{url('/employee/stocks/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary"><i class="bi bi-boxes"></i></i><br> Stocks</a>
                         <br>
                         <br>
-                        <a href="{{url('/employee/money/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary"><i class="bi bi-coin"></i><br> Money</a>
+                        <a href="{{url('/employee/money/'.$name.'/'.$email.'')}}" class="btn btn-primary"><i class="bi bi-coin"></i><br> Money</a>
                         <br>
                         <br>
                         @if($auth_level == 1)
@@ -140,36 +140,26 @@
                                     <div class="col-3">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text">Date :</span>
+                                                <span class="input-group-text">Month :</span>
                                             </div>
                                             
-                                            <select name="date" class="form-control">
-                                                <option value="Today">Today</option>
-                                                <option value="Yesterday">Yesterday</option>
+                                            <select name="month" class="form-control">
+                                                <option value="This Month">This Month</option>
+                                                <option value="Last Month">Last Month</option>
                                                 <option value="All">All</option>
                                             </select>
                                         </div>
                                     </div>
 
-                                    <div class="col-3">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Status :</span>
-                                            </div>
-                                            
-                                            <select name="status" class="form-control">
-                                                <option value="Pending">Pending</option>
-                                                <option value="Shipped">Shipped</option>
-                                                <option value="Completed">Completed</option>
-                                                <option value="All">All</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                                    
 
                                     <div class="col-2">
                                         <input type="hidden" name="name" value="{{$name}}">
                                         <input type="hidden" name="email" value="{{$email}}">
                                         <button type="submit" class="btn btn-primary btn-block"><i class="bi bi-search"></i> Find</button>
+                                    </div>
+                                    <div class="col-3">
+                                        <br>
                                     </div>
 
                                     @if($resultcount > 0)
@@ -262,7 +252,7 @@
                                        
                                     </table>
                                     @else
-                                        <p align="center" class="text-muted">Find orders using this window.</p>
+                                        <p align="center" class="text-muted">Find income report using this window.</p>
                                     @endif
                                 </section>
                             </div>

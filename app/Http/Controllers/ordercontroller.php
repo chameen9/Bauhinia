@@ -70,6 +70,7 @@ class ordercontroller extends Controller
             $order->ordered_date = Carbon::today('Asia/Colombo')->toDateString();
             $order->ordered_time = Carbon::now('Asia/Colombo')->toTimeString();
             $order->est_del_date = Carbon::today('Asia/Colombo')->addDays(3)->toDateString();
+            $order->order_value = $request->qty[$key]*$request->price[$key];
             $order->save();
 
             $cart_item = DB::Table('carts')
