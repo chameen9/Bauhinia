@@ -128,7 +128,7 @@
             <div class="col-lg-11 col-md-11 col-sm-10">
                 <div class="shadow bg-white rounded">
                     <div class="card p-1" style="border: 0;">
-                        <form action="{{url('/employee/find/orders')}}" method="post">
+                        <form action="{{url('/employee/find/money')}}" method="post">
                             {{csrf_field()}}
                             
                             <br>
@@ -151,8 +151,6 @@
                                         </div>
                                     </div>
 
-                                    
-
                                     <div class="col-2">
                                         <input type="hidden" name="name" value="{{$name}}">
                                         <input type="hidden" name="email" value="{{$email}}">
@@ -165,13 +163,13 @@
                                     @if($resultcount > 0)
                                     <div class="col-2">
                                         @if($auth_level == 1)
-                                        <a href="{{url('/employee/'.$name.'/'.$email.'/'.$date.'/'.$stat.'/create/orderreport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Downlaod Report</a>
+                                        <a href="{{url('/employee/'.$name.'/'.$email.'/'.$month.'/create/incomereport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Downlaod Report</a>
                                         @elseif($auth_level == 2)
-                                        <a href="{{url('/employee/'.$name.'/'.$email.'/'.$date.'/'.$stat.'/create/orderreport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Download Report</a>
+                                        <a href="{{url('/employee/'.$name.'/'.$email.'/'.$month.'/create/incomereport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Download Report</a>
                                         @elseif($auth_level == 3)
-                                        <a href="{{url('/employee/'.$name.'/'.$email.'/'.$date.'/'.$stat.'/create/orderreport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Downlaod Report</a>
+                                        <a href="{{url('/employee/'.$name.'/'.$email.'/'.$month.'/create/incomereport')}}" role="button" class="btn btn-info btn-block"><i class="bi bi-file-earmark-arrow-down"></i> Downlaod Report</a>
                                         @else
-                                        <a href="{{url('/employee/'.$name.'/'.$email.'/'.$date.'/'.$stat.'/create/orderreport')}}" role="button" class="btn btn-info btn-block" disabled><i class="bi bi-file-earmark-arrow-down"></i> Downlaod Report</a>
+                                        <a href="{{url('/employee/'.$name.'/'.$email.'/'.$month.'/create/incomereport')}}" role="button" class="btn btn-info btn-block" disabled><i class="bi bi-file-earmark-arrow-down"></i> Downlaod Report</a>
                                         @endif
                                     </div>
                                     @else
@@ -183,13 +181,13 @@
                             </div>
                             <br>
                             <div class="row">
-                                <section id="orders">
-                                    @if($orders != null)
+                                <section>
+                                    @if($products != null)
                                     <p class="text-muted">
-                                        @if($stat == 'All' && $date == 'All')
-                                            Showing {{$resultcount}} of {{$stat}} Results
+                                        @if($month == 'All')
+                                            Showing {{$resultcount}} of {{$month}} Results
                                         @else
-                                            Showing {{$resultcount}} Results in {{$date}} {{$stat}} Orders
+                                            Showing {{$resultcount}} Orders in {{$month}}
                                         @endif
                                     </p>
                                     <table class="table">
@@ -203,49 +201,21 @@
                                             <th>Quantity</th>
                                             <th>Order value</th>
                                             <th>Status</th>
-                                            <th>Control</th>
                                         </tr>
                                         
         
                                         
-                                            @foreach($orders as $order)
+                                            @foreach($products as $product)
                                             <tr>
-                                                <td>{{$order->order_id}}</td>
-                                                <td>{{$order->product_id}}</td>
-                                                <td>{{$order->cus_name}}</td>
-                                                <td>{{$order->primary_contact}}</td>
-                                                <td>{{$order->secondary_contact}}</td>
-                                                <td>{{$order->delivery_address}}</td>
-                                                <td>{{$order->qty}}</td>
-                                                <td>Rs. {{$order->qty*$order->price}}</td>
-                                                <td>{{$order->status}}</td>
-                                                @if($order->status == 'Pending')
-                                                    @if($auth_level == 1)
-                                                        <td align="center">
-                                                            <a href="{{url('/employee/order/markasshipped/'.$order->order_id.'/'.$name.'/'.$email.'')}}" class="btn btn-primary btn-sm">Mark as shipped</a>
-                                                        </td>
-                                                    @elseif($auth_level == 2)
-                                                        <td align="center">
-                                                            <a href="{{url('/employee/order/markasshipped/'.$order->order_id.'/'.$name.'/'.$email.'')}}" class="btn btn-primary btn-sm">Mark as shipped</a>
-                                                        </td>
-                                                    @elseif($auth_level == 3)
-                                                        <td align="center">
-                                                            <a href="{{url('/employee/order/markasshipped/'.$order->order_id.'/'.$name.'/'.$email.'')}}" class="btn btn-primary btn-sm">Mark as shipped</a>
-                                                        </td>
-                                                    @else
-                                                        <td align="center">
-                                                            <a href="{{url('/employee/order/markasshipped/'.$order->order_id.'/'.$name.'/'.$email.'')}}" class="btn btn-primary btn-sm disabled" data-mdb-toggle="tooltip" title="You can't do this action" >Mark as shipped</a>
-                                                        </td>
-                                                    @endif
-                                                @elseif($order->status == 'Shipped')
-                                                <td align="center">
-                                                    <a class="btn-info btn-sm btn-block"><i class="bi bi-truck"></i></a>
-                                                </td>
-                                                @else
-                                                <td align="center">
-                                                    <a class="btn-success btn-sm btn-block"><i class="bi bi-check2"></i></a>
-                                                </td>
-                                                @endif
+                                                <td>{{$product->order_id}}</td>
+                                                <td>{{$product->product_id}}</td>
+                                                <td>{{$product->cus_name}}</td>
+                                                <td>{{$product->primary_contact}}</td>
+                                                <td>{{$product->secondary_contact}}</td>
+                                                <td>{{$product->delivery_address}}</td>
+                                                <td>{{$product->qty}}</td>
+                                                <td>Rs. {{$product->qty*$product->price}}</td>
+                                                <td>{{$product->status}}</td>
                                             </tr>
                                             @endforeach
                                         

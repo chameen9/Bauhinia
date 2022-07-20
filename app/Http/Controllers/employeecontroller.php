@@ -647,10 +647,45 @@ class employeecontroller extends Controller
 
         return view('money',[
             'name'=>$name,
-            'orders'=>null,
+            'products'=>null,
             'email'=>$email,
             'auth_level'=>$auth_level,
+            'month'=>null,
             'resultcount'=>null
+        ]);
+    }
+
+    function findmoney(Request $request){ 
+
+        $reqmonth = $request->month;
+        $resultcount = null;
+
+        if($reqmonth == 'This Month'){
+            $thisnmonth = Carbon::now()->month;
+            $products = DB::Table('orders')->where('included_month',$thisnmonth)->get();
+            $resultcount = DB::Table('orders')->where('included_month',$thisnmonth)->count();
+        }
+        else if($reqmonth == 'Last Month'){
+            $thisnmonth = Carbon::now()->month;
+            $lastmonth = $thisnmonth-1;
+            $products = DB::Table('orders')->where('included_month',$lastmonth)->get();
+            $resultcount = DB::Table('orders')->where('included_month',$lastmonth)->count();
+        }
+        else{
+            $products = DB::Table('orders')->get();
+            $resultcount = DB::Table('orders')->count();
+        }
+        
+        $gotname = DB::Table('employees')->where('email',$request->email)->value('name');
+        $auth_level = DB::Table('employees')->where('email',$request->email)->value('auth_level');
+
+        return view('money',[
+            'name'=>$gotname,
+            'products'=>$products,
+            'email'=>$request->email,
+            'auth_level'=>$auth_level,
+            'month'=>$reqmonth,
+            'resultcount'=>$resultcount
         ]);
     }
     //money //
