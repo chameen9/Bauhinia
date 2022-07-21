@@ -133,5 +133,8 @@ Route::post('/employee/{name}/{email}/{stat}/create/create/stockreport', 'App\ht
 Route::get('/employee/{name}/{email}/{date}/{stat}/create/orderreport', 'App\http\controllers\employeecontroller@createorderreport');
 Route::post('/employee/{name}/{email}/{date}/{stat}/create/create/orderreport', 'App\http\controllers\employeecontroller@createorderreport');
 
+Route::get('/employee/{name}/{email}/{month}/create/incomereport', 'App\http\controllers\employeecontroller@createincomereport');
+Route::post('/employee/{name}/{email}/{month}//create/create/incomereport', 'App\http\controllers\employeecontroller@createincomereport');
+
 Route::get('/employee/signout', 'App\http\controllers\employeecontroller@signout');
 Route::post('/employee/signout', 'App\http\controllers\employeecontroller@signout');

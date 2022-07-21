@@ -652,7 +652,14 @@ class employeecontroller extends Controller
             'auth_level'=>$auth_level,
             'month'=>null,
             'resultcount'=>null,
-            'pendingtot'=>null
+            'pendingtot'=>null,
+            'shippedtot'=>null,
+            'completedtot'=>null,
+            'pendingorders'=>null,
+            'shippedorders'=>null,
+            'completedorders'=>null,
+            'totorders'=>null,
+            'totamount'=>null
         ]);
     }
 
@@ -660,25 +667,60 @@ class employeecontroller extends Controller
 
         $reqmonth = $request->month;
         $resultcount = null;
+        $countmonth = null;
+        $totorders = null;
 
         if($reqmonth == 'This Month'){
             $thisnmonth = Carbon::now()->month;
+            $countmonth = $thisnmonth;
             $products = DB::Table('orders')->where('included_month',$thisnmonth)->get();
             $resultcount = DB::Table('orders')->where('included_month',$thisnmonth)->count();
+            $totorders = $resultcount;
         }
         else if($reqmonth == 'Last Month'){
             $thisnmonth = Carbon::now()->month;
             $lastmonth = $thisnmonth-1;
+            $countmonth = $lastmonth;
             $products = DB::Table('orders')->where('included_month',$lastmonth)->get();
             $resultcount = DB::Table('orders')->where('included_month',$lastmonth)->count();
+            $totorders = $resultcount;
         }
         else{
             $products = DB::Table('orders')->get();
             $resultcount = DB::Table('orders')->count();
+            $countmonth = 122;
+            $totorders = $resultcount;
         }
+        
         
         $gotname = DB::Table('employees')->where('email',$request->email)->value('name');
         $auth_level = DB::Table('employees')->where('email',$request->email)->value('auth_level');
+        if($countmonth == 122){
+            $pendingorders = DB::Table('orders')->where([
+                ['status','=','Pending']
+            ])->count();
+            $shippedorders = DB::Table('orders')->where([
+                ['status','=','Shipped']
+            ])->count();
+            $completedorders = DB::Table('orders')->where([
+                ['status','=','Completed']
+            ])->count();
+            $totorders = DB::Table('orders')->count();
+        }
+        else{
+            $pendingorders = DB::Table('orders')->where([
+                ['status','=','Pending'],
+                ['included_month','=',$countmonth]
+            ])->count();
+            $shippedorders = DB::Table('orders')->where([
+                ['status','=','Shipped'],
+                ['included_month','=',$countmonth]
+            ])->count();
+            $completedorders = DB::Table('orders')->where([
+                ['status','=','Completed'],
+                ['included_month','=',$countmonth]
+            ])->count();
+        }
 
         return view('money',[
             'name'=>$gotname,
@@ -687,8 +729,103 @@ class employeecontroller extends Controller
             'auth_level'=>$auth_level,
             'month'=>$reqmonth,
             'resultcount'=>$resultcount,
-            'pendingtot'=>null
+            'pendingtot'=>null,
+            'shippedtot'=>null,
+            'completedtot'=>null,
+            'pendingorders'=>$pendingorders,
+            'shippedorders'=>$shippedorders,
+            'completedorders'=>$completedorders,
+            'totorders'=>$totorders,
+            'totamount'=>null
         ]);
+    }
+
+    public function createincomereport($name, $email, $month){
+        $resultcount = null;
+        $countmonth = null;
+        $totorders = null;
+
+        if($month == 'This Month'){
+            $thisnmonth = Carbon::now()->month;
+            $countmonth = $thisnmonth;
+            $products = DB::Table('orders')->where('included_month',$thisnmonth)->get();
+            $resultcount = DB::Table('orders')->where('included_month',$thisnmonth)->count();
+            $totorders = $resultcount;
+        }
+        else if($month == 'Last Month'){
+            $thisnmonth = Carbon::now()->month;
+            $lastmonth = $thisnmonth-1;
+            $countmonth = $lastmonth;
+            $products = DB::Table('orders')->where('included_month',$lastmonth)->get();
+            $resultcount = DB::Table('orders')->where('included_month',$lastmonth)->count();
+            $totorders = $resultcount;
+        }
+        else{
+            $products = DB::Table('orders')->get();
+            $resultcount = DB::Table('orders')->count();
+            $countmonth = 122;
+            $totorders = $resultcount;
+        }
+        
+        
+        $gotname = DB::Table('employees')->where('email',$email)->value('name');
+        $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
+        if($countmonth == 122){
+            $pendingorders = DB::Table('orders')->where([
+                ['status','=','Pending']
+            ])->count();
+            $shippedorders = DB::Table('orders')->where([
+                ['status','=','Shipped']
+            ])->count();
+            $completedorders = DB::Table('orders')->where([
+                ['status','=','Completed']
+            ])->count();
+            $totorders = DB::Table('orders')->count();
+        }
+        else{
+            $pendingorders = DB::Table('orders')->where([
+                ['status','=','Pending'],
+                ['included_month','=',$countmonth]
+            ])->count();
+            $shippedorders = DB::Table('orders')->where([
+                ['status','=','Shipped'],
+                ['included_month','=',$countmonth]
+            ])->count();
+            $completedorders = DB::Table('orders')->where([
+                ['status','=','Completed'],
+                ['included_month','=',$countmonth]
+            ])->count();
+        }
+        $date = Carbon::today('Asia/Colombo')->toDateString();
+        $time = Carbon::now('Asia/Colombo')->toTimeString();
+        $role = DB::Table('employees')->where('email',$email)->value('role');
+        $first = 'Income Report of';
+        $format = '.pdf';
+        $pdfname = $month.' '.$first.' '.$date.' ['.$time.']'.$format;
+
+        $Report = new Report;
+        $Report->created_by=$name;
+        $Report->created_date=$date;
+        $Report->created_time=$time;
+        $Report->report_type='Income Report';
+        $Report->report_status='('.$countmonth.') '.$month;
+        $Report->save();
+
+        $pdf = Pdf::loadView('PDF.incomereport',[
+            'products'=>$products,
+            'date'=>$date,
+            'name'=>$name,
+            'role'=>$role,
+            'resultcount'=>$resultcount,
+            'time'=>$time,
+            'month'=>$countmonth,
+            'totorders'=>$totorders,
+            'totamount'=>null,
+            'pendingtot'=>null,
+            'shippedtot'=>null,
+            'completedtot'=>null,
+        ]);
+        return $pdf->download($pdfname);
     }
     //money //
 
