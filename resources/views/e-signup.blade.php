@@ -79,7 +79,7 @@
                                         <div class="col">
                                             <div class="form-outline mt-2">
                                                 <label class="body">Your Id</label>
-                                                <input type="text" name="id" value="{{$id}}" required readonly class="form-control" placeholder="Ex: Jhone Smith" data-mdb-showcounter="true" maxlength="50">
+                                                <input type="text" name="id" value="{{$id}}" required readonly class="form-control" data-mdb-showcounter="true" maxlength="50">
                                             </div>
                                         </div>
                                     </div>

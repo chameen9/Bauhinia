@@ -42,7 +42,7 @@
       Reprot Created By : {{$name}} ({{$role}})
     </p>
     
-    <p>Month : {{$month}}</p>
+    <p>Month : {{$month}} ({{$monthname}})</p>
 
     <p>
         @foreach($products as $product)

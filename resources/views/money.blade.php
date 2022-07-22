@@ -115,11 +115,11 @@
                         <br>
                         <br>
                         @if($auth_level == 1)
-                            <a href="{{url('/employee/users/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary"><i class="bi bi-person-plus"></i><br> Users</a>
+                          <a href="{{url('/employee/tools/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary"><i class="bi bi-gear"></i><br> Tools</a>
                         @elseif($auth_level == 2)
-                            <a href="{{url('/employee/users/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary"><i class="bi bi-person-plus"></i><br> Users</a>
+                          <a href="{{url('/employee/tools/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary"><i class="bi bi-gear"></i><br> Tools</a>
                         @else
-                            <a href="" class="btn btn-outline-primary disabled"><i class="bi bi-person-plus"></i><br> Users</a>
+                          <a href="" class="btn btn-outline-primary disabled"><i class="bi bi-gear"></i><br> Tools</a>
                         @endif
                     </div>
                 </div>
@@ -210,7 +210,7 @@
                     <div class="col-6">
                         <div class="shadow bg-white rounded">
                             <div class="card p-1" style="border: 0;">
-                                <br>
+                                <hr>
                                 <div class="row">
                                     <div class="col-1">
                                         <br>
@@ -250,7 +250,7 @@
                                         <br>
                                     </div>
                                 </div>
-                                <br>
+                                <hr>
                             </div>
                         </div>
                     </div>

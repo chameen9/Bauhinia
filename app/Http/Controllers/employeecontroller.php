@@ -641,7 +641,7 @@ class employeecontroller extends Controller
     //  stocks  //
     
     //  money   //
-    public function viewmoney($name, $email,){
+    public function viewmoney($name, $email){
 
         $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
 
@@ -819,6 +819,7 @@ class employeecontroller extends Controller
             'resultcount'=>$resultcount,
             'time'=>$time,
             'month'=>$countmonth,
+            'monthname'=>$month,
             'totorders'=>$totorders,
             'totamount'=>null,
             'pendingtot'=>null,
@@ -828,6 +829,34 @@ class employeecontroller extends Controller
         return $pdf->download($pdfname);
     }
     //money //
+
+    //  tools   //
+    public function viewtools($name, $email){
+
+        $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
+        $reports = DB::Table('reports')->get();
+        $employees = DB::Table('employees')->get();
+
+        return view('tools',[
+            'name'=>$name,
+            'products'=>null,
+            'reports'=>$reports,
+            'employees'=>$employees,
+            'email'=>$email,
+            'auth_level'=>$auth_level,
+            'month'=>null,
+            'resultcount'=>null,
+            'pendingtot'=>null,
+            'shippedtot'=>null,
+            'completedtot'=>null,
+            'pendingorders'=>null,
+            'shippedorders'=>null,
+            'completedorders'=>null,
+            'totorders'=>null,
+            'totamount'=>null
+        ]);
+    }
+    //  tools   //
 
     //  home    //
     public function viewhome($name, $email,){

@@ -47,7 +47,7 @@
     
                                 <div class="form-outline mb-4">
                                     <label class="body">Your Id</label>
-                                    <input type="text" required name="id" class="form-control" placeholder="Ex: BHXX-#####">
+                                    <input type="text" required name="id" class="form-control" placeholder="Ex: BHC-#####">
                                 </div>
     
                                 <div class="form-outline mb-3">
