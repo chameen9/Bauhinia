@@ -29,6 +29,7 @@ class employeecontroller extends Controller
         $gotpassword = DB::Table('employees')->where('email',$reqemail)->value('password');
         $gotname = DB::Table('employees')->where('email',$reqemail)->value('name');
         $auth_level = DB::Table('employees')->where('email',$reqemail)->value('auth_level');
+        $department = DB::Table('employees')->where('email',$reqemail)->value('department');
 
         if($gotemail==$reqemail){
             if($gotpassword==$reqpassword){
@@ -36,7 +37,8 @@ class employeecontroller extends Controller
                     'name'=>$gotname,
                     'orders'=>null,
                     'email'=>$gotemail,
-                    'auth_level'=>$auth_level
+                    'auth_level'=>$auth_level,
+                    'department'=>$department
                 ]); //send name to the view     return customer view 
                 
             }
@@ -133,6 +135,7 @@ class employeecontroller extends Controller
     public function vieworders($name, $email,){
 
         $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
+        $department = DB::Table('employees')->where('email',$email)->value('department');
 
         return view('orders',[
             'name'=>$name,
@@ -141,7 +144,8 @@ class employeecontroller extends Controller
             'auth_level'=>$auth_level,
             'date'=>null,
             'stat'=>null,
-            'resultcount'=>null
+            'resultcount'=>null,
+            'department'=>$department
         ]);
     }
 
@@ -214,6 +218,7 @@ class employeecontroller extends Controller
         }
 
         $auth_level = DB::Table('employees')->where('email',$request->email)->value('auth_level');
+        $department = DB::Table('employees')->where('email',$request->email)->value('department');
 
         return view('orders',[
             'name'=>$gotname,
@@ -222,7 +227,8 @@ class employeecontroller extends Controller
             'auth_level'=>$auth_level,
             'date'=>$reqdate,
             'stat'=>$reqstatus,
-            'resultcount'=>$resultcount
+            'resultcount'=>$resultcount,
+            'department'=>$department
         ]);
     }
 
@@ -237,6 +243,8 @@ class employeecontroller extends Controller
         $orders = DB::Table('orders')->get();
         $resultcount = DB::Table('orders')->count();
         $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
+        $department = DB::Table('employees')->where('email',$email)->value('department');
+        
 
         return view('orders',[
             'name'=>$name,
@@ -245,7 +253,8 @@ class employeecontroller extends Controller
             'auth_level'=>$auth_level,
             'date'=>'All',
             'stat'=>'All',
-            'resultcount'=>$resultcount
+            'resultcount'=>$resultcount,
+            'department'=>$department
         ]);
     }
     
@@ -351,6 +360,7 @@ class employeecontroller extends Controller
     public function viewinventory($name, $email,){
 
         $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
+        $department = DB::Table('employees')->where('email',$email)->value('department');
 
         return view('inventory',[
             'name'=>$name,
@@ -358,7 +368,8 @@ class employeecontroller extends Controller
             'email'=>$email,
             'auth_level'=>$auth_level,
             'stat'=>null,
-            'resultcount'=>null
+            'resultcount'=>null,
+            'department'=>$department
         ]);
     }
 
@@ -393,6 +404,7 @@ class employeecontroller extends Controller
 
         
         $auth_level = DB::Table('employees')->where('email',$request->email)->value('auth_level');
+        $department = DB::Table('employees')->where('email',$request->email)->value('department');
 
         return view('inventory',[
             'name'=>$gotname,
@@ -400,13 +412,15 @@ class employeecontroller extends Controller
             'email'=>$request->email,
             'auth_level'=>$auth_level,
             'stat'=>$reqcategory,
-            'resultcount'=>$resultcount
+            'resultcount'=>$resultcount,
+            'department'=>$department
         ]);
     }
 
     public function viewupdateinventoryitem($product_id, $name, $email){
         $stocks = DB::Table('products')->where('product_id',$product_id)->get();
         $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
+        $department = DB::Table('employees')->where('email',$email)->value('department');
 
         return view('inventory-updateitem',[
             'auth_level'=>$auth_level,
@@ -414,14 +428,15 @@ class employeecontroller extends Controller
             'stocks'=>$stocks,
             'email'=>$email,
             'product_id'=>$product_id,
-            'resultcount'=>null
+            'resultcount'=>null,
+            'department'=>$department
         ]);
     }
 
     public function updateinventoryitem(Request $request){
 
         $auth_level = DB::Table('employees')->where('email',$request->email)->value('auth_level');
-
+        $department = DB::Table('employees')->where('email',$request->email)->value('department');
         
         $updetails = DB::Table('products')
             ->where('product_id',$request->product_id)
@@ -436,7 +451,8 @@ class employeecontroller extends Controller
             'email'=>$request->email,
             'auth_level'=>$auth_level,
             'stat'=>null,
-            'resultcount'=>null
+            'resultcount'=>null,
+            'department'=>$department
         ]);
     }
 
@@ -458,6 +474,7 @@ class employeecontroller extends Controller
         $Product->save();
 
         $auth_level = DB::Table('employees')->where('email',$req->email)->value('auth_level');
+        $department = DB::Table('employees')->where('email',$req->email)->value('department');
 
         /*return back()
             ->with('message','Product Added !')
@@ -484,7 +501,8 @@ class employeecontroller extends Controller
             'email'=>$req->email,
             'auth_level'=>$auth_level,
             'stat'=>null,
-            'resultcount'=>null
+            'resultcount'=>null,
+            'department'=>$department
         ]);
     }
 
@@ -530,13 +548,15 @@ class employeecontroller extends Controller
     public function viewstocks($name, $email,){
 
         $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
+        $department = DB::Table('employees')->where('email',$email)->value('department');
 
         return view('stocks',[
             'name'=>$name,
             'stocks'=>null,
             'email'=>$email,
             'auth_level'=>$auth_level,
-            'resultcount'=>null
+            'resultcount'=>null,
+            'department'=>$department
         ]);
     }
 
@@ -569,6 +589,7 @@ class employeecontroller extends Controller
         }
         
         $auth_level = DB::Table('employees')->where('email',$request->email)->value('auth_level');
+        $department = DB::Table('employees')->where('email',$request->email)->value('department');
 
         return view('stocks',[
             'name'=>$gotname,
@@ -576,13 +597,15 @@ class employeecontroller extends Controller
             'email'=>$request->email,
             'auth_level'=>$auth_level,
             'stat'=>$reqstatus,
-            'resultcount'=>$resultcount
+            'department'=>$department,
+            'resultcount'=>$resultcount,
         ]);
     }
 
     public function viewupdatestock($product_id, $name, $email){
         $stocks = DB::Table('products')->where('product_id',$product_id)->get();
         $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
+        $department = DB::Table('employees')->where('email',$email)->value('department');
 
         return view('inventory-updatestocks',[
             'auth_level'=>$auth_level,
@@ -590,6 +613,7 @@ class employeecontroller extends Controller
             'stocks'=>$stocks,
             'email'=>$email,
             'product_id'=>$product_id,
+            'department'=>$department,
             'resultcount'=>null
         ]);
     }
@@ -597,6 +621,8 @@ class employeecontroller extends Controller
     public function updatestock(Request $request){
         $oldstock = DB::Table('products')->where('product_id', $request->product_id)->value('stock');
         $auth_level = DB::Table('employees')->where('email',$request->email)->value('auth_level');
+        $department = DB::Table('employees')->where('email',$request->email)->value('department');
+        
 
         $reqstock = $request->new_stock;
 
@@ -614,6 +640,7 @@ class employeecontroller extends Controller
             'auth_level'=>$auth_level,
             'stat'=>null,
             'resultcount'=>null,
+            'department'=>$department,
             'resultcount'=>null
         ]);
     }
@@ -673,6 +700,8 @@ class employeecontroller extends Controller
     public function viewmoney($name, $email){
 
         $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
+        $department = DB::Table('employees')->where('email',$email)->value('department');
+
 
         return view('money',[
             'name'=>$name,
@@ -688,6 +717,7 @@ class employeecontroller extends Controller
             'shippedorders'=>null,
             'completedorders'=>null,
             'totorders'=>null,
+            'department'=>$department,
             'totamount'=>null
         ]);
     }
@@ -724,6 +754,8 @@ class employeecontroller extends Controller
         
         $gotname = DB::Table('employees')->where('email',$request->email)->value('name');
         $auth_level = DB::Table('employees')->where('email',$request->email)->value('auth_level');
+        $department = DB::Table('employees')->where('email',$request->email)->value('department');
+
         if($countmonth == 122){
             $pendingorders = DB::Table('orders')->where([
                 ['status','=','Pending']
@@ -765,6 +797,7 @@ class employeecontroller extends Controller
             'shippedorders'=>$shippedorders,
             'completedorders'=>$completedorders,
             'totorders'=>$totorders,
+            'department'=>$department,
             'totamount'=>null
         ]);
     }
@@ -863,6 +896,7 @@ class employeecontroller extends Controller
     public function viewtools($name, $email){
 
         $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
+        $department = DB::Table('employees')->where('email',$email)->value('department');
         $reports = DB::Table('reports')->orderBy('id', 'desc')->get();
         $employees = DB::Table('employees')->get();//->groupBy('department')
 
@@ -873,10 +907,12 @@ class employeecontroller extends Controller
             'employees'=>$employees,
             'email'=>$email,
             'auth_level'=>$auth_level,
+            'department'=>$department,
             'resultcount'=>null,
             
         ]);
     }
+
     public function addanemployee(Request $req){
 
         $this->validate($req,[
@@ -894,6 +930,7 @@ class employeecontroller extends Controller
         $NewEmployee->auth_level = $req->auth_level;
         $NewEmployee->save();
 
+        $department = DB::Table('employees')->where('email',$req->useremail)->value('department');
         $auth_level = DB::Table('employees')->where('email',$req->useremail)->value('auth_level');
         $reports = DB::Table('reports')->orderBy('id', 'desc')->get();
         $employees = DB::Table('employees')->get();//->groupBy('department')
@@ -907,6 +944,7 @@ class employeecontroller extends Controller
             'employees'=>$employees,
             'email'=>$req->useremail,
             'auth_level'=>$auth_level,
+            'department'=>$department,
             'resultcount'=>null,
         ]);
     }
@@ -916,10 +954,12 @@ class employeecontroller extends Controller
     public function viewhome($name, $email,){
 
         $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
+        $department = DB::Table('employees')->where('email',$email)->value('department');
 
         return view('dashboard',[
             'name'=>$name,
             'email'=>$email,
+            'department'=>$department,
             'auth_level'=>$auth_level
         ]);
     }

@@ -99,28 +99,42 @@
             <div class="col-lg-1 col-md-1 col-sm-2">
                 <div class="shadow bg-white rounded">
                     <div class="card p-1" style="border: 0;">
-                        <a href="{{url('/employee/home/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary"><i class="bi bi-house"></i><br> Home</a>
-                        <br>
-                        <br>
+                      <a href="{{url('/employee/home/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary"><i class="bi bi-house"></i><br> Home</a>
+                      <br>
+                      <br>
+                      @if($department == 'Production')
                         <a href="{{url('/employee/orders/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary"><i class="bi bi-shop"></i><br> Orders</a>
-                        <br>
-                        <br>
+                      @else
+                        <a href="{{url('/employee/orders/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary disabled"><i class="bi bi-shop"></i><br> Orders</a>
+                      @endif
+                      <br>
+                      <br>
+                      @if($department == 'Inventory')
                         <a href="{{url('/employee/inventory/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary"><i class="bi bi-card-checklist"></i><br> Inventory</a>
-                        <br>
-                        <br>
+                      @else
+                        <a href="{{url('/employee/inventory/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary disabled"><i class="bi bi-card-checklist"></i><br> Inventory</a>
+                      @endif
+                      <br>
+                      <br>
+                      @if($department == 'Inventory')
                         <a href="{{url('/employee/stocks/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary"><i class="bi bi-boxes"></i></i><br> Stocks</a>
-                        <br>
-                        <br>
+                      @else
+                        <a href="{{url('/employee/stocks/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary disabled"><i class="bi bi-boxes"></i></i><br> Stocks</a>
+                      @endif
+                      <br>
+                      <br>
+                      @if($department == 'Accounting')
                         <a href="{{url('/employee/money/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary"><i class="bi bi-coin"></i><br> Money</a>
-                        <br>
-                        <br>
-                        @if($auth_level == 1)
-                          <a href="{{url('/employee/tools/'.$name.'/'.$email.'')}}" class="btn btn-primary"><i class="bi bi-gear"></i><br> Tools</a>
-                        @elseif($auth_level == 2)
-                          <a href="{{url('/employee/tools/'.$name.'/'.$email.'')}}" class="btn btn-primary"><i class="bi bi-gear"></i><br> Tools</a>
-                        @else
-                          <a href="" class="btn btn-outline-primary disabled"><i class="bi bi-gear"></i><br> Tools</a>
-                        @endif
+                      @else
+                        <a href="{{url('/employee/money/'.$name.'/'.$email.'')}}" class="btn btn-outline-primary disabled"><i class="bi bi-coin"></i><br> Money</a>
+                      @endif
+                      <br>
+                      <br> 
+                      @if($auth_level == 1)
+                        <a href="{{url('/employee/tools/'.$name.'/'.$email.'')}}" class="btn btn-primary"><i class="bi bi-gear"></i><br> Tools</a>
+                      @else
+                        <a href="" class="btn btn-outline-primary disabled"><i class="bi bi-gear"></i><br> Tools</a>
+                      @endif
                     </div>
                 </div>
             </div>
@@ -202,6 +216,7 @@
                                         <th>ID</th>
                                         <th>Level</th>
                                         <th>Email</th>
+                                        <th>Role</th>
                                         <th style="text-align: center;" align="center">Department</th>
                                     </tr>
   
@@ -210,6 +225,7 @@
                                             <td>{{$employee->id}}</td>
                                             <td>{{$employee->auth_level}}</td>
                                             <td>{{$employee->email}}</td>
+                                            <td>{{$employee->role}}</td>
                                             <td align="center">{{$employee->department}}</td>
                                         </tr>
                                         @endforeach
