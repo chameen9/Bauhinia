@@ -11,6 +11,27 @@
   object-fit: cover;
 }
 
+.scrollsec{
+  height:284px;
+  overflow-y: scroll;
+}
+
+.scrollsec2{
+  height:540px;
+  overflow-y: scroll;
+}
+
+.scrollsec3{
+  height: 485px;;
+  overflow-y: scroll;
+}
+
+.scrollsec4{
+  height:220px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -1990,6 +2011,7 @@ progress {
 }
 .table > tbody {
   vertical-align: inherit;
+  overflow-y:scroll;
 }
 .table > thead {
   vertical-align: bottom;

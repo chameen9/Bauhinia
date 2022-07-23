@@ -194,7 +194,8 @@
                                   Showing {{$resultcount}} Results in {{$stat}}
                                 @endif
                               </p>
-                              <table class="table">
+                              <div class="scrollsec3">
+                                <table class="table">
                                   <tr class="table-primary">
                                       <th>Product ID</th>
                                       <th>Product Name</th>
@@ -234,7 +235,9 @@
                                       @endforeach
                                   
                                  
-                              </table>
+                                </table>
+                              </div>
+                              
                               @else
                                   <p align="center" class="text-muted">Find inventory using this window.</p>
                               @endif

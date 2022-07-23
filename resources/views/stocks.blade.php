@@ -197,6 +197,7 @@
                                   Showing {{$resultcount}} Results in {{$stat}} stocks
                                 @endif
                               </p>
+                              <div class="scrollsec3">
                               <table class="table">
                                   <tr class="table-primary">
                                       <th>Product ID</th>
@@ -259,7 +260,8 @@
                                       @endforeach
                                   
                                  
-                              </table>
+                                </table>
+                              </div>
                               @else
                                   <p align="center" class="text-muted">Find stock using this window.</p>
                               @endif

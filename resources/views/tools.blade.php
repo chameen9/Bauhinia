@@ -126,6 +126,7 @@
             </div>
 
             <div class="col-lg-11 col-md-11 col-sm-9">
+             
                 <div class="row">
                     <div class="col-6">
                         <div class="shadow bg-white rounded">
@@ -134,7 +135,8 @@
                                 <br>
                                 <h6 class="text-muted">Add an Employee</h6>
                                 <br>
-                                <form action="{{url('employeetoolsaddanemployee')}}" method="post">
+                                <form action="{{url('employee/toolsaddanemployee')}}" method="post">
+                                {{csrf_field()}}
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="input-group mb-3">
@@ -180,62 +182,41 @@
                                             <br>
                                         </div>
                                         <div class="col-4">
-                                            <div class="d-grid gap-2">
-                                                <button type="submit" class="btn btn-primary btn-rounded"><i class="bi bi-person-plus"></i> Add Employee</button>
-                                            </div>
+                                            
+                                                <input type="hidden" name="useremail" value="{{$email}}">
+                                                <input type="hidden" name="username" value="{{$name}}">
+                                                <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus"></i> Add Employee</button>
+                                                
                                         </div>
                                         <div class="col-4">
-                                          @if(count($errors)>0 || $message = Session::get('message'))
-
-                                            @if(count($errors)>0)
-                                              <div class="card-body">
-                                                <div class="alert alert-danger">
-                                                  <ul>
-                                                    @foreach($errors->all() as $error)
-                                                      <li>{{ $error }}</li>
-                                                    @endforeach
-                                                  </ul>
-                                                </div>
-                                              </div>
-                                            @endif
-
-                                            @if($message = Session::get('message'))
-                                              <div class="card-body">
-                                                <div class="alert alert-success">
-                                                  {{$message}}
-                                                </div>
-                                              </div>
-                                            @endif
-                                              
-                                          @else
-                                            <br>
-                                          @endif
-                                           
+                                           <br>
                                         </div>
                                     </div>
                                 </form>
                                 <hr>
+                                
                                 <h6 class="text-muted">Employees</h6>
-                                <table class="table">
-                                  <tr class="table-primary">
-                                      <th>ID</th>
-                                      <th>Level</th>
-                                      <th>Email</th>
-                                      <th>Role</th>
-                                      <th>Name</th>
-                                  </tr>
-
-                                      @foreach($employees as $employee)
-                                      <tr>
-                                          <td>{{$employee->id}}</td>
-                                          <td>{{$employee->auth_level}}</td>
-                                          <td>{{$employee->email}}</td>
-                                          <td>{{$employee->role}}</td>
-                                          <td>{{$employee->name}}</td>
-                                      </tr>
-                                      @endforeach
-                                 
-                              </table>
+                                <div class="scrollsec">
+                                  <table class="table">
+                                    <tr class="table-primary">
+                                        <th>ID</th>
+                                        <th>Level</th>
+                                        <th>Email</th>
+                                        <th style="text-align: center;" align="center">Department</th>
+                                    </tr>
+  
+                                        @foreach($employees as $employee)
+                                        <tr>
+                                            <td>{{$employee->id}}</td>
+                                            <td>{{$employee->auth_level}}</td>
+                                            <td>{{$employee->email}}</td>
+                                            <td align="center">{{$employee->department}}</td>
+                                        </tr>
+                                        @endforeach
+                                   
+                                  </table>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -244,30 +225,33 @@
                             <div class="card p-1" style="border: 0;">
                                 <h4 class="card-header">Reports History</h4>
                                 <br>
-                                <table class="table">
-                                  <tr class="table-primary">
-                                      <th>ID</th>
-                                      <th>Created by</th>
-                                      <th>Date</th>
-                                      <th>Time</th>
-                                      <th>Type</th>
-                                      <th>Status</th>
-                                  </tr>
-
-                                      @foreach($reports as $report)
-                                      <tr>
+                                <div class="">
+                                  <div class="scrollsec2">
+                                    <table class="table">
+                                      <thead class="table-primary">
+                                          <th>ID</th>
+                                          <th>Created by</th>
+                                          <th>Date</th>
+                                          <th>Time</th>
+                                          <th>Type</th>
+                                          <th>Status</th>
+                                      </thead>
+                                        @foreach($reports as $report)
+                                        <tr>
                                           <td>{{$report->id}}</td>
                                           <td>{{$report->created_by}}</td>
                                           <td>{{$report->created_date}}</td>
                                           <td>{{$report->created_time}}</td>
                                           <td>{{$report->report_type}}</td>
                                           <td>{{$report->report_status}}</td>
-                                      </tr>
-                                      @endforeach
+                                        </tr>
+                                        @endforeach
+                                        
+                                    </table>
+                                  </div>
                                   
-                                 
-                              </table>
-        
+                                </div>
+                                
                             </div>
                         </div>
                     </div>

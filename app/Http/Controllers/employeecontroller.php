@@ -863,8 +863,8 @@ class employeecontroller extends Controller
     public function viewtools($name, $email){
 
         $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
-        $reports = DB::Table('reports')->get();
-        $employees = DB::Table('employees')->get();
+        $reports = DB::Table('reports')->orderBy('id', 'desc')->get();
+        $employees = DB::Table('employees')->get();//->groupBy('department')
 
         return view('tools',[
             'name'=>$name,
@@ -873,55 +873,41 @@ class employeecontroller extends Controller
             'employees'=>$employees,
             'email'=>$email,
             'auth_level'=>$auth_level,
-            'month'=>null,
             'resultcount'=>null,
-            'pendingtot'=>null,
-            'shippedtot'=>null,
-            'completedtot'=>null,
-            'pendingorders'=>null,
-            'shippedorders'=>null,
-            'completedorders'=>null,
-            'totorders'=>null,
-            'totamount'=>null
+            
         ]);
     }
     public function addanemployee(Request $req){
 
         $this->validate($req,[
-            'id'=>['string','max:10','min:10','unique:employees'],
+            'id'=>['string','max:10','min:8','unique:employees'],
             'department'=>['string'],
-            'email'=>['email','string','max:100','unique:employees'],
+            'email'=>['email','string','max:100'],
             'auth_level'=>['numeric'],
         ]);
 
-        $Employee = new Employee;
+        $NewEmployee = new Employee;
 
-        $Employee->id = $req->id;
-        $Employee->email = $req->email;
-        $Employee->department = $req->department;
-        $Employee->auth_level = $req->auth_level;
-        $Employee->save();
+        $NewEmployee->id = $req->id;
+        $NewEmployee->email = $req->email;
+        $NewEmployee->department = $req->department;
+        $NewEmployee->auth_level = $req->auth_level;
+        $NewEmployee->save();
 
-        dd($Employee);
-        //return back()->with('message','Employee Added !');
+        $auth_level = DB::Table('employees')->where('email',$req->useremail)->value('auth_level');
+        $reports = DB::Table('reports')->orderBy('id', 'desc')->get();
+        $employees = DB::Table('employees')->get();//->groupBy('department')
+
+        //dd($NewEmployee);
 
         return view('tools',[
-            'name'=>$name,
+            'name'=>$req->username,
             'products'=>null,
             'reports'=>$reports,
             'employees'=>$employees,
-            'email'=>$email,
+            'email'=>$req->useremail,
             'auth_level'=>$auth_level,
-            'month'=>null,
             'resultcount'=>null,
-            'pendingtot'=>null,
-            'shippedtot'=>null,
-            'completedtot'=>null,
-            'pendingorders'=>null,
-            'shippedorders'=>null,
-            'completedorders'=>null,
-            'totorders'=>null,
-            'totamount'=>null
         ]);
     }
     //  tools   //

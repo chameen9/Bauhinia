@@ -259,80 +259,83 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
+                <div class="row"><!--start-->
                     <div class="col-4">
                         <div class="shadow bg-white rounded">
                             <div class="card p-1" style="border: 0;">
                                 <h6 class="card-header">Pending Orders </h6>
                                 <br>
-                                
-                                <table class="table">
+                                <div class="scrollsec4">
+                                    <table class="table">
 
-                                    @if($resultcount != null)
-                                    <div class="row">
-                                        <div class="col-1">
-                                            <br>
-                                        </div>
-                                        <div class="col-4">
-                                            Total Orders
-                                        </div>
-                                        <div class="col-2" style="text-align: start;">
-                                            :
-                                        </div>
-                                        <div class="col-4" style="align-items: right; text-align: end;">
-                                            {{$pendingorders}}
-                                        </div>
-                                        <div class="col-1">
-                                            <br>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-1">
-                                            <br>
-                                        </div>
-                                        <div class="col-4">
-                                            Total Amount
-                                        </div>
-                                        <div class="col-2" style="text-align: start;">
-                                            :
-                                        </div>
-                                        <div class="col-4" style="align-items: right; text-align: end;">
-                                            @foreach($products as $product)
-                                                @if($product->status == 'Pending')
-                                                    <input type="hidden" name="tot" value="{{$pendingtot = $pendingtot+$product->qty*$product->price}}">
-                                                @endif
-                                            @endforeach
-                                            Rs. {{$pendingtot}}
-                                        </div>
-                                        <div class="col-1">
-                                            <br>
-                                        </div>
+                                        @if($resultcount != null)
                                         <div class="row">
-                                            <div class="col-12">
+                                            <div class="col-1">
+                                                <br>
+                                            </div>
+                                            <div class="col-4">
+                                                Total Orders
+                                            </div>
+                                            <div class="col-2" style="text-align: start;">
+                                                :
+                                            </div>
+                                            <div class="col-4" style="align-items: right; text-align: end;">
+                                                {{$pendingorders}}
+                                            </div>
+                                            <div class="col-1">
                                                 <br>
                                             </div>
                                         </div>
-                                    </div>
-                                        <tr class="table-primary">
-                                            <th>Order ID</th>
-                                            <th>Product ID</th>
-                                            <th>Status</th>
-                                            <th align="right">Order value (Rs.)</th>
-                                        </tr>
-                                        @foreach($products as $product)
-                                            @if($product->status == 'Pending')
-                                            
-                                            <tr>
-                                                <td>{{$product->order_id}}</td>
-                                                <td>{{$product->product_id}}</td>
-                                                <td>{{$product->status}}</td>
-                                                <td align="right">{{$product->qty*$product->price}}</td>
+                                        <div class="row">
+                                            <div class="col-1">
+                                                <br>
+                                            </div>
+                                            <div class="col-4">
+                                                Total Amount
+                                            </div>
+                                            <div class="col-2" style="text-align: start;">
+                                                :
+                                            </div>
+                                            <div class="col-4" style="align-items: right; text-align: end;">
+                                                @foreach($products as $product)
+                                                    @if($product->status == 'Pending')
+                                                        <input type="hidden" name="tot" value="{{$pendingtot = $pendingtot+$product->qty*$product->price}}">
+                                                    @endif
+                                                @endforeach
+                                                Rs. {{$pendingtot}}
+                                            </div>
+                                            <div class="col-1">
+                                                <br>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                            <tr class="table-primary">
+                                                <th>Order ID</th>
+                                                <th>Product ID</th>
+                                                <th>Status</th>
+                                                <th align="right">Order value (Rs.)</th>
                                             </tr>
-                                            @endif
-                                        @endforeach
-                                    @endif
-                                   
-                                </table>
+                                            @foreach($products as $product)
+                                                @if($product->status == 'Pending')
+                                                
+                                                <tr>
+                                                    <td>{{$product->order_id}}</td>
+                                                    <td>{{$product->product_id}}</td>
+                                                    <td>{{$product->status}}</td>
+                                                    <td align="right">{{$product->qty*$product->price}}</td>
+                                                </tr>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                       
+                                    </table>
+                                </div>
+                                
+                                
                             </div>
                         </div>
                     </div>
@@ -341,74 +344,76 @@
                             <div class="card p-1" style="border: 0;">
                                 <h6 class="card-header">Shipped Orders </h6>
                                 <br>
-                                
-                                <table class="table">
-
-                                    @if($resultcount != null)
-                                    <div class="row">
-                                        <div class="col-1">
-                                            <br>
-                                        </div>
-                                        <div class="col-4">
-                                            Total Orders
-                                        </div>
-                                        <div class="col-2" style="text-align: start;">
-                                            :
-                                        </div>
-                                        <div class="col-4" style="align-items: right; text-align: end;">
-                                            {{$shippedorders}}
-                                        </div>
-                                        <div class="col-1">
-                                            <br>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-1">
-                                            <br>
-                                        </div>
-                                        <div class="col-4">
-                                            Total Amount
-                                        </div>
-                                        <div class="col-2" style="text-align: start;">
-                                            :
-                                        </div>
-                                        <div class="col-4" style="align-items: right; text-align: end;">
-                                            @foreach($products as $product)
-                                                @if($product->status == 'Shipped')
-                                                    <input type="hidden" name="tot" value="{{$shippedtot = $shippedtot+$product->qty*$product->price}}">
-                                                @endif
-                                            @endforeach
-                                            Rs. {{$shippedtot}}
-                                        </div>
-                                        <div class="col-1">
-                                            <br>
-                                        </div>
+                                <div class="scrollsec4">
+                                    <table class="table">
+    
+                                        @if($resultcount != null)
                                         <div class="row">
-                                            <div class="col-12">
+                                            <div class="col-1">
+                                                <br>
+                                            </div>
+                                            <div class="col-4">
+                                                Total Orders
+                                            </div>
+                                            <div class="col-2" style="text-align: start;">
+                                                :
+                                            </div>
+                                            <div class="col-4" style="align-items: right; text-align: end;">
+                                                {{$shippedorders}}
+                                            </div>
+                                            <div class="col-1">
                                                 <br>
                                             </div>
                                         </div>
-                                    </div>
-                                        <tr class="table-primary">
-                                            <th>Order ID</th>
-                                            <th>Product ID</th>
-                                            <th>Status</th>
-                                            <th align="right">Order value (Rs.)</th>
-                                        </tr>
-                                        @foreach($products as $product)
-                                            @if($product->status == 'Shipped')
-                                            
-                                            <tr>
-                                                <td>{{$product->order_id}}</td>
-                                                <td>{{$product->product_id}}</td>
-                                                <td>{{$product->status}}</td>
-                                                <td align="right">{{$product->qty*$product->price}}</td>
+                                        <div class="row">
+                                            <div class="col-1">
+                                                <br>
+                                            </div>
+                                            <div class="col-4">
+                                                Total Amount
+                                            </div>
+                                            <div class="col-2" style="text-align: start;">
+                                                :
+                                            </div>
+                                            <div class="col-4" style="align-items: right; text-align: end;">
+                                                @foreach($products as $product)
+                                                    @if($product->status == 'Shipped')
+                                                        <input type="hidden" name="tot" value="{{$shippedtot = $shippedtot+$product->qty*$product->price}}">
+                                                    @endif
+                                                @endforeach
+                                                Rs. {{$shippedtot}}
+                                            </div>
+                                            <div class="col-1">
+                                                <br>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                            <tr class="table-primary">
+                                                <th>Order ID</th>
+                                                <th>Product ID</th>
+                                                <th>Status</th>
+                                                <th align="right">Order value (Rs.)</th>
                                             </tr>
-                                            @endif
-                                        @endforeach
-                                    @endif
-                                   
-                                </table>
+                                            @foreach($products as $product)
+                                                @if($product->status == 'Shipped')
+                                                
+                                                <tr>
+                                                    <td>{{$product->order_id}}</td>
+                                                    <td>{{$product->product_id}}</td>
+                                                    <td>{{$product->status}}</td>
+                                                    <td align="right">{{$product->qty*$product->price}}</td>
+                                                </tr>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                       
+                                    </table>
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -417,85 +422,85 @@
                             <div class="card p-1" style="border: 0;">
                                 <h6 class="card-header">Completed Orders </h6>
                                 <br>
-                                
-                                <table class="table">
+                                <div class="scrollsec4">
 
-                                    @if($resultcount != null)
-                                    <div class="row">
-                                        <div class="col-1">
-                                            <br>
-                                        </div>
-                                        <div class="col-4">
-                                            Total Orders
-                                        </div>
-                                        <div class="col-2" style="text-align: start;">
-                                            :
-                                        </div>
-                                        <div class="col-4" style="align-items: right; text-align: end;">
-                                            {{$completedorders}}
-                                        </div>
-                                        <div class="col-1">
-                                            <br>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-1">
-                                            <br>
-                                        </div>
-                                        <div class="col-4">
-                                            Total Amount
-                                        </div>
-                                        <div class="col-2" style="text-align: start;">
-                                            :
-                                        </div>
-                                        <div class="col-4" style="align-items: right; text-align: end;">
-                                            @foreach($products as $product)
-                                                @if($product->status == 'Completed')
-                                                    <input type="hidden" name="tot" value="{{$completedtot = $completedtot+$product->qty*$product->price}}">
-                                                @endif
-                                            @endforeach
-                                            Rs. {{$completedtot}}
-                                        </div>
-                                        <div class="col-1">
-                                            <br>
-                                        </div>
+                                    <table class="table">
+
+                                        @if($resultcount != null)
                                         <div class="row">
-                                            <div class="col-12">
+                                            <div class="col-1">
+                                                <br>
+                                            </div>
+                                            <div class="col-4">
+                                                Total Orders
+                                            </div>
+                                            <div class="col-2" style="text-align: start;">
+                                                :
+                                            </div>
+                                            <div class="col-4" style="align-items: right; text-align: end;">
+                                                {{$completedorders}}
+                                            </div>
+                                            <div class="col-1">
                                                 <br>
                                             </div>
                                         </div>
-                                    </div>
-                                        <tr class="table-primary">
-                                            <th>Order ID</th>
-                                            <th>Product ID</th>
-                                            <th>Status</th>
-                                            <th align="right">Order value (Rs.)</th>
-                                        </tr>
-                                        @foreach($products as $product)
-                                            @if($product->status == 'Completed')
-                                            
-                                            <tr>
-                                                <td>{{$product->order_id}}</td>
-                                                <td>{{$product->product_id}}</td>
-                                                <td>{{$product->status}}</td>
-                                                <td align="right">{{$product->qty*$product->price}}</td>
+                                        <div class="row">
+                                            <div class="col-1">
+                                                <br>
+                                            </div>
+                                            <div class="col-4">
+                                                Total Amount
+                                            </div>
+                                            <div class="col-2" style="text-align: start;">
+                                                :
+                                            </div>
+                                            <div class="col-4" style="align-items: right; text-align: end;">
+                                                @foreach($products as $product)
+                                                    @if($product->status == 'Completed')
+                                                        <input type="hidden" name="tot" value="{{$completedtot = $completedtot+$product->qty*$product->price}}">
+                                                    @endif
+                                                @endforeach
+                                                Rs. {{$completedtot}}
+                                            </div>
+                                            <div class="col-1">
+                                                <br>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                            <tr class="table-primary">
+                                                <th>Order ID</th>
+                                                <th>Product ID</th>
+                                                <th>Status</th>
+                                                <th align="right">Order value (Rs.)</th>
                                             </tr>
-                                            @endif
-                                        @endforeach
-                                    @endif
-                                   
-                                </table>
+                                            @foreach($products as $product)
+                                                @if($product->status == 'Completed')
+                                                
+                                                <tr>
+                                                    <td>{{$product->order_id}}</td>
+                                                    <td>{{$product->product_id}}</td>
+                                                    <td>{{$product->status}}</td>
+                                                    <td align="right">{{$product->qty*$product->price}}</td>
+                                                </tr>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                       
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div><!--end-->
                 
             </div>
 
         </div>
       </div>
-              
-
-
+           
     </body>
 </html>

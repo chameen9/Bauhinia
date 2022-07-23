@@ -202,65 +202,68 @@
                                             Showing {{$resultcount}} Results in {{$date}} {{$stat}} Orders
                                         @endif
                                     </p>
-                                    <table class="table">
-                                        <tr class="table-primary">
-                                            <th>Order ID</th>
-                                            <th>Product ID</th>
-                                            <th>Customer Name</th>
-                                            <th>Pr: Contact</th>
-                                            <th>Se: Contact</th>
-                                            <th>Delivery Address</th>
-                                            <th>Quantity</th>
-                                            <th>Order value</th>
-                                            <th>Status</th>
-                                            <th>Control</th>
-                                        </tr>
-                                        
-        
-                                        
-                                            @foreach($orders as $order)
-                                            <tr>
-                                                <td>{{$order->order_id}}</td>
-                                                <td>{{$order->product_id}}</td>
-                                                <td>{{$order->cus_name}}</td>
-                                                <td>{{$order->primary_contact}}</td>
-                                                <td>{{$order->secondary_contact}}</td>
-                                                <td>{{$order->delivery_address}}</td>
-                                                <td>{{$order->qty}}</td>
-                                                <td>Rs. {{$order->qty*$order->price}}</td>
-                                                <td>{{$order->status}}</td>
-                                                @if($order->status == 'Pending')
-                                                    @if($auth_level == 1)
-                                                        <td align="center">
-                                                            <a href="{{url('/employee/order/markasshipped/'.$order->order_id.'/'.$name.'/'.$email.'')}}" class="btn btn-primary btn-sm">Mark as shipped</a>
-                                                        </td>
-                                                    @elseif($auth_level == 2)
-                                                        <td align="center">
-                                                            <a href="{{url('/employee/order/markasshipped/'.$order->order_id.'/'.$name.'/'.$email.'')}}" class="btn btn-primary btn-sm">Mark as shipped</a>
-                                                        </td>
-                                                    @elseif($auth_level == 3)
-                                                        <td align="center">
-                                                            <a href="{{url('/employee/order/markasshipped/'.$order->order_id.'/'.$name.'/'.$email.'')}}" class="btn btn-primary btn-sm">Mark as shipped</a>
-                                                        </td>
-                                                    @else
-                                                        <td align="center">
-                                                            <a href="{{url('/employee/order/markasshipped/'.$order->order_id.'/'.$name.'/'.$email.'')}}" class="btn btn-primary btn-sm disabled" data-mdb-toggle="tooltip" title="You can't do this action" >Mark as shipped</a>
-                                                        </td>
-                                                    @endif
-                                                @elseif($order->status == 'Shipped')
-                                                <td align="center">
-                                                    <a class="btn-info btn-sm btn-block"><i class="bi bi-truck"></i></a>
-                                                </td>
-                                                @else
-                                                <td align="center">
-                                                    <a class="btn-success btn-sm btn-block"><i class="bi bi-check2"></i></a>
-                                                </td>
-                                                @endif
+                                    <div class="scrollsec3">
+                                        <table class="table">
+                                            <tr class="table-primary">
+                                                <th>Order ID</th>
+                                                <th>Product ID</th>
+                                                <th>Customer Name</th>
+                                                <th>Pr: Contact</th>
+                                                <th>Se: Contact</th>
+                                                <th>Delivery Address</th>
+                                                <th>Quantity</th>
+                                                <th>Order value</th>
+                                                <th>Status</th>
+                                                <th>Control</th>
                                             </tr>
-                                            @endforeach
-                                        
-                                       
-                                    </table>
+                                            
+            
+                                            
+                                                @foreach($orders as $order)
+                                                <tr>
+                                                    <td>{{$order->order_id}}</td>
+                                                    <td>{{$order->product_id}}</td>
+                                                    <td>{{$order->cus_name}}</td>
+                                                    <td>{{$order->primary_contact}}</td>
+                                                    <td>{{$order->secondary_contact}}</td>
+                                                    <td>{{$order->delivery_address}}</td>
+                                                    <td>{{$order->qty}}</td>
+                                                    <td>Rs. {{$order->qty*$order->price}}</td>
+                                                    <td>{{$order->status}}</td>
+                                                    @if($order->status == 'Pending')
+                                                        @if($auth_level == 1)
+                                                            <td align="center">
+                                                                <a href="{{url('/employee/order/markasshipped/'.$order->order_id.'/'.$name.'/'.$email.'')}}" class="btn btn-primary btn-sm">Mark as shipped</a>
+                                                            </td>
+                                                        @elseif($auth_level == 2)
+                                                            <td align="center">
+                                                                <a href="{{url('/employee/order/markasshipped/'.$order->order_id.'/'.$name.'/'.$email.'')}}" class="btn btn-primary btn-sm">Mark as shipped</a>
+                                                            </td>
+                                                        @elseif($auth_level == 3)
+                                                            <td align="center">
+                                                                <a href="{{url('/employee/order/markasshipped/'.$order->order_id.'/'.$name.'/'.$email.'')}}" class="btn btn-primary btn-sm">Mark as shipped</a>
+                                                            </td>
+                                                        @else
+                                                            <td align="center">
+                                                                <a href="{{url('/employee/order/markasshipped/'.$order->order_id.'/'.$name.'/'.$email.'')}}" class="btn btn-primary btn-sm disabled" data-mdb-toggle="tooltip" title="You can't do this action" >Mark as shipped</a>
+                                                            </td>
+                                                        @endif
+                                                    @elseif($order->status == 'Shipped')
+                                                    <td align="center">
+                                                        <a class="btn-info btn-sm btn-block"><i class="bi bi-truck"></i></a>
+                                                    </td>
+                                                    @else
+                                                    <td align="center">
+                                                        <a class="btn-success btn-sm btn-block"><i class="bi bi-check2"></i></a>
+                                                    </td>
+                                                    @endif
+                                                </tr>
+                                                @endforeach
+                                            
+                                           
+                                        </table>
+                                    </div>
+                                    
                                     @else
                                         <p align="center" class="text-muted">Find orders using this window.</p>
                                     @endif
