@@ -134,14 +134,14 @@
                                 <br>
                                 <h6 class="text-muted">Add an Employee</h6>
                                 <br>
-                                <form action="" method="post">
+                                <form action="{{url('employeetoolsaddanemployee')}}" method="post">
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
                                                   <span class="input-group-text" >Employee ID : </span>
                                                 </div>
-                                                <input type="text" required name="empid" class="form-control" placeholder="BHC-123456">
+                                                <input type="text" required name="id" class="form-control" placeholder="BHC-123456">
                                             </div>
                                         </div>
                                         <div class="col-6">
@@ -185,7 +185,32 @@
                                             </div>
                                         </div>
                                         <div class="col-4">
+                                          @if(count($errors)>0 || $message = Session::get('message'))
+
+                                            @if(count($errors)>0)
+                                              <div class="card-body">
+                                                <div class="alert alert-danger">
+                                                  <ul>
+                                                    @foreach($errors->all() as $error)
+                                                      <li>{{ $error }}</li>
+                                                    @endforeach
+                                                  </ul>
+                                                </div>
+                                              </div>
+                                            @endif
+
+                                            @if($message = Session::get('message'))
+                                              <div class="card-body">
+                                                <div class="alert alert-success">
+                                                  {{$message}}
+                                                </div>
+                                              </div>
+                                            @endif
+                                              
+                                          @else
                                             <br>
+                                          @endif
+                                           
                                         </div>
                                     </div>
                                 </form>

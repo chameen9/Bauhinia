@@ -452,11 +452,40 @@ class employeecontroller extends Controller
         $Product->product_id = $req->product_id;
         $Product->product_name = $req->product_name;
         $Product->brand = $req->brand;
+        $Product->category = $req->category;
         $Product->price = $req->price;
         $Product->stock = $req->stock;
         $Product->save();
 
-        return back()->with('message','Product Added !');
+        $auth_level = DB::Table('employees')->where('email',$req->email)->value('auth_level');
+
+        /*return back()
+            ->with('message','Product Added !')
+            ->with('name', $req->name)
+            ->with('stocks',null)
+            ->with('email',$req->email)
+            ->with('auth_level',$auth_level)
+            ->with('stat',null)
+            ->with('resultcount',null);
+
+        return back()->with([
+            'message'=>'Product Added !',
+            'name'=>$req->name,
+            'stocks'=>null,
+            'email'=>$req->email,
+            'auth_level'=>$auth_level,
+            'stat'=>null,
+            'resultcount'=>null
+        ]);*/
+        return view('inventory',[
+            'message'=>'Product Added !',
+            'name'=>$req->name,
+            'stocks'=>null,
+            'email'=>$req->email,
+            'auth_level'=>$auth_level,
+            'stat'=>null,
+            'resultcount'=>null
+        ]);
     }
 
     public function createinventoryreport($name, $email, $stat){
@@ -836,6 +865,45 @@ class employeecontroller extends Controller
         $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
         $reports = DB::Table('reports')->get();
         $employees = DB::Table('employees')->get();
+
+        return view('tools',[
+            'name'=>$name,
+            'products'=>null,
+            'reports'=>$reports,
+            'employees'=>$employees,
+            'email'=>$email,
+            'auth_level'=>$auth_level,
+            'month'=>null,
+            'resultcount'=>null,
+            'pendingtot'=>null,
+            'shippedtot'=>null,
+            'completedtot'=>null,
+            'pendingorders'=>null,
+            'shippedorders'=>null,
+            'completedorders'=>null,
+            'totorders'=>null,
+            'totamount'=>null
+        ]);
+    }
+    public function addanemployee(Request $req){
+
+        $this->validate($req,[
+            'id'=>['string','max:10','min:10','unique:employees'],
+            'department'=>['string'],
+            'email'=>['email','string','max:100','unique:employees'],
+            'auth_level'=>['numeric'],
+        ]);
+
+        $Employee = new Employee;
+
+        $Employee->id = $req->id;
+        $Employee->email = $req->email;
+        $Employee->department = $req->department;
+        $Employee->auth_level = $req->auth_level;
+        $Employee->save();
+
+        dd($Employee);
+        //return back()->with('message','Employee Added !');
 
         return view('tools',[
             'name'=>$name,

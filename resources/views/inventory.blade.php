@@ -210,7 +210,7 @@
                                           <td>{{$stock->product_name}}</td>
                                           <td>{{$stock->brand}}</td>
                                           <td>{{$stock->category}}</td>
-                                          <td>Rs. {{$stock->price}}</td>
+                                          <td align="right">Rs. {{$stock->price}}</td>
                                           
 
 
@@ -316,6 +316,8 @@
   
                         <div class="row">
                           <div class="col-12">
+                            <input type="hidden" name="email" value="{{$email}}">
+                            <input type="hidden" name="name" value="{{$name}}">
                             <div class="d-grid gap-2">
                               @if($auth_level == 1)
                                 <button type="submit" class="btn btn-primary btn-block"><i class="bi bi-file-earmark-plus"></i> Add Product</button>
