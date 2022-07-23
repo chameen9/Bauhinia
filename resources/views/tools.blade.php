@@ -190,22 +190,23 @@
                                     </div>
                                 </form>
                                 <hr>
+                                <h6 class="text-muted">Employees</h6>
                                 <table class="table">
                                   <tr class="table-primary">
                                       <th>ID</th>
-                                      <th>Name</th>
                                       <th>Level</th>
-                                      <th>Role</th>
                                       <th>Email</th>
+                                      <th>Role</th>
+                                      <th>Name</th>
                                   </tr>
 
                                       @foreach($employees as $employee)
                                       <tr>
                                           <td>{{$employee->id}}</td>
-                                          <td>{{$employee->name}}</td>
                                           <td>{{$employee->auth_level}}</td>
-                                          <td>{{$employee->role}}</td>
                                           <td>{{$employee->email}}</td>
+                                          <td>{{$employee->role}}</td>
+                                          <td>{{$employee->name}}</td>
                                       </tr>
                                       @endforeach
                                  
