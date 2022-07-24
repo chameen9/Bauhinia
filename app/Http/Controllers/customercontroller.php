@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use App\Mail\OrderMail;
 use App\Rules\PasswordChecker;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 use Validator;
 use DB;
@@ -117,20 +119,55 @@ class customercontroller extends Controller
         return back()->with('message','Sign up successful.');
     }
 
-    /*function editprofile(Request $request){ 
-        $User = new User;
+    function editprofile($email){ 
+        $customers = DB::Table('customers')->where('email',$email)->get();
+        $gotname = DB::Table('customers')->where('email',$email)->value('name');
 
-        $reqemail = $request->input('email');
-        $reqpassword = $request->input('password');
-        $gotemail = DB::Table('users')->where('email',$reqemail)->value('email');
-        $gotpassword = DB::Table('users')->where('email',$reqemail)->value('password');
-        $gotauth = DB::Table('users')->where('email',$reqemail)->value('auth_level');
-        $gotname = DB::Table('users')->where('email',$reqemail)->value('name');
-    }*/
+        return view('cuseditprofile',[
+            'customers'=>$customers,
+            'name'=>$gotname,
+            'email'=>$email,
+        ]);
+    }
+
+    function saveprofile(Request $req){
+        $this->validate($req, [
+            'name'=>['required','string','max:100','min:2'],
+            'gender'=>['required','string','max:10','min:3'],
+            'current_password'=>['string', new PasswordChecker()], //pasword checker externel rule
+            'new_password'=>[new PasswordChecker()], //pasword checker externel rule
+            'confirm_password'=>['same:new_password'], //pasword checker externel rule
+            'delivery_address'=>['string', 'max:250','min:5'],
+            'primary_contact'=>['string', 'max:15','min:9'], 
+            'secondary_contact'=>['string', 'max:15','min:9', 'different:primary_contact'], 
+        ]);
+
+        $Customer = DB::table('customers')
+              ->where('email', $req->email)
+              ->update([
+                'name' => $req->name,
+                'password' => $req->confirm_password,
+                'delivery_address' => $req->delivery_address,
+                'gender' => $req->gender,
+                'primary_contact_number' => $req->primary_contact,
+                'secondary_contact_number' => $req->secondary_contact,
+        ]);
+
+        return back()->with('message','Your Information Updated !');
+    }
 
     public function signout(Request $request){
         $request->session()->flush();
         Auth::logout();
         return redirect('/');
+    }
+
+    public function sendOrderMail(){
+        $details = [
+            'title'=>'Order Confirmation',
+            'body'=>'testing mail',
+        ];
+        Mail::to("chameensandeepa9@gmail.com")->send(new OrderMail($details));
+        return "Email Sent";
     }
 }

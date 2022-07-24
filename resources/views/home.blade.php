@@ -97,7 +97,7 @@
                     <p class="text-muted" style="text-align: center;">Welcome,<br>
                     <label>{{$name}}</label></p>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ url('/customer/editprofile') }}">Profile</a>
+                    <a class="dropdown-item" href="{{ url('/customer/editprofile/'.$email.'') }}">Profile</a>
                     @if($activeordercount == null)
                       <a class="dropdown-item disabled" href="{{ url('/customer/orders/'.$email.' ') }}">Orders</a>
                     @else

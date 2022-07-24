@@ -78,7 +78,7 @@
                     <p class="text-muted" style="text-align: center;">Welcome,<br>
                     <label>{{$name}}</label></p>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ url('/employee/editprofile') }}">Profile</a>
+                    <a class="dropdown-item" href="{{ url('/employee/editprofile/'.$email.'') }}">Profile</a>
                    
                     <a class="dropdown-item" href="{{ url('/employee/signout') }}">Sign Out</a>
                   </div>
@@ -226,15 +226,30 @@
                                 <hr>
                                 
                                 <h6 class="text-muted">Employees</h6>
+                                <table>
+                                  <thead style="background-color: #CFE2FF;">
+                                        <th width="7px"></th>
+                                        <th style="text-align: center;">ID</th>
+                                        <th width="7px"></th>
+                                        <th width="20px"></th>
+                                        <th width="7px"></th>
+                                        <th style="text-align: center;">Level</th>
+                                        <th width="7px"></th>
+                                        <th style="text-align: center;">Email</th>
+                                        <th width="20px"></th>
+                                        <th width="20px"></th>
+                                        <th width="70px"></th>
+                                        <th style="text-align: center;">Role</th>
+                                        <th width="7px"></th>
+                                        <th width="70px"></th>
+                                        <th width="20px"></th>
+                                        <th width="20px"></th>
+                                        <th width="20px"></th>
+                                        <th style="text-align: center;">Department</th>
+                                    </thead>
+                                </table>
                                 <div class="scrollsec">
                                   <table class="table">
-                                    <tr class="table-primary">
-                                        <th>ID</th>
-                                        <th>Level</th>
-                                        <th>Email</th>
-                                        <th>Role</th>
-                                        <th style="text-align: center;" align="center">Department</th>
-                                    </tr>
   
                                         @foreach($employees as $employee)
                                         <tr>
@@ -258,16 +273,26 @@
                                 <h4 class="card-header">Reports History</h4>
                                 <br>
                                 <div class="">
+                                  <table>
+                                    <thead class="table-primary" style="background-color: #CFE2FF;">
+                                          <th width="7px" style="text-align: center;"></th>
+                                          <th width="15px" style="text-align: center;">ID</th>
+                                          <th width="20px" style="text-align: center;"></th>
+                                          <th width="120px" style="text-align: center;">Created by</th>
+                                          <th width="60px" style="text-align: center;"></th>
+                                          <th width="10px">Date</th>
+                                          <th width="55px" style="text-align: center;"></th>
+                                          <th width="20px">Time</th>
+                                          <th width="50px" style="text-align: center;"></th>
+                                          <th width="130px">Type</th>
+                                          <th width="20px" style="text-align: center;"></th>
+                                          <th width="20px">Status</th>
+                                          <th width="70px" style="text-align: center;"></th>
+                                      </thead>
+                                  </table>
                                   <div class="scrollsec2">
                                     <table class="table">
-                                      <thead class="table-primary">
-                                          <th>ID</th>
-                                          <th>Created by</th>
-                                          <th>Date</th>
-                                          <th>Time</th>
-                                          <th>Type</th>
-                                          <th>Status</th>
-                                      </thead>
+                                      
                                         @foreach($reports as $report)
                                         <tr>
                                           <td>{{$report->id}}</td>

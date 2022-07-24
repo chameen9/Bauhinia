@@ -81,7 +81,7 @@
                         <p class="text-muted" style="text-align: center;">Welcome,<br>
                         <label>{{$name}}</label></p>
                         <hr>
-                        <a class="dropdown-item" href="{{ url('/customer/editprofile') }}">Profile</a>
+                        <a class="dropdown-item" href="{{ url('/customer/editprofile/'.$email.'') }}">Profile</a>
                         <a class="dropdown-item" href="{{ url('/customer/signout') }}">Sign Out</a>
                       </div>
                     </div>

@@ -76,6 +76,12 @@ Route::get('/customer/order/markasrecieved/{email}/{product_id}/{colour}/{size}/
 Route::get('/customer/order/removeorder/{email}/{product_id}/{colour}/{size}/{qty}/{ordered_date}/{ordered_time}', 'App\http\controllers\ordercontroller@removeorder');
 Route::post('/customer/order/removeorder/{email}/{product_id}/{colour}/{size}/{qty}/{ordered_date}/{ordered_time}', 'App\http\controllers\ordercontroller@removeorder');
 
+Route::post('/customer/editprofile/{email}', 'App\http\controllers\customercontroller@editprofile');
+Route::get('/customer/editprofile/{email}', 'App\http\controllers\customercontroller@editprofile');
+
+Route::post('/customer/save/profile', 'App\http\controllers\customercontroller@saveprofile');
+Route::get('/customer/save/profile', 'App\http\controllers\customercontroller@saveprofile');
+
 Route::post('/customer/signout', 'App\http\controllers\customercontroller@signout');
 Route::get('/customer/signout', 'App\http\controllers\customercontroller@signout');
 
@@ -142,5 +148,15 @@ Route::post('/employee/{name}/{email}/{month}//create/create/incomereport', 'App
 Route::get('/employee/toolsaddanemployee', 'App\http\controllers\employeecontroller@addanemployee');
 Route::post('/employee/toolsaddanemployee', 'App\http\controllers\employeecontroller@addanemployee');
 
+Route::post('/employee/editprofile/{email}', 'App\http\controllers\employeecontroller@editprofile');
+Route::get('/employee/editprofile/{email}', 'App\http\controllers\employeecontroller@editprofile');
+
+Route::post('/employee/save/profile', 'App\http\controllers\employeecontroller@saveprofile');
+Route::get('/employee/save/profile', 'App\http\controllers\employeecontroller@saveprofile');
+
 Route::get('/employee/signout', 'App\http\controllers\employeecontroller@signout');
 Route::post('/employee/signout', 'App\http\controllers\employeecontroller@signout');
+
+Route::view('/sendOrderMail','App\http\controllers\customercontroller@sendOrderMail');
+Route::get('/sendOrderMail','App\http\controllers\customercontroller@sendOrderMail');
+Route::post('/sendOrderMail','App\http\controllers\customercontroller@sendOrderMail');

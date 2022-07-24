@@ -78,7 +78,7 @@
                     <p class="text-muted" style="text-align: center;">Welcome,<br>
                     <label>{{$name}}</label></p>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ url('/employee/editprofile') }}">Profile</a>
+                    <a class="dropdown-item" href="{{ url('/employee/editprofile/'.$email.'') }}">Profile</a>
                    
                     <a class="dropdown-item" href="{{ url('/employee/signout') }}">Sign Out</a>
                   </div>

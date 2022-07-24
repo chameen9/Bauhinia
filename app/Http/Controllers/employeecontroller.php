@@ -123,6 +123,44 @@ class employeecontroller extends Controller
         return back()->with('message',$name);
     }
 
+    public function editprofile($email){
+        $id = DB::Table('employees')->where('email',$email)->value('id');
+        $employees = DB::Table('employees')->where('id',$id)->get();
+        $gotname = DB::Table('employees')->where('id',$id)->value('name');
+
+        return view('empeditprofile',[
+            'employees'=>$employees,
+            'name'=>$gotname,
+            'email'=>$email,
+        ]);
+    }
+
+    function saveprofile(Request $req){
+        $this->validate($req, [
+            'name'=>['required','string','max:100','min:2'],
+            'date_of_birth'=>['required','date'],
+            'gender'=>['required','string','max:10','min:3'],
+            'current_password'=>['string', new PasswordChecker()], //pasword checker externel rule
+            'new_password'=>[new PasswordChecker()], //pasword checker externel rule
+            'confirm_password'=>['same:new_password'], //pasword checker externel rule
+            'address'=>['string', 'max:250','min:5'],
+            'contact_number'=>['string', 'max:15','min:9'], 
+        ]);
+
+        $employee = DB::table('employees')
+              ->where('email', $req->email)
+              ->update([
+                'name' => $req->name,
+                'password' => $req->confirm_password,
+                'address' => $req->address,
+                'gender' => $req->gender,
+                'date_of_birth' => $req->date_of_birth,
+                'contact_number' => $req->contact_number,
+        ]);
+
+        return back()->with('message','Your Information Updated !');
+    }
+
     public function signout(Request $request){
         $request->session()->flush();
         Auth::logout();
@@ -918,7 +956,7 @@ class employeecontroller extends Controller
         $this->validate($req,[
             'id'=>['string','max:10','min:8','unique:employees'],
             'department'=>['string'],
-            'email'=>['email','string','max:100'],
+            'email'=>['email','string','max:100','unique:employees'],
             'auth_level'=>['numeric'],
         ]);
 
