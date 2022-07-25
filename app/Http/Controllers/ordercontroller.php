@@ -119,6 +119,7 @@ class ordercontroller extends Controller
 
         $activeorders = DB::Table('orders')->where([['email','=', $request->email],['status','!=','Completed']])->get();
 
+        // send mail    //
         $details = [
             'title'=>'Hi '.$gotname.',',
             'line1'=>'Thank you for ordering from Bauhinia Clothings!',
@@ -133,6 +134,7 @@ class ordercontroller extends Controller
             'orders'=>$activeorders,
         ];
         Mail::to($request->email)->send(new OrderMail($details));
+        // send mail    //
 
         return view('home',[
             'activeordercount'=>$activeordercount,
