@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\order;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderMail;
 use DB;
 use Redirect;
 
@@ -49,7 +51,6 @@ class ordercontroller extends Controller
                 'primary_contact_number' => $request->up_primary_contact,
                 'secondary_contact_number' => $request->up_secondary_contact
         ]);
-
 
         foreach($request->key as $key => $key){
             $order = new order;
@@ -100,6 +101,7 @@ class ordercontroller extends Controller
         $ordercount = DB::Table('orders')->where('email', $request->email)->count();
 
         $activeordercount = DB::Table('orders')->where([['email','=', $request->email],['status','!=','Completed']])->count();
+        
 
         if($count > 0){
             $cartcount = $count;
@@ -114,6 +116,23 @@ class ordercontroller extends Controller
         else{
             $ordercount = null;
         }
+
+        $activeorders = DB::Table('orders')->where([['email','=', $request->email],['status','!=','Completed']])->get();
+
+        $details = [
+            'title'=>'Hi '.$gotname.',',
+            'line1'=>'Thank you for ordering from Bauhinia Clothings!',
+            'line2'=>'We are excited for you to receive your order and will notify you once its on its way. We hope you had a great shopping experience! You can check your order status here.',
+            'line3'=>'Please note, we are unable to change your delivery address once your order is placed.',
+            'name'=>$request->up_name,
+            'address'=>$request->up_delivery_address,
+            'contact'=>$request->up_primary_contact.' / '.$request->up_secondary_contact,
+            'shippingFee'=>300.00,
+            'email'=>$request->email,
+            'total'=>null,
+            'orders'=>$activeorders,
+        ];
+        Mail::to($request->email)->send(new OrderMail($details));
 
         return view('home',[
             'activeordercount'=>$activeordercount,

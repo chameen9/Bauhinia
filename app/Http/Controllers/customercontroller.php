@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Customer;
-use App\Mail\OrderMail;
 use App\Rules\PasswordChecker;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderMail;
 use Carbon\Carbon;
 use Validator;
 use DB;
@@ -162,12 +162,4 @@ class customercontroller extends Controller
         return redirect('/');
     }
 
-    public function sendOrderMail(){
-        $details = [
-            'title'=>'Order Confirmation',
-            'body'=>'testing mail',
-        ];
-        Mail::to("chameensandeepa9@gmail.com")->send(new OrderMail($details));
-        return "Email Sent";
-    }
 }

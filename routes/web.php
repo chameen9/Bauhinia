@@ -156,7 +156,3 @@ Route::get('/employee/save/profile', 'App\http\controllers\employeecontroller@sa
 
 Route::get('/employee/signout', 'App\http\controllers\employeecontroller@signout');
 Route::post('/employee/signout', 'App\http\controllers\employeecontroller@signout');
-
-Route::view('/sendOrderMail','App\http\controllers\customercontroller@sendOrderMail');
-Route::get('/sendOrderMail','App\http\controllers\customercontroller@sendOrderMail');
-Route::post('/sendOrderMail','App\http\controllers\customercontroller@sendOrderMail');

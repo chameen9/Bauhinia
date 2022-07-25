@@ -29,6 +29,6 @@ class OrderMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Order Confirmatino')->view('orderMail');
+        return $this->subject('Your Order is Placed!')->view('orderMail');
     }
 }
