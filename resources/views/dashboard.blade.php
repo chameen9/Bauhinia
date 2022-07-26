@@ -310,16 +310,16 @@
                                 <div class="col-12">
                                   <div class="row">
                                     <div class="col-3">
-                                      <p style="text-align: center; font-size: 20px;" class="text-muted">Greater than 50</p>
+                                      <p style="text-align: center; font-size: 21px;" class="text-muted">Greater than 50</p>
                                     </div>
                                     <div class="col-3">
-                                      <p style="text-align: center; font-size: 20px;" class="text-muted">Less than 50</p>
+                                      <p style="text-align: center; font-size: 21px;" class="text-muted">Less than 50</p>
                                     </div>
                                     <div class="col-3">
-                                      <p style="text-align: center; font-size: 20px;" class="text-muted">Less than 20</p>
+                                      <p style="text-align: center; font-size: 21px;" class="text-muted">Less than 20</p>
                                     </div>
                                     <div class="col-3">
-                                      <p style="text-align: center; font-size: 20px;" class="text-muted">Empty</p>
+                                      <p style="text-align: center; font-size: 21px;" class="text-muted">Empty</p>
                                     </div>
                                   </div>
                                 </div>
@@ -510,16 +510,16 @@
                                 <div class="col-12">
                                   <div class="row">
                                     <div class="col-3">
-                                      <p style="text-align: center; font-size: 20px;" class="text-muted">Total</p>
+                                      <p style="text-align: center; font-size: 21px;" class="text-muted">Total</p>
                                     </div>
                                     <div class="col-3">
-                                      <p style="text-align: center; font-size: 20px;" class="text-muted">This Month</p>
+                                      <p style="text-align: center; font-size: 21px;" class="text-muted">This Month</p>
                                     </div>
                                     <div class="col-3">
-                                      <p style="text-align: center; font-size: 20px;" class="text-muted">Last Month</p>
+                                      <p style="text-align: center; font-size: 21px;" class="text-muted">Last Month</p>
                                     </div>
                                     <div class="col-3">
-                                      <p style="text-align: center; font-size: 20px;" class="text-muted">Other Months</p>
+                                      <p style="text-align: center; font-size: 21px;" class="text-muted">Other Months</p>
                                     </div>
                                   </div>
                                 </div>
