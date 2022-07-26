@@ -27,7 +27,78 @@
         <!--Bootstrap icons-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
+        <style>
+          .progress {
+            width: 150px;
+            height: 150px;
+            background: none;
+            position: relative;
+          }
 
+          .progress::after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 6px solid #eee;
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+
+          .progress>span {
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            z-index: 1;
+          }
+
+          .progress .progress-left {
+            left: 0;
+          }
+
+          .progress .progress-bar {
+            width: 100%;
+            height: 100%;
+            background: none;
+            border-width: 6px;
+            border-style: solid;
+            position: absolute;
+            top: 0;
+          }
+
+          .progress .progress-left .progress-bar {
+            left: 100%;
+            border-top-right-radius: 80px;
+            border-bottom-right-radius: 80px;
+            border-left: 0;
+            -webkit-transform-origin: center left;
+            transform-origin: center left;
+          }
+
+          .progress .progress-right {
+            right: 0;
+          }
+
+          .progress .progress-right .progress-bar {
+            left: -100%;
+            border-top-left-radius: 80px;
+            border-bottom-left-radius: 80px;
+            border-right: 0;
+            -webkit-transform-origin: center right;
+            transform-origin: center right;
+          }
+
+          .progress .progress-value {
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+
+          
+        </style>
     </head>
     <body>
 
@@ -156,26 +227,413 @@
                 </div>
             </div>
 
+          
             <div class="col-lg-11 col-md-11 col-sm-10">
-                <div class="shadow bg-white rounded">
-                    <div class="card p-1" style="border: 0;">
+                        <div class="row">
+                          
+                          <div class="col-6">
+                            <div class="shadow bg-white rounded">
+                              <div class="row">
+                                <div class="col-12">
+                                  <h4 class="text-muted">&nbsp;Orders</h4>
+                                  <hr>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-12">
+                                  <br>
+                                  <br>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-4">
+                                  <!-- Order Progress bar -->
+                                  <div class="progress mx-auto" data-value='{{$orderspercentage}}'>
+                                    <span class="progress-left">
+                                      <span class="progress-bar border-primary"></span>
+                                    </span>
+                                    <span class="progress-right">
+                                      <span class="progress-bar border-primary"></span>
+                                    </span>
+                                    <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                                      <div class="h2 font-weight-bold">{{$orderspercentage}}<sup class="small">%</sup></div>
+                                    </div>
+                                  </div>
+                                  <!-- END -->
+                                </div>
+                                <div class="col-8">
+                                  <div class="row">
+                                    <div class="col-6">
+                                      <p>Active Orders</p>
+                                      <p>Shipped Orders</p>
+                                      <p>Pending Orders</p>
+                                      <p></p>
+                                    </div>
+                                    <div class="col-1">
+                                      <p>:</p>
+                                      <p>:</p>
+                                      <p>:</p>
+                                      <p></p>
+                                    </div>
+                                    <div class="col-4">
+                                      <p align="right">{{$activeorderscount}}</p>
+                                      <p align="right">{{$shippedorderscount}}</p>
+                                      <p align="right">{{$pendingorderscount}}</p>
+                                      <p></p>
+                                    </div>
+                                    <div class="col-1">
+                                      <p></p>
+                                      <p></p>
+                                      <p></p>
+                                      <p></p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-12">
+                                  <br>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-6">
+                            <div class="shadow bg-white rounded">
+                              <div class="row">
+                                <div class="col-12">
+                                  <h4 class="text-muted">&nbsp;Stock Status</h4>
+                                  <hr>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-12">
+                                  <div class="row">
+                                    <div class="col-3">
+                                      <p style="text-align: center; font-size: 20px;" class="text-muted">Greater than 50</p>
+                                    </div>
+                                    <div class="col-3">
+                                      <p style="text-align: center; font-size: 20px;" class="text-muted">Less than 50</p>
+                                    </div>
+                                    <div class="col-3">
+                                      <p style="text-align: center; font-size: 20px;" class="text-muted">Less than 20</p>
+                                    </div>
+                                    <div class="col-3">
+                                      <p style="text-align: center; font-size: 20px;" class="text-muted">Empty</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-3">
+                                  <!-- Stock Progress bar -->
+                                  <div class="progress mx-auto" data-value='{{$greaterthan50stockpercentage}}'>
+                                    <span class="progress-left">
+                                      <span class="progress-bar border-success"></span>
+                                    </span>
+                                    <span class="progress-right">
+                                      <span class="progress-bar border-success"></span>
+                                    </span>
+                                    <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                                      <div class="h2 font-weight-bold">{{$greaterthan50stockpercentage}}<sup class="small">%</sup></div>
+                                    </div>
+                                  </div>
+                                  <!-- END -->
+                                </div>
+                                <div class="col-3">
+                                  <!-- Stock Progress bar -->
+                                  <div class="progress mx-auto" data-value='{{$lessthan50stockpercentage}}'>
+                                    <span class="progress-left">
+                                      <span class="progress-bar border-primary"></span>
+                                    </span>
+                                    <span class="progress-right">
+                                      <span class="progress-bar border-primary"></span>
+                                    </span>
+                                    <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                                      <div class="h2 font-weight-bold">{{$lessthan50stockpercentage}}<sup class="small">%</sup></div>
+                                    </div>
+                                  </div>
+                                  <!-- END -->
+                                </div>
+                                <div class="col-3">
+                                  <!-- Stock Progress bar -->
+                                  <div class="progress mx-auto" data-value='{{$lessthan20stockpercentage}}'>
+                                    <span class="progress-left">
+                                      <span class="progress-bar border-warning"></span>
+                                    </span>
+                                    <span class="progress-right">
+                                      <span class="progress-bar border-warning"></span>
+                                    </span>
+                                    <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                                      <div class="h2 font-weight-bold">{{$lessthan20stockpercentage}}<sup class="small">%</sup></div>
+                                    </div>
+                                  </div>
+                                  <!-- END -->
+                                </div>
+                                <div class="col-3">
+                                  <!-- Stock Progress bar -->
+                                  <div class="progress mx-auto" data-value='{{$emptystockpercentage}}'>
+                                    <span class="progress-left">
+                                      <span class="progress-bar border-danger"></span>
+                                    </span>
+                                    <span class="progress-right">
+                                      <span class="progress-bar border-danger"></span>
+                                    </span>
+                                    <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                                      <div class="h2 font-weight-bold">{{$emptystockpercentage}}<sup class="small">%</sup></div>
+                                    </div>
+                                  </div>
+                                  <!-- END -->
+                                </div>
+                                
+                              </div>
+                              <div class="row">
+                                <div class="col-12">
+                                  <br>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                        </div>
+
+                        <div class="row">
+                          <div class="col-12">
+                            <br>
+                            <br>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          
+                          <div class="col-6">
+                            <div class="shadow bg-white rounded">
+                              <div class="row">
+                                <div class="col-12">
+                                  <h4 class="text-muted">&nbsp;Income Status</h4>
+                                  <hr>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-12">
+                                  <div class="row">
+                                    <div class="col-3">
+                                      <p style="text-align: center; font-size: 15px;" class="text-muted">This Month</p>
+                                    </div>
+                                    <div class="col-3">
+                                      <p style="text-align: center; font-size: 15px;" class="text-muted">Last Month</p>
+                                    </div>
+                                    <div class="col-3">
+                                      <p style="text-align: center; font-size: 15px;" class="text-muted">Other Months</p>
+                                    </div>
+                                    <div class="col-3">
+                                      <br>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-3">
+                                  <!-- Stock Progress bar -->
+                                  <div class="progress mx-auto" data-value='{{$thismonthorderspercentage}}'>
+                                    <span class="progress-left">
+                                      <span class="progress-bar border-primary"></span>
+                                    </span>
+                                    <span class="progress-right">
+                                      <span class="progress-bar border-primary"></span>
+                                    </span>
+                                    <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                                      <div class="h2 font-weight-bold">{{$thismonthorderspercentage}}<sup class="small">%</sup></div>
+                                    </div>
+                                  </div>
+                                  <!-- END -->
+                                </div>
+                                <div class="col-3">
+                                  <!-- Stock Progress bar -->
+                                  <div class="progress mx-auto" data-value='{{$lastmonthorderspercentage}}'>
+                                    <span class="progress-left">
+                                      <span class="progress-bar border-info"></span>
+                                    </span>
+                                    <span class="progress-right">
+                                      <span class="progress-bar border-info"></span>
+                                    </span>
+                                    <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                                      <div class="h2 font-weight-bold">{{$lastmonthorderspercentage}}<sup class="small">%</sup></div>
+                                    </div>
+                                  </div>
+                                  <!-- END -->
+                                </div>
+                                <div class="col-3">
+                                  <!-- Stock Progress bar -->
+                                  <div class="progress mx-auto" data-value='{{$othermonthsorderspercentage}}'>
+                                    <span class="progress-left">
+                                      <span class="progress-bar border-secondary"></span>
+                                    </span>
+                                    <span class="progress-right">
+                                      <span class="progress-bar border-secondary"></span>
+                                    </span>
+                                    <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                                      <div class="h2 font-weight-bold">{{$othermonthsorderspercentage}}<sup class="small">%</sup></div>
+                                    </div>
+                                  </div>
+                                  <!-- END -->
+                                </div>
+                                <div class="col-3">
+                                  <div class="row">
+                                    <div class="col-12">
+                                      <p>Total Orders: <b>{{$allmonthsorderscount}}</b></p>
+                                      <p>This Month: <b>{{$thismonthorderscount}}</b></p>
+                                      <p>Last Month: <b>{{$lastmonthorderscount}}</b></p>
+                                      <p>Other Months: <b>{{$othermonthsorderscount}}</b></p>
+                                    </div>
+                                  </div>
+                                </div>
+                                
+                              </div>
+                              <div class="row">
+                                <div class="col-12">
+                                  <br>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-6">
+                            <div class="shadow bg-white rounded">
+                              <div class="row">
+                                <div class="col-12">
+                                  <h4 class="text-muted">&nbsp;Income Values</h4>
+                                  <hr>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-12">
+                                  <div class="row">
+                                    <div class="col-3">
+                                      <p style="text-align: center; font-size: 15px;" class="text-muted">Total</p>
+                                    </div>
+                                    <div class="col-3">
+                                      <p style="text-align: center; font-size: 15px;" class="text-muted">This Month</p>
+                                    </div>
+                                    <div class="col-3">
+                                      <p style="text-align: center; font-size: 15px;" class="text-muted">Last Month</p>
+                                    </div>
+                                    <div class="col-3">
+                                      <p style="text-align: center; font-size: 15px;" class="text-muted">Other Months</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-3">
+                                  <!-- Stock Progress bar -->
+                                  <div class="progress mx-auto" data-value='100'>
+                                    <span class="progress-left">
+                                      <span class="progress-bar border-success"></span>
+                                    </span>
+                                    <span class="progress-right">
+                                      <span class="progress-bar border-success"></span>
+                                    </span>
+                                    <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                                      <div class="h6 font-weight-bold">Rs. {{$allmonthsorderssum}}</div>
+                                    </div>
+                                  </div>
+                                  <!-- END -->
+                                </div>
+                                <div class="col-3">
+                                  <!-- Stock Progress bar -->
+                                  <div class="progress mx-auto" data-value='{{$thismonthorderssumpercentage}}'>
+                                    <span class="progress-left">
+                                      <span class="progress-bar border-primary"></span>
+                                    </span>
+                                    <span class="progress-right">
+                                      <span class="progress-bar border-primary"></span>
+                                    </span>
+                                    <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                                      <div class="h6 font-weight-bold">Rs. {{$thismonthorderssum}}</div>
+                                    </div>
+                                  </div>
+                                  <!-- END -->
+                                </div>
+                                <div class="col-3">
+                                  <!-- Stock Progress bar -->
+                                  <div class="progress mx-auto" data-value='{{$lastmonthorderssumpercentage}}'>
+                                    <span class="progress-left">
+                                      <span class="progress-bar border-info"></span>
+                                    </span>
+                                    <span class="progress-right">
+                                      <span class="progress-bar border-info"></span>
+                                    </span>
+                                    <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                                      <div class="h6 font-weight-bold">Rs. {{$lastmonthorderssum}}</div>
+                                    </div>
+                                  </div>
+                                  <!-- END -->
+                                </div>
+                                <div class="col-3">
+                                  <!-- Stock Progress bar -->
+                                  <div class="progress mx-auto" data-value='{{$othermonthsorderssumpercentage}}'>
+                                    <span class="progress-left">
+                                      <span class="progress-bar border-secondary"></span>
+                                    </span>
+                                    <span class="progress-right">
+                                      <span class="progress-bar border-secondary"></span>
+                                    </span>
+                                    <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                                      <div class="h6 font-weight-bold">Rs. {{$othermonthsorderssum}}</div>
+                                    </div>
+                                  </div>
+                                  <!-- END -->
+                                </div>
+                                
+                                
+                              </div>
+                              <div class="row">
+                                <div class="col-12">
+                                  <br>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                        </div>
                         
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
                             
                         
                         
-                    </div>
-                </div>
             </div>
 
         </div>
       </div>
               
+      <script>
+        $(function() {
 
+          $(".progress").each(function() {
+
+            var value = $(this).attr('data-value');
+            var left = $(this).find('.progress-left .progress-bar');
+            var right = $(this).find('.progress-right .progress-bar');
+
+            if (value > 0) {
+              if (value <= 50) {
+                right.css('transform', 'rotate(' + percentageToDegrees(value) + 'deg)')
+              } else {
+                right.css('transform', 'rotate(180deg)')
+                left.css('transform', 'rotate(' + percentageToDegrees(value - 50) + 'deg)')
+              }
+            }
+
+          })
+
+          function percentageToDegrees(percentage) {
+
+            return percentage / 100 * 360
+
+          }
+
+        });
+      </script>
 
     </body>
 </html>

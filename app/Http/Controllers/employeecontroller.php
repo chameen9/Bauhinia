@@ -994,11 +994,91 @@ class employeecontroller extends Controller
         $auth_level = DB::Table('employees')->where('email',$email)->value('auth_level');
         $department = DB::Table('employees')->where('email',$email)->value('department');
 
+        //  for orders   //
+        $pendingorderscount = DB::Table('orders')->where([['status','=','Pending']])->count();
+        $shippedorderscount = DB::Table('orders')->where([['status','=','Shipped']])->count();
+        $activeorderscount = $pendingorderscount+$shippedorderscount;
+
+        $orderspercentage = ($pendingorderscount / $activeorderscount) * 100;
+        $orderspercentage2decimal = round($orderspercentage, 2);
+        //  for orders   //
+
+        //  for stock   //
+        $emptystockcount = DB::Table('products')->where([['stock','<=',0]])->count();
+        $lessthan20stockcount = DB::Table('products')->where([['stock','<=',20],['stock','>=',1]])->count();
+        $lessthan50stockcount = DB::Table('products')->where([['stock','<=',50],['stock','>=',21]])->count();
+        $greaterthan50stockcount = DB::Table('products')->where([['stock','>=',51]])->count();
+        $allstockcount = DB::Table('products')->count();
+
+        $emptystockpercentage = ($emptystockcount / $allstockcount) * 100;
+        $emptystockpercentage2decimal = round($emptystockpercentage, 2);
+
+        $lessthan20stockpercentage = ($lessthan20stockcount / $allstockcount) * 100;
+        $lessthan20stockpercentage2decimal = round($lessthan20stockpercentage, 2);
+
+        $lessthan50stockpercentage = ($lessthan50stockcount / $allstockcount) * 100;
+        $lessthan50stockpercentage2decimal = round($lessthan50stockpercentage, 2);
+
+        $greaterthan50stockpercentage = ($greaterthan50stockcount / $allstockcount) * 100;
+        $greaterthan50stockpercentage2decimal = round($greaterthan50stockpercentage, 2);
+        //  for stock   //
+
+        // for income  status //
+        $monththis = Carbon::now()->month;
+        $monthlast = $monththis-1;
+
+        $thismonthorderscount = DB::Table('orders')->where('included_month',$monththis)->count();
+        $lastmonthorderscount = DB::Table('orders')->where('included_month',$monthlast)->count();
+        $othermonthsorderscount = DB::Table('orders')->where([['included_month','!=',$monththis],['included_month','!=',$monthlast]])->count();
+        $allmonthsorderscount = DB::Table('orders')->count();
+
+        $thismonthorderspercentage = round((($thismonthorderscount / $allmonthsorderscount) * 100) ,2);
+        $lastmonthorderspercentage = round((($lastmonthorderscount / $allmonthsorderscount) * 100) ,2);
+        $othermonthsorderspercentage = round((($othermonthsorderscount / $allmonthsorderscount) * 100) ,2);
+        // for income  status //
+
+        // for income  values //
+        $newmonththis = Carbon::now()->month;
+        $newmonthlast = $newmonththis-1;
+
+        $thismonthorderssum = DB::Table('orders')->where('included_month',$newmonththis)->sum('orders.order_value');
+        $lastmonthorderssum = DB::Table('orders')->where('included_month',$newmonthlast)->sum('orders.order_value');
+        $othermonthsorderssum = DB::Table('orders')->where([['included_month','!=',$newmonththis],['included_month','!=',$newmonthlast]])->sum('orders.order_value');
+        $allmonthsorderssum = DB::Table('orders')->sum('orders.order_value');
+
+        $thismonthorderssumpercentage = round((($thismonthorderssum / $allmonthsorderssum) * 100) ,2);
+        $lastmonthorderssumpercentage = round((($lastmonthorderssum / $allmonthsorderssum) * 100) ,2);
+        $othermonthsorderssumpercentage = round((($othermonthsorderssum / $allmonthsorderssum) * 100) ,2);
+        // for income  values //
+
         return view('dashboard',[
             'name'=>$name,
             'email'=>$email,
             'department'=>$department,
-            'auth_level'=>$auth_level
+            'auth_level'=>$auth_level,
+            'orderspercentage'=>$orderspercentage2decimal,
+            'pendingorderscount'=>$pendingorderscount,
+            'shippedorderscount'=>$shippedorderscount,
+            'activeorderscount'=>$activeorderscount,
+            'emptystockpercentage'=>$emptystockpercentage2decimal,
+            'emptystockpercentage'=>$emptystockpercentage2decimal,
+            'lessthan20stockpercentage'=>$lessthan20stockpercentage2decimal,
+            'lessthan50stockpercentage'=>$lessthan50stockpercentage2decimal,
+            'greaterthan50stockpercentage'=>$greaterthan50stockpercentage2decimal,
+            'thismonthorderspercentage'=>$thismonthorderspercentage,
+            'lastmonthorderspercentage'=>$lastmonthorderspercentage,
+            'othermonthsorderspercentage'=>$othermonthsorderspercentage,
+            'allmonthsorderscount'=>$allmonthsorderscount,
+            'thismonthorderscount'=>$thismonthorderscount,
+            'lastmonthorderscount'=>$lastmonthorderscount,
+            'othermonthsorderscount'=>$othermonthsorderscount,
+            'thismonthorderssum'=>$thismonthorderssum,
+            'lastmonthorderssum'=>$lastmonthorderssum,
+            'othermonthsorderssum'=>$othermonthsorderssum,
+            'allmonthsorderssum'=>$allmonthsorderssum,
+            'thismonthorderssumpercentage'=>$thismonthorderssumpercentage,
+            'lastmonthorderssumpercentage'=>$lastmonthorderssumpercentage,
+            'othermonthsorderssumpercentage'=>$othermonthsorderssumpercentage,
         ]);
     }
     //  home    //

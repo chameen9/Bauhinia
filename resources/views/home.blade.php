@@ -129,19 +129,19 @@
                   <hr>
                   <a href="#newarrivals" class="text-decoration-none" style="font-size: 15px;">New Arrivals</a><br>
                   <a href="#highend" class="text-decoration-none" style="font-size: 15px;">High end fashion store</a><br>
-                  <a href="" class="text-decoration-none" style="font-size: 15px;">Fast fashion brands</a><br>
-                  <a href="" class="text-decoration-none" style="font-size: 15px;">Casual clothing brands</a><br>
-                  <a href="" class="text-decoration-none" style="font-size: 15px;">Sport clothing store</a><br>
-                  <a href="" class="text-decoration-none" style="font-size: 15px;">Travel clothing store</a><br>
-                  <a href="" class="text-decoration-none" style="font-size: 15px;">Kids clothing store</a><br>
-                  <a href="" class="text-decoration-none" style="font-size: 15px;">Wedding dresses</a><br>
-                  <a href="" class="text-decoration-none" style="font-size: 15px;">Swimming suits</a><br>
-                  <a href="" class="text-decoration-none" style="font-size: 15px;">Suit store</a><br>
-                  <a href="" class="text-decoration-none" style="font-size: 15px;">Jeans shop</a><br>
-                  <a href="" class="text-decoration-none" style="font-size: 15px;">Bags & Backpacks store</a><br>
-                  <a href="" class="text-decoration-none" style="font-size: 15px;">Saree store</a><br>
-                  <a href="" class="text-decoration-none" style="font-size: 15px;">T-Shirts store</a><br>
-                  <a href="" class="text-decoration-none" style="font-size: 15px;">Sarongs store</a><br>
+                  <a href="#fastfasion" class="text-decoration-none" style="font-size: 15px;">Fast fashion brands</a><br>
+                  <a href="#fastfasion" class="text-decoration-none" style="font-size: 15px;">Casual clothing brands</a><br>
+                  <a href="#fastfasion" class="text-decoration-none" style="font-size: 15px;">Sport clothing store</a><br>
+                  <a href="#fastfasion" class="text-decoration-none" style="font-size: 15px;">Travel clothing store</a><br>
+                  <a href="#fastfasion" class="text-decoration-none" style="font-size: 15px;">Kids clothing store</a><br>
+                  <a href="#fastfasion" class="text-decoration-none" style="font-size: 15px;">Wedding dresses</a><br>
+                  <a href="#fastfasion" class="text-decoration-none" style="font-size: 15px;">Swimming suits</a><br>
+                  <a href="#fastfasion" class="text-decoration-none" style="font-size: 15px;">Suit store</a><br>
+                  <a href="#fastfasion" class="text-decoration-none" style="font-size: 15px;">Jeans shop</a><br>
+                  <a href="#fastfasion" class="text-decoration-none" style="font-size: 15px;">Bags & Backpacks store</a><br>
+                  <a href="#fastfasion" class="text-decoration-none" style="font-size: 15px;">Saree store</a><br>
+                  <a href="#fastfasion" class="text-decoration-none" style="font-size: 15px;">T-Shirts store</a><br>
+                  <a href="#fastfasion" class="text-decoration-none" style="font-size: 15px;">Sarongs store</a><br>
                   
                 </div>
               </div>
@@ -534,7 +534,7 @@
                 
                 <!--fastfasion-->
                 <section id="fastfasion">
-                  <h4 class="text-muted">High end Fashion Store</h4>
+                  <h4 class="text-muted">Fast Fashion Brands</h4>
                   <span><a href="#highend" class="link link-dark"><i class="bi bi-arrow-up-circle"></i></a></span>
                   <span><a href="#fastfasion" class="link link-dark"><i class="bi bi-arrow-down-circle"></i></a></span>
                   <span>&nbsp;</span>

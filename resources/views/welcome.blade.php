@@ -211,19 +211,19 @@
 
         <div class="row">
           <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/images/8.JPG')}}" class="img-circle" width="300px" height="auto" alt=""></a>
+            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/categories/cat1.JPG')}}" class="img-circle" width="300px" height="auto" alt=""></a>
           </div>
 
           <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/images/8.JPG')}}" width="300px" height="auto" alt=""></a>
+            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/categories/cat2.JPG')}}" width="300px" height="auto" alt=""></a>
           </div>
 
           <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/images/8.JPG')}}" width="300px" height="auto" alt=""></a>
+            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/categories/cat3.JPG')}}" width="300px" height="auto" alt=""></a>
           </div>
 
           <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/images/8.JPG')}}" width="300px" height="auto" alt=""></a>
+            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/categories/cat4.JPG')}}" width="300px" height="auto" alt=""></a>
           </div>
 
         </div>
@@ -236,19 +236,19 @@
 
         <div class="row">
           <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/images/8.JPG')}} " width="300px" height="auto" alt=""></a>
+            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/categories/cat5.JPG')}} " width="300px" height="auto" alt=""></a>
           </div>
 
           <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/images/8.JPG')}} " width="300px" height="auto" alt=""></a>
+            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/categories/cat7.JPG')}} " width="300px" height="auto" alt=""></a>
           </div>
 
           <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/images/8.JPG')}} " width="300px" height="auto" alt=""></a>
+            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/categories/cat6.JPG')}} " width="300px" height="auto" alt=""></a>
           </div>
 
           <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/images/8.JPG')}} " width="300px" height="auto" alt=""></a>
+            <a href="" data-toggle="modal" data-target="#MsgModal"><img src="{{URL::asset('/categories/cat8.JPG')}} " width="300px" height="auto" alt=""></a>
           </div>
 
         </div>
