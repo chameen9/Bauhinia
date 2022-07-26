@@ -502,7 +502,7 @@
                             <div class="shadow bg-white rounded">
                               <div class="row">
                                 <div class="col-12">
-                                  <h4 class="text-muted">&nbsp;Income Values</h4>
+                                  <h4 class="text-muted">&nbsp;Income Amounts</h4>
                                   <hr>
                                 </div>
                               </div>
